@@ -1,4 +1,7 @@
-def longest_palindrome_substring(s: str) -> str:
+import time
+
+
+def longest_palindrome_substring1(s: str) -> str:
 
     def is_palindrome(left_index, right_index):
         while left_index < right_index:
@@ -21,5 +24,28 @@ def longest_palindrome_substring(s: str) -> str:
     return s[start:start+max_len]
 
 
+def longest_palindrome_substring2(s: str) -> str:
+    if not s:
+        return ''
+    max_len = 0
+    start = 0
+    ln = len(s)
+    for i in range(ln):
+        for a in range(2):
+            left, right = i, i + a
+            while left >= 0 and right < ln and s[left] == s[right]:
+                left -= 1
+                right += 1
+            if max_len < right - left - 1:
+                max_len = right - left - 1
+                start = left + 1
+    return s[start:start+max_len]
+
+
 if __name__ == '__main__':
-    print(longest_palindrome_substring("aacabdkacaa"))
+    for func in (longest_palindrome_substring1, longest_palindrome_substring2):
+        t1 = time.perf_counter()
+        for _ in range(1000):
+            func("aacabdkacaa")
+        t2 = time.perf_counter()
+        print(f'{func.__name__} returns "{func("aacabdkacaa")}" 1000 times in {t2-t1:.03f} sec')
