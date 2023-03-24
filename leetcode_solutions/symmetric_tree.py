@@ -1,5 +1,5 @@
 def is_symmetric(root: Optional[TreeNode]) -> bool:
-        
+    pass
 
 
 if __name__ == '__main__':
