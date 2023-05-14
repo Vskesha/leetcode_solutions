@@ -1,4 +1,4 @@
-import math
+from math import gcd
 from functools import cache
 
 
@@ -12,7 +12,7 @@ def max_score(nums): # best dp solution
             mask -= (1 << i)
             for j in range(i+1, 2*n):
                 if (mask >> j)&1:
-                    gcds = sorted(dp(i+1, mask-(1<<j))+[math.gcd(nums[i], nums[j])])
+                    gcds = sorted(dp(i+1, mask-(1<<j))+[gcd(nums[i], nums[j])])
                     score = sum(((i+1)*gcds[i]) for i in range(len(gcds)))
                     if score > tot:
                         ans = gcds
@@ -40,7 +40,7 @@ def max_score1(nums): # dp iterative solution
                 if (state >> j) & 1:
                     continue
                 state_after = state | (1 << i) | (1 << j)
-                current_score = (pairs_formed + 1) * math.gcd(nums[i], nums[j])
+                current_score = (pairs_formed + 1) * gcd(nums[i], nums[j])
                 remaining_score = dp[state_after]
                 dp[state] = max(dp[state], current_score + remaining_score)
     return dp[0]
@@ -65,7 +65,7 @@ def max_score2(nums): # recursive solution
                 if (state >> j) & 1:
                     continue
                 new_state = state | (1 << i) | (1 << j)
-                curr_score = (pairs_picked + 1) * math.gcd(nums[i], nums[j])
+                curr_score = (pairs_picked + 1) * gcd(nums[i], nums[j])
                 rem_score = backtrack(new_state, pairs_picked + 1)
                 max_score = max(max_score, curr_score + rem_score)
         memo[state] = max_score
