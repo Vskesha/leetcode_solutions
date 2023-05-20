@@ -18,3 +18,5 @@ def count_and_say(n: int):
 if __name__ == '__main__':
     print('1 ===', count_and_say(1))
     print('1211 ===', count_and_say(4))
+    print('??? ===', count_and_say(10))
+    print('??? ===', count_and_say(15))
