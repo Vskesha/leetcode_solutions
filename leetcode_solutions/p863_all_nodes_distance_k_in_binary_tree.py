@@ -86,7 +86,7 @@ def main():
     print(' [7, 4, 1]\n', sol.distanceK(root=tree_root, target=tree_root.left, k=2))
     root = [0, null, 1, null, 2, null, 3]  # target = 1, k = 2
     tree_root = list_to_binary_tree(root)
-    print(' [3]\n', sol.distanceK(tree_root, tree_root.left, 2))
+    print(' [3]\n', sol.distanceK(tree_root, tree_root.right, 2))
 
 
 if __name__ == '__main__':
