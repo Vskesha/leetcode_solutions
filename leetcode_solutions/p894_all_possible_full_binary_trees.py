@@ -1,5 +1,5 @@
 from collections import deque
-
+from functools import lru_cache
 
 # Definition for a binary tree node.
 class TreeNode:
@@ -10,39 +10,25 @@ class TreeNode:
 
 
 class Solution:
+    @lru_cache
     def allPossibleFBT(self, n: int) -> list[TreeNode]:
-        if n % 2 == 0:
+
+        if not n % 2:
             return []
 
-        self.ans = []
+        if n == 1:
+            return [TreeNode()]
 
-        def tree_from_comb(comb):
-            new = [TreeNode() for _ in range(n)]
-            i = 0
-            j = 1
-            while j < n:
-                if comb[i]:
-                    new[i].left = new[j]
-                    j += 1
-                    new[i].right = new[j]
-                    j += 1
-                i += 1
-            self.ans.append(new[0])
+        res = []
+        for i in range(1, n, 2):
+            lefts = self.allPossibleFBT(i)
+            rights = self.allPossibleFBT(n - i - 1)
+            for left in lefts:
+                for right in rights:
+                    res.append(TreeNode(val=0, left=left, right=right))
 
-        def create_combs(comb, i, total):
-            if total == n:
-                tree_from_comb(comb)
-                return
+        return res
 
-            if i < total - 1:
-                create_combs(comb, i + 1, total)
-            comb[i] = 1
-            create_combs(comb, i + 1, total + 2)
-            comb[i] = 0
-
-        comb = [0] * n
-        create_combs(comb, 0, 1)
-        return self.ans
 
 def to_list(tree):
     res = []
