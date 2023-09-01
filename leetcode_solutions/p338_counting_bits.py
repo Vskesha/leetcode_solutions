@@ -60,10 +60,10 @@ def main():
     print('Test 1 ... ', end='')
     assert sol.countBits(n=2) == [0, 1, 1]
     print('ok')
-    print('Test 1 ... ', end='')
+    print('Test 2 ... ', end='')
     assert sol.countBits(n=5) == [0, 1, 1, 2, 1, 2]
     print('ok')
-    print('Test 1 ... ', end='')
+    print('Test 3 ... ', end='')
     assert sol.countBits(n=25) == [0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2, 3, 2, 3, 3, 4, 1, 2, 2, 3, 2, 3, 3, 4, 2, 3]
     print('ok')
 
