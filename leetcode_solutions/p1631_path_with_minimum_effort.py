@@ -102,11 +102,19 @@ class Solution2:
 def test():
     sol = Solution()
     print('Test 1 ... ', end='')
-    assert sol.minimumEffortPath(heights = [[1,2,2],[3,8,2],[5,3,5]]) == 2
+    assert sol.minimumEffortPath(heights=[[1, 2, 2],
+                                          [3, 8, 2],
+                                          [5, 3, 5]]) == 2
     print('ok\nTest 2 ... ', end='')
-    assert sol.minimumEffortPath(heights = [[1,2,3],[3,8,4],[5,3,5]]) == 1
+    assert sol.minimumEffortPath(heights=[[1, 2, 3],
+                                          [3, 8, 4],
+                                          [5, 3, 5]]) == 1
     print('ok\nTest 3 ... ', end='')
-    assert sol.minimumEffortPath(heights = [[1,2,1,1,1],[1,2,1,2,1],[1,2,1,2,1],[1,2,1,2,1],[1,1,1,2,1]]) == 0
+    assert sol.minimumEffortPath(heights=[[1, 2, 1, 1, 1],
+                                          [1, 2, 1, 2, 1],
+                                          [1, 2, 1, 2, 1],
+                                          [1, 2, 1, 2, 1],
+                                          [1, 1, 1, 2, 1]]) == 0
     print('ok')
 
 
