@@ -1,5 +1,8 @@
+from typing import List
+
+
 class Solution:
-    def maxProfit(self, prices: list[int], fee: int) -> int:
+    def maxProfit(self, prices: List[int], fee: int) -> int:
         buy = sell = prices[0]
         max_profit = 0
         for price in prices:
@@ -12,11 +15,14 @@ class Solution:
         return max_profit
 
 
-def main():
+def test():
     sol = Solution()
-    print('8 ===', sol.maxProfit(prices=[1, 3, 2, 8, 4, 9], fee=2))
-    print('6 ===', sol.maxProfit(prices=[1, 3, 7, 5, 10, 3], fee=3))
+    print('Test 1 ... ', end='')
+    assert 8 == sol.maxProfit(prices=[1, 3, 2, 8, 4, 9], fee=2)
+    print('ok\nTest 2 ... ', end='')
+    assert 6 == sol.maxProfit(prices=[1, 3, 7, 5, 10, 3], fee=3)
+    print('ok')
 
 
 if __name__ == '__main__':
-    main()
+    test()
