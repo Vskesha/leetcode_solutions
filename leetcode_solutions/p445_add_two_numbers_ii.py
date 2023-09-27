@@ -1,3 +1,6 @@
+from typing import Optional
+
+
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, val=0, next=None):
@@ -7,7 +10,7 @@ class ListNode:
 
 # Reversing given lists and adding respecting nodes and forming new linked list from the end
 class Solution:
-    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
 
         def reverse(l_list: ListNode):
             cur, nxt = l_list, l_list.next
@@ -37,7 +40,7 @@ class Solution:
 
 # Solution through the transformation to int, addindg and transformation to linked list
 class Solution2:
-    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
         n1 = 0
         while l1:
             n1 = n1 * 10 + l1.val
@@ -49,14 +52,16 @@ class Solution2:
         res = n1 + n2
         if not res:
             return ListNode()
+        nxt = None
         while res:
-            res, cur_digit = divmod(res, 10)
-        return cur
+            nxt = ListNode(val=res % 10, next=nxt)
+            res //= 10
+        return nxt
 
 
-def main():
+def test():
     sol = Solution()
 
 
 if __name__ == '__main__':
-    main()
+    test()
