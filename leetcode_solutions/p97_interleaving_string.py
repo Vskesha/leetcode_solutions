@@ -1,8 +1,39 @@
-from functools import cache
+from collections import Counter
+from functools import cache, lru_cache
+
+
+class Solution:
+    def isInterleave(self, s1: str, s2: str, s3: str) -> bool:
+        ls1, ls2, ls3 = len(s1), len(s2), len(s3)
+
+        if ls3 != ls1 + ls2:
+            return False
+
+        if Counter(s1 + s2) != Counter(s3):
+            return False
+
+        @lru_cache(None)
+        def interleave(i, j):
+            if not i:
+                return s2[:j] == s3[:j]
+            if not j:
+                return s1[:i] == s3[:i]
+
+            k = i + j
+            if s1[i - 1] == s2[j - 1] == s3[k - 1]:
+                return interleave(i - 1, j) or interleave(i, j - 1)
+            if s1[i - 1] == s3[k - 1]:
+                return interleave(i - 1, j)
+            if s2[j - 1] == s3[k - 1]:
+                return interleave(i, j - 1)
+
+            return False
+
+        return interleave(ls1, ls2)
 
 
 # iterative dp solution
-class Solution:
+class Solution1:
     def isInterleave(self, s1: str, s2: str, s3: str) -> bool:
         l1, l2 = len(s1), len(s2)
         if l1 + l2 != len(s3):
@@ -47,11 +78,18 @@ class Solution2:
 
 def main():
     sol = Solution()
+
+    print('Test 1 ... ', end='')
     assert sol.isInterleave(s1="aabcc", s2="dbbca", s3="aadbbcbcac") is True
-    print('Test 1 ... ok')
+    print('ok')
+
+    print('Test 2 ... ', end='')
     assert sol.isInterleave(s1="aabcc", s2="dbbca", s3="aadbbbaccc") is False
-    print('Test 2 ... ok')
+    print('ok')
+
+    print('Test 3 ... ', end='')
     assert sol.isInterleave(s1="", s2="", s3="")
+    print('ok')
 
 
 if __name__ == '__main__':
