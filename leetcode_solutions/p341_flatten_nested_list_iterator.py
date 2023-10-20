@@ -24,6 +24,44 @@ class NestedInteger:
 
 class NestedIterator:
     def __init__(self, nestedList: [NestedInteger]):
+        self.stack = nestedList[::-1]
+
+    def next(self) -> int:
+        return self.stack.pop().getInteger()
+
+    def hasNext(self) -> bool:
+        while self.stack:
+            top = self.stack[-1]
+            if top.isInteger():
+                return True
+            self.stack = self.stack[:-1] + top.getList()[::-1]
+        return False
+
+
+class NestedIterator1:
+    def __init__(self, nestedList: [NestedInteger]):
+        self.stack = nestedList[::-1]
+        self.nxt = None
+        self.next()
+
+    def next(self) -> int:
+        ans = self.nxt
+        self.nxt = None
+        while self.stack:
+            curr = self.stack.pop()
+            if curr.isInteger():
+                self.nxt = curr.getInteger()
+                break
+            else:
+                self.stack.extend(curr.getList()[::-1])
+        return ans
+
+    def hasNext(self) -> bool:
+        return self.nxt is not None
+
+
+class NestedIterator2:
+    def __init__(self, nestedList: [NestedInteger]):
         self.stack = [nestedList]
         self.istack = [0]
         self.nxt = None
@@ -52,7 +90,7 @@ class NestedIterator:
         return self.nxt is not None
 
 
-class NestedIterator2:
+class NestedIterator3:
     def __init__(self, nestedList: [NestedInteger]):
 
         def dfs(nl) -> list:
