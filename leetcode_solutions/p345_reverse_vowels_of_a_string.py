@@ -15,11 +15,17 @@ class Solution:
         return ''.join(lst)
 
 
-def main():
+def test():
     sol = Solution()
-    print('holle ===', sol.reverseVowels(s="hello"))
-    print('leotcede ===', sol.reverseVowels(s='leetcode'))
+
+    print('Test 1 ... ', end='')
+    assert 'holle' == sol.reverseVowels(s="hello")
+    print('ok')
+
+    print('Test 2 ... ', end='')
+    assert 'leotcede' == sol.reverseVowels(s='leetcode')
+    print('ok')
 
 
 if __name__ == '__main__':
-    main()
+    test()

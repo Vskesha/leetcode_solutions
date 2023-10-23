@@ -30,3 +30,25 @@ class Solution:
             bfs.append((node.right, idx + 1))
 
         return ans
+
+
+class Solution2:
+    def largestValues(self, root: TreeNode) -> list[int]:
+
+        if not root:
+            return []
+
+        ans = []
+        bfs = deque([(root, 1)])
+
+        while bfs:
+            node, idx = bfs.popleft()
+            if idx == len(ans):
+                ans[-1] = max(ans[-1], node.val)
+            else:
+                ans.append(node.val)
+            if node.left:
+                bfs.append((node.left, idx + 1))
+            if node.right:
+                bfs.append((node.right, idx + 1))
+        return ans

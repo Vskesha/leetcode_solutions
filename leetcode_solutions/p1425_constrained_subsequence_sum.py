@@ -6,6 +6,35 @@ from typing import List
 
 class Solution:
     def constrainedSubsetSum(self, nums: List[int], k: int) -> int:
+        q = deque()
+        for i in range(1, len(nums)):
+            while q and nums[q[-1]] <= nums[i - 1]:
+                q.pop()
+            q.append(i - 1)
+            while q[0] < i - k:
+                q.popleft()
+            if nums[q[0]] > 0:
+                nums[i] += nums[q[0]]
+
+        return max(nums)
+
+
+class SolutionB:
+    def constrainedSubsetSum(self, nums: List[int], k: int) -> int:
+        heap = []
+
+        for i in range(1, len(nums)):
+            heappush(heap, (-nums[i - 1], i - 1))
+            while heap[0][1] < i - k:
+                heappop(heap)
+            if heap[0][0] < 0:
+                nums[i] -= heap[0][0]
+
+        return max(nums)
+
+
+class Solution1:
+    def constrainedSubsetSum(self, nums: List[int], k: int) -> int:
         queue = deque()
         dp = [0] * len(nums)
 
@@ -23,7 +52,7 @@ class Solution:
         return max(dp)
 
 
-class Solution1:
+class Solution2:
     def constrainedSubsetSum(self, nums: List[int], k: int) -> int:
         window = SortedList([0])
         dp = [0] * len(nums)
@@ -37,7 +66,7 @@ class Solution1:
         return max(dp)
 
 
-class Solution2:
+class Solution3:
     def constrainedSubsetSum(self, nums: List[int], k: int) -> int:
         heap = [(-nums[0], 0)]
         ans = nums[0]
