@@ -12,11 +12,32 @@ class Solution:
         return counter
 
 
+class Solution2:
+    def balancedStringSplit(self, s: str) -> int:
+        bal = ans = 0
+
+        for ch in s:
+            bal += 1 if ch == 'L' else -1
+            if not bal:
+                ans += 1
+        return ans
+
+
+
 def main():
     sol = Solution()
-    print('4 ===', sol.balancedStringSplit(s="RLRRLLRLRL"))
-    print('2 ===', sol.balancedStringSplit(s="RLRRRLLRLL"))
-    print('1 ===', sol.balancedStringSplit(s="LLLLRRRR"))
+
+    print('Test 1 ... ', end='')
+    assert 4 == sol.balancedStringSplit(s="RLRRLLRLRL")
+    print('ok')
+
+    print('Test 2 ... ', end='')
+    assert 2 == sol.balancedStringSplit(s="RLRRRLLRLL")
+    print('ok')
+
+    print('Test 3 ... ', end='')
+    assert 1 == sol.balancedStringSplit(s="LLLLRRRR")
+    print('ok')
 
 
 if __name__ == '__main__':
