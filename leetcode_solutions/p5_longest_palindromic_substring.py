@@ -19,9 +19,11 @@ class Solution:
 
 def test():
     sol = Solution()
+
     print('Test 1 ... ', end='')
     assert sol.longestPalindrome(s="babad") == 'bab'
     print('ok')
+
     print('Test 2 ... ', end='')
     assert sol.longestPalindrome(s="cbbd") == 'bb'
     print('ok')
