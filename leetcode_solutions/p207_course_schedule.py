@@ -1,7 +1,31 @@
-from collections import deque
+from collections import deque, defaultdict
+from typing import List
 
 
 class Solution:
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        # topological_sort
+
+        income = [0] * numCourses
+        graph = defaultdict(list)
+
+        for after, before in prerequisites:
+            income[after] += 1
+            graph[before].append(after)
+
+        st = [i for i, n in enumerate(income) if not n]
+
+        while st:
+            curr = st.pop()
+            for neib in graph[curr]:
+                income[neib] -= 1
+                if not income[neib]:
+                    st.append(neib)
+
+        return not any(income)
+
+
+class Solution1:
     def canFinish(self, numCourses: int, prerequisites: list[list[int]]) -> bool:
         graph = [[] for _ in range(numCourses)]
         indegrees = [0] * numCourses
@@ -57,8 +81,14 @@ class Solution2:
 
 def main():
     sol = Solution()
-    print('True ===', sol.canFinish(numCourses=2, prerequisites=[[1, 0]]))
-    print('False ==', sol.canFinish(numCourses=2, prerequisites=[[1, 0], [0, 1]]))
+
+    print('Test 1 ... ', end='')
+    assert sol.canFinish(numCourses=2, prerequisites=[[1, 0]]) is True
+    print('OK')
+
+    print('Test 2 ... ', end='')
+    assert sol.canFinish(numCourses=2, prerequisites=[[1, 0], [0, 1]]) is False
+    print('OK')
 
 
 if __name__ == '__main__':
