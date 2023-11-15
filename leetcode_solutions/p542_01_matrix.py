@@ -1,7 +1,42 @@
 from collections import deque
+from typing import List
 
 
 class Solution:
+    def updateMatrix(self, mat: List[List[int]]) -> List[List[int]]:
+        m = len(mat[0])
+        n = len(mat)
+
+        bfs = deque()
+
+        for i in range(n):
+            for j in range(m):
+                if mat[i][j]:
+                    mat[i][j] = -1
+                else:
+                    bfs.append((i, j))
+
+        while bfs:
+            i, j = bfs.popleft()
+            d = mat[i][j] + 1
+
+            if i and mat[i - 1][j] == -1:
+                mat[i - 1][j] = d
+                bfs.append((i - 1, j))
+            if j and mat[i][j - 1] == -1:
+                mat[i][j - 1] = d
+                bfs.append((i, j - 1))
+            if i < n - 1 and mat[i + 1][j] == -1:
+                mat[i + 1][j] = d
+                bfs.append((i + 1, j))
+            if j < m - 1 and mat[i][j + 1] == -1:
+                mat[i][j + 1] = d
+                bfs.append((i, j + 1))
+
+        return mat
+
+
+class Solution1:
     def updateMatrix(self, mat: list[list[int]]) -> list[list[int]]:
         m = len(mat[0])
         n = len(mat)
@@ -56,13 +91,23 @@ class Solution2:
         return dist
 
 
-def main():
+def test():
     sol = Solution()
+
+    print('Test 1 ... ', end='')
     mat = [[0, 0, 0], [0, 1, 0], [0, 0, 0]]
-    print(' [[0, 0, 0], [0, 1, 0], [0, 0, 0]]\n', sol.updateMatrix(mat))
+    out = [[0, 0, 0], [0, 1, 0], [0, 0, 0]]
+    for i, m in enumerate(sol.updateMatrix(mat)):
+        assert out[i] == m
+    print('OK')
+
+    print('Test 2 ... ', end='')
     mat = [[0, 0, 0], [0, 1, 0], [1, 1, 1]]
-    print(' [[0, 0, 0], [0, 1, 0], [1, 2, 1]]\n', sol.updateMatrix(mat))
+    out = [[0, 0, 0], [0, 1, 0], [1, 2, 1]]
+    for i, m in enumerate(sol.updateMatrix(mat)):
+        assert out[i] == m
+    print('OK')
 
 
 if __name__ == '__main__':
-    main()
+    test()
