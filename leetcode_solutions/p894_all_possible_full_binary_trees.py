@@ -1,5 +1,7 @@
-from collections import deque
+from collections import deque, defaultdict
 from functools import lru_cache
+from typing import List, Optional
+
 
 # Definition for a binary tree node.
 class TreeNode:
@@ -10,6 +12,24 @@ class TreeNode:
 
 
 class Solution:
+    def allPossibleFBT(self, n: int) -> List[Optional[TreeNode]]:
+        if not n % 2:
+            return []
+
+        trees = defaultdict(list)
+        trees[1].append(TreeNode())
+
+        for total_len in range(3, n + 1, 2):
+            for left_len in range(1, total_len, 2):
+                right_len = total_len - left_len - 1
+                for ltree in trees[left_len]:
+                    for rtree in trees[right_len]:
+                        trees[total_len].append(TreeNode(val=0, left=ltree, right=rtree))
+
+        return trees[n]
+
+
+class Solution2:
     @lru_cache
     def allPossibleFBT(self, n: int) -> list[TreeNode]:
 
@@ -48,16 +68,31 @@ def to_list(tree):
     return res
 
 
-def print_trees(trees):
-    for tree in trees:
-        print(to_list(tree))
-    print()
+def test(n, out, sol):
+    all_possible = sol.allPossibleFBT(n)
+    assert len(all_possible) == len(out)
+    for tree in all_possible:
+        exist = False
+        for t in out:
+            if t == to_list(tree):
+                exist = True
+                break
+        assert exist
 
 
 def main():
     sol = Solution()
-    print_trees(sol.allPossibleFBT(7))
-    print_trees(sol.allPossibleFBT(3))
+    null = None
+
+    print('Test 1... ', end='')
+    test(n=3, out=[[0, 0, 0]], sol=sol)
+    print('OK')
+
+    print('Test 1... ', end='')
+    test(n=7,
+         out=[[0, 0, 0, null, null, 0, 0, null, null, 0, 0], [0, 0, 0, null, null, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0],
+              [0, 0, 0, 0, 0, null, null, null, null, 0, 0], [0, 0, 0, 0, 0, null, null, 0, 0]], sol=sol)
+    print('OK')
 
 
 if __name__ == '__main__':
