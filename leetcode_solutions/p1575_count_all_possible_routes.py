@@ -1,9 +1,9 @@
 from functools import lru_cache
-import test
+from typing import List
 
 
 class Solution:
-    def countRoutes(self, locations: list[int], start: int, finish: int, fuel: int) -> int:
+    def countRoutes(self, locations: List[int], start: int, finish: int, fuel: int) -> int:
         start_loc = locations[start]
         finish_loc = locations[finish]
         locations.sort()
@@ -30,12 +30,21 @@ class Solution:
         return count_ways(start, fuel)
 
 
-def main():
+def test():
     sol = Solution()
-    test.assert_equals(4, sol.countRoutes(locations=[2, 3, 6, 8, 4], start=1, finish=3, fuel=5))
-    test.assert_equals(5, sol.countRoutes(locations=[4, 3, 1], start=1, finish=0, fuel=6))
-    test.assert_equals(0, sol.countRoutes(locations=[5, 2, 1], start=0, finish=2, fuel=3))
+
+    print('Test 1... ', end='')
+    assert sol.countRoutes(locations=[2, 3, 6, 8, 4], start=1, finish=3, fuel=5) == 4
+    print('OK')
+
+    print('Test 2... ', end='')
+    assert sol.countRoutes(locations=[4, 3, 1], start=1, finish=0, fuel=6) == 5
+    print('OK')
+
+    print('Test 3... ', end='')
+    assert sol.countRoutes(locations=[5, 2, 1], start=0, finish=2, fuel=3) == 0
+    print('OK')
 
 
 if __name__ == '__main__':
-    main()
+    test()

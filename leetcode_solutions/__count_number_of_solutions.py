@@ -2,7 +2,6 @@ from pathlib import Path
 
 
 def main():
-
     number_of_right_named = 0
     number_of_other_files = 0
 
