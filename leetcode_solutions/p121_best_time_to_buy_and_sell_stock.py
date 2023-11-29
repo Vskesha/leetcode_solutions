@@ -1,5 +1,8 @@
+from typing import List
+
+
 class Solution:
-    def maxProfit(self, prices: list[int]) -> int:
+    def maxProfit(self, prices: List[int]) -> int:
         min_price = prices[0]
         max_profit = 0
         for price in prices:
@@ -8,6 +11,18 @@ class Solution:
             elif price - min_price > max_profit:
                 max_profit = price - min_price
         return max_profit
+
+
+class Solution2:
+    def maxProfit(self, prices: List[int]) -> int:
+        ans = 0
+        buy = prices[0]
+        for price in prices:
+            if price - buy > ans:
+                ans = price - buy
+            elif price < buy:
+                buy = price
+        return ans
 
 
 def main():

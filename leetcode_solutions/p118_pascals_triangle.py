@@ -1,7 +1,18 @@
+from itertools import pairwise
 from typing import List
 
 
 class Solution:
+    def generate(self, numRows: int) -> List[List[int]]:
+        ans = [[1]]
+
+        for _ in range(numRows - 1):
+            ans.append([1] + [a + b for a, b in pairwise(ans[-1])] + [1])
+
+        return ans
+
+
+class Solution2:
     def generate(self, numRows: int) -> List[List[int]]:
         res = [[1]]
 
@@ -18,9 +29,11 @@ class Solution:
 
 def test():
     sol = Solution()
+
     print('Test 1 ... ', end='')
     assert sol.generate(numRows=5) == [[1], [1, 1], [1, 2, 1], [1, 3, 3, 1], [1, 4, 6, 4, 1]]
     print('ok')
+
     print('Test 2 ... ', end='')
     assert sol.generate(numRows=1) == [[1]]
     print('ok')

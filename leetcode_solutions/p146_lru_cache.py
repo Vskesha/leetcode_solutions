@@ -78,29 +78,18 @@ class LRUCache2:
         node.prev = self.start
 
 
-def main():
+def test():
     null = None
-    funcs = ["LRUCache", "put", "put", "get", "put", "get", "put", "get", "get", "get"]
-    data = [[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]
+    actions = ["LRUCache", "put", "put", "get", "put", "get", "put", "get", "get", "get"]
+    args = [[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]
     expected = [null, null, null, 1, null, -1, null, -1, 3, 4]
 
-    cache = LRUCache(data[0][0])
-    result = [None]
-    for func_string, params in zip(funcs[1:], data[1:]):
-        if func_string == 'put':
-            result.append(cache.put(*params))
-        elif func_string == 'get':
-            result.append(cache.get(*params))
-        else:
-            print('Unknown_function')
-    print(expected)
-    print(result)
-
-# Your LRUCache object will be instantiated and called as such:
-# obj = LRUCache(capacity)
-# param_1 = obj.get(key)
-# obj.put(key,value)
+    cashe = LRUCache(*args[0])
+    for i in range(1, len(args)):
+        print(f'Test {i}... ', end='')
+        assert getattr(cashe, actions[i])(*args[i]) == expected[i]
+        print('ok')
 
 
 if __name__ == '__main__':
-    main()
+    test()
