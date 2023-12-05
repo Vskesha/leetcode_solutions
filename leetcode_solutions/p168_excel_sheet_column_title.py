@@ -7,12 +7,21 @@ class Solution:
         return res
 
 
-def main():
+def test():
     sol = Solution()
-    print('A ===', sol.convertToTitle(1))
-    print('AB ===', sol.convertToTitle(28))
-    print('ZY ===', sol.convertToTitle(701))
+
+    print('Test 1... ', end='')
+    assert sol.convertToTitle(columnNumber=1) == 'A'
+    print('OK')
+
+    print('Test 2... ', end='')
+    assert sol.convertToTitle(columnNumber=28) == 'AB'
+    print('OK')
+
+    print('Test 3... ', end='')
+    assert sol.convertToTitle(columnNumber=701) == 'ZY'
+    print('OK')
 
 
 if __name__ == '__main__':
-    main()
+    test()
