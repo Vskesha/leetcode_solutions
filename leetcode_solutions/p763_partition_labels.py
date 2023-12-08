@@ -4,13 +4,13 @@ from typing import List
 class Solution:
     def partitionLabels(self, s: str) -> List[int]:
         last_occ = {ch: i for i, ch in enumerate(s)}
-        lo = prev = 0
+        lo, prev = 0, -1
         ans = []
         for i, ch in enumerate(s):
             lo = max(lo, last_occ[ch])
             if i == lo:
-                ans.append(i - prev + 1)
-                prev = i + 1
+                ans.append(i - prev)
+                prev = i
         return ans
 
 
