@@ -56,6 +56,27 @@ class Solution:
         return ds.gr
 
 
+class Solution:
+    def numIslands(self, grid: List[List[str]]) -> int:
+
+        def dfs(i, j):
+            if i == -1 or i == n or j == -1 or j == m or grid[i][j] == '0':
+                return
+            grid[i][j] = '0'
+            for di, dj in ((0, 1), (0, -1), (1, 0), (-1, 0)):
+                dfs(i + di, j + dj)
+
+        ans = 0
+        m, n = len(grid[0]), len(grid)
+        for i in range(n):
+            for j in range(m):
+                if grid[i][j] == '1':
+                    ans += 1
+                    dfs(i, j)
+
+        return ans
+
+
 class Solution2:
     def numIslands(self, grid: List[List[str]]) -> int:
 
@@ -103,14 +124,14 @@ def test():
                                 ["1", "1", "0", "1", "0"],
                                 ["1", "1", "0", "0", "0"],
                                 ["0", "0", "0", "0", "0"]]) == 1
-    print('ok')
+    print('OK')
 
     print('Test 2... ', end='')
     assert sol.numIslands(grid=[["1", "1", "0", "0", "0"],
                                 ["1", "1", "0", "0", "0"],
                                 ["0", "0", "1", "0", "0"],
                                 ["0", "0", "0", "1", "1"]]) == 3
-    print('ok')
+    print('OK')
 
 
 if __name__ == '__main__':

@@ -1,4 +1,29 @@
+from string import ascii_lowercase
+
+
 class WordDictionary:
+
+    def __init__(self):
+        self.st = set()
+
+    def addWord(self, word: str) -> None:
+        self.st.add(word)
+        for i in range(len(word)):
+            self.st.add(word[:i] + '.' + word[i + 1:])
+
+    def search(self, word: str) -> bool:
+        c = word.count('.')
+        if c < 2:
+            return word in self.st
+        else:
+            i = word.find('.')
+            for ch in ascii_lowercase:
+                if (word[:i] + ch + word[i + 1:]) in self.st:
+                    return True
+            return False
+
+
+class WordDictionary1:
 
     def __init__(self):
         self.is_end = False
