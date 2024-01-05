@@ -1,7 +1,9 @@
 from bisect import bisect_left
+from typing import List
+
 
 class Solution:
-    def lengthOfLIS(self, nums: list[int]) -> int:
+    def lengthOfLIS(self, nums: List[int]) -> int:
         if not nums:
             return 0
         tails = [nums[0]]
@@ -13,12 +15,21 @@ class Solution:
         return len(tails)
 
 
-def main():
+def test():
     sol = Solution()
-    print('4 ===', sol.lengthOfLIS([10, 9, 2, 5, 3, 7, 101, 18]))
-    print('4 ===', sol.lengthOfLIS([0, 1, 0, 3, 2, 3]))
-    print('1 ===', sol.lengthOfLIS([7, 7, 7, 7, 7, 7, 7]))
+
+    print("Test 1... ", end="")
+    assert sol.lengthOfLIS(nums=[10, 9, 2, 5, 3, 7, 101, 18]) == 4
+    print("OK")
+
+    print("Test 2... ", end="")
+    assert sol.lengthOfLIS(nums=[0, 1, 0, 3, 2, 3]) == 4
+    print("OK")
+
+    print("Test 3... ", end="")
+    assert sol.lengthOfLIS(nums=[7, 7, 7, 7, 7, 7, 7]) == 1
+    print("OK")
 
 
-if __name__ == '__main__':
-    main()
+if __name__ == "__main__":
+    test()
