@@ -16,19 +16,24 @@ class Solution:
             stack.append(ch)
             seen.add(ch)
 
-        return ''.join(stack)
+        return "".join(stack)
 
 
 def test():
     sol = Solution()
-    print('Test 1 ... ', end='')
-    assert sol.smallestSubsequence(s="bcabc") == 'abc'
-    print('ok\nTest 2 ... ', end='')
-    assert sol.smallestSubsequence(s="cbacdcbc") == 'acdb'
-    print('ok\nTest 3 ... ', end='')
-    assert sol.smallestSubsequence(s="abacb") == 'abc'
-    print('ok')
+
+    print("Test 1 ... ", end="")
+    assert sol.smallestSubsequence(s="bcabc") == "abc"
+    print("OK")
+
+    print("Test 2 ... ", end="")
+    assert sol.smallestSubsequence(s="cbacdcbc") == "acdb"
+    print("OK")
+
+    print("Test 3 ... ", end="")
+    assert sol.smallestSubsequence(s="abacb") == "abc"
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()
