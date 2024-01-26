@@ -24,7 +24,7 @@ class Solution:
         return ans
 
 
-class Solution:
+class Solution2:
     def findPaths(
         self, m: int, n: int, maxMove: int, startRow: int, startColumn: int
     ) -> int:
