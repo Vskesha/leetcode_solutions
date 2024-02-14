@@ -1,8 +1,31 @@
-from functools import lru_cache
+from functools import lru_cache, cache
 from typing import List
 
 
 class Solution:
+    def cherryPickup(self, grid: List[List[int]]) -> int:
+        m, n = len(grid), len(grid[0])
+
+        @cache
+        def dp(r, c1, c2) -> int:
+            if r == m:
+                return 0
+            if c1 < 0 or c2 >= n or c1 >= c2:
+                return -2
+            return (
+                max(
+                    dp(r + 1, ci, cj)
+                    for ci in range(c1 - 1, c1 + 2)
+                    for cj in range(c2 - 1, c2 + 2)
+                )
+                + grid[r][c1]
+                + grid[r][c2]
+            )
+
+        return dp(0, 0, n - 1)
+
+
+class Solution1:
     def cherryPickup(self, grid: List[List[int]]) -> int:
         M = len(grid[0])
         N = len(grid)
@@ -13,11 +36,15 @@ class Solution:
                 return 0
             if j1 < 0 or j2 == M or j2 <= j1:
                 return -1
-            return (max(dp(i + 1, jf, js)
-                        for jf in range(j1 - 1, j1 + 2)
-                        for js in range(j2 - 1, j2 + 2))
-                    + grid[i][j1]
-                    + grid[i][j2])
+            return (
+                max(
+                    dp(i + 1, jf, js)
+                    for jf in range(j1 - 1, j1 + 2)
+                    for js in range(j2 - 1, j2 + 2)
+                )
+                + grid[i][j1]
+                + grid[i][j2]
+            )
 
         return dp(0, 0, M - 1)
 
@@ -45,16 +72,25 @@ class Solution2:
 def test():
     sol = Solution()
 
-    print('Test 1... ', end='')
+    print("Test 1... ", end="")
     assert sol.cherryPickup(grid=[[3, 1, 1], [2, 5, 1], [1, 5, 5], [2, 1, 1]]) == 24
-    print('OK')
+    print("OK")
 
-    print('Test 1... ', end='')
-    assert sol.cherryPickup(
-        grid=[[1, 0, 0, 0, 0, 0, 1], [2, 0, 0, 0, 0, 3, 0], [2, 0, 9, 0, 0, 0, 0], [0, 3, 0, 5, 4, 0, 0],
-              [1, 0, 2, 3, 0, 0, 6]]) == 28
-    print('OK')
+    print("Test 1... ", end="")
+    assert (
+        sol.cherryPickup(
+            grid=[
+                [1, 0, 0, 0, 0, 0, 1],
+                [2, 0, 0, 0, 0, 3, 0],
+                [2, 0, 9, 0, 0, 0, 0],
+                [0, 3, 0, 5, 4, 0, 0],
+                [1, 0, 2, 3, 0, 0, 6],
+            ]
+        )
+        == 28
+    )
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()
