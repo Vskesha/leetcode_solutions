@@ -1,4 +1,5 @@
 from collections import Counter
+from heapq import heapify, heappop
 from typing import List
 
 
@@ -11,6 +12,15 @@ class Solution:
             else:
                 k -= n
         return 0
+
+
+class Solution1:
+    def findLeastNumOfUniqueInts(self, arr: List[int], k: int) -> int:
+        vals = sorted(Counter(arr).values())
+        heapify(vals)
+        while vals and k >= vals[0]:
+            k -= heappop(vals)
+        return len(vals)
 
 
 class Solution2:
