@@ -1,4 +1,6 @@
+import inspect
 from collections import deque
+from functools import wraps
 from typing import Optional, List
 
 
@@ -11,6 +13,7 @@ class TreeNode:
 
 
 def make_tree_from_list(cls):
+    @wraps(cls, updated=())
     class Wrapper:
         def __init__(self, *args, **kwargs):
             self.wrap = cls(*args, **kwargs)
@@ -45,12 +48,10 @@ def make_tree_from_list(cls):
 @make_tree_from_list
 class Solution:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
-
         bfs1 = deque([p])
         bfs2 = deque([q])
 
         while bfs1 and bfs2:
-
             a = bfs1.popleft()
             b = bfs2.popleft()
             if (a and not b) or (b and not a) or (a and b and a.val != b.val):
@@ -68,7 +69,6 @@ class Solution:
 @make_tree_from_list
 class Solution2:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
-
         bfs1 = deque([p])
         bfs2 = deque([q])
 
@@ -86,21 +86,36 @@ class Solution2:
         return True
 
 
+@make_tree_from_list
+class Solution3:
+    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+        if not (p or q):
+            return True
+        if (p is None) ^ (q is None):
+            return False
+        if p.val != q.val:
+            return False
+        return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
+
+
 def test():
     sol = Solution()
+    # print(type(sol))
+    # print(dir(sol))
+    # print(inspect.signature(sol.isSameTree))
 
-    print('Test 1... ', end='')
+    print("Test 1... ", end="")
     assert sol.isSameTree(p=[1, 2, 3], q=[1, 2, 3]) is True
-    print('OK')
+    print("OK")
 
-    print('Test 2... ', end='')
+    print("Test 2... ", end="")
     assert sol.isSameTree(p=[1, 2], q=[1, None, 2]) is False
-    print('OK')
+    print("OK")
 
-    print('Test 3... ', end='')
+    print("Test 3... ", end="")
     assert sol.isSameTree(p=[1, 2, 1], q=[1, 1, 2]) is False
-    print('OK')
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()
