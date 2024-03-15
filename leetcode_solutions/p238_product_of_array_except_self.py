@@ -10,8 +10,8 @@ class Solution:
         for i in range(ln):
             res[i] *= prefix
             prefix *= nums[i]
-            res[-i-1] *= suffix
-            suffix *= nums[-i-1]
+            res[-i - 1] *= suffix
+            suffix *= nums[-i - 1]
 
         return res
 
@@ -31,17 +31,17 @@ class Solution2:
         return answer
 
 
-def main():
+def test_product_except_self():
     sol = Solution()
 
-    print('Test 1 ... ', end='')
+    print("Test 1 ... ", end="")
     assert [24, 12, 8, 6] == sol.productExceptSelf(nums=[1, 2, 3, 4])
-    print('ok')
+    print("OK")
 
-    print('Test 2 ... ', end='')
+    print("Test 2 ... ", end="")
     assert [0, 0, 9, 0, 0] == sol.productExceptSelf(nums=[-1, 1, 0, -3, 3])
-    print('ok')
+    print("OK")
 
 
-if __name__ == '__main__':
-    main()
+if __name__ == "__main__":
+    test_product_except_self()
