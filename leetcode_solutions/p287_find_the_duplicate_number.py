@@ -34,15 +34,17 @@ class Solution2:
             mask |= 1 << n
 
 
-def test():
+def test_find_duplicate():
     sol = Solution()
-    print('Test 1 ... ', end='')
+
+    print("Test 1 ... ", end="")
     assert sol.findDuplicate(nums=[1, 3, 4, 2, 2]) == 2
-    print('ok')
-    print('Test 2 ... ', end='')
+    print("OK")
+
+    print("Test 2 ... ", end="")
     assert sol.findDuplicate(nums=[3, 1, 3, 4, 2]) == 3
-    print('ok')
+    print("OK")
 
 
-if __name__ == '__main__':
-    test()
+if __name__ == "__main__":
+    test_find_duplicate()
