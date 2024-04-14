@@ -12,7 +12,18 @@ class TreeNode:
 
 class Solution:
     def sumOfLeftLeaves(self, root: Optional[TreeNode]) -> int:
+        def dfs(node, is_left) -> int:
+            if not node:
+                return 0
+            if node.left or node.right:
+                return dfs(node.left, True) + dfs(node.right, False)
+            return node.val if is_left else 0
 
+        return dfs(root, False)
+
+
+class Solution1:
+    def sumOfLeftLeaves(self, root: Optional[TreeNode]) -> int:
         def dfs(node: TreeNode, is_left: bool) -> int:
             if not node:
                 return 0
@@ -29,8 +40,11 @@ class Solution2:
         def dfs(node, is_left) -> int:
             if not node:
                 return 0
-            return (node.val if is_left and not node.left and not node.right else 0) + dfs(node.left, True) + dfs(
-                node.right, False)
+            return (
+                (node.val if is_left and not node.left and not node.right else 0)
+                + dfs(node.left, True)
+                + dfs(node.right, False)
+            )
 
         return dfs(root, False)
 
@@ -56,14 +70,14 @@ def main():
     null = None
     sol = Solution()
 
-    print('Test 1 ... ', end='')
+    print("Test 1 ... ", end="")
     assert sol.sumOfLeftLeaves(to_binary_tree([3, 9, 20, null, null, 15, 7])) == 24
-    print('ok')
+    print("OK")
 
-    print('Test 2 ... ', end='')
+    print("Test 2 ... ", end="")
     assert sol.sumOfLeftLeaves(to_binary_tree([1])) == 0
-    print('ok')
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
