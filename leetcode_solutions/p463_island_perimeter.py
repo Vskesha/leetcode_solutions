@@ -2,6 +2,23 @@ from typing import List
 
 
 class Solution:
+    def islandPerimeter(self, grid):
+        row = len(grid)
+        col = len(grid[0])
+        ans = 0
+
+        for i in range(row):
+            for j in range(col):
+                if grid[i][j]:
+                    if not (i and grid[i - 1][j]):
+                        ans += 2
+                    if not (j and grid[i][j - 1]):
+                        ans += 2
+
+        return ans
+
+
+class Solution1:
     def islandPerimeter(self, grid: List[List[int]]) -> int:
         m, n = len(grid), len(grid[0])
 
