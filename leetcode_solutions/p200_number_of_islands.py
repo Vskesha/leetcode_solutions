@@ -3,7 +3,6 @@ from typing import List
 
 
 class DisjointSet:
-
     def __init__(self, gr):
         self.gr = gr
         self.root = list(range(self.gr))
@@ -26,7 +25,7 @@ class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
         m = len(grid[0])
         n = len(grid)
-        zero, one = '0', '1'
+        zero, one = "0", "1"
 
         ds = DisjointSet(m * n)
         ds.gr -= int(grid[0][0] == zero)
@@ -56,13 +55,12 @@ class Solution:
         return ds.gr
 
 
-class Solution:
+class Solution1:
     def numIslands(self, grid: List[List[str]]) -> int:
-
         def dfs(i, j):
-            if i == -1 or i == n or j == -1 or j == m or grid[i][j] == '0':
+            if i == -1 or i == n or j == -1 or j == m or grid[i][j] == "0":
                 return
-            grid[i][j] = '0'
+            grid[i][j] = "0"
             for di, dj in ((0, 1), (0, -1), (1, 0), (-1, 0)):
                 dfs(i + di, j + dj)
 
@@ -70,7 +68,7 @@ class Solution:
         m, n = len(grid[0]), len(grid)
         for i in range(n):
             for j in range(m):
-                if grid[i][j] == '1':
+                if grid[i][j] == "1":
                     ans += 1
                     dfs(i, j)
 
@@ -79,23 +77,22 @@ class Solution:
 
 class Solution2:
     def numIslands(self, grid: List[List[str]]) -> int:
-
         def traverse(i, j):
             bfs = deque()
             bfs.append((i, j))
 
             while bfs:
                 y, x = bfs.popleft()
-                if y and grid[y - 1][x] == '1' and not visited[y - 1][x]:
+                if y and grid[y - 1][x] == "1" and not visited[y - 1][x]:
                     bfs.append((y - 1, x))
                     visited[y - 1][x] = True
-                if x and grid[y][x - 1] == '1' and not visited[y][x - 1]:
+                if x and grid[y][x - 1] == "1" and not visited[y][x - 1]:
                     bfs.append((y, x - 1))
                     visited[y][x - 1] = True
-                if y < n - 1 and grid[y + 1][x] == '1' and not visited[y + 1][x]:
+                if y < n - 1 and grid[y + 1][x] == "1" and not visited[y + 1][x]:
                     bfs.append((y + 1, x))
                     visited[y + 1][x] = True
-                if x < m - 1 and grid[y][x + 1] == '1' and not visited[y][x + 1]:
+                if x < m - 1 and grid[y][x + 1] == "1" and not visited[y][x + 1]:
                     bfs.append((y, x + 1))
                     visited[y][x + 1] = True
 
@@ -107,7 +104,7 @@ class Solution2:
 
         for i in range(n):
             for j in range(m):
-                if grid[i][j] == '0' or visited[i][j]:
+                if grid[i][j] == "0" or visited[i][j]:
                     continue
                 visited[i][j] = True
                 ans += 1
@@ -116,23 +113,37 @@ class Solution2:
         return ans
 
 
-def test():
+def test_num_islands():
     sol = Solution()
 
-    print('Test 1... ', end='')
-    assert sol.numIslands(grid=[["1", "1", "1", "1", "0"],
-                                ["1", "1", "0", "1", "0"],
-                                ["1", "1", "0", "0", "0"],
-                                ["0", "0", "0", "0", "0"]]) == 1
-    print('OK')
+    print("Test 1... ", end="")
+    assert (
+        sol.numIslands(
+            grid=[
+                ["1", "1", "1", "1", "0"],
+                ["1", "1", "0", "1", "0"],
+                ["1", "1", "0", "0", "0"],
+                ["0", "0", "0", "0", "0"],
+            ]
+        )
+        == 1
+    )
+    print("OK")
 
-    print('Test 2... ', end='')
-    assert sol.numIslands(grid=[["1", "1", "0", "0", "0"],
-                                ["1", "1", "0", "0", "0"],
-                                ["0", "0", "1", "0", "0"],
-                                ["0", "0", "0", "1", "1"]]) == 3
-    print('OK')
+    print("Test 2... ", end="")
+    assert (
+        sol.numIslands(
+            grid=[
+                ["1", "1", "0", "0", "0"],
+                ["1", "1", "0", "0", "0"],
+                ["0", "0", "1", "0", "0"],
+                ["0", "0", "0", "1", "1"],
+            ]
+        )
+        == 3
+    )
+    print("OK")
 
 
-if __name__ == '__main__':
-    test()
+if __name__ == "__main__":
+    test_num_islands()
