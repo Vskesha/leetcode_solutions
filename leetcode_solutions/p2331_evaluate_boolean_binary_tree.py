@@ -48,6 +48,18 @@ def sol_decorator(cls):
 @sol_decorator
 class Solution:
     def evaluateTree(self, root: Optional[TreeNode]) -> bool:
+        if not root.left:
+            return root.val == 1
+
+        if root.val == 2:
+            return self.evaluateTree(root.left) or self.evaluateTree(root.right)
+
+        return self.evaluateTree(root.left) and self.evaluateTree(root.right)
+
+
+@sol_decorator
+class Solution2:
+    def evaluateTree(self, root: Optional[TreeNode]) -> bool:
         if root.val == 0:
             return False
         elif root.val == 1:
