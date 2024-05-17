@@ -23,7 +23,6 @@ class Solution:
 
 
 class DisjointSet:
-
     def __init__(self, n):
         self.root = list(range(n))
         self.gr = n
@@ -82,17 +81,38 @@ class Solution2:
         return answer
 
 
-def test():
+class Solution3:
+    def findCircleNum(self, isConnected: List[List[int]]) -> int:
+        n = len(isConnected)
+        visited = set()
+
+        def dfs(i):
+            visited.add(i)
+            for j in range(n):
+                if isConnected[i][j] and j not in visited:
+                    dfs(j)
+
+        provinces = 0
+
+        for i in range(n):
+            if i not in visited:
+                dfs(i)
+                provinces += 1
+
+        return provinces
+
+
+def test_find_circle_num():
     sol = Solution()
 
-    print('Test 1... ', end='')
+    print("Test 1... ", end="")
     assert sol.findCircleNum(isConnected=[[1, 1, 0], [1, 1, 0], [0, 0, 1]]) == 2
-    print('OK')
+    print("OK")
 
-    print('Test 2... ', end='')
+    print("Test 2... ", end="")
     assert sol.findCircleNum(isConnected=[[1, 0, 0], [0, 1, 0], [0, 0, 1]]) == 3
-    print('OK')
+    print("OK")
 
 
-if __name__ == '__main__':
-    test()
+if __name__ == "__main__":
+    test_find_circle_num()

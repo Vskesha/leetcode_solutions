@@ -19,21 +19,21 @@ class Solution2:
         return bisect_left(nums, target)
 
 
-def test():
+def test_search_insert():
     sol = Solution()
 
-    print('Test 1... ', end='')
+    print("Test 1... ", end="")
     assert sol.searchInsert(nums=[1, 3, 5, 6], target=5) == 2
-    print('OK')
+    print("OK")
 
-    print('Test 2... ', end='')
+    print("Test 2... ", end="")
     assert sol.searchInsert(nums=[1, 3, 5, 6], target=2) == 1
-    print('OK')
+    print("OK")
 
-    print('Test 3... ', end='')
+    print("Test 3... ", end="")
     assert sol.searchInsert(nums=[1, 3, 5, 6], target=7) == 4
-    print('OK')
+    print("OK")
 
 
-if __name__ == '__main__':
-    test()
+if __name__ == "__main__":
+    test_search_insert()

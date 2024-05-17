@@ -46,7 +46,7 @@ class Solution3:
         )
 
 
-def test():
+def test_min_cost():
     sol = Solution()
 
     print("Test 1... ", end="")
@@ -63,4 +63,4 @@ def test():
 
 
 if __name__ == "__main__":
-    test()
+    test_min_cost()
