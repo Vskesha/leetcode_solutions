@@ -3,6 +3,27 @@ from typing import List
 
 class Solution:
     def minRemoveToMakeValid(self, s: str) -> str:
+        s = list(s)
+        stack = []
+
+        for i in range(len(s)):
+            ch = s[i]
+            if ch == "(":
+                stack.append(i)
+            elif ch == ")":
+                if stack:
+                    stack.pop()
+                else:
+                    s[i] = ""
+
+        for i in stack:
+            s[i] = ""
+
+        return "".join(s)
+
+
+class Solution1:
+    def minRemoveToMakeValid(self, s: str) -> str:
         stack: List[int] = []
         result: List[str] = []
         for c in s:

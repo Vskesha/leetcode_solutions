@@ -13,6 +13,16 @@ class Solution:
         )
 
 
+class Solution1:
+    def leastInterval(self, tasks: List[str], n: int) -> int:
+        cnt = Counter(tasks)
+        vals = list(cnt.values())
+        mx = max(vals)
+        am = vals.count(mx)
+
+        return max((n + 1) * (mx - 1) + am, len(tasks))
+
+
 class Solution2:
     def leastInterval(self, tasks: List[str], n: int) -> int:
         # Build frequency map
@@ -43,6 +53,23 @@ class Solution2:
             # Add time for the completed cycle
             time += task_count if not pq else n + 1
         return time
+
+
+class Solution3:
+    def leastInterval(self, tasks: List[str], n: int) -> int:
+        mx = 0
+        cnt = Counter()
+        am = 0
+
+        for ch in tasks:
+            cnt[ch] += 1
+            if cnt[ch] > mx:
+                mx = cnt[ch]
+                am = 1
+            elif cnt[ch] == mx:
+                am += 1
+
+        return max(len(tasks), (mx - 1) * (n + 1) + am)
 
 
 def test_least_interval():
