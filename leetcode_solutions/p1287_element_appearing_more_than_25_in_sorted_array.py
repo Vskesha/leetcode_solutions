@@ -5,6 +5,18 @@ from typing import List
 
 class Solution:
     def findSpecialInteger(self, arr: List[int]) -> int:
+        la = len(arr)
+        if la < 4:
+            return arr[la // 2]
+        la4 = len(arr) // 4 or 1
+
+        for i in range(0, la, la4):
+            if bisect_right(arr, arr[i]) - bisect_left(arr, arr[i]) > la4:
+                return arr[i]
+
+
+class Solution1:
+    def findSpecialInteger(self, arr: List[int]) -> int:
         la = len(arr) / 4
         for n, q in Counter(arr).items():
             if q > la:
@@ -66,17 +78,17 @@ class Solution6:
         return -1
 
 
-def test():
+def test_find_special_integer():
     sol = Solution()
 
-    print('Test 1... ', end='')
+    print("Test 1... ", end="")
     assert sol.findSpecialInteger(arr=[1, 2, 2, 6, 6, 6, 6, 7, 10]) == 6
-    print('OK')
+    print("OK")
 
-    print('Test 2... ', end='')
+    print("Test 2... ", end="")
     assert sol.findSpecialInteger(arr=[1, 1]) == 1
-    print('OK')
+    print("OK")
 
 
-if __name__ == '__main__':
-    test()
+if __name__ == "__main__":
+    test_find_special_integer()
