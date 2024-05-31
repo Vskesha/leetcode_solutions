@@ -4,7 +4,15 @@ from math import log
 class Solution:
     def isPowerOfFour(self, n: int) -> bool:
         bn = bin(n)
-        return n and len(bn) % 2 and bn[3:] == '0' * (len(bn) - 3)
+        return n and len(bn) % 2 and bn[3:] == "0" * (len(bn) - 3)
+
+
+class Solution1:
+    def isPowerOfFour(self, n: int) -> bool:
+        if n <= 0:
+            return False
+        b = bin(n)[2:]
+        return b.count("1") == 1 and b.count("0") % 2 == 0
 
 
 class Solution2:
@@ -26,21 +34,21 @@ class Solution:
         return self.isPowerOfFour(n // 4)
 
 
-def test():
+def test_is_power_of_four():
     sol = Solution()
 
-    print('Test 1 ... ', end='')
+    print("Test 1 ... ", end="")
     assert sol.isPowerOfFour(n=16) is True
-    print('ok')
+    print("OK")
 
-    print('Test 2 ... ', end='')
+    print("Test 2 ... ", end="")
     assert sol.isPowerOfFour(n=5) is False
-    print('ok')
+    print("OK")
 
-    print('Test 3 ... ', end='')
+    print("Test 3 ... ", end="")
     assert sol.isPowerOfFour(n=1) is True
-    print('ok')
+    print("OK")
 
 
-if __name__ == '__main__':
-    test()
+if __name__ == "__main__":
+    test_is_power_of_four()

@@ -1,8 +1,52 @@
 from functools import lru_cache
+from itertools import pairwise
 from typing import List
 
 
+class Trie:
+    def __init__(self):
+        self.children = {}
+        self.is_end = False
+
+    def insert(self, word):
+        curr = self
+        for ch in word:
+            if ch not in curr.children:
+                curr.children[ch] = Trie()
+            curr = curr.children[ch]
+        curr.is_end = True
+
+
 class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> List[str]:
+        trie = Trie()
+
+        for word in wordDict:
+            trie.insert(word)
+
+        ls = len(s)
+        ans = []
+
+        def backtrack(comb, ans):
+            if comb[-1] == ls:
+                ans.append(" ".join(s[st:end] for st, end in pairwise(comb)))
+                return
+
+            curr = trie
+            for i in range(comb[-1], ls):
+                if s[i] not in curr.children:
+                    break
+                curr = curr.children[s[i]]
+                if curr.is_end:
+                    comb.append(i + 1)
+                    backtrack(comb, ans)
+                    comb.pop()
+
+        backtrack([0], ans)
+        return ans
+
+
+class Solution1:
     def wordBreak(self, s: str, wordDict: List[str]) -> List[str]:
 
         def dp(st, words, ans):
