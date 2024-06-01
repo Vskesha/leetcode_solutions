@@ -37,6 +37,25 @@ class Solution2:
         return self.ans
 
 
+class Solution3:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        ln = len(nums)
+
+        def backtrack(i, comb) -> list:
+            if i == ln:
+                return [comb.copy()]
+
+            res = backtrack(i + 1, comb)
+
+            comb.append(nums[i])
+            res.extend(backtrack(i + 1, comb))
+            comb.pop()
+
+            return res
+
+        return backtrack(0, [])
+
+
 def test_subsets():
     sol = Solution()
 

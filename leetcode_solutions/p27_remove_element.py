@@ -10,11 +10,10 @@ class Solution:
             if nums[l] == val:
                 nums[l], nums[r] = nums[r], nums[l]
                 r -= 1
-                ln -= 1
             else:
                 l += 1
 
-        return ln
+        return r + 1
 
 
 class Solution2:

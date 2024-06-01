@@ -62,7 +62,7 @@ class Solution2:
         return ans
 
 
-def test():
+def test_combination_sum():
     sol = Solution()
 
     print("Test 1 ... ", end="")
@@ -83,4 +83,4 @@ def test():
 
 
 if __name__ == "__main__":
-    test()
+    test_combination_sum()
