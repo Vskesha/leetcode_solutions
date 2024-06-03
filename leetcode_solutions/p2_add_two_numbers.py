@@ -1,5 +1,6 @@
+import unittest
 from itertools import zip_longest
-from typing import Optional
+from typing import Optional, List
 
 
 class ListNode:
@@ -15,8 +16,43 @@ class ListNode:
         return str(res)
 
 
+class SolutionDecorator:
+    def __init__(self, cls):
+        self.cls = cls
+
+    def __call__(self, *args, **kwargs):
+        instance = self.cls(*args, **kwargs)
+        self.original_addTwoNumbers = instance.addTwoNumbers
+        instance.addTwoNumbers = self.addTwoNumbers
+        return instance
+
+    def addTwoNumbers(self, l1: List, l2: List) -> List:
+        l1 = self.arr_to_linked_list(l1)
+        l2 = self.arr_to_linked_list(l2)
+        result = self.original_addTwoNumbers(l1, l2)  # noqa
+        return self.linked_list_to_arr(result)  # noqa
+
+    @staticmethod
+    def arr_to_linked_list(arr: List) -> Optional[ListNode]:
+        head = None
+        for n in reversed(arr):
+            head = ListNode(n, head)
+        return head
+
+    @staticmethod
+    def linked_list_to_arr(head: Optional[ListNode]) -> List:
+        arr = []
+        while head:
+            arr.append(head.val)
+            head = head.next
+        return arr
+
+
+@SolutionDecorator
 class Solution:
-    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+    def addTwoNumbers(
+        self, l1: Optional[ListNode], l2: Optional[ListNode]
+    ) -> Optional[ListNode]:
         first = curr = ListNode()
         over = 0
         while l1 or l2 or over:
@@ -32,41 +68,48 @@ class Solution:
             over, curr.val = divmod(s, 10)
         return first.next
 
-    def add_two_numbers_list(self, l1: list, l2: list) -> list:
-        result, n = [], 0
-        for a, b in zip_longest(l1, l2, fillvalue=0):
-            s = a + b + n
-            result.append(s % 10)
-            n = s // 10
-        if n:
-            result.append(n)
-        return result
 
-    def to_linked_list(self, us_list: list) -> ListNode:
-        next_val = None
-        for x in reversed(us_list):
-            node = ListNode(x, next_val)
-            next_val = node
-        return next_val
+@SolutionDecorator
+class Solution:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        ans = curr = ListNode()
+        add = 0
 
-    def from_linked_list(self, linked_list: ListNode) -> list:
-        result = []
-        while linked_list:
-            result.append(linked_list.val)
-            linked_list = linked_list.next
-        return result
+        while add or l1 or l2:
+            a1 = l1.val if l1 else 0
+            a2 = l2.val if l2 else 0
+            add, val = divmod(a1 + a2 + add, 10)
+            curr.next = ListNode(val)
+            curr = curr.next
+            if l1:
+                l1 = l1.next
+            if l2:
+                l2 = l2.next
+        return ans.next
+class TestSolution(unittest.TestCase):
+    def setUp(self):
+        self.sol = Solution()
+
+    def test_add_two_numbers1(self):
+        print("Test addTwoNumbers 1 ... ", end="")
+        self.assertListEqual(
+            self.sol.addTwoNumbers(l1=[2, 4, 3], l2=[5, 6, 4]), [7, 0, 8]
+        )
+        print("OK")
+
+    def test_add_two_numbers2(self):
+        print("Test addTwoNumbers 2 ... ", end="")
+        self.assertListEqual(self.sol.addTwoNumbers(l1=[0], l2=[0]), [0])
+        print("OK")
+
+    def test_add_two_numbers3(self):
+        print("Test addTwoNumbers 3 ... ", end="")
+        self.assertListEqual(
+            self.sol.addTwoNumbers(l1=[9, 9, 9, 9, 9, 9, 9], l2=[9, 9, 9, 9]),
+            [8, 9, 9, 9, 0, 0, 0, 1],
+        )
+        print("OK")
 
 
-def test():
-    sol = Solution()
-    print('Test 1 ... ', end='')
-    assert sol.from_linked_list(sol.addTwoNumbers(sol.to_linked_list([2, 4, 3]), sol.to_linked_list([5, 6, 4]))) == [7, 0, 8]
-    print('ok\nTest 2 ... ', end='')
-    assert sol.from_linked_list(sol.addTwoNumbers(sol.to_linked_list([0]), sol.to_linked_list([0]))) == [0]
-    print('ok\nTest 3 ... ', end='')
-    assert sol.from_linked_list(sol.addTwoNumbers(sol.to_linked_list([9, 9, 9, 9, 9, 9, 9]), sol.to_linked_list([9, 9, 9, 9]))) == [8, 9, 9, 9, 0, 0, 0, 1]
-    print('ok')
-
-
-if __name__ == '__main__':
-    test()
+if __name__ == "__main__":
+    unittest.main()
