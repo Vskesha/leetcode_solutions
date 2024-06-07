@@ -1,4 +1,6 @@
-from collections import defaultdict
+import unittest
+from collections import defaultdict, deque
+from typing import List
 
 
 # Definition for a binary tree node.
@@ -10,7 +12,9 @@ class TreeNode:
 
 
 class Solution:
-    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+    def lowestCommonAncestor(
+        self, root: "TreeNode", p: "TreeNode", q: "TreeNode"
+    ) -> "TreeNode":
         def dfs(node):
             if node == p or node == q:
                 return node
@@ -22,7 +26,9 @@ class Solution:
 
 
 class Solution1:
-    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+    def lowestCommonAncestor(
+        self, root: "TreeNode", p: "TreeNode", q: "TreeNode"
+    ) -> "TreeNode":
         self.first = []
         self.second = []
 
@@ -59,7 +65,9 @@ class Solution1:
 
 
 class Solution2:
-    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+    def lowestCommonAncestor(
+        self, root: "TreeNode", p: "TreeNode", q: "TreeNode"
+    ) -> "TreeNode":
         stack = []
         parent = defaultdict(TreeNode)
         res = []
@@ -90,22 +98,92 @@ class Solution2:
         return p
 
 
-def test():
-    sol = Solution()
-    root = TreeNode(-1)
-    root.left = TreeNode(0)
-    root.left.left = TreeNode(-2)
-    root.left.right = TreeNode(4)
-    root.left.left.left = TreeNode(8)
-    root.right = TreeNode(3)
+class Solution3:
+    def __init__(self):
+        self.lca = None
 
-    print('Test 1 ... ', end='')
-    assert sol.lowestCommonAncestor(root, root.left.right, root.left.left.left) == root.left
-    print('ok')
+    def lowestCommonAncestor(
+        self, root: "TreeNode", p: "TreeNode", q: "TreeNode"
+    ) -> "TreeNode":
+        def dfs(node) -> bool:
+            if not node:
+                return False
+            lf = dfs(node.left)
+            rt = dfs(node.right)
+            if self.lca:
+                return True
+            if lf and rt:
+                self.lca = node
+                return True
+            if lf or rt:
+                if node is p or node is q:
+                    self.lca = node
+                return True
+            return node is p or node is q
+
+        dfs(root)
+        return self.lca
 
 
-if __name__ == '__main__':
-    test()
+class TestSolution(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.sol = Solution()
+
+    def get_tree_and_nodes(
+        self, root: List[int], p: int, q: int
+    ) -> (TreeNode, TreeNode, TreeNode):
+        vals = iter(root)
+        root_node = TreeNode(next(vals))
+        q_node, p_node = None, None
+        queue = deque([root_node])
+
+        try:
+            while queue:
+                node = queue.popleft()
+                if node.val == p:
+                    p_node = node
+                if node.val == q:
+                    q_node = node
+                val = next(vals)
+                if val is not None:
+                    node.left = TreeNode(val)
+                    queue.append(node.left)
+                val = next(vals)
+                if val is not None:
+                    node.right = TreeNode(val)
+                    queue.append(node.right)
+        except StopIteration:
+            return root_node, p_node, q_node
+
+    def test_lowest_common_ancestor1(self):
+        print("Test lowestCommonAncestor 1... ", end="")
+        null = None
+        root, p, q = self.get_tree_and_nodes(
+            root=[3, 5, 1, 6, 2, 0, 8, null, null, 7, 4], p=5, q=1
+        )
+        self.assertEqual(self.sol.lowestCommonAncestor(root, p, q).val, 3)
+        print("OK")
+
+    def test_lowest_common_ancestor2(self):
+        print("Test lowestCommonAncestor 2... ", end="")
+        null = None
+        root, p, q = self.get_tree_and_nodes(
+            root=[3, 5, 1, 6, 2, 0, 8, null, null, 7, 4], p=5, q=4
+        )
+        self.assertEqual(self.sol.lowestCommonAncestor(root, p, q).val, 5)
+        print("OK")
+
+    def test_lowest_common_ancestor3(self):
+        print("Test lowestCommonAncestor 3... ", end="")
+        null = None
+        root, p, q = self.get_tree_and_nodes(root=[1, 2], p=1, q=2)
+        self.assertEqual(self.sol.lowestCommonAncestor(root, p, q).val, 1)
+        print("OK")
+
+
+if __name__ == "__main__":
+    unittest.main()
 
 # [-1, 0, 3, -2, 4, null, null, 8]
 #

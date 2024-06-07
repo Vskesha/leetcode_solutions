@@ -1,13 +1,23 @@
+import unittest
 from collections import Counter
+from functools import reduce
 from typing import List
 
 
 class Solution:
     def commonChars(self, words: List[str]) -> List[str]:
+        return [
+            ch
+            for ch, q in reduce(lambda x, y: x & y, map(Counter, words)).items()
+            for _ in range(q)
+        ]
+
+
+class Solution1:
+    def commonChars(self, words: List[str]) -> List[str]:
         res = Counter(words[0])
 
         for i in range(1, len(words)):
-
             curr = Counter(words[i])
 
             keys = list(res.keys())
@@ -37,17 +47,27 @@ class Solution2:
         return ans
 
 
-def main():
-    sol = Solution()
+class TestSolution(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.sol = Solution()
 
-    print('Test 1 ... ', end='')
-    assert ["e", "l", "l"] == sol.commonChars(words=["bella", "label", "roller"])
-    print('ok')
+    def test_common_chars1(self):
+        print("Test commonChars 1... ", end="")
+        self.assertListEqual(
+            sorted(self.sol.commonChars(words=["bella", "label", "roller"])),
+            sorted(["e", "l", "l"]),
+        )
+        print("OK")
 
-    print('Test 2 ... ', end='')
-    assert ["c", "o"] == sol.commonChars(words=["cool", "lock", "cook"])
-    print('ok')
+    def test_common_chars2(self):
+        print("Test commonChars 2... ", end="")
+        self.assertListEqual(
+            sorted(self.sol.commonChars(words=["cool", "lock", "cook"])),
+            sorted(["o", "c"]),
+        )
+        print("OK")
 
 
-if __name__ == '__main__':
-    main()
+if __name__ == "__main__":
+    unittest.main()
