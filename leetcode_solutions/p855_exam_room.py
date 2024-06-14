@@ -106,7 +106,7 @@ class TreeNode:
         self.right = right
 
 
-class ExamRoom:
+class ExamRoom3:
     def __init__(self, n: int):
         self.n = n
         self.root = TreeNode(start=-1, end=n, dist=n)
@@ -114,71 +114,42 @@ class ExamRoom:
     def seat(self) -> int:
         def dfs(node) -> int:
             if not node.left:
-                i = (
-                    0
-                    if node.start == -1
-                    else self.n - 1
-                    if node.end == self.n
-                    else (node.start + node.end) // 2
-                )
+                if node.start == -1:
+                    i = 0
+                elif node.end == self.n:
+                    i = self.n - 1
+                else:
+                    i = (node.start + node.end) // 2
                 node.left = TreeNode(node.start, i)
                 node.right = TreeNode(i, node.end)
-                self.update_dist(node.left)
-                self.update_dist(node.right)
+                self._update_dist(node.left)
+                self._update_dist(node.right)
             elif node.dist == node.left.dist:
                 i = dfs(node.left)
             else:
                 i = dfs(node.right)
 
-            self.update_dist(node)
+            self._update_dist(node)
             return i
 
         return dfs(self.root)
 
     def leave(self, p: int) -> None:
-
         def dfs(node) -> None:
             if node.left.end > p:
                 dfs(node.left)
             elif node.left.end < p:
                 dfs(node.right)
+            elif p > (node.start + node.end) // 2:
+                self._move_left(node)
             else:
-                lstack, curr = [], node.left
-                while curr:
-                    lstack.append(curr)
-                    curr = curr.right
-                rstack, curr = [], node.right
-                while curr:
-                    rstack.append(curr)
-                    curr = curr.left
+                self._move_right(node)
 
-                if len(lstack) == 1:
-                    while rstack:
-                        rnode = rstack.pop()
-                        rnode.start = node.start
-                        self.update_dist(rnode)
-                    node.dist = node.right.dist
-                    node.left = node.right.left
-                    node.right = node.right.right
-
-                elif len(rstack) == 1:
-                    while lstack:
-                        lnode = lstack.pop()
-                        lnode.end = node.end
-                        self.update_dist(lnode)
-                    node.dist = node.left.dist
-                    node.right = node.left.right
-                    node.left = node.left.left
-
-                else:  # both stacks are longer than 1
-                    # new_end =
-                    pass
-
-            self.update_dist(node)
+            self._update_dist(node)
 
         dfs(self.root)
 
-    def update_dist(self, node) -> None:
+    def _update_dist(self, node) -> None:
         if node.left:
             node.dist = max(node.left.dist, node.right.dist)
         elif node.start == -1:
@@ -188,6 +159,232 @@ class ExamRoom:
         else:
             node.dist = (node.end - node.start) // 2
 
+    def _get_stacks(self, node):
+        l_stack, curr = [], node.left
+        while curr:
+            l_stack.append(curr)
+            curr = curr.right
+
+        r_stack, curr = [], node.right
+        while curr:
+            r_stack.append(curr)
+            curr = curr.left
+
+        return l_stack, r_stack
+
+    def _move_left(self, node):
+        l_stack, r_stack = self._get_stacks(node)
+        bound = l_stack[-1].start
+
+        for l_node in reversed(l_stack):
+            l_node.end = bound
+            self._update_dist(l_node)
+
+        for r_node in reversed(r_stack):
+            r_node.start = bound
+            self._update_dist(r_node)
+
+        if len(l_stack) == 1:
+            node.left = node.right.left
+            node.right = node.right.right
+        elif len(l_stack) == 2:
+            node.left = l_stack[0].left
+        else:
+            l_stack[-3].right = l_stack[-2].left
+
+    def _move_right(self, node):
+        l_stack, r_stack = self._get_stacks(node)
+        bound = r_stack[-1].end
+
+        for r_node in reversed(r_stack):
+            r_node.start = bound
+            self._update_dist(r_node)
+
+        for l_node in reversed(l_stack):
+            l_node.end = bound
+            self._update_dist(l_node)
+
+        if len(r_stack) == 1:
+            node.right = node.left.right
+            node.left = node.left.left
+        elif len(r_stack) == 2:
+            node.right = r_stack[0].right
+        else:
+            r_stack[-3].left = r_stack[-2].right
+
+
+class TreeNodeBalanced:
+    def __init__(self, start, end, dist=0, height=0, left=None, right=None):
+        self.start = start
+        self.end = end
+        self.dist = dist
+        self.height = height
+        self.left = left
+        self.right = right
+
+    def update_height(self):
+        if self.left:
+            self.height = max(self.left.height, self.right.height) + 1
+        else:
+            self.height = 0
+
+    def __repr__(self):
+        return f"TreeNodeBalanced({self.start}, {self.end}, dist={self.dist}, height={self.height})"
+
+
+class ExamRoom4:
+    def __init__(self, n: int):
+        self.n = n
+        self.root = TreeNodeBalanced(start=-1, end=n, dist=n)
+
+    def seat(self) -> int:
+        def dfs(node) -> int:
+            if not node.left:
+                if node.start == -1:
+                    i = 0
+                elif node.end == self.n:
+                    i = self.n - 1
+                else:
+                    i = (node.start + node.end) // 2
+                node.left = TreeNodeBalanced(node.start, i)
+                node.right = TreeNodeBalanced(i, node.end)
+                self._update_dist(node.left)
+                self._update_dist(node.right)
+            elif node.dist == node.left.dist:
+                i = dfs(node.left)
+            else:
+                i = dfs(node.right)
+
+            self._balance(node)
+
+            return i
+
+        return dfs(self.root)
+
+    def leave(self, p: int) -> None:
+        def dfs(node) -> None:
+            if node.left.end > p:
+                dfs(node.left)
+            elif node.left.end < p:
+                dfs(node.right)
+            elif node.left.height < node.right.height:
+                self._move_pivot_right(node)
+            else:
+                self._move_pivot_left(node)
+
+            self._balance(node)
+
+        dfs(self.root)
+
+    def _update_dist(self, node) -> None:
+        if node.left:
+            node.dist = max(node.left.dist, node.right.dist)
+        elif node.start == -1:
+            node.dist = node.end
+        elif node.end == self.n:
+            node.dist = self.n - node.start - 1
+        else:
+            node.dist = (node.end - node.start) // 2
+
+    @staticmethod
+    def _get_stacks(node):
+        l_stack, curr = [], node.left
+        while curr:
+            l_stack.append(curr)
+            curr = curr.right
+
+        r_stack, curr = [], node.right
+        while curr:
+            r_stack.append(curr)
+            curr = curr.left
+
+        return l_stack, r_stack
+
+    def _move_pivot_left(self, node):
+        l_stack, r_stack = self._get_stacks(node)
+        new_pivot = l_stack.pop().start
+
+        for r_node in reversed(r_stack):
+            r_node.start = new_pivot
+            self._update_dist(r_node)
+
+        if not l_stack:
+            node.left = node.right.left
+            node.right = node.right.right
+        elif len(l_stack) == 1:
+            node.left = l_stack[0].left
+        else:
+            last = l_stack.pop()
+            l_stack[-1].right = last.left
+            for l_node in reversed(l_stack):
+                l_node.end = new_pivot
+                self._balance(l_node)
+
+    def _move_pivot_right(self, node):
+        l_stack, r_stack = self._get_stacks(node)
+        new_pivot = r_stack.pop().end
+
+        for l_node in reversed(l_stack):
+            l_node.end = new_pivot
+            self._update_dist(l_node)
+
+        if not r_stack:
+            node.right = node.left.right
+            node.left = node.left.left
+        elif len(r_stack) == 1:
+            node.right = r_stack[0].right
+        else:
+            last = r_stack.pop()
+            r_stack[-1].left = last.right
+            for r_node in reversed(r_stack):
+                r_node.start = new_pivot
+                self._balance(r_node)
+
+    def _rotate_left(self, node):
+
+        if node.right.left.height > node.right.right.height:
+            self._rotate_right(node.right)
+
+        nl, nrl = node.left, node.right.left
+        node.left = TreeNodeBalanced(
+            start=nl.start,
+            end=nrl.end,
+            dist=max(nl.dist, nrl.dist),
+            height=max(nl.height, nrl.height) + 1,
+            left=nl,
+            right=nrl,
+        )
+        node.right = node.right.right
+        node.update_height()
+        self._update_dist(node)
+
+    def _rotate_right(self, node):
+
+        if node.left.right.height > node.left.left.height:
+            self._rotate_left(node.left)
+
+        nlr, nr = node.left.right, node.right
+        node.right = TreeNodeBalanced(
+            start=nlr.start,
+            end=nr.end,
+            dist=max(nlr.dist, nr.dist),
+            height=max(nlr.height, nr.height) + 1,
+            left=nlr,
+            right=nr,
+        )
+        node.left = node.left.left
+        node.update_height()
+        self._update_dist(node)
+
+    def _balance(self, node):
+        bal = node.right.height - node.left.height if node.left else 0
+        if bal > 1:
+            self._rotate_left(node)
+        elif bal < -1:
+            self._rotate_right(node)
+        else:
+            node.update_height()
+            self._update_dist(node)
 
 # Your ExamRoom object will be instantiated and called as such:
 # obj = ExamRoom(n)
