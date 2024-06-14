@@ -1,3 +1,6 @@
+import unittest
+
+
 class Solution:
     def decodeString(self, s: str) -> str:
         stack = [[]]
@@ -8,7 +11,7 @@ class Solution:
                 stack[-1].append(c)
             elif c.isdigit():
                 n = n * 10 + int(c)
-            elif c == '[':
+            elif c == "[":
                 stack.append(n)
                 stack.append([])
                 n = 0
@@ -18,7 +21,7 @@ class Solution:
                 if r:
                     curr *= r
                 stack[-1].extend(curr)
-        return ''.join(stack[-1])
+        return "".join(stack[-1])
 
 
 class Solution1:
@@ -31,18 +34,18 @@ class Solution1:
                 curr.append(c)
             elif c.isdigit():
                 n = n * 10 + int(c)
-            elif c == '[':
+            elif c == "[":
                 stack.append(n if n else 1)
                 stack.append(curr)
                 curr, n = [], 0
             else:
                 curr = stack.pop() + curr * stack.pop()
-        return ''.join(curr)
+        return "".join(curr)
 
 
 class Solution2:
     def decodeString(self, s: str) -> str:
-        stack = ['']
+        stack = [""]
         n = 0
 
         for c in s:
@@ -50,9 +53,9 @@ class Solution2:
                 stack[-1] += c
             elif c.isdigit():
                 n = n * 10 + int(c)
-            elif c == '[':
+            elif c == "[":
                 stack.append(n)
-                stack.append('')
+                stack.append("")
                 n = 0
             else:
                 curr = stack.pop()
@@ -79,24 +82,29 @@ class Solution3:
                 stack.append(multiplier * word)
             else:
                 stack.append(character)
-        return ''.join(stack)
+        return "".join(stack)
 
 
-def test():
-    sol = Solution()
+class TestSolution(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.sol = Solution()
 
-    print('Test 1... ', end='')
-    assert sol.decodeString(s="3[a]2[bc]") == "aaabcbc"
-    print('OK')
+    def test_decode_string_1(self):
+        print("Test decodeString 1... ", end="")
+        self.assertEqual(self.sol.decodeString(s="3[a]2[bc]"), "aaabcbc")
+        print("OK")
 
-    print('Test 2... ', end='')
-    assert sol.decodeString(s="3[a2[c]]") == "accaccacc"
-    print('OK')
+    def test_decode_string_2(self):
+        print("Test decodeString 2... ", end="")
+        self.assertEqual(self.sol.decodeString(s="3[a2[c]]"), "accaccacc")
+        print("OK")
 
-    print('Test 3... ', end='')
-    assert sol.decodeString(s="2[abc]3[cd]ef") == "abcabccdcdcdef"
-    print('OK')
+    def test_decode_string_3(self):
+        print("Test decodeString 3... ", end="")
+        self.assertEqual(self.sol.decodeString(s="2[abc]3[cd]ef"), "abcabccdcdcdef")
+        print("OK")
 
 
-if __name__ == '__main__':
-    test()
+if __name__ == "__main__":
+    unittest.main()

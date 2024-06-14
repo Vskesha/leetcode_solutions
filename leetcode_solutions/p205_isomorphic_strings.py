@@ -1,3 +1,6 @@
+import unittest
+
+
 class Solution:
     def isIsomorphic(self, s: str, t: str) -> bool:
         if len(s) != len(t):
@@ -13,6 +16,24 @@ class Solution:
                 seen.add(b)
             if mp[a] != b:
                 return False
+
+        return True
+
+
+class Solution1:
+    def isIsomorphic(self, s: str, t: str) -> bool:
+        mp = {}
+        seen = set()
+
+        for a, b in zip(s, t):
+            if a in mp:
+                if b != mp[a]:
+                    return False
+            elif b in seen:
+                return False
+            else:
+                mp[a] = b
+                seen.add(b)
 
         return True
 
@@ -33,21 +54,26 @@ class Solution2:
         return True
 
 
-def test_isIsomorphic():
-    sol = Solution()
+class TestSolution(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.sol = Solution()
 
-    print("Test 1... ", end="")
-    assert sol.isIsomorphic(s="egg", t="add") is True
-    print("OK")
+    def test_is_isomorphic_1(self):
+        print("Test isIsomorphic 1... ", end="")
+        self.assertTrue(self.sol.isIsomorphic(s="egg", t="add"))
+        print("OK")
 
-    print("Test 2... ", end="")
-    assert sol.isIsomorphic(s="foo", t="bar") is False
-    print("OK")
+    def test_is_isomorphic_2(self):
+        print("Test isIsomorphic 2... ", end="")
+        self.assertFalse(self.sol.isIsomorphic(s="foo", t="bar"))
+        print("OK")
 
-    print("Test 3... ", end="")
-    assert sol.isIsomorphic(s="paper", t="title") is True
-    print("OK")
+    def test_is_isomorphic_3(self):
+        print("Test isIsomorphic 3... ", end="")
+        self.assertTrue(self.sol.isIsomorphic(s="paper", t="title"))
+        print("OK")
 
 
 if __name__ == "__main__":
-    test_isIsomorphic()
+    unittest.main()
