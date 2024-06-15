@@ -1,3 +1,4 @@
+import unittest
 from bisect import bisect_right, bisect_left
 from heapq import heapify, heappop, heappush
 from typing import List
@@ -18,6 +19,7 @@ class Solution:
                 break
 
         return w
+
 
 class Solution1:
     def findMaximizedCapital(self, k: int, w: int, profits: List[int], capital: List[int]) -> int:
@@ -58,17 +60,52 @@ class Solution2:
         return w
 
 
-def test():
-    sol = Solution()
+class Solution3:
+    def findMaximizedCapital(self, k: int, w: int, profits: List[int], capital: List[int]) -> int:
+        cp = sorted(zip(capital, profits))
+        heap = []
+        i, lp = 0, len(cp)
 
-    print('Test 1... ', end='')
-    assert sol.findMaximizedCapital(k=2, w=0, profits=[1, 2, 3], capital=[0, 1, 1]) == 4
-    print('OK')
+        for _ in range(k):
+            while i < lp and cp[i][0] <= w:
+                heappush(heap, -cp[i][1])
+                i += 1
+            if heap:
+                w -= heappop(heap)
 
-    print('Test 2... ', end='')
-    assert sol.findMaximizedCapital(k=3, w=0, profits=[1, 2, 3], capital=[0, 1, 2]) == 6
-    print('OK')
+        return w
+
+
+class Solution4:
+    def findMaximizedCapital(self, k: int, w: int, profits: List[int], capital: List[int]) -> int:
+        cp = list(zip(capital, profits))
+        heapify(cp)
+        heap = []
+
+        for _ in range(k):
+            while cp and cp[0][0] <= w:
+                heappush(heap, -heappop(cp)[1])
+            if heap:
+                w -= heappop(heap)
+
+        return w
+
+
+class TestSolution(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.sol = Solution()
+
+    def test_find_maximized_capital_1(self):
+        print("Test findMaximizedCapital 1 ... ", end="")
+        self.assertEqual(self.sol.findMaximizedCapital(k = 2, w = 0, profits = [1,2,3], capital = [0,1,1]), 4)
+        print("OK")
+
+    def test_find_maximized_capital_2(self):
+        print("Test findMaximizedCapital 2 ... ", end="")
+        self.assertEqual(self.sol.findMaximizedCapital(k = 3, w = 0, profits = [1,2,3], capital = [0,1,2]), 6)
+        print("OK")
 
 
 if __name__ == '__main__':
-    test()
+    unittest.main()
