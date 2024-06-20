@@ -1,10 +1,12 @@
+import unittest
 from collections import defaultdict, deque
 from typing import List
 
 
 class Solution:
-    def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
-
+    def calcEquation(
+        self, equations: List[List[str]], values: List[float], queries: List[List[str]]
+    ) -> List[float]:
         graph = defaultdict(list)
 
         for pair, val in zip(equations, values):
@@ -13,7 +15,6 @@ class Solution:
             graph[b].append((a, 1 / val))
 
         def eq(fr, to) -> float:
-
             if not (fr in graph and to in graph):
                 return -1.0
 
@@ -35,8 +36,9 @@ class Solution:
 
 
 class Solution1:
-    def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
-
+    def calcEquation(
+        self, equations: List[List[str]], values: List[float], queries: List[List[str]]
+    ) -> List[float]:
         def equat(node1: str, node2: str) -> float:
             bfs = deque()
             bfs.append((node1, 1))
@@ -58,12 +60,15 @@ class Solution1:
             nodes[node1].append((node2, value))
             nodes[node2].append((node1, 1 / value))
 
-        return [equat(n1, n2) if n1 in nodes and n2 in nodes else -1 for n1, n2 in queries]
+        return [
+            equat(n1, n2) if n1 in nodes and n2 in nodes else -1 for n1, n2 in queries
+        ]
 
 
 class Solution2:
-    def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
-
+    def calcEquation(
+        self, equations: List[List[str]], values: List[float], queries: List[List[str]]
+    ) -> List[float]:
         def equat(node1_: str, node2_: str) -> float:
             bfs = deque()
             bfs.append((node1_, 1))
@@ -85,31 +90,52 @@ class Solution2:
             nodes[node1].append((node2, value))
             nodes[node2].append((node1, 1 / value))
 
-        return [equat(n1, n2) if n1 in nodes and n2 in nodes else -1 for n1, n2 in queries]
+        return [
+            equat(n1, n2) if n1 in nodes and n2 in nodes else -1 for n1, n2 in queries
+        ]
 
 
-def test():
-    sol = Solution()
+class TestSolution(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.sol = Solution()
 
-    print('Test 1... ', end='')
-    assert sol.calcEquation(equations=[["a", "b"], ["b", "c"]], values=[2.0, 3.0],
-                            queries=[["a", "c"], ["b", "a"], ["a", "e"], ["a", "a"], ["x", "x"]]) == [6.00000, 0.50000,
-                                                                                                      -1.00000, 1.00000,
-                                                                                                      -1.00000]
-    print('OK')
+    def test_calc_equation_1(self):
+        print("Test calcEquation 1... ", end="")
+        self.assertEqual(
+            self.sol.calcEquation(
+                equations=[["a", "b"], ["b", "c"]],
+                values=[2.0, 3.0],
+                queries=[["a", "c"], ["b", "a"], ["a", "e"], ["a", "a"], ["x", "x"]],
+            ),
+            [6.00000, 0.50000, -1.00000, 1.00000, -1.00000],
+        )
+        print("OK")
 
-    print('Test 2... ', end='')
-    assert sol.calcEquation(equations=[["a", "b"], ["b", "c"], ["bc", "cd"]], values=[1.5, 2.5, 5.0],
-                            queries=[["a", "c"], ["c", "b"], ["bc", "cd"], ["cd", "bc"]]) == [3.75000, 0.40000, 5.00000,
-                                                                                              0.20000]
-    print('OK')
+    def test_calc_equation_2(self):
+        print("Test calcEquation 2... ", end="")
+        self.assertEqual(
+            self.sol.calcEquation(
+                equations=[["a", "b"], ["b", "c"], ["bc", "cd"]],
+                values=[1.5, 2.5, 5.0],
+                queries=[["a", "c"], ["c", "b"], ["bc", "cd"], ["cd", "bc"]],
+            ),
+            [3.75000, 0.40000, 5.00000, 0.20000],
+        )
+        print("OK")
 
-    print('Test 3... ', end='')
-    assert sol.calcEquation(equations=[["a", "b"]], values=[0.5],
-                            queries=[["a", "b"], ["b", "a"], ["a", "c"], ["x", "y"]]) == [0.50000, 2.00000, -1.00000,
-                                                                                          -1.00000]
-    print('OK')
+    def test_calc_equation_3(self):
+        print("Test calcEquation 3... ", end="")
+        self.assertEqual(
+            self.sol.calcEquation(
+                equations=[["a", "b"]],
+                values=[0.5],
+                queries=[["a", "b"], ["b", "a"], ["a", "c"], ["x", "y"]],
+            ),
+            [0.50000, 2.00000, -1.00000, -1.00000],
+        )
+        print("OK")
 
 
-if __name__ == '__main__':
-    test()
+if __name__ == "__main__":
+    unittest.main()

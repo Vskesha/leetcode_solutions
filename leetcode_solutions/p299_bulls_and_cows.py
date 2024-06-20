@@ -1,7 +1,15 @@
+import unittest
 from collections import Counter
 
 
 class Solution:
+    def getHint(self, secret: str, guess: str) -> str:
+        bulls = sum(1 for a, b in zip(secret, guess) if a == b)
+        cows = sum((Counter(secret) & Counter(guess)).values()) - bulls
+        return f"{bulls}A{cows}B"
+
+
+class Solution2:
     def getHint(self, secret: str, guess: str) -> str:
         bullnumber = 0
 
@@ -22,17 +30,21 @@ class Solution:
         return f'{bullnumber}A{nonbullnumber}B'
 
 
-def test():
-    sol = Solution()
+class TestSolution(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.sol = Solution()
 
-    print('Test 1... ', end='')
-    assert sol.getHint(secret='1807', guess='7810') == '1A3B'
-    print('OK')
+    def test_get_hint_1(self):
+        print('Test getHint 1... ', end='')
+        self.assertEqual(self.sol.getHint(secret='1807', guess='7810'), '1A3B')
+        print('OK')
 
-    print('Test 2... ', end='')
-    assert sol.getHint(secret='1123', guess='0111') == '1A1B'
-    print('OK')
+    def test_get_hint_2(self):
+        print('Test getHint 2... ', end='')
+        self.assertEqual(self.sol.getHint(secret='1123', guess='0111'), '1A1B')
+        print('OK')
 
 
 if __name__ == '__main__':
-    test()
+    unittest.main()

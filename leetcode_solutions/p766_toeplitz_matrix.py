@@ -1,3 +1,4 @@
+import unittest
 from typing import List
 
 
@@ -38,17 +39,21 @@ class Solution2:
         return True
 
 
-def test():
-    sol = Solution()
+class TestSolution(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.sol = Solution()
 
-    print('Test 1... ', end='')
-    assert sol.isToeplitzMatrix(matrix=[[1, 2, 3, 4], [5, 1, 2, 3], [9, 5, 1, 2]]) is True
-    print('OK')
+    def test_is_toeplitz_matrix_1(self):
+        print('Test isToeplitzMatrix 1... ', end='')
+        self.assertTrue(self.sol.isToeplitzMatrix(matrix=[[1, 2, 3, 4], [5, 1, 2, 3], [9, 5, 1, 2]]))
+        print('OK')
 
-    print('Test 2... ', end='')
-    assert sol.isToeplitzMatrix(matrix=[[1, 2], [2, 2]]) is False
-    print('OK')
+    def test_is_toeplitz_matrix_2(self):
+        print('Test isToeplitzMatrix 2... ', end='')
+        self.assertFalse(self.sol.isToeplitzMatrix(matrix=[[1, 2], [2, 2]]))
+        print('OK')
 
 
 if __name__ == '__main__':
-    test()
+    unittest.main()

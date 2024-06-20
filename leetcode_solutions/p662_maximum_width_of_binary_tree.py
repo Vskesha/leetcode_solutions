@@ -1,5 +1,6 @@
+import unittest
 from collections import deque
-from typing import Optional
+from typing import Optional, List
 
 
 # Definition for a binary tree node.
@@ -10,44 +11,8 @@ class TreeNode:
         self.right = right
 
 
-def decorator(cls):
-    class Wrapper:
-
-        def __init__(self, *args, **kwargs):
-            self.original = cls(*args, **kwargs)
-
-        def widthOfBinaryTree(self, root: list) -> int:
-            root = self.list_to_tree(root)
-            return self.original.widthOfBinaryTree(root)
-
-        def list_to_tree(self, root: list) -> Optional[TreeNode]:
-            if not root:
-                return None
-
-            root = iter(root)
-            head = TreeNode(next(root))
-            q = deque([head])
-
-            while q:
-                node = q.popleft()
-                val = next(root, None)
-                if val:
-                    node.left = TreeNode(val)
-                    q.append(node.left)
-                val = next(root, None)
-                if val:
-                    node.right = TreeNode(val)
-                    q.append(node.right)
-
-            return head
-
-    return Wrapper
-
-
-@decorator
 class Solution:
     def widthOfBinaryTree(self, root: Optional[TreeNode]) -> int:
-
         ans = 0
         bfs = deque()
         bfs.append((root, 0))
@@ -65,7 +30,6 @@ class Solution:
         return ans + 1
 
 
-@decorator
 class Solution2:
     def widthOfBinaryTree(self, root: Optional[TreeNode]) -> int:
         q, width = deque([(root, 0)]), 0
@@ -80,22 +44,60 @@ class Solution2:
         return width + 1
 
 
-def test():
-    null = None
-    sol = Solution()
+class TestSolution(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.sol = Solution()
 
-    print('Test 1... ', end='')
-    assert sol.widthOfBinaryTree(root=[1, 3, 2, 5, 3, null, 9]) == 4
-    print('OK')
+    @staticmethod
+    def list_to_tree(root: List[int]) -> Optional[TreeNode]:
+        if not root:
+            return None
 
-    print('Test 2... ', end='')
-    assert sol.widthOfBinaryTree(root=[1, 3, 2, 5, null, null, 9, 6, null, 7]) == 7
-    print('OK')
+        values = iter(root)
+        root = TreeNode(next(values))
+        q = deque([root])
 
-    print('Test 3... ', end='')
-    assert sol.widthOfBinaryTree(root=[1, 3, 2, 5]) == 2
-    print('OK')
+        while q:
+            node = q.popleft()
+            val = next(values, None)
+            if val:
+                node.left = TreeNode(val)
+                q.append(node.left)
+            val = next(values, None)
+            if val:
+                node.right = TreeNode(val)
+                q.append(node.right)
+
+        return root
+
+    def test_width_of_binary_tree_1(self):
+        print("Test widthOfBinaryTree 1... ", end="")
+        root = self.list_to_tree(root=[1, 3, 2, 5, 3, None, 9])
+        self.assertEqual(
+            self.sol.widthOfBinaryTree(root=root),
+            4,
+        )
+        print("OK")
+
+    def test_width_of_binary_tree_2(self):
+        print("Test widthOfBinaryTree 2... ", end="")
+        root = self.list_to_tree(root=[1, 3, 2, 5, 3, None, 9])
+        self.assertEqual(
+            self.sol.widthOfBinaryTree(root=root),
+            4,
+        )
+        print("OK")
+
+    def test_width_of_binary_tree_3(self):
+        print("Test widthOfBinaryTree 3... ", end="")
+        root = self.list_to_tree(root=[1, 3, 2, 5])
+        self.assertEqual(
+            self.sol.widthOfBinaryTree(root=root),
+            2,
+        )
+        print("OK")
 
 
-if __name__ == '__main__':
-    test()
+if __name__ == "__main__":
+    unittest.main()

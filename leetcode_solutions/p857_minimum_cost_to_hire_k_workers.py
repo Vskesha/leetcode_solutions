@@ -1,3 +1,4 @@
+import unittest
 from heapq import heappush, heappop, heappushpop
 from fractions import Fraction
 
@@ -61,28 +62,31 @@ class Solution3:
         return float(ans)
 
 
-def test():
-    sol = Solution()
+class TestSolution(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.sol = Solution()
 
-    print("Test 1... ", end="")
-    assert (
-        round(sol.mincostToHireWorkers(quality=[10, 20, 5], wage=[70, 50, 30], k=2), 5)
-        == 105.00000
-    )
-    print("OK")
+    def test_mincost_to_hire_workers_1(self):
+        print("Test mincostToHireWorkers 1... ", end="")
+        self.assertAlmostEqual(
+            self.sol.mincostToHireWorkers(quality=[10, 20, 5], wage=[70, 50, 30], k=2),
+            105.00000,
+            places=5,
+        )
+        print("OK")
 
-    print("Test 2... ", end="")
-    assert (
-        round(
-            sol.mincostToHireWorkers(
+    def test_mincost_to_hire_workers_2(self):
+        print("Test mincostToHireWorkers 2... ", end="")
+        self.assertAlmostEqual(
+            self.sol.mincostToHireWorkers(
                 quality=[3, 1, 10, 10, 1], wage=[4, 8, 2, 2, 7], k=3
             ),
-            5,
+            30.66667,
+            places=5,
         )
-        == 30.66667
-    )
-    print("OK")
+        print("OK")
 
 
 if __name__ == "__main__":
-    test()
+    unittest.main()

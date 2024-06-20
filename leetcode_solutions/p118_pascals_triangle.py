@@ -1,3 +1,4 @@
+import unittest
 from itertools import pairwise
 from typing import List
 
@@ -27,17 +28,24 @@ class Solution2:
         return res
 
 
-def test():
-    sol = Solution()
+class TestSolution(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.sol = Solution()
 
-    print('Test 1 ... ', end='')
-    assert sol.generate(numRows=5) == [[1], [1, 1], [1, 2, 1], [1, 3, 3, 1], [1, 4, 6, 4, 1]]
-    print('ok')
+    def test_generate_1(self):
+        print("Test generate 1... ", end="")
+        self.assertEqual(
+            self.sol.generate(numRows=5),
+            [[1], [1, 1], [1, 2, 1], [1, 3, 3, 1], [1, 4, 6, 4, 1]],
+        )
+        print("OK")
 
-    print('Test 2 ... ', end='')
-    assert sol.generate(numRows=1) == [[1]]
-    print('ok')
+    def test_generate_2(self):
+        print("Test generate 2... ", end="")
+        self.assertEqual(self.sol.generate(numRows=1), [[1]])
+        print("OK")
 
 
-if __name__ == '__main__':
-    test()
+if __name__ == "__main__":
+    unittest.main()
