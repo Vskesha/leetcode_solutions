@@ -1,7 +1,34 @@
+import unittest
 from typing import List
 
 
 class Solution:
+    def fullJustify(self, words: List[str], maxWidth: int) -> List[str]:
+        row = []
+        chars = 0
+        ans = []
+
+        for word in words:
+            if chars + len(row) + len(word) <= maxWidth:
+                row.append(word)
+                chars += len(word)
+            else:
+                if len(row) == 1:
+                    ans.append(row[0].ljust(maxWidth, " "))
+                else:
+                    d, m = divmod(maxWidth - chars, len(row) - 1)
+                    s = (" " * d).join(row)
+                    s = s.replace(" " * d, " " * (d + 1), m)
+                    ans.append(s)
+                row = [word]
+                chars = len(word)
+
+        ans.append(" ".join(row).ljust(maxWidth, " "))
+
+        return ans
+
+
+class Solution1:
     def fullJustify(self, words: list[str], maxWidth: int) -> list[str]:
         ans = []
         start = 0
@@ -25,7 +52,7 @@ class Solution:
         return ans
 
 
-class Solution1:
+class Solution2:
     def fullJustify(self, words: list[str], maxWidth: int) -> list[str]:
         ans = []
         words = iter(words)
@@ -54,7 +81,7 @@ class Solution1:
         return ans
 
 
-class Solution2:
+class Solution3:
     def fullJustify(self, words: list[str], maxWidth: int) -> list[str]:
         words.append(" " * 100)
         res = []
@@ -82,7 +109,7 @@ class Solution2:
         return res
 
 
-class Solution3:
+class Solution4:
     def fullJustify(self, words: List[str], maxWidth: int) -> List[str]:
         row = []
         chars = 0
@@ -108,55 +135,70 @@ class Solution3:
         return ans
 
 
-def test_full_justify():
-    sol = Solution()
+class TestSolution(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.sol = Solution()
 
-    print("Test 1... ", end="")
-    assert sol.fullJustify(
-        words=["This", "is", "an", "example", "of", "text", "justification."],
-        maxWidth=16,
-    ) == ["This    is    an", "example  of text", "justification.  "]
-    print("OK")
+    def test_full_justify_1(self):
+        print("Test fullJustify 1... ", end="")
+        self.assertListEqual(
+            self.sol.fullJustify(
+                words=["This", "is", "an", "example", "of", "text", "justification."],
+                maxWidth=16,
+            ),
+            ["This    is    an", "example  of text", "justification.  "],
+        )
+        print("OK")
 
-    print("Test 2... ", end="")
-    assert sol.fullJustify(
-        words=["What", "must", "be", "acknowledgment", "shall", "be"], maxWidth=16
-    ) == ["What   must   be", "acknowledgment  ", "shall be        "]
-    print("OK")
+    def test_full_justify_2(self):
+        print("Test fullJustify 2... ", end="")
+        self.assertListEqual(
+            self.sol.fullJustify(
+                words=["What", "must", "be", "acknowledgment", "shall", "be"],
+                maxWidth=16,
+            ),
+            ["What   must   be", "acknowledgment  ", "shall be        "],
+        )
+        print("OK")
 
-    print("Test 3... ", end="")
-    assert sol.fullJustify(
-        words=[
-            "Science",
-            "is",
-            "what",
-            "we",
-            "understand",
-            "well",
-            "enough",
-            "to",
-            "explain",
-            "to",
-            "a",
-            "computer.",
-            "Art",
-            "is",
-            "everything",
-            "else",
-            "we",
-            "do",
-        ],
-        maxWidth=20,
-    ) == [
-        "Science  is  what we",
-        "understand      well",
-        "enough to explain to",
-        "a  computer.  Art is",
-        "everything  else  we",
-        "do                  ",
-    ]
-    print("OK")
+    def test_full_justify_3(self):
+        print("Test fullJustify 3... ", end="")
+        self.assertListEqual(
+            self.sol.fullJustify(
+                words=[
+                    "Science",
+                    "is",
+                    "what",
+                    "we",
+                    "understand",
+                    "well",
+                    "enough",
+                    "to",
+                    "explain",
+                    "to",
+                    "a",
+                    "computer.",
+                    "Art",
+                    "is",
+                    "everything",
+                    "else",
+                    "we",
+                    "do",
+                ],
+                maxWidth=20,
+            ),
+            [
+                "Science  is  what we",
+                "understand      well",
+                "enough to explain to",
+                "a  computer.  Art is",
+                "everything  else  we",
+                "do                  ",
+            ],
+        )
+        print("OK")
 
 
 if __name__ == "__main__":
-    test_full_justify()
+    unittest.main()

@@ -1,3 +1,4 @@
+import unittest
 from collections import Counter
 from heapq import heappush, heappop
 from typing import List
@@ -8,7 +9,6 @@ class Solution:
         self, values: List[int], labels: List[int], numWanted: int, useLimit: int
     ) -> int:
         pairs = sorted(zip(values, labels), reverse=True)
-        ln = len(values)
         cnt = Counter()
         ans = 0
 
@@ -44,36 +44,41 @@ class Solution2:
         return ans
 
 
-def test_largest_vals_from_labels():
-    sol = Solution()
+class TestSolution(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.sol = Solution()
 
-    print("Test 1... ", end="")
-    assert (
-        sol.largestValsFromLabels(
-            values=[5, 4, 3, 2, 1], labels=[1, 1, 2, 2, 3], numWanted=3, useLimit=1
+    def test_largest_vals_from_labels_1(self):
+        print("Test largestValsFromLabels 1... ", end="")
+        self.assertEqual(
+            self.sol.largestValsFromLabels(
+                values=[5, 4, 3, 2, 1], labels=[1, 1, 2, 2, 3], numWanted=3, useLimit=1
+            ),
+            9,
         )
-        == 9
-    )
-    print("OK")
+        print("OK")
 
-    print("Test 2... ", end="")
-    assert (
-        sol.largestValsFromLabels(
-            values=[5, 4, 3, 2, 1], labels=[1, 3, 3, 3, 2], numWanted=3, useLimit=2
+    def test_largest_vals_from_labels_2(self):
+        print("Test largestValsFromLabels 2... ", end="")
+        self.assertEqual(
+            self.sol.largestValsFromLabels(
+                values=[5, 4, 3, 2, 1], labels=[1, 3, 3, 3, 2], numWanted=3, useLimit=2
+            ),
+            12,
         )
-        == 12
-    )
-    print("OK")
+        print("OK")
 
-    print("Test 3... ", end="")
-    assert (
-        sol.largestValsFromLabels(
-            values=[9, 8, 8, 7, 6], labels=[0, 0, 0, 1, 1], numWanted=3, useLimit=1
+    def test_largest_vals_from_labels_3(self):
+        print("Test largestValsFromLabels 3... ", end="")
+        self.assertEqual(
+            self.sol.largestValsFromLabels(
+                values=[9, 8, 8, 7, 6], labels=[0, 0, 0, 1, 1], numWanted=3, useLimit=1
+            ),
+            16,
         )
-        == 16
-    )
-    print("OK")
+        print("OK")
 
 
 if __name__ == "__main__":
-    test_largest_vals_from_labels()
+    unittest.main()

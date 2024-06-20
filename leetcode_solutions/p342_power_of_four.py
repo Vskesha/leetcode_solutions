@@ -1,13 +1,22 @@
+import unittest
 from math import log
 
 
 class Solution:
     def isPowerOfFour(self, n: int) -> bool:
+        if n <= 0:
+            return False
+        b = bin(n)
+        return len(b) % 2 and b.count("1") == 1
+
+
+class Solution1:
+    def isPowerOfFour(self, n: int) -> bool:
         bn = bin(n)
         return n and len(bn) % 2 and bn[3:] == "0" * (len(bn) - 3)
 
 
-class Solution1:
+class Solution2:
     def isPowerOfFour(self, n: int) -> bool:
         if n <= 0:
             return False
@@ -15,7 +24,7 @@ class Solution1:
         return b.count("1") == 1 and b.count("0") % 2 == 0
 
 
-class Solution2:
+class Solution3:
     def isPowerOfFour(self, n: int) -> bool:
         if n > 0:
             p = int(log(n, 4))
@@ -23,7 +32,7 @@ class Solution2:
         return False
 
 
-class Solution:
+class Solution4:
     def isPowerOfFour(self, n: int) -> bool:
         if not n:
             return False
@@ -34,21 +43,26 @@ class Solution:
         return self.isPowerOfFour(n // 4)
 
 
-def test_is_power_of_four():
-    sol = Solution()
+class TestSolution(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.sol = Solution()
 
-    print("Test 1 ... ", end="")
-    assert sol.isPowerOfFour(n=16) is True
-    print("OK")
+    def test_is_power_of_four_1(self):
+        print("Test isPowerOfFour 1... ", end="")
+        self.assertTrue(self.sol.isPowerOfFour(n=16))
+        print("OK")
 
-    print("Test 2 ... ", end="")
-    assert sol.isPowerOfFour(n=5) is False
-    print("OK")
+    def test_is_power_of_four_2(self):
+        print("Test isPowerOfFour 2... ", end="")
+        self.assertFalse(self.sol.isPowerOfFour(n=5))
+        print("OK")
 
-    print("Test 3 ... ", end="")
-    assert sol.isPowerOfFour(n=1) is True
-    print("OK")
+    def test_is_power_of_four_3(self):
+        print("Test isPowerOfFour 3... ", end="")
+        self.assertTrue(self.sol.isPowerOfFour(n=1))
+        print("OK")
 
 
 if __name__ == "__main__":
-    test_is_power_of_four()
+    unittest.main()

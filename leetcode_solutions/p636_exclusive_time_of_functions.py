@@ -1,5 +1,29 @@
+import unittest
 from collections import deque
 from typing import List
+
+
+class Solution:
+    def exclusiveTime(self, n: int, logs: List[str]) -> List[int]:
+        times = [0] * n
+        stack = []
+
+        for log in logs:
+            pid, action, time = log.split(":")
+            pid, time = int(pid), int(time)
+
+            if action == "start":
+                if stack:
+                    times[stack[-1]] += time
+                times[pid] -= time
+                stack.append(pid)
+            else:
+                time += 1
+                times[stack.pop()] += time
+                if stack:
+                    times[stack[-1]] -= time
+
+        return times
 
 
 class Call:
@@ -9,7 +33,7 @@ class Call:
         self.prev = prev
 
 
-class Solution:
+class Solution1:
     def exclusiveTime(self, n: int, logs: List[str]) -> List[int]:
         curr = Call()
         ans = [0] * n
@@ -66,45 +90,77 @@ class Solution2:  # revision, May 2024
         return ans
 
 
-def test_exclusive_time():
-    sol = Solution()
+class TestSolution(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.sol = Solution()
 
-    print("Test 1... ", end="")
-    assert sol.exclusiveTime(
-        n=2, logs=["0:start:0", "1:start:2", "1:end:5", "0:end:6"]
-    ) == [3, 4]
-    print("OK")
+    def test_exclusive_time_1(self):
+        print("Test exclusiveTime 1... ", end="")
+        self.assertListEqual(
+            self.sol.exclusiveTime(
+                n=2, logs=["0:start:0", "1:start:2", "1:end:5", "0:end:6"]
+            ),
+            [3, 4],
+        )
+        print("OK")
 
-    print("Test 2... ", end="")
-    assert sol.exclusiveTime(
-        n=1,
-        logs=["0:start:0", "0:start:2", "0:end:5", "0:start:6", "0:end:6", "0:end:7"],
-    ) == [8]
-    print("OK")
+    def test_exclusive_time_2(self):
+        print("Test exclusiveTime 2... ", end="")
+        self.assertListEqual(
+            self.sol.exclusiveTime(
+                n=1,
+                logs=[
+                    "0:start:0",
+                    "0:start:2",
+                    "0:end:5",
+                    "0:start:6",
+                    "0:end:6",
+                    "0:end:7",
+                ],
+            ),
+            [8],
+        )
+        print("OK")
 
-    print("Test 3... ", end="")
-    assert sol.exclusiveTime(
-        n=2,
-        logs=["0:start:0", "0:start:2", "0:end:5", "1:start:6", "1:end:6", "0:end:7"],
-    ) == [7, 1]
-    print("OK")
+    def test_exclusive_time_3(self):
+        print("Test exclusiveTime 3... ", end="")
+        self.assertListEqual(
+            self.sol.exclusiveTime(
+                n=2,
+                logs=[
+                    "0:start:0",
+                    "0:start:2",
+                    "0:end:5",
+                    "1:start:6",
+                    "1:end:6",
+                    "0:end:7",
+                ],
+            ),
+            [7, 1],
+        )
+        print("OK")
 
-    print("Test 4... ", end="")
-    assert sol.exclusiveTime(
-        n=3,
-        logs=[
-            "1:start:0",
-            "0:start:2",
-            "1:start:3",
-            "2:start:4",
-            "2:end:4",
-            "0:end:6",
-            "1:end:7",
-            "1:end:8",
-        ],
-    ) == [2, 6, 1]
-    print("OK")
+    def test_exclusive_time_4(self):
+        print("Test exclusiveTime 4... ", end="")
+        self.assertListEqual(
+            self.sol.exclusiveTime(
+                n=3,
+                logs=[
+                    "1:start:0",
+                    "0:start:2",
+                    "1:start:3",
+                    "2:start:4",
+                    "2:end:4",
+                    "0:end:6",
+                    "1:end:7",
+                    "1:end:8",
+                ],
+            ),
+            [2, 6, 1],
+        )
+        print("OK")
 
 
 if __name__ == "__main__":
-    test_exclusive_time()
+    unittest.main()

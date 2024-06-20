@@ -1,3 +1,6 @@
+import unittest
+
+
 class Solution:
     def queryString(self, s: str, n: int) -> bool:
         return all(bin(t)[2:] in s for t in range(n, 0, -1))
@@ -11,17 +14,21 @@ class Solution2:
         return True
 
 
-def test_query_string():
-    sol = Solution()
+class TestSolution(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.sol = Solution()
 
-    print("Test 1... ", end="")
-    assert sol.queryString(s="0110", n=3) is True
-    print("OK")
+    def test_query_string_1(self):
+        print("Test queryString 1... ", end="")
+        self.assertTrue(self.sol.queryString(s="0110", n=3))
+        print("OK")
 
-    print("Test 2... ", end="")
-    assert sol.queryString(s="0110", n=4) is False
-    print("OK")
+    def test_query_string_2(self):
+        print("Test queryString 2... ", end="")
+        self.assertFalse(self.sol.queryString(s="0110", n=4))
+        print("OK")
 
 
 if __name__ == "__main__":
-    test_query_string()
+    unittest.main()
