@@ -1,6 +1,5 @@
-import inspect
+import unittest
 from collections import deque
-from functools import wraps
 from typing import Optional, List
 
 
@@ -12,41 +11,20 @@ class TreeNode:
         self.right = right
 
 
-def make_tree_from_list(cls):
-    @wraps(cls, updated=())
-    class Wrapper:
-        def __init__(self, *args, **kwargs):
-            self.wrap = cls(*args, **kwargs)
-
-        def isSameTree(self, p: list[int], q: list[int]) -> bool:
-            p = self.tree_from_arr(p)
-            q = self.tree_from_arr(q)
-            return self.wrap.isSameTree(p, q)
-
-        @staticmethod
-        def tree_from_arr(arr: list[int]) -> Optional[TreeNode]:
-            if not arr:
-                return None
-            arr = iter(arr)
-            root = TreeNode(next(arr))
-            bfs = deque([root])
-            while bfs:
-                node = bfs.popleft()
-                val = next(arr, None)
-                if val is not None:
-                    node.left = TreeNode(val)
-                    bfs.append(node.left)
-                val = next(arr, None)
-                if val is not None:
-                    node.right = TreeNode(val)
-                    bfs.append(node.right)
-            return root
-
-    return Wrapper
-
-
-@make_tree_from_list
 class Solution:
+    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+        if not (p or q):
+            return True
+        if not (p and q):
+            return False
+        return (
+            p.val == q.val
+            and self.isSameTree(p.left, q.left)
+            and self.isSameTree(p.right, q.right)
+        )
+
+
+class Solution1:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
         bfs1 = deque([p])
         bfs2 = deque([q])
@@ -66,7 +44,6 @@ class Solution:
         return True
 
 
-@make_tree_from_list
 class Solution2:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
         bfs1 = deque([p])
@@ -86,7 +63,6 @@ class Solution2:
         return True
 
 
-@make_tree_from_list
 class Solution3:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
         if not (p or q):
@@ -98,24 +74,60 @@ class Solution3:
         return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
 
 
-def test():
-    sol = Solution()
-    # print(type(sol))
-    # print(dir(sol))
-    # print(inspect.signature(sol.isSameTree))
+class TestSolution(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.sol = Solution()
 
-    print("Test 1... ", end="")
-    assert sol.isSameTree(p=[1, 2, 3], q=[1, 2, 3]) is True
-    print("OK")
+    @staticmethod
+    def tree_from_list(arr: List[int]) -> Optional[TreeNode]:
+        if not arr:
+            return None
 
-    print("Test 2... ", end="")
-    assert sol.isSameTree(p=[1, 2], q=[1, None, 2]) is False
-    print("OK")
+        vals = iter(arr)
+        root = TreeNode(next(vals))
+        bfs = deque([root])
 
-    print("Test 3... ", end="")
-    assert sol.isSameTree(p=[1, 2, 1], q=[1, 1, 2]) is False
-    print("OK")
+        while bfs:
+            node = bfs.popleft()
+            val = next(vals, None)
+            if val is not None:
+                node.left = TreeNode(val)
+                bfs.append(node.left)
+            val = next(vals, None)
+            if val is not None:
+                node.right = TreeNode(val)
+                bfs.append(node.right)
+
+        return root
+
+    def test_is_same_tree_1(self):
+        print("Test isSameTree 1... ", end="")
+        self.assertTrue(
+            self.sol.isSameTree(
+                p=self.tree_from_list([1, 2, 3]), q=self.tree_from_list([1, 2, 3])
+            )
+        )
+        print("OK")
+
+    def test_is_same_tree_2(self):
+        print("Test isSameTree 2... ", end="")
+        self.assertFalse(
+            self.sol.isSameTree(
+                p=self.tree_from_list([1, 2]), q=self.tree_from_list([1, None, 2])
+            )
+        )
+        print("OK")
+
+    def test_is_same_tree_3(self):
+        print("Test isSameTree 3... ", end="")
+        self.assertFalse(
+            self.sol.isSameTree(
+                p=self.tree_from_list([1, 2, 1]), q=self.tree_from_list([1, 1, 2])
+            )
+        )
+        print("OK")
 
 
 if __name__ == "__main__":
-    test()
+    unittest.main()
