@@ -35,7 +35,7 @@ class TreeNode:
 
 class Solution:
     def balanceBST(self, root: TreeNode) -> TreeNode:
-        arr = self.to_list(root)
+        arr = self.inorder(root)
         bbst = self.build_tree(arr, 0, len(arr) - 1)
         return bbst
 
@@ -49,10 +49,10 @@ class Solution:
 
         return node
 
-    def to_list(self, root: TreeNode) -> list:
+    def inorder(self, root: TreeNode) -> list:
         if not root:
             return []
-        return self.to_list(root.left) + [root.val] + self.to_list(root.right)
+        return self.inorder(root.left) + [root.val] + self.inorder(root.right)
 
 
 class Solution2:
