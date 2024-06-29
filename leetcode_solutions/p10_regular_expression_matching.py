@@ -1,3 +1,4 @@
+import unittest
 from functools import lru_cache
 
 
@@ -8,7 +9,6 @@ class Solution:
 
         @lru_cache(None)
         def dfs(i, j) -> bool:
-
             if j == -1:
                 return i == -1
 
@@ -29,25 +29,31 @@ class Solution:
         return dfs(len(s) - 1, len(p) - 1)
 
 
-def test_is_match():
-    sol = Solution()
+class TestSolution(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.sol = Solution()
 
-    print("Test 1... ", end="")
-    assert sol.isMatch(s="aa", p="a") is False
-    print("OK")
+    def test_is_match_1(self):
+        print("Test isMatch 1... ", end="")
+        self.assertFalse(self.sol.isMatch(s="aa", p="a"))
+        print("OK")
 
-    print("Test 2... ", end="")
-    assert sol.isMatch(s="aa", p="a*") is True
-    print("OK")
+    def test_is_match_2(self):
+        print("Test isMatch 2... ", end="")
+        self.assertTrue(self.sol.isMatch(s="aa", p="a*"))
+        print("OK")
 
-    print("Test 3... ", end="")
-    assert sol.isMatch(s="ab", p=".*") is True
-    print("OK")
+    def test_is_match_3(self):
+        print("Test isMatch 3... ", end="")
+        self.assertTrue(self.sol.isMatch(s="ab", p=".*"))
+        print("OK")
 
-    print("Test 4... ", end="")
-    assert sol.isMatch(s="aab", p="c*a*b") is True
-    print("OK")
+    def test_is_match_4(self):
+        print("Test isMatch 4... ", end="")
+        self.assertTrue(self.sol.isMatch(s="aab", p="c*a*b"))
+        print("OK")
 
 
 if __name__ == "__main__":
-    test_is_match()
+    unittest.main()
