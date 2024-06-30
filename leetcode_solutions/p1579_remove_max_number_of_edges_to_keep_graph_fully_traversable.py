@@ -1,5 +1,7 @@
-class UnionFind:
+import unittest
 
+
+class UnionFind:
     def __init__(self, n):
         self.n = n
         self.parent = [i for i in range(n + 1)]
@@ -48,19 +50,47 @@ class Solution:
         return ans if alice.connected_all() and bob.connected_all() else -1
 
 
-def main():
-    sol = Solution()
-    print('2 ===',
-          sol.maxNumEdgesToRemove(n=4,
-                                  edges=[[3, 1, 2], [3, 2, 3], [1, 1, 3],
-                                         [1, 2, 4], [1, 1, 2], [2, 3, 4]]))
-    print('0 ===',
-          sol.maxNumEdgesToRemove(n=4,
-                                  edges=[[3, 1, 2], [3, 2, 3], [1, 1, 4], [2, 1, 4]]))
-    print('-1 ===',
-          sol.maxNumEdgesToRemove(n=4,
-                                  edges=[[3, 2, 3], [1, 1, 2], [2, 3, 4]]))
+class TestSolution(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.sol = Solution()
+
+    def test_max_num_edges_to_remove_1(self):
+        print("Test maxNumEdgesToRemove 1... ", end="")
+        self.assertEqual(
+            self.sol.maxNumEdgesToRemove(
+                n=4,
+                edges=[
+                    [3, 1, 2],
+                    [3, 2, 3],
+                    [1, 1, 3],
+                    [1, 2, 4],
+                    [1, 1, 2],
+                    [2, 3, 4],
+                ],
+            ),
+            2,
+        )
+        print("OK")
+
+    def test_max_num_edges_to_remove_2(self):
+        print("Test maxNumEdgesToRemove 2... ", end="")
+        self.assertEqual(
+            self.sol.maxNumEdgesToRemove(
+                n=4, edges=[[3, 1, 2], [3, 2, 3], [1, 1, 4], [2, 1, 4]]
+            ),
+            0,
+        )
+        print("OK")
+
+    def test_max_num_edges_to_remove_3(self):
+        print("Test maxNumEdgesToRemove 3... ", end="")
+        self.assertEqual(
+            self.sol.maxNumEdgesToRemove(n=4, edges=[[3, 2, 3], [1, 1, 2], [2, 3, 4]]),
+            -1,
+        )
+        print("OK")
 
 
-if __name__ == '__main__':
-    main()
+if __name__ == "__main__":
+    unittest.main()
