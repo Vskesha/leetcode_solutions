@@ -1,3 +1,4 @@
+import unittest
 from collections import deque
 from typing import List
 
@@ -37,17 +38,21 @@ class Solution2:
                 return ans
 
 
-def test_time_required_to_buy():
-    sol = Solution()
+class TestSolution(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.sol = Solution()
 
-    print("Test 1... ", end="")
-    assert sol.timeRequiredToBuy(tickets=[2, 3, 2], k=2) == 6
-    print("OK")
+    def test_time_required_to_buy_1(self):
+        print("Test timeRequiredToBuy 1... ", end="")
+        self.assertEqual(self.sol.timeRequiredToBuy(tickets=[2, 3, 2], k=2), 6)
+        print("OK")
 
-    print("Test 2... ", end="")
-    assert sol.timeRequiredToBuy(tickets=[5, 1, 1, 1], k=0) == 8
-    print("OK")
+    def test_time_required_to_buy_2(self):
+        print("Test timeRequiredToBuy 2... ", end="")
+        self.assertEqual(self.sol.timeRequiredToBuy(tickets=[5, 1, 1, 1], k=0), 8)
+        print("OK")
 
 
 if __name__ == "__main__":
-    test_time_required_to_buy()
+    unittest.main()

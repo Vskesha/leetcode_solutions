@@ -1,3 +1,4 @@
+import unittest
 from collections import deque
 from typing import List
 
@@ -14,25 +15,27 @@ class Solution:
         return deck
 
 
-def test_deck_revealed_increasing():
-    sol = Solution()
+class TestSolution(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.sol = Solution()
 
-    print("Test 1... ", end="")
-    assert sol.deckRevealedIncreasing(deck=[17, 13, 11, 2, 3, 5, 7]) == [
-        2,
-        13,
-        3,
-        11,
-        5,
-        17,
-        7,
-    ]
-    print("OK")
+    def test_deck_revealed_increasing_1(self):
+        print("Test deckRevealedIncreasing 1... ", end="")
+        self.assertEqual(
+            self.sol.deckRevealedIncreasing(deck=[17, 13, 11, 2, 3, 5, 7]),
+            [2, 13, 3, 11, 5, 17, 7],
+        )
+        print("OK")
 
-    print("Test 2... ", end="")
-    assert sol.deckRevealedIncreasing(deck=[1, 1000]) == [1, 1000]
-    print("OK")
+    def test_deck_revealed_increasing_2(self):
+        print("Test deckRevealedIncreasing 2... ", end="")
+        self.assertEqual(
+            self.sol.deckRevealedIncreasing(deck=[1, 1000]),
+            [1, 1000],
+        )
+        print("OK")
 
 
 if __name__ == "__main__":
-    test_deck_revealed_increasing()
+    unittest.main()

@@ -1,3 +1,6 @@
+import unittest
+
+
 class Solution:
     def makeGood(self, s: str) -> str:
         stack = []
@@ -24,17 +27,21 @@ class Solution2:
         return "".join(stack)
 
 
-def test_make_good():
-    sol = Solution()
+class TestSolution(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.sol = Solution()
 
-    print("Test 1... ", end="")
-    assert sol.makeGood(s="leEeetcode") == "leetcode"
-    print("OK")
+    def test_make_good_1(self):
+        print("Test makeGood 1... ", end="")
+        self.assertEqual(self.sol.makeGood(s="leEeetcode"), "leetcode")
+        print("OK")
 
-    print("Test 2... ", end="")
-    assert sol.makeGood(s="abBAcC") == ""
-    print("OK")
+    def test_make_good_2(self):
+        print("Test makeGood 2... ", end="")
+        self.assertEqual(self.sol.makeGood(s="abBAcC"), "")
+        print("OK")
 
 
 if __name__ == "__main__":
-    test_make_good()
+    unittest.main()
