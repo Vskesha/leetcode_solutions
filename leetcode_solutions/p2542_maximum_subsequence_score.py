@@ -1,9 +1,62 @@
 import bisect
 import unittest
+from heapq import heappush, heappop
 from typing import List
 
 
 class Solution:
+    def maxScore(self, nums1: List[int], nums2: List[int], k: int) -> int:
+        heap = []
+        ts = ans = 0
+
+        for n2, n1 in sorted(zip(nums2, nums1), reverse=True):
+            heappush(heap, n1)
+            ts += n1
+            if len(heap) == k:
+                ans = max(ans, ts * n2)
+                ts -= heappop(heap)
+
+        return ans
+
+
+class Solution2:
+    def maxScore(self, nums1: List[int], nums2: List[int], k: int) -> int:
+        pairs = iter(sorted(zip(nums2, nums1), reverse=True))
+        heap = []
+        ts = ans = 0
+
+        for _ in range(k - 1):
+            _, n1 = next(pairs)
+            heappush(heap, n1)
+            ts += n1
+        for n2, n1 in pairs:
+            heappush(heap, n1)
+            ts += n1
+            ans = max(ans, ts * n2)
+            ts -= heappop(heap)
+
+        return ans
+
+
+class Solution3:
+    def maxScore(self, nums1: List[int], nums2: List[int], k: int) -> int:
+        pairs = sorted(zip(nums2, nums1), reverse=True)
+        heap = []
+        ts = ans = 0
+
+        for _, n1 in pairs[: k - 1]:
+            heappush(heap, n1)
+            ts += n1
+        for n2, n1 in pairs[k - 1 :]:
+            heappush(heap, n1)
+            ts += n1
+            ans = max(ans, ts * n2)
+            ts -= heappop(heap)
+
+        return ans
+
+
+class Solution4:
     def maxScore(self, nums1: List[int], nums2: List[int], k: int) -> int:
         pairs = [(n1, n2) for n1, n2 in zip(nums1, nums2)]
         pairs.sort(key=lambda x: x[1], reverse=True)
