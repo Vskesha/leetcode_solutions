@@ -1,3 +1,4 @@
+import unittest
 from functools import lru_cache
 from math import comb
 
@@ -40,17 +41,21 @@ class Solution3:
         return dp[-1][-1]
 
 
-def test():
-    sol = Solution()
+class TestSolution(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.sol = Solution()
 
-    print('Test 1 ... ', end='')
-    assert sol.uniquePaths(m=3, n=7) == 28
-    print('OK')
+    def test_unique_paths_1(self):
+        print("Test uniquePaths 1... ", end="")
+        self.assertEqual(self.sol.uniquePaths(m=3, n=7), 28)
+        print("OK")
 
-    print('Test 2 ... ', end='')
-    assert sol.uniquePaths(m=3, n=2) == 3
-    print('ok')
+    def test_unique_paths_2(self):
+        print("Test uniquePaths 2... ", end="")
+        self.assertEqual(self.sol.uniquePaths(m=3, n=2), 3)
+        print("OK")
 
 
-if __name__ == '__main__':
-    test()
+if __name__ == "__main__":
+    unittest.main()
