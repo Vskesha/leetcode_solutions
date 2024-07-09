@@ -1,3 +1,4 @@
+import unittest
 from collections import deque
 from functools import wraps
 from typing import List, Optional
@@ -11,42 +12,6 @@ class TreeNode:
         self.right = right
 
 
-def sol_decorator(cls):
-    @wraps(cls, updated=())
-    class Wrapper:
-
-        def __init__(self, *args, **kwargs):
-            self.original = cls(*args, **kwargs)
-
-        def isSymmetric(self, root: Optional[list]) -> bool:
-            root = self.list2tree(root)
-            return self.original.isSymmetric(root)
-
-        def list2tree(self, arr: Optional[List[int]]) -> Optional[TreeNode]:
-            if not arr:
-                return None
-
-            vals = iter(arr)
-            root = TreeNode(next(vals))
-            q = deque([root])
-
-            while q:
-                node = q.popleft()
-                val = next(vals, None)
-                if val:
-                    node.left = TreeNode(val)
-                    q.append(node.left)
-                val = next(vals, None)
-                if val:
-                    node.right = TreeNode(val)
-                    q.append(node.right)
-
-            return root
-
-    return Wrapper
-
-
-@sol_decorator
 class Solution:
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
 
@@ -60,7 +25,6 @@ class Solution:
         return dfs(root.left, root.right)
     
 
-@sol_decorator
 class Solution2:
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
 
@@ -74,18 +38,43 @@ class Solution2:
         return dfs(root.left, root.right)
 
 
-def test():
-    null = None
-    sol = Solution()
+class TestSolution(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.sol = Solution()
 
-    print('Test 1... ', end='')
-    assert sol.isSymmetric(root=[1, 2, 2, 3, 4, 4, 3]) is True
-    print('OK')
+    def list_to_tree(self, arr: List[int]) -> Optional[TreeNode]:
+        if not arr:
+            return None
 
-    print('Test 2... ', end='')
-    assert sol.isSymmetric(root=[1, 2, 2, null, 3, null, 3]) is False
-    print('OK')
+        vals = iter(arr)
+        root = TreeNode(next(vals))
+        q = deque([root])
+
+        while q:
+            node = q.popleft()
+            val = next(vals, None)
+            if val is not None:
+                node.left = TreeNode(val)
+                q.append(node.left)
+            val = next(vals, None)
+            if val is not None:
+                node.right = TreeNode(val)
+                q.append(node.right)
+
+        return root
+
+    def test_is_symmetric_1(self):
+        print("Test isSymmetric 1... ", end="")
+        self.assertTrue(self.sol.isSymmetric(self.list_to_tree([1, 2, 2, 3, 4, 4, 3])))
+        print("OK")
+
+    def test_is_symmetric_2(self):
+        print("Test isSymmetric 2... ", end="")
+        null = None
+        self.assertFalse(self.sol.isSymmetric(self.list_to_tree([1, 2, 2, null, 3, null, 3])))
+        print("OK")
 
 
 if __name__ == '__main__':
-    test()
+    unittest.main()
