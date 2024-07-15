@@ -1,3 +1,4 @@
+import unittest
 from typing import List
 
 
@@ -28,23 +29,64 @@ class Solution2:
         return k
 
 
-def test_remove_element():
-    sol = Solution()
+class Solution3:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        if not nums:
+            return 0
+        left = 0
+        right = len(nums) - 1
+        while left <= right:
+            if nums[left] != val:
+                left += 1
+            elif nums[right] == val:
+                right -= 1
+            else:
+                nums[left] = nums[right]
+                right -= 1
+        return left
 
-    print("Test 1... ", end="")
-    nums = [3, 2, 2, 3]
-    assert sol.removeElement(nums=nums, val=3) == 2
-    nums_v = [2, 2]
-    assert set(nums_v) == set(nums[: len(nums_v)])
-    print("OK")
 
-    print("Test 2... ", end="")
-    nums = [0, 1, 2, 2, 3, 0, 4, 2]
-    assert sol.removeElement(nums=nums, val=2) == 5
-    nums_v = [0, 1, 4, 0, 3]
-    assert set(nums_v) == set(nums[: len(nums_v)])
-    print("OK")
+class Solution4:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        if not nums:
+            return 0
+        left = 0
+        right = len(nums) - 1
+        while left <= right:
+            if nums[left] == val:
+                nums[left] = nums[right]
+                right -= 1
+            else:
+                left += 1
+        return left
+
+
+class TestSolution(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.sol = Solution()
+
+    def assertEqualListBeginning(self, beginning: List[int], nums: List[int]):
+        self.assertSetEqual(set(beginning), set(nums[: len(beginning)]))
+
+    def test_remove_element_1(self):
+        print("Test removeElement 1... ", end="")
+        nums = [3, 2, 2, 3]
+        val = 3
+        expected = [2, 2]
+        self.assertEqual(len(expected), self.sol.removeElement(nums, val))
+        self.assertEqualListBeginning(expected, nums)
+        print("OK")
+
+    def test_remove_element_2(self):
+        print("Test removeElement 2... ", end="")
+        nums = [0, 1, 2, 2, 3, 0, 4, 2]
+        val = 2
+        expected = [0, 1, 4, 0, 3]
+        self.assertEqual(len(expected), self.sol.removeElement(nums, val))
+        self.assertEqualListBeginning(expected, nums)
+        print("OK")
 
 
 if __name__ == "__main__":
-    test_remove_element()
+    unittest.main()
