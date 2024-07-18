@@ -1,3 +1,4 @@
+import unittest
 from typing import List
 
 
@@ -24,14 +25,21 @@ class Solution:
         return dp[k][1]
 
 
-def test():
-    sol = Solution()
-    print('Test 1 ... ', end='')
-    assert sol.maxProfit(k=2, prices=[2, 4, 1]) == 2
-    print('ok\nTest 2 ... ', end='')
-    assert sol.maxProfit(k=2, prices=[3, 2, 6, 5, 0, 3]) == 7
-    print('ok')
+class TestSolution(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.sol = Solution()
+
+    def test_maxProfit_1(self):
+        print('Test maxProfit 1... ', end='')
+        self.assertEqual(2, self.sol.maxProfit(k=2, prices=[2, 4, 1]))
+        print('OK')
+
+    def test_maxProfit_2(self):
+        print('Test maxProfit 2... ', end='')
+        self.assertEqual(7, self.sol.maxProfit(k=2, prices=[3, 2, 6, 5, 0, 3]))
+        print('OK')
 
 
 if __name__ == '__main__':
-    test()
+    unittest.main()
