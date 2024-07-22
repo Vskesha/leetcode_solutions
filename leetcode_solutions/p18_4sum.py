@@ -30,6 +30,37 @@ class Solution:
         return result
 
 
+class Solution2:
+    def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
+        nums.sort()
+        ln = len(nums)
+        quads = []
+
+        for i in range(ln - 3):
+            if i > 0 and nums[i] == nums[i - 1]:
+                continue
+            for j in range(i + 1, ln - 2):
+                if j > i + 1 and nums[j] == nums[j - 1]:
+                    continue
+                nt = target - nums[i] - nums[j]
+                l, r = j + 1, ln - 1
+                while l < r:
+                    sm = nums[l] + nums[r]
+                    if sm == nt:
+                        quads.append([nums[i], nums[j], nums[l], nums[r]])
+                        l += 1
+                        while l < r and nums[l] == nums[l - 1]:
+                            l += 1
+                        r -= 1
+                        while l < r and nums[r] == nums[r + 1]:
+                            r -= 1
+                    elif sm > nt:
+                        r -= 1
+                    else:
+                        l += 1
+        return quads
+
+
 class TestSolution(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:

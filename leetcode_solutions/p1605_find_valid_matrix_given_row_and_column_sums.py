@@ -1,7 +1,41 @@
+import unittest
 from typing import List
 
 
 class Solution:
+    def restoreMatrix(self, rowSum: List[int], colSum: List[int]) -> List[List[int]]:
+        m, n = len(rowSum), len(colSum)
+        grid = [[0] * n for _ in range(m)]
+        r = c = 0
+
+        while r < m and c < n:
+            if rowSum[r] > colSum[c]:
+                grid[r][c] = colSum[c]
+                rowSum[r] -= colSum[c]
+                c += 1
+            else:
+                grid[r][c] = rowSum[r]
+                colSum[c] -= rowSum[r]
+                r += 1
+
+        return grid
+
+
+class Solution1:
+    def restoreMatrix(self, rowSum: List[int], colSum: List[int]) -> List[List[int]]:
+        m, n = len(rowSum), len(colSum)
+        grid = [[0] * n for _ in range(m)]
+
+        for r in range(m):
+            for c in range(n):
+                grid[r][c] = min(rowSum[r], colSum[c])
+                rowSum[r] -= grid[r][c]
+                colSum[c] -= grid[r][c]
+
+        return grid
+
+
+class Solution2:
     def restoreMatrix(self, rowSum: List[int], colSum: List[int]) -> List[List[int]]:
         m = len(colSum)
         n = len(rowSum)
@@ -20,20 +54,38 @@ class Solution:
         return mat
 
 
-def test():
-    sol = Solution()
+class TestSolution(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.sol = Solution()
 
-    print('Test 1... ', end='')
-    for a, b in zip(sol.restoreMatrix(rowSum=[3, 8], colSum=[4, 7]), [[3, 0], [1, 7]]):
-        assert a == b
-    print('OK')
+    def assertRowColumnSumEqual(
+        self,
+        matrix: List[List[int]],
+        rowSum: List[int],
+        colSum: List[int],
+    ):
+        self.assertListEqual(rowSum, [sum(row) for row in matrix])
+        self.assertListEqual(colSum, [sum(col) for col in zip(*matrix)])
 
-    print('Test 2... ', end='')
-    # print(sol.restoreMatrix(rowSum=[5, 7, 10], colSum=[8, 6, 8]))
-    for a, b in zip(sol.restoreMatrix(rowSum=[5, 7, 10], colSum=[8, 6, 8]), [[5, 0, 0], [3, 4, 0], [0, 2, 8]]):
-        assert a == b
-    print('OK')
+    def test_restoreMatrix_1(self):
+        print("Test restoreMatrix 1... ", end="")
+        rowSum = [3, 8]
+        colSum = [4, 7]
+        rowSumCopy, colSumCopy = rowSum.copy(), colSum.copy()
+        matrix = self.sol.restoreMatrix(rowSum, colSum)
+        self.assertRowColumnSumEqual(matrix, rowSumCopy, colSumCopy)
+        print("OK")
+
+    def test_restoreMatrix_2(self):
+        print("Test restoreMatrix 2... ", end="")
+        rowSum = [5, 7, 10]
+        colSum = [8, 6, 8]
+        rowSumCopy, colSumCopy = rowSum.copy(), colSum.copy()
+        matrix = self.sol.restoreMatrix(rowSum, colSum)
+        self.assertRowColumnSumEqual(matrix, rowSumCopy, colSumCopy)
+        print("OK")
 
 
-if __name__ == '__main__':
-    test()
+if __name__ == "__main__":
+    unittest.main()

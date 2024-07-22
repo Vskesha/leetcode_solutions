@@ -1,3 +1,4 @@
+import unittest
 from typing import List
 
 
@@ -28,30 +29,51 @@ class Solution2:
         return ans
 
 
-def test():
-    sol = Solution()
+class Solution3:
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        stack = []
+        lt = len(temperatures)
+        ans = [0] * lt
 
-    print("Test 1... ", end="")
-    assert sol.dailyTemperatures(temperatures=[73, 74, 75, 71, 69, 72, 76, 73]) == [
-        1,
-        1,
-        4,
-        2,
-        1,
-        1,
-        0,
-        0,
-    ]
-    print("OK")
+        for i in range(lt - 1, -1, -1):
+            while stack and temperatures[stack[-1]] <= temperatures[i]:
+                stack.pop()
+            if stack:
+                ans[i] = stack[-1] - i
+            stack.append(i)
 
-    print("Test 2... ", end="")
-    assert sol.dailyTemperatures(temperatures=[30, 40, 50, 60])
-    print("OK")
+        return ans
 
-    print("Test 3... ", end="")
-    assert sol.dailyTemperatures(temperatures=[30, 60, 90]) == [1, 1, 0]
-    print("OK")
+
+class TestSolution(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.sol = Solution()
+
+    def test_dailyTemperatures_1(self):
+        print("Test dailyTemperatures 1... ", end="")
+        self.assertListEqual(
+            [1, 1, 4, 2, 1, 1, 0, 0],
+            self.sol.dailyTemperatures(temperatures=[73, 74, 75, 71, 69, 72, 76, 73]),
+        )
+        print("OK")
+
+    def test_dailyTemperatures_2(self):
+        print("Test dailyTemperatures 2... ", end="")
+        self.assertListEqual(
+            [1, 1, 1, 0],
+            self.sol.dailyTemperatures(temperatures=[30, 40, 50, 60]),
+        )
+        print("OK")
+
+    def test_dailyTemperatures_3(self):
+        print("Test dailyTemperatures 3... ", end="")
+        self.assertListEqual(
+            [1, 1, 0],
+            self.sol.dailyTemperatures(temperatures=[30, 60, 90]),
+        )
+        print("OK")
 
 
 if __name__ == "__main__":
-    test()
+    unittest.main()

@@ -1,4 +1,24 @@
+import unittest
+
+
 class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        ls = len(s)
+        ans = ""
+
+        for i in range(ls):
+            for r in range(i, i + 2):
+                l = i
+                while l >= 0 and r < ls and s[l] == s[r]:
+                    l -= 1
+                    r += 1
+                if r - l - 1 > len(ans):
+                    ans = s[l + 1 : r]
+
+        return ans
+
+
+class Solution2:
     def longestPalindrome(self, s: str) -> str:
         ls = len(s)
         max_len = 0
@@ -17,17 +37,21 @@ class Solution:
         return s[start:stop]
 
 
-def test():
-    sol = Solution()
+class TestSolution(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.sol = Solution()
 
-    print('Test 1 ... ', end='')
-    assert sol.longestPalindrome(s="babad") == 'bab'
-    print('ok')
+    def test_longestPalindrome_1(self):
+        print("Test longestPalindrome 1 ... ", end="")
+        self.assertEqual("bab", self.sol.longestPalindrome(s="babad"))
+        print("OK")
 
-    print('Test 2 ... ', end='')
-    assert sol.longestPalindrome(s="cbbd") == 'bb'
-    print('ok')
+    def test_longestPalindrome_2(self):
+        print("Test longestPalindrome 2 ... ", end="")
+        self.assertEqual("bb", self.sol.longestPalindrome(s="cbbd"))
+        print("OK")
 
 
-if __name__ == '__main__':
-    test()
+if __name__ == "__main__":
+    unittest.main()
