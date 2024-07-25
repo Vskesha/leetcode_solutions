@@ -1,3 +1,4 @@
+import unittest
 from functools import lru_cache
 from itertools import pairwise
 from typing import List
@@ -46,17 +47,51 @@ class Solution:
         return ans
 
 
+class Solution0:
+    def wordBreak(self, s: str, wordDict: List[str]) -> List[str]:
+        def insert(word):
+            curr = trie
+            for ch in word:
+                if ch not in curr:
+                    curr[ch] = {}
+                curr = curr[ch]
+            curr["*"] = True
+
+        trie = {}
+        for word in wordDict:
+            insert(word)
+        self.combs = []
+        ls = len(s)
+
+        def dfs(i, comb):
+            if i == ls:
+                self.combs.append(" ".join(comb))
+            curr = trie
+            for j in range(i, ls):
+                ch = s[j]
+                if ch not in curr:
+                    break
+                curr = curr[ch]
+                if "*" in curr:
+                    word = s[i : j + 1]
+                    comb.append(word)
+                    dfs(j + 1, comb)
+                    comb.pop()
+
+        dfs(0, [])
+        return self.combs
+
+
 class Solution1:
     def wordBreak(self, s: str, wordDict: List[str]) -> List[str]:
-
         def dp(st, words, ans):
             if st == len(s):
-                ans.append(' '.join(words))
+                ans.append(" ".join(words))
                 return
 
             for word in wordDict:
                 l = len(word)
-                if word == s[st:st + l]:
+                if word == s[st : st + l]:
                     words.append(word)
                     dp(st + l, words, ans)
                     words.pop()
@@ -87,29 +122,46 @@ class Solution2:
         return res
 
 
-def test():
-    sol = Solution()
+class TestSolution(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.sol = Solution()
 
-    print('Test 1... ', end='')
-    assert sorted(sol.wordBreak(
-        s="catsanddog",
-        wordDict=["cat", "cats", "and", "sand", "dog"]
-    )) == sorted(["cats and dog", "cat sand dog"])
-    print('OK')
+    def assertSameStrings(self, strs1: List[str], strs2: List[str]):
+        self.assertEqual(len(strs1), len(strs2))
+        self.assertSetEqual(set(strs1), set(strs2))
 
-    print('Test 2... ', end='')
-    assert sorted(sol.wordBreak(
-        s="pineapplepenapple",
-        wordDict=["apple", "pen", "applepen", "pine", "pineapple"]
-    )) == sorted(["pine apple pen apple", "pineapple pen apple", "pine applepen apple"])
-    print('OK')
+    def test_wordBreak_1(self):
+        print("Test wordBreak 1... ", end="")
+        self.assertSameStrings(
+            ["cats and dog", "cat sand dog"],
+            self.sol.wordBreak(
+                s="catsanddog", wordDict=["cat", "cats", "and", "sand", "dog"]
+            ),
+        )
+        print("OK")
 
-    print('Test 3... ', end='')
-    assert sorted(sol.wordBreak(
-        s="catsandog", wordDict=["cats", "dog", "sand", "and", "cat"]
-    )) == sorted([])
-    print('OK')
+    def test_wordBreak_2(self):
+        print("Test wordBreak 2... ", end="")
+        self.assertSameStrings(
+            ["pine apple pen apple", "pineapple pen apple", "pine applepen apple"],
+            self.sol.wordBreak(
+                s="pineapplepenapple",
+                wordDict=["apple", "pen", "applepen", "pine", "pineapple"],
+            ),
+        )
+        print("OK")
+
+    def test_wordBreak_3(self):
+        print("Test wordBreak 3... ", end="")
+        self.assertSameStrings(
+            [],
+            self.sol.wordBreak(
+                s="catsandog", wordDict=["cats", "dog", "sand", "and", "cat"]
+            ),
+        )
+        print("OK")
 
 
-if __name__ == '__main__':
-    test()
+if __name__ == "__main__":
+    unittest.main()

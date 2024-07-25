@@ -1,10 +1,10 @@
+import unittest
 from functools import lru_cache, cache
 from typing import List
 
 
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
-
         @lru_cache(None)
         def dp(st) -> bool:
             if st == len(s):
@@ -12,7 +12,7 @@ class Solution:
 
             for word in wordDict:
                 l = len(word)
-                if word == s[st:st + l] and dp(st + l):
+                if word == s[st : st + l] and dp(st + l):
                     return True
 
             return False
@@ -22,7 +22,6 @@ class Solution:
 
 class Solution2:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
-
         @cache
         def wb(i):
             if i == ls:
@@ -42,21 +41,32 @@ class Solution2:
         return wb(0)
 
 
-def test():
-    sol = Solution()
+class TestSolution(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.sol = Solution()
 
-    print('Test 1... ', end='')
-    assert sol.wordBreak(s="leetcode", wordDict=["leet", "code"]) is True
-    print('OK')
+    def test_wordBreak_1(self):
+        print("Test wordBreak 1... ", end="")
+        self.assertTrue(self.sol.wordBreak(s="leetcode", wordDict=["leet", "code"]))
+        print("OK")
 
-    print('Test 2... ', end='')
-    assert sol.wordBreak(s="applepenapple", wordDict=["apple", "pen"]) is True
-    print('OK')
+    def test_wordBreak_2(self):
+        print("Test wordBreak 2... ", end="")
+        self.assertTrue(
+            self.sol.wordBreak(s="applepenapple", wordDict=["apple", "pen"])
+        )
+        print("OK")
 
-    print('Test 3... ', end='')
-    assert sol.wordBreak(s="catsandog", wordDict=["cats", "dog", "sand", "and", "cat"]) is False
-    print('OK')
+    def test_wordBreak_3(self):
+        print("Test wordBreak 3... ", end="")
+        self.assertFalse(
+            self.sol.wordBreak(
+                s="catsandog", wordDict=["cats", "dog", "sand", "and", "cat"]
+            )
+        )
+        print("OK")
 
 
-if __name__ == '__main__':
-    test()
+if __name__ == "__main__":
+    unittest.main()
