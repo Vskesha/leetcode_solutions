@@ -9,6 +9,9 @@ class TreeNode:
         self.left = left
         self.right = right
 
+    def __repr__(self):
+        return f"TreeNode({self.val})"
+
 
 class TreeCreator:
     def get_text_for_graph_editor(self, root: TreeNode) -> str:
