@@ -1,3 +1,4 @@
+import unittest
 from collections import Counter
 from typing import List
 
@@ -33,20 +34,26 @@ class Solution3:
         return sum(q * (q - 1) for q in Counter(nums).values()) // 2
 
 
-def test_num_identical_pairs():
-    sol = Solution()
-    print("Test 1 ... ", end="")
-    assert sol.numIdenticalPairs(nums=[1, 2, 3, 1, 1, 3]) == 4
-    print("OK")
+class TestSolution(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.sol = Solution()
 
-    print("Test 2 ... ", end="")
-    assert sol.numIdenticalPairs(nums=[1, 1, 1, 1]) == 6
-    print("OK")
+    def test_numIdenticalPairs_1(self):
+        print("Test numIdenticalPairs 1... ", end="")
+        self.assertEqual(4, self.sol.numIdenticalPairs(nums=[1, 2, 3, 1, 1, 3]))
+        print("OK")
 
-    print("Test 3 ... ", end="")
-    assert sol.numIdenticalPairs(nums=[1, 2, 3]) == 0
-    print("OK")
+    def test_numIdenticalPairs_2(self):
+        print("Test numIdenticalPairs 2... ", end="")
+        self.assertEqual(6, self.sol.numIdenticalPairs(nums=[1, 1, 1, 1]))
+        print("OK")
+
+    def test_numIdenticalPairs_3(self):
+        print("Test numIdenticalPairs 3... ", end="")
+        self.assertEqual(0, self.sol.numIdenticalPairs(nums=[1, 2, 3]))
+        print("OK")
 
 
 if __name__ == "__main__":
-    test_num_identical_pairs()
+    unittest.main()

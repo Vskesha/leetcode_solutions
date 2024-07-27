@@ -1,3 +1,4 @@
+import unittest
 from collections import deque
 from string import ascii_uppercase
 
@@ -44,21 +45,26 @@ class Solution2:
         return ans
 
 
-def test_unique_letter_string():
-    sol = Solution()
+class TestSolution(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.sol = Solution()
 
-    print("Test 1... ", end="")
-    assert sol.uniqueLetterString(s="ABC") == 10
-    print("OK")
+    def test_unique_letter_string_1(self):
+        print("Test uniqueLetterString 1... ", end="")
+        self.assertEqual(10, self.sol.uniqueLetterString(s="ABC"))
+        print("OK")
 
-    print("Test 2... ", end="")
-    assert sol.uniqueLetterString(s="ABA") == 8
-    print("OK")
+    def test_unique_letter_string_2(self):
+        print("Test uniqueLetterString 2... ", end="")
+        self.assertEqual(8, self.sol.uniqueLetterString(s="ABA"))
+        print("OK")
 
-    print("Test 3... ", end="")
-    assert sol.uniqueLetterString(s="LEETCODE") == 92
-    print("OK")
+    def test_unique_letter_string_3(self):
+        print("Test uniqueLetterString 3... ", end="")
+        self.assertEqual(92, self.sol.uniqueLetterString(s="LEETCODE"))
+        print("OK")
 
 
 if __name__ == "__main__":
-    test_unique_letter_string()
+    unittest.main()
