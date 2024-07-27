@@ -1,7 +1,25 @@
+import unittest
 from typing import List
 
 
 class Solution:
+    def partitionLabels(self, s: str) -> List[int]:
+        last_occurence = {c: i for i, c in enumerate(s)}
+
+        result = []
+        st = 0
+        end = last_occurence[s[0]]
+        for i, c in enumerate(s):
+            if i > end:
+                result.append(i - st)
+                st = i
+            end = max(end, last_occurence[c])
+        result.append(len(s) - st)
+
+        return result
+
+
+class Solution1:
     def partitionLabels(self, s: str) -> List[int]:
         last_occ = {ch: i for i, ch in enumerate(s)}
         lo, prev = 0, -1
@@ -14,7 +32,7 @@ class Solution:
         return ans
 
 
-class Solution1:
+class Solution2:
     def partitionLabels(self, s: str) -> List[int]:
         start, end = 0, 0
         i = 0
@@ -29,7 +47,7 @@ class Solution1:
         return ans
 
 
-class Solution2:
+class Solution3:
     def partitionLabels(self, s: str) -> List[int]:
         last_occ = {}
         for i, ch in enumerate(s):
@@ -47,17 +65,23 @@ class Solution2:
         return ans
 
 
-def test():
-    sol = Solution()
+class TestSolution(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.sol = Solution()
 
-    print('Test 1 ... ', end='')
-    assert sol.partitionLabels(s="ababcbacadefegdehijhklij") == [9, 7, 8]
-    print('ok')
+    def test_partitionLabels_1(self):
+        print("Test partitionLabels 1... ", end="")
+        self.assertListEqual(
+            [9, 7, 8], self.sol.partitionLabels(s="ababcbacadefegdehijhklij")
+        )
+        print("OK")
 
-    print('Test 2 ... ', end='')
-    assert sol.partitionLabels(s="eccbbbbdec") == [10]
-    print('ok')
+    def test_partitionLabels_2(self):
+        print("Test partitionLabels 2... ", end="")
+        self.assertListEqual([10], self.sol.partitionLabels(s="eccbbbbdec"))
+        print("OK")
 
 
-if __name__ == '__main__':
-    test()
+if __name__ == "__main__":
+    unittest.main()

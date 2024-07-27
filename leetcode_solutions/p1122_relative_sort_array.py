@@ -24,6 +24,17 @@ class Solution2:
         return ans
 
 
+class Solution3:
+    def relativeSortArray(self, arr1: List[int], arr2: List[int]) -> List[int]:
+        cnt = Counter(arr1)
+        ans = []
+        for n in arr2:
+            ans.extend([n] * cnt[n])
+            del cnt[n]
+        ans.extend(sorted(cnt.elements()))
+        return ans
+
+
 class TestSolution(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:

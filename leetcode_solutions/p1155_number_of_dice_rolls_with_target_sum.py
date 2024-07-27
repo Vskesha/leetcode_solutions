@@ -1,7 +1,28 @@
+import unittest
 from functools import lru_cache, cache
 
 
 class Solution:
+    def numRollsToTarget(self, n: int, k: int, target: int) -> int:
+        mod = 10**9 + 7
+
+        @cache
+        def dp(n, k, target):
+            if n > target or n * k < target:
+                return 0
+            if n == target or n * k == target:
+                return 1
+            if n == 1:
+                return 0 if target > k else 1
+            ans = 0
+            for ck in range(1, k + 1):
+                ans = (ans + dp(n - 1, k, target - ck)) % mod
+            return ans
+
+        return dp(n, k, target)
+
+
+class Solution0:
     def numRollsToTarget(self, n: int, k: int, target: int) -> int:
         mod = 1_000_000_007
 
@@ -56,21 +77,26 @@ class Solution2:
         return dp(n, target)
 
 
-def main():
-    sol = Solution()
+class TestSolution(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.sol = Solution()
 
-    print("Test 1 ... ", end="")
-    assert sol.numRollsToTarget(n=1, k=6, target=3) == 1
-    print("OK")
+    def test_numRollsToTarget_1(self):
+        print("Test numRollsToTarget 1 ... ", end="")
+        self.assertEqual(1, self.sol.numRollsToTarget(n=1, k=6, target=3))
+        print("OK")
 
-    print("Test 2 ... ", end="")
-    assert sol.numRollsToTarget(n=2, k=6, target=7) == 6
-    print("OK")
+    def test_numRollsToTarget_2(self):
+        print("Test numRollsToTarget 2 ... ", end="")
+        self.assertEqual(6, self.sol.numRollsToTarget(n=2, k=6, target=7))
+        print("OK")
 
-    print("Test 3 ... ", end="")
-    assert sol.numRollsToTarget(n=30, k=30, target=500) == 222616187
-    print("OK")
+    def test_numRollsToTarget_3(self):
+        print("Test numRollsToTarget 3 ... ", end="")
+        self.assertEqual(222616187, self.sol.numRollsToTarget(n=30, k=30, target=500))
+        print("OK")
 
 
 if __name__ == "__main__":
-    main()
+    unittest.main()
