@@ -1,7 +1,14 @@
+import unittest
 from bisect import bisect_left
+from typing import List
 
 
 class Solution:
+    def search(self, nums: List[int], target: int) -> bool:
+        return True if target in nums else False
+
+
+class Solution1:
     def search(self, nums: list[int], target: int) -> bool:
         ln = len(nums)
         left, right = 0, ln - 1
@@ -55,12 +62,26 @@ class Solution2:
         return nums[idx] == target
 
 
-def main():
-    sol = Solution()
-    print('True ===', sol.search(nums=[2, 5, 6, 0, 0, 1, 2], target=0))
-    print('False ===', sol.search(nums=[2, 5, 6, 0, 0, 1, 2], target=3))
-    print('False ===', sol.search(nums=[1, 1], target=0))
+class TestSolution(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.sol = Solution()
+
+    def test_search_1(self):
+        print("Test search 1... ", end="")
+        self.assertTrue(self.sol.search(nums=[2, 5, 6, 0, 0, 1, 2], target=0))
+        print("OK")
+
+    def test_search_2(self):
+        print("Test search 2... ", end="")
+        self.assertFalse(self.sol.search(nums=[2, 5, 6, 0, 0, 1, 2], target=3))
+        print("OK")
+
+    def test_search_3(self):
+        print("Test search 3... ", end="")
+        self.assertFalse(self.sol.search(nums=[1, 1], target=0))
+        print("OK")
 
 
-if __name__ == '__main__':
-    main()
+if __name__ == "__main__":
+    unittest.main()
