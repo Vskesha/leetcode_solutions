@@ -1,5 +1,8 @@
+import unittest
 from collections import Counter
 from functools import cache, lru_cache
+
+from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
@@ -76,21 +79,20 @@ class Solution2:
         return dp(0, 0)
 
 
-def main():
-    sol = Solution()
-
-    print('Test 1 ... ', end='')
-    assert sol.isInterleave(s1="aabcc", s2="dbbca", s3="aadbbcbcac") is True
-    print('ok')
-
-    print('Test 2 ... ', end='')
-    assert sol.isInterleave(s1="aabcc", s2="dbbca", s3="aadbbbaccc") is False
-    print('ok')
-
-    print('Test 3 ... ', end='')
-    assert sol.isInterleave(s1="", s2="", s3="")
-    print('ok')
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
+    test_cases = [
+        {
+            "class": Solution,
+            "class_methods": ["isInterleave"] * 3,
+            "kwargs": [
+                dict(s1="aabcc", s2="dbbca", s3="aadbbcbcac"),
+                dict(s1="aabcc", s2="dbbca", s3="aadbbbaccc"),
+                dict(s1="", s2="", s3=""),
+            ],
+            "expected": [True, False, True],
+        },
+    ]
 
 
 if __name__ == '__main__':
-    main()
+    unittest.main()

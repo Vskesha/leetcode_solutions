@@ -2,6 +2,8 @@ import unittest
 from collections import defaultdict
 from typing import List
 
+from leetcode_solutions._test_meta import TestMeta
+
 
 class Solution:
     def criticalConnections(
@@ -77,32 +79,24 @@ class Solution2:
         return criticalConnections
 
 
-class TestSolution(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls) -> None:
-        cls.sol = Solution()
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
+    test_cases = [
+        {
+            "class": Solution,
+            "class_methods": ["criticalConnections"] * 2,
+            "kwargs": [
+                dict(n=4, connections=[[0, 1], [1, 2], [2, 0], [1, 3]]),
+                dict(n=2, connections=[[0, 1]]),
+            ],
+            "expected": [[[1, 3]], [[0, 1]]],
+            "assert_methods": ["assertSameConnections"] * 2,
+        },
+    ]
 
     def assertSameConnections(self, actual, expected):
         actual_set = set(tuple(sorted(conn)) for conn in actual)
         expected_set = set(tuple(sorted(conn)) for conn in expected)
         self.assertSetEqual(actual_set, expected_set)
-
-    def test_critical_connections_1(self):
-        print("Test criticalConnections 1... ", end="")
-        self.assertSameConnections(
-            self.sol.criticalConnections(
-                n=4, connections=[[0, 1], [1, 2], [2, 0], [1, 3]]
-            ),
-            [[1, 3]],
-        )
-        print("OK")
-
-    def test_critical_connections_2(self):
-        print("Test criticalConnections 2... ", end="")
-        self.assertSameConnections(
-            self.sol.criticalConnections(n=2, connections=[[0, 1]]), [[0, 1]]
-        )
-        print("OK")
 
 
 if __name__ == "__main__":

@@ -1,5 +1,8 @@
+import unittest
 from collections import deque
 from typing import Optional, List
+
+from leetcode_solutions._test_meta import TestMeta
 
 
 # Definition for a binary tree node.
@@ -10,42 +13,6 @@ class TreeNode:
         self.right = right
 
 
-class Decorator:
-    def __init__(self, original):
-        self.original = original
-
-    def __call__(self, *args, **kwargs):
-        instance = self.original(*args, **kwargs)
-        self.originalSmallestFromLeaf = instance.smallestFromLeaf
-        instance.smallestFromLeaf = self.smallestFromLeaf
-        return instance
-
-    def smallestFromLeaf(self, root: Optional[List]) -> str:
-        root = self.list_to_tree(root)
-        return self.originalSmallestFromLeaf(root)
-
-    def list_to_tree(self, arr: Optional[List]) -> TreeNode:
-        if not arr:
-            return None
-
-        vals = iter(arr)
-        root = TreeNode(next(vals))
-        q = deque([root])
-        while q:
-            node = q.popleft()
-            val = next(vals, None)
-            if val is not None:
-                node.left = TreeNode(val)
-                q.append(node.left)
-            val = next(vals, None)
-            if val is not None:
-                node.right = TreeNode(val)
-                q.append(node.right)
-
-        return root
-
-
-@Decorator
 class Solution:
     def smallestFromLeaf(self, root: Optional[TreeNode]) -> str:
         def dfs(node, suffix):
@@ -71,22 +38,42 @@ class Solution:
         return dfs(root, "")
 
 
-def test_smallest_from_leaf():
-    sol = Solution()
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
+    @staticmethod
+    def list_to_tree(arr: Optional[List]) -> TreeNode:
+        if not arr:
+            return None
+
+        vals = iter(arr)
+        root = TreeNode(next(vals))
+        q = deque([root])
+        while q:
+            node = q.popleft()
+            val = next(vals, None)
+            if val is not None:
+                node.left = TreeNode(val)
+                q.append(node.left)
+            val = next(vals, None)
+            if val is not None:
+                node.right = TreeNode(val)
+                q.append(node.right)
+
+        return root
+
     null = None
-
-    print("Test 1... ", end="")
-    assert sol.smallestFromLeaf(root=[0, 1, 2, 3, 4, 3, 4]) == "dba"
-    print("OK")
-
-    print("Test 2... ", end="")
-    assert sol.smallestFromLeaf(root=[25, 1, 3, 1, 3, 0, 2]) == "adz"
-    print("OK")
-
-    print("Test 3... ", end="")
-    assert sol.smallestFromLeaf(root=[2, 2, 1, null, 1, 0, null, 0]) == "abc"
-    print("OK")
+    test_cases = [
+        {
+            "class": Solution,
+            "class_methods": ["smallestFromLeaf"] * 3,
+            "kwargs": [
+                dict(root=list_to_tree([0, 1, 2, 3, 4, 3, 4])),
+                dict(root=list_to_tree([25, 1, 3, 1, 3, 0, 2])),
+                dict(root=list_to_tree([2, 2, 1, null, 1, 0, null, 0])),
+            ],
+            "expected": ["dba", "adz", "abc"],
+        },
+    ]
 
 
 if __name__ == "__main__":
-    test_smallest_from_leaf()
+    unittest.main()

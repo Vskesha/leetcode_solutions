@@ -1,4 +1,7 @@
+import unittest
 from collections import Counter
+
+from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
@@ -10,21 +13,20 @@ class Solution:
         )
 
 
-def test():
-    sol = Solution()
-
-    print("Test 1... ", end="")
-    assert sol.closeStrings(word1="abc", word2="bca") is True
-    print("OK")
-
-    print("Test 2... ", end="")
-    assert sol.closeStrings(word1="a", word2="aa") is False
-    print("OK")
-
-    print("Test 3... ", end="")
-    assert sol.closeStrings(word1="cabbba", word2="abbccc") is True
-    print("OK")
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
+    test_cases = [
+        {
+            "class":  Solution,
+            "class_methods": ["closeStrings"] * 3,
+            "kwargs": [
+                dict(word1="abc", word2="bca"),
+                dict(word1="a", word2="aa"),
+                dict(word1="cabbba", word2="abbccc"),
+            ],
+            "expected": [True, False, True],
+        },
+    ]
 
 
 if __name__ == "__main__":
-    test()
+    unittest.main()

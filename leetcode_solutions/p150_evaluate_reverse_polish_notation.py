@@ -1,4 +1,7 @@
+import unittest
 from typing import List
+
+from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
@@ -26,26 +29,36 @@ class Solution:
         return st[-1]
 
 
-def test():
-    sol = Solution()
-
-    print("Test 1... ", end="")
-    assert sol.evalRPN(tokens=["2", "1", "+", "3", "*"]) == 9
-    print("OK")
-
-    print("Test 2... ", end="")
-    assert sol.evalRPN(tokens=["4", "13", "5", "/", "+"]) == 6
-    print("OK")
-
-    print("Test 3... ", end="")
-    assert (
-        sol.evalRPN(
-            tokens=["10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"]
-        )
-        == 22
-    )
-    print("OK")
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
+    test_cases = [
+        {
+            "class":  Solution,
+            "class_methods": ["evalRPN"] * 3,
+            "kwargs": [
+                dict(tokens=["2", "1", "+", "3", "*"]),
+                dict(tokens=["4", "13", "5", "/", "+"]),
+                dict(
+                    tokens=[
+                        "10",
+                        "6",
+                        "9",
+                        "3",
+                        "+",
+                        "-11",
+                        "*",
+                        "/",
+                        "*",
+                        "17",
+                        "+",
+                        "5",
+                        "+",
+                    ]
+                ),
+            ],
+            "expected": [9, 6, 22],
+        },
+    ]
 
 
 if __name__ == "__main__":
-    test()
+    unittest.main()

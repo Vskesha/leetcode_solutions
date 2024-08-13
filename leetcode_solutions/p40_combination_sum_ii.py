@@ -3,6 +3,8 @@ from bisect import bisect_right
 from collections import Counter
 from typing import List
 
+from leetcode_solutions._test_meta import TestMeta
+
 
 class Solution:
     def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
@@ -55,36 +57,28 @@ class Solution3:
         return [list(t) for t in result]
 
 
-class TestSolution(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls) -> None:
-        cls.sol = Solution()
-
-    @staticmethod
-    def same_combinations(combs1: list, combs2: list) -> bool:
-        return set(tuple(comb) for comb in combs1) == set(
-            tuple(comb) for comb in combs2
-        )
-
-    def test_combination_sum_2_1(self):
-        print("Test combinationSum2 1... ", end="")
-        self.assertTrue(
-            self.same_combinations(
-                self.sol.combinationSum2(candidates=[10, 1, 2, 7, 6, 1, 5], target=8),
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
+    test_cases = [
+        {
+            "class": Solution,
+            "class_methods": ["combinationSum2"] * 2,
+            "kwargs": [
+                dict(candidates=[10, 1, 2, 7, 6, 1, 5], target=8),
+                dict(candidates=[2, 5, 2, 1, 2], target=5),
+            ],
+            "expected": [
                 [[1, 1, 6], [1, 2, 5], [1, 7], [2, 6]],
-            )
-        )
-        print("OK")
-
-    def test_combination_sum_2_2(self):
-        print("Test combinationSum2 2... ", end="")
-        self.assertTrue(
-            self.same_combinations(
-                self.sol.combinationSum2(candidates=[2, 5, 2, 1, 2], target=5),
                 [[1, 2, 2], [5]],
-            )
+            ],
+            "assert_methods": ["assertSameCombinations"] * 2,
+        },
+    ]
+
+    def assertSameCombinations(self, combs1: list, combs2: list):
+        self.assertSetEqual(
+            set(tuple(comb) for comb in combs1),
+            set(tuple(comb) for comb in combs2),
         )
-        print("OK")
 
 
 if __name__ == "__main__":

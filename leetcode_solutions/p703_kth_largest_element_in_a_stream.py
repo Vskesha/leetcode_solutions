@@ -2,6 +2,8 @@ import unittest
 from heapq import heapify, heappushpop
 from typing import List
 
+from leetcode_solutions._test_meta import TestMeta
+
 
 class KthLargest:
     def __init__(self, k: int, nums: List[int]):
@@ -40,23 +42,16 @@ class KthLargest2:
         return self.nums[-1]
 
 
-class TestKthLargest(unittest.TestCase):
-    def test_kth_largest(self):
-        print("Testing KthLargest ...")
-
-        commands = ["KthLargest", "add", "add", "add", "add", "add"]
-        args = [[3, [4, 5, 8, 2]], [3], [5], [10], [9], [4]]
-        expected = [None, 4, 5, 5, 8, 8]
-
-        kth = KthLargest(*args[0])
-
-        for i in range(1, len(commands)):
-            print(f"    Test {i}... ", end="")
-            res = getattr(kth, commands[i])(*args[i])
-            self.assertEqual(res, expected[i])
-            print("OK")
-
-        print("Test PASSED!")
+class TestKthLargest(unittest.TestCase, metaclass=TestMeta):
+    test_cases = [
+        {
+            "class": KthLargest,
+            "cls_init_args": [3, [4, 5, 8, 2]],
+            "class_methods": ["add", "add", "add", "add", "add"],
+            "args": [[3], [5], [10], [9], [4]],
+            "expected": [4, 5, 5, 8, 8],
+        },
+    ]
 
 
 if __name__ == "__main__":
