@@ -2,6 +2,8 @@ import unittest
 from collections import deque
 from typing import List
 
+from leetcode_solutions._test_meta import TestMeta
+
 
 class Solution:
     def exclusiveTime(self, n: int, logs: List[str]) -> List[int]:
@@ -90,76 +92,53 @@ class Solution2:  # revision, May 2024
         return ans
 
 
-class TestSolution(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls) -> None:
-        cls.sol = Solution()
-
-    def test_exclusive_time_1(self):
-        print("Test exclusiveTime 1... ", end="")
-        self.assertListEqual(
-            self.sol.exclusiveTime(
-                n=2, logs=["0:start:0", "1:start:2", "1:end:5", "0:end:6"]
-            ),
-            [3, 4],
-        )
-        print("OK")
-
-    def test_exclusive_time_2(self):
-        print("Test exclusiveTime 2... ", end="")
-        self.assertListEqual(
-            self.sol.exclusiveTime(
-                n=1,
-                logs=[
-                    "0:start:0",
-                    "0:start:2",
-                    "0:end:5",
-                    "0:start:6",
-                    "0:end:6",
-                    "0:end:7",
-                ],
-            ),
-            [8],
-        )
-        print("OK")
-
-    def test_exclusive_time_3(self):
-        print("Test exclusiveTime 3... ", end="")
-        self.assertListEqual(
-            self.sol.exclusiveTime(
-                n=2,
-                logs=[
-                    "0:start:0",
-                    "0:start:2",
-                    "0:end:5",
-                    "1:start:6",
-                    "1:end:6",
-                    "0:end:7",
-                ],
-            ),
-            [7, 1],
-        )
-        print("OK")
-
-    def test_exclusive_time_4(self):
-        print("Test exclusiveTime 4... ", end="")
-        self.assertListEqual(
-            self.sol.exclusiveTime(
-                n=3,
-                logs=[
-                    "1:start:0",
-                    "0:start:2",
-                    "1:start:3",
-                    "2:start:4",
-                    "2:end:4",
-                    "0:end:6",
-                    "1:end:7",
-                    "1:end:8",
-                ],
-            ),
-            [2, 6, 1],
-        )
-        print("OK")
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
+    test_cases = [
+        {
+            "class": Solution,
+            "class_methods": ["exclusiveTime"] * 4,
+            "kwargs": [
+                dict(n=2, logs=["0:start:0", "1:start:2", "1:end:5", "0:end:6"]),
+                dict(
+                    n=1,
+                    logs=[
+                        "0:start:0",
+                        "0:start:2",
+                        "0:end:5",
+                        "0:start:6",
+                        "0:end:6",
+                        "0:end:7",
+                    ],
+                ),
+                dict(
+                    n=2,
+                    logs=[
+                        "0:start:0",
+                        "0:start:2",
+                        "0:end:5",
+                        "1:start:6",
+                        "1:end:6",
+                        "0:end:7",
+                    ],
+                ),
+                dict(
+                    n=3,
+                    logs=[
+                        "1:start:0",
+                        "0:start:2",
+                        "1:start:3",
+                        "2:start:4",
+                        "2:end:4",
+                        "0:end:6",
+                        "1:end:7",
+                        "1:end:8",
+                    ],
+                ),
+            ],
+            "expected": [[3, 4], [8], [7, 1], [2, 6, 1]],
+            "assert_methods": ["assertListEqual"] * 4,
+        },
+    ]
 
 
 if __name__ == "__main__":
