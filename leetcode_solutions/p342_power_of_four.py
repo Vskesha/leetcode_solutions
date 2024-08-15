@@ -1,6 +1,8 @@
 import unittest
 from math import log
 
+from leetcode_solutions._test_meta import TestMeta
+
 
 class Solution:
     def isPowerOfFour(self, n: int) -> bool:
@@ -43,25 +45,19 @@ class Solution4:
         return self.isPowerOfFour(n // 4)
 
 
-class TestSolution(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls) -> None:
-        cls.sol = Solution()
-
-    def test_is_power_of_four_1(self):
-        print("Test isPowerOfFour 1... ", end="")
-        self.assertTrue(self.sol.isPowerOfFour(n=16))
-        print("OK")
-
-    def test_is_power_of_four_2(self):
-        print("Test isPowerOfFour 2... ", end="")
-        self.assertFalse(self.sol.isPowerOfFour(n=5))
-        print("OK")
-
-    def test_is_power_of_four_3(self):
-        print("Test isPowerOfFour 3... ", end="")
-        self.assertTrue(self.sol.isPowerOfFour(n=1))
-        print("OK")
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
+    test_cases = [
+        {
+            "class": Solution,
+            "class_methods": ["isPowerOfFour"] * 3,
+            "kwargs": [
+                dict(n=16),
+                dict(n=5),
+                dict(n=1),
+            ],
+            "expected": [True, False, True],
+        },
+    ]
 
 
 if __name__ == "__main__":

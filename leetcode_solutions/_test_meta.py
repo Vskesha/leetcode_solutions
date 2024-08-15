@@ -1,6 +1,3 @@
-import importlib
-
-
 class TestMeta(type):
     """
     Metaclass for testing classes.
@@ -37,9 +34,6 @@ class TestMeta(type):
 
     def __init__(self, *args, **kwargs):
         for i, case in enumerate(self.test_cases):
-            # cls_name = case["class_name"]
-            # module = importlib.import_module(self.__module__)
-            # target_class = getattr(module, cls_name)
             target_class = case["class"]
             cls_init_args = case.get("cls_init_args", [])
             cls_init_kwargs = case.get("cls_init_kwargs", {})
@@ -87,7 +81,12 @@ class TestMeta(type):
 
 
 """
-Example usage:
+Example of test class using "TestMeta":
+
+import unittest
+
+from leetcode_solutions._test_meta import TestMeta
+
 
 class TestSolution(unittest.TestCase, metaclass=TestMeta):
     test_cases = [
