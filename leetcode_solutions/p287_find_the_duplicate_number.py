@@ -1,4 +1,7 @@
+import unittest
 from typing import List
+
+from leetcode_solutions._test_meta import TestMeta
 
 
 # Floyd's method to find a cycle
@@ -34,17 +37,19 @@ class Solution2:
             mask |= 1 << n
 
 
-def test_find_duplicate():
-    sol = Solution()
-
-    print("Test 1 ... ", end="")
-    assert sol.findDuplicate(nums=[1, 3, 4, 2, 2]) == 2
-    print("OK")
-
-    print("Test 2 ... ", end="")
-    assert sol.findDuplicate(nums=[3, 1, 3, 4, 2]) == 3
-    print("OK")
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
+    test_cases = [
+        {
+            "class": Solution,
+            "class_methods": ["findDuplicate"] * 2,
+            "kwargs": [
+                dict(nums=[1, 3, 4, 2, 2]),
+                dict(nums=[3, 1, 3, 4, 2]),
+            ],
+            "expected": [2, 3],
+        },
+    ]
 
 
 if __name__ == "__main__":
-    test_find_duplicate()
+    unittest.main()
