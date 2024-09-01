@@ -1,4 +1,7 @@
+import unittest
 from typing import Optional
+
+from leetcode_solutions._test_meta import TestMeta
 
 
 class ListNode:
@@ -58,25 +61,27 @@ class Solution2:
         return arr == arr[::-1]
 
 
-def to_linked_list(arr: list):
-    nxt = None
-    for n in reversed(arr):
-        curr = ListNode(n, nxt)
-        nxt = curr
-    return nxt
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
+    @staticmethod
+    def to_linked_list(arr: list):
+        nxt = None
+        for n in reversed(arr):
+            curr = ListNode(n, nxt)
+            nxt = curr
+        return nxt
 
-
-def test():
-    sol = Solution()
-
-    print("Test 1 ... ", end="")
-    assert sol.isPalindrome(head=to_linked_list([1, 2, 2, 1])) is True
-    print("OK")
-
-    print("Test 2 ... ", end="")
-    assert sol.isPalindrome(head=to_linked_list([1, 2])) is False
-    print("OK")
+    test_cases = [
+        {
+            "class": Solution,
+            "class_methods": ["isPalindrome"] * 2,
+            "kwargs": [
+                dict(head=to_linked_list([1, 2, 2, 1])),
+                dict(head=to_linked_list([1, 2])),
+            ],
+            "expected": [True, False],
+        },
+    ]
 
 
 if __name__ == "__main__":
-    test()
+    unittest.main()
