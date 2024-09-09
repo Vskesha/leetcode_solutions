@@ -3,6 +3,24 @@ import unittest
 
 class Solution:
     def isIsomorphic(self, s: str, t: str) -> bool:
+        mp = {}
+        seen = set()
+
+        for a, b in zip(s, t):
+            if a in mp:
+                if mp[a] != b:
+                    return False
+            elif b in seen:
+                return False
+            else:
+                mp[a] = b
+                seen.add(b)
+
+        return True
+
+
+class Solution0:
+    def isIsomorphic(self, s: str, t: str) -> bool:
         if len(s) != len(t):
             return False
         seen = set()

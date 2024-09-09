@@ -3,6 +3,29 @@ import unittest
 
 class Solution:
     def decodeString(self, s: str) -> str:
+        n = 0
+        stack = [[]]
+
+        for c in s:
+            if c.isdigit():
+                n = n * 10 + int(c)
+            elif c == "[":
+                stack.append(n)
+                stack.append([])
+                n = 0
+            elif c == "]":
+                ll = stack.pop()
+                k = stack.pop() or 1
+                stack[-1].extend(ll * k)
+            else:
+                stack[-1].append(c)
+
+        ans = "".join(stack[-1])
+        return ans
+
+
+class Solution1:
+    def decodeString(self, s: str) -> str:
         stack = [[]]
         n = 0
 
@@ -24,7 +47,7 @@ class Solution:
         return "".join(stack[-1])
 
 
-class Solution1:
+class Solution2:
     def decodeString(self, s: str) -> str:
         stack = []
         curr, n = [], 0
@@ -43,7 +66,7 @@ class Solution1:
         return "".join(curr)
 
 
-class Solution2:
+class Solution3:
     def decodeString(self, s: str) -> str:
         stack = [""]
         n = 0
@@ -66,7 +89,7 @@ class Solution2:
         return stack[-1]
 
 
-class Solution3:
+class Solution4:
     def decodeString(self, s: str) -> str:
         stack = []
         for character in s:
