@@ -3,6 +3,76 @@ from bisect import insort
 from heapq import heappop, heappush
 
 
+class ExamRoom:
+
+    def __init__(self, n: int):
+        self.n = n
+        self.heap = [(-n, 0, n - 1)]
+        self.starts = {0: n - 1}
+        self.ends = {n - 1: 0}
+
+    def seat(self) -> int:
+        _, st, end = heappop(self.heap)
+        while st not in self.starts or self.starts[st] != end:
+            _, st, end = heappop(self.heap)
+
+        if st == 0:
+            st += 1
+            self.push(st, end)
+            self.starts.pop(0)
+            self.starts[st] = end
+            self.ends[end] = st
+            return 0
+        elif end == self.n - 1:
+            end -= 1
+            self.push(st, end)
+            self.ends.pop(self.n - 1)
+            self.starts[st] = end
+            self.ends[end] = st
+            return self.n - 1
+        else:
+            mid = (st + end) // 2
+            self.push(st, mid - 1)
+            self.push(mid + 1, end)
+            self.starts[st] = mid - 1
+            self.starts[mid + 1] = end
+            self.ends[mid - 1] = st
+            self.ends[end] = mid + 1
+            return mid
+
+    def leave(self, p: int) -> None:
+        if p == 0:
+            end = self.starts.pop(p + 1)
+            self.push(p, end)
+            self.starts[p] = end
+            self.ends[end] = p
+        elif p == self.n - 1:
+            st = self.ends.pop(p - 1)
+            self.push(st, p)
+            self.starts[st] = p
+            self.ends[p] = st
+        else:
+            st = self.ends.pop(p - 1)
+            end = self.starts.pop(p + 1)
+            self.push(st, end)
+            self.starts[st] = end
+            self.ends[end] = st
+
+    def dist(self, st, end) -> int:
+        if st == 0:
+            return end + 1
+        if end == self.n - 1:
+            return self.n - st
+        return (end - st) // 2 + 1
+
+    def push(self, st, end):
+        heappush(self.heap, (-self.dist(st, end), st, end))
+
+
+# Your ExamRoom object will be instantiated and called as such:
+# obj = ExamRoom(n)
+# param_1 = obj.seat()
+# obj.leave(p)
 class ListNode:
     def __init__(self, val=0, prev=None, next=None):
         self.val = val
@@ -23,7 +93,7 @@ class ListNode:
         nxt.prev = self
 
 
-class ExamRoom:
+class ExamRoom1:
     def __init__(self, n: int):
         self.start = ListNode(val=-1)
         self.end = ListNode(val=n, prev=self.start)
