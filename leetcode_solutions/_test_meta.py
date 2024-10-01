@@ -33,16 +33,18 @@ class TestMeta(type):
     test_cases = []
 
     def __init__(self, *args, **kwargs):
+        ltc = len(self.test_cases)
         for i, case in enumerate(self.test_cases):
             target_class = case["class"]
             cls_init_args = case.get("cls_init_args", [])
             cls_init_kwargs = case.get("cls_init_kwargs", {})
             obj = target_class(*cls_init_args, **cls_init_kwargs)
-            print(target_class.__name__)
-            for j in range(len(case["class_methods"])):
+            # print(target_class.__name__)
+            lcm = len(case["class_methods"])
+            for j in range(lcm):
                 setattr(
                     self,
-                    f"test_{target_class.__name__}_{i + 1}_{j + 1}",
+                    f"test_{target_class.__name__}_{i + 1:0>{len(str(ltc + 1))}}_{j + 1:0>{len(str(lcm + 1))}}",
                     self.get_test_method(obj, i, j),
                 )
         super().__init__(*args, **kwargs)
@@ -51,8 +53,10 @@ class TestMeta(type):
     def get_test_method(obj, i, j):
         def test_method(instance):
             test_case = instance.test_cases[i]
+            ltc = len(instance.test_cases)
 
             command = test_case["class_methods"][j]
+            lcm = len(test_case["class_methods"])
 
             args_list = test_case.get("args", [])
             arguments = args_list[j] if len(args_list) > j else []
@@ -67,7 +71,7 @@ class TestMeta(type):
             amethods = test_case.get("assert_methods", [])
             assert_method = amethods[j] if len(amethods) > j else "assertEqual"
 
-            info_str = f"Test {i + 1}-{j + 1}. {obj.__class__.__name__}.{command}("
+            info_str = f"Test {i + 1:0>{len(str(ltc + 1))}}-{j + 1:0>{len(str(lcm + 1))}}. {obj.__class__.__name__}.{command}("
             # info_str += ", ".join(f"{arg}" for arg in arguments)
             # if arguments and kwarguments:
             #     info_str += ", "

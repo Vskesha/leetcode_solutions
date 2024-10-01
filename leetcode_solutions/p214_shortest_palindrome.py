@@ -26,6 +26,20 @@ class Solution2:
                     return s[r:][::-1] + s
 
 
+class Solution3:
+    def shortestPalindrome(self, s: str) -> str:
+        for e in range(len(s) - 1, -1, -1):
+            l, r = 0, e
+            while l < r:
+                if s[l] != s[r]:
+                    break
+                l += 1
+                r -= 1
+            else:
+                return s[:e:-1] + s
+        return ""
+
+
 class TestSolution(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:

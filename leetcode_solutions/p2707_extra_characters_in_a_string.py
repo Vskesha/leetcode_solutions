@@ -1,4 +1,7 @@
+import unittest
 from functools import lru_cache
+
+from leetcode_solutions._test_meta import TestMeta
 
 
 # recursive dp solution using trie
@@ -49,8 +52,8 @@ class Solution1:
         for i in range(ls - 1, -1, -1):
             dp[i] = dp[i + 1] + 1
             for word in dictionary:
-                if word[0] == s[i] and word == s[i:i+len(word)]:
-                    dp[i] = min(dp[i], dp[i+len(word)])
+                if word[0] == s[i] and word == s[i : i + len(word)]:
+                    dp[i] = min(dp[i], dp[i + len(word)])
 
         return dp[0]
 
@@ -66,21 +69,39 @@ class Solution2:
                 return 0
             ans = dp(i + 1) + 1
             for word in dictionary:
-                if word == s[i:i+len(word)]:
+                if word == s[i : i + len(word)]:
                     ans = min(ans, dp(i + len(word)))
             return ans
 
         return dp(0)
 
 
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
+    test_cases = [
+        {
+            "class": Solution,
+            "class_methods": ["minExtraChar"] * 2,
+            "kwargs": [
+                dict(s="leetscode", dictionary=["leet", "code", "leetcode"]),
+                dict(s="sayhelloworld", dictionary=["hello", "world"]),
+            ],
+            "expected": [1, 3],
+        },
+    ]
+
+
+if __name__ == "__main__":
+    unittest.main()
+
+
 def main():
     sol = Solution()
-    print('Test 1 ... ', end='')
+    print("Test 1 ... ", end="")
     assert sol.minExtraChar(s="leetscode", dictionary=["leet", "code", "leetcode"]) == 1
-    print('ok\nTest 2 ... ', end='')
+    print("ok\nTest 2 ... ", end="")
     assert sol.minExtraChar(s="sayhelloworld", dictionary=["hello", "world"]) == 3
-    print('ok')
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

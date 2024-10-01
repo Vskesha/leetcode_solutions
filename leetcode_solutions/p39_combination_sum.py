@@ -1,4 +1,7 @@
+import unittest
 from typing import List
+
+from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
@@ -62,25 +65,27 @@ class Solution2:
         return ans
 
 
-def test_combination_sum():
-    sol = Solution()
-
-    print("Test 1 ... ", end="")
-    assert sol.combinationSum(candidates=[2, 3, 6, 7], target=7) == [[2, 2, 3], [7]]
-    print("OK")
-
-    print("Test 2 ... ", end="")
-    assert sol.combinationSum(candidates=[2, 3, 5], target=8) == [
-        [2, 2, 2, 2],
-        [2, 3, 3],
-        [3, 5],
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
+    test_cases = [
+        {
+            "class": Solution,
+            "class_methods": ["combinationSum"] * 3,
+            "kwargs": [
+                dict(candidates=[2, 3, 6, 7], target=7),
+                dict(candidates=[2, 3, 5], target=8),
+                dict(candidates=[2], target=1),
+            ],
+            "expected": [[[2, 2, 3], [7]], [[2, 2, 2, 2], [2, 3, 3], [3, 5]], []],
+            "assert_methods": ["assertCombinationsEqual"] * 3,
+        },
     ]
-    print("OK")
 
-    print("Test 3 ... ", end="")
-    assert sol.combinationSum(candidates=[2], target=1) == []
-    print("OK")
+    def assertCombinationsEqual(self, combs1: List[List[int]], combs2: List[List[int]]):
+        self.assertEqual(len(combs1), len(combs2))
+        combs1 = {tuple(sorted(c)) for c in combs1}
+        combs2 = {tuple(sorted(c)) for c in combs2}
+        self.assertSetEqual(combs1, combs2)
 
 
 if __name__ == "__main__":
-    test_combination_sum()
+    unittest.main()
