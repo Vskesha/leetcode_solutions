@@ -1,5 +1,8 @@
+import unittest
 from collections import Counter
 from typing import List
+
+from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
@@ -9,21 +12,21 @@ class Solution:
         return [n for n, c in cnt.items() if c > k]
 
 
-def test():
-    sol = Solution()
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
+    test_cases = [
+        {
+            "class": Solution,
+            "class_methods": ["majorityElement"] * 3,
+            "kwargs": [
+                dict(nums=[3, 2, 3]),
+                dict(nums=[1]),
+                dict(nums=[1, 2]),
+            ],
+            "expected": [[3], [1], [1, 2]],
+            "assert_methods": ["assertListEqual"],
+        },
+    ]
 
-    print('Test 1 ... ', end='')
-    assert sol.majorityElement(nums=[3, 2, 3]) == [3]
-    print('ok')
 
-    print('Test 2 ... ', end='')
-    assert sol.majorityElement(nums=[1]) == [1]
-    print('ok')
-
-    print('Test 3 ... ', end='')
-    assert sol.majorityElement(nums=[1, 2]) == [1, 2]
-    print('ok')
-
-
-if __name__ == '__main__':
-    test()
+if __name__ == "__main__":
+    unittest.main()

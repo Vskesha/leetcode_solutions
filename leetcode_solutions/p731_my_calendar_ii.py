@@ -44,6 +44,34 @@ class MyCalendarTwo:
             sl.add(num)
 
 
+from sortedcontainers import SortedDict
+
+
+class MyCalendarTwo2:
+
+    def __init__(self):
+        self.cc = 2
+        self.sd = SortedDict()
+
+    def book(self, start: int, end: int) -> bool:
+        self.sd[start] = self.sd.get(start, 0) + 1
+        self.sd[end] = self.sd.get(end, 0) - 1
+        concurr = 0
+        for k, v in self.sd.items():
+            if k >= end:
+                break
+            concurr += v
+            if concurr > self.cc:
+                self.sd[start] -= 1
+                self.sd[end] += 1
+                if not self.sd[start]:
+                    del self.sd[start]
+                if not self.sd[end]:
+                    del self.sd[end]
+                return False
+        return True
+
+
 # Your MyCalendarTwo object will be instantiated and called as such:
 # obj = MyCalendarTwo()
 # param_1 = obj.book(start,end)

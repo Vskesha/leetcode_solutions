@@ -1,6 +1,9 @@
+import unittest
 from heapq import heappush
 from itertools import accumulate
 from typing import List
+
+from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
@@ -30,17 +33,19 @@ class Solution2:
         return ans
 
 
-def test():
-    sol = Solution()
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
+    test_cases = [
+        {
+            "class": Solution,
+            "class_methods": ["numTimesAllBlue"] * 2,
+            "kwargs": [
+                dict(flips=[3, 2, 4, 1, 5]),
+                dict(flips=[4, 1, 2, 3]),
+            ],
+            "expected": [2, 1],
+        },
+    ]
 
-    print('Test 1... ', end='')
-    assert sol.numTimesAllBlue(flips=[3, 2, 4, 1, 5]) == 2
-    print('OK')
 
-    print('Test 2... ', end='')
-    assert sol.numTimesAllBlue(flips=[4, 1, 2, 3]) == 1
-    print('OK')
-
-
-if __name__ == '__main__':
-    test()
+if __name__ == "__main__":
+    unittest.main()
