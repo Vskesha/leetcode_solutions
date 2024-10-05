@@ -5,6 +5,34 @@ from typing import List
 
 class Solution:
     def orangesRotting(self, grid: List[List[int]]) -> int:
+        m, n = len(grid), len(grid[0])
+        bfs = deque()
+        fresh = 0
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] == 2:
+                    bfs.append((i, j))
+                elif grid[i][j] == 1:
+                    fresh += 1
+        if not fresh:
+            return 0
+        time = 0
+        while bfs:
+            for _ in range(len(bfs)):
+                i, j = bfs.popleft()
+                for ni, nj in ((i, j + 1), (i + 1, j), (i, j - 1), (i - 1, j)):
+                    if 0 <= ni < m and 0 <= nj < n and grid[ni][nj] == 1:
+                        grid[ni][nj] = 2
+                        bfs.append((ni, nj))
+                        fresh -= 1
+                        if not fresh:
+                            return time + 1
+            time += 1
+        return -1
+
+
+class Solution1:
+    def orangesRotting(self, grid: List[List[int]]) -> int:
         m = len(grid[0])
         n = len(grid)
 

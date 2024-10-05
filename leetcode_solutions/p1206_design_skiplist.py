@@ -1,6 +1,9 @@
+import unittest
 from collections import defaultdict
 from math import inf
 import random
+
+from leetcode_solutions._test_meta import TestMeta
 
 
 class ListNode:
@@ -48,7 +51,8 @@ class Skiplist:
                 else:
                     self.head = ListNode(-inf, down=self.head)
                     self.head.next = prev = ListNode(num, down=prev)
-                if random.random() >= self.p: break
+                if random.random() >= self.p:
+                    break
 
     def erase(self, num: int) -> bool:
         node = self.head
@@ -90,26 +94,24 @@ class Skiplist2:
             return True
         return False
 
+
 # Your Skiplist object will be instantiated and called as such:
 # obj = Skiplist()
 # param_1 = obj.search(target)
 # obj.add(num)
 # param_3 = obj.erase(num)
 
-
-def test():
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
     null, true, false = None, True, False
-    commands = ["Skiplist", "add", "add", "add", "search", "add", "search", "erase", "erase", "search"]
-    args = [[], [1], [2], [3], [0], [4], [1], [0], [1], [1]]
-    outputs = [null, null, null, null, false, null, true, false, true, false]
-
-    sl = Skiplist()
-    for i in range(1, len(commands)):
-        print(f'Test {i}... ', end='')
-        res = getattr(sl, commands[i])(*args[i])
-        assert res == outputs[i]
-        print('OK')
+    test_cases = [
+        {
+            "class": Skiplist,
+            "class_methods": ["add", "add", "add", "search", "add", "search", "erase", "erase", "search"],
+            "args": [[1], [2], [3], [0], [4], [1], [0], [1], [1]],
+            "expected": [null, null, null, false, null, true, false, true, false],
+        },
+    ]
 
 
 if __name__ == '__main__':
-    test()
+    unittest.main()
