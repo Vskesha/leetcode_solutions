@@ -48,6 +48,26 @@ class Solution2:
         return ans
 
 
+class Solution3:
+    def shortestDistanceAfterQueries(
+        self, n: int, queries: List[List[int]]
+    ) -> List[int]:
+        dists = list(range(n - 1, -1, -1))
+        adj = [[] for _ in range(n)]
+        for i in range(n - 1):
+            adj[i].append(i + 1)
+
+        ans = []
+        for fr, to in queries:
+            adj[fr].append(to)
+            for i in range(fr, -1, -1):
+                for neib in adj[i]:
+                    dists[i] = min(dists[i], dists[neib] + 1)
+            ans.append(dists[0])
+
+        return ans
+
+
 class TestSolution(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
