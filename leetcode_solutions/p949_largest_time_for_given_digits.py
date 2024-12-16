@@ -12,7 +12,27 @@ class Solution:
 
         return ans
 
+
 class Solution1:
+    def largestTimeFromDigits(self, arr: List[int]) -> str:
+
+        ans = ""
+        mt = -1
+
+        for a, b, c, d in permutations(arr):
+            hh = 10 * a + b
+            mm = 10 * c + d
+            if hh > 23 or mm > 59:
+                continue
+            ct = hh * 60 + mm
+            if ct > mt:
+                mt = ct
+                ans = f"{hh:0>2}:{mm:0>2}"
+
+        return ans
+
+
+class Solution2:
     def largestTimeFromDigits(self, arr: List[int]) -> str:
         if arr == [0] * 4:
             return "00:00"

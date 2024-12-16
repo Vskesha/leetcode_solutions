@@ -7,6 +7,21 @@ from leetcode_solutions._test_meta import TestMeta
 
 class Solution:
     def getFinalState(self, nums: List[int], k: int, multiplier: int) -> List[int]:
+        heap = [(n, i) for i, n in enumerate(nums)]
+        heapify(heap)
+
+        for _ in range(k):
+            n, i = heappop(heap)
+            heappush(heap, (n * multiplier, i))
+
+        for n, i in heap:
+            nums[i] = n
+
+        return nums
+
+
+class Solution0:
+    def getFinalState(self, nums: List[int], k: int, multiplier: int) -> List[int]:
         if multiplier == 1:
             return nums
 
