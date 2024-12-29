@@ -1,5 +1,9 @@
+import unittest
 from collections import Counter
-from functools import lru_cache
+from functools import lru_cache, cache
+from typing import List
+
+from leetcode_solutions._test_meta import TestMeta
 
 
 # the best iterative dp solution
@@ -52,7 +56,9 @@ class Solution2:
 
         for i in range(1, lt + 1):
             for j in range(i, lw - lt + i + 1):
-                dp[i][j] = (dp[i][j - 1] + aux[j - 1][target[i - 1]] * dp[i - 1][j - 1]) % mod
+                dp[i][j] = (
+                    dp[i][j - 1] + aux[j - 1][target[i - 1]] * dp[i - 1][j - 1]
+                ) % mod
 
         return dp[lt][lw]
 
@@ -130,15 +136,41 @@ class Solution5:
         return dp(lw - 1, lt - 1)
 
 
-def test():
-    sol = Solution()
-    print('Test 1 ... ', end='')
-    assert sol.numWays(words=["acca", "bbbb", "caca"], target="aba") == 6
-    print('ok')
-    print('Test 2 ... ', end='')
-    assert sol.numWays(words=["abba", "baab"], target="bab") == 4
-    print('ok')
+class Solution6:
+    def numWays(self, words: List[str], target: str) -> int:
+        mod = 10**9 + 7
+        lt, lw = len(target), len(words[0])
+        aux = [Counter(w[i] for w in words) for i in range(lw)]
+
+        @cache
+        def dp(ti, wi):
+            if ti == lt:
+                return 1
+            if wi == lw:
+                return 0
+            cnt = aux[wi]
+            ch = target[ti]
+            ans = dp(ti, wi + 1)
+            if cnt[ch]:
+                ans = (ans + cnt[ch] * dp(ti + 1, wi + 1)) % mod
+            return ans
+
+        return dp(0, 0)
 
 
-if __name__ == '__main__':
-    test()
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
+    test_cases = [
+        {
+            "class": Solution,
+            "class_methods": ["numWays"] * 2,
+            "kwargs": [
+                dict(words=["acca", "bbbb", "caca"], target="aba"),
+                dict(words=["abba", "baab"], target="bab"),
+            ],
+            "expected": [6, 4],
+        },
+    ]
+
+
+if __name__ == "__main__":
+    unittest.main()
