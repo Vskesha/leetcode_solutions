@@ -1,19 +1,24 @@
+import unittest
+
+from leetcode_solutions._test_meta import TestMeta
+
+
 class Solution:
     def maxScore(self, s: str) -> int:
         ans = 0
-        sm = s.count('1')
+        sm = s.count("1")
         for i in range(len(s) - 1):
             sm += int(s[i]) * (-2) + 1
             ans = max(ans, sm)
         return ans
 
 
-class Solution:
+class Solution1:
     def maxScore(self, s: str) -> int:
         b = -1
         o = z = 0
         for i in range(len(s) - 1):
-            if s[i] == '0':
+            if s[i] == "0":
                 z += 1
                 b = max(b, z - o)
             else:
@@ -22,21 +27,35 @@ class Solution:
         return o + b
 
 
-def test():
-    sol = Solution()
+class Solution2:
+    def maxScore(self, s: str) -> int:
+        ones = s.count("1")
+        zeros = ans = 0
 
-    print('Test 1... ', end='')
-    assert sol.maxScore(s="011101") == 5
-    print('OK')
+        for i in range(len(s) - 1):
+            if s[i] == "0":
+                zeros += 1
+            else:
+                ones -= 1
+            ans = max(ans, ones + zeros)
 
-    print('Test 2... ', end='')
-    assert sol.maxScore(s="00111") == 5
-    print('OK')
-
-    print('Test 3... ', end='')
-    assert sol.maxScore(s="1111") == 3
-    print('OK')
+        return ans
 
 
-if __name__ == '__main__':
-    test()
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
+    test_cases = [
+        {
+            "class": Solution,
+            "class_methods": ["maxScore"] * 3,
+            "kwargs": [
+                dict(s="011101"),
+                dict(s="00111"),
+                dict(s="1111"),
+            ],
+            "expected": [5, 5, 3],
+        },
+    ]
+
+
+if __name__ == "__main__":
+    unittest.main()
