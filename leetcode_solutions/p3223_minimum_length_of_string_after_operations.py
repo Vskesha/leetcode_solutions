@@ -1,9 +1,16 @@
 import unittest
 from collections import Counter
 
+
 class Solution:
     def minimumLength(self, s: str) -> int:
         return sum((q - 1) % 2 + 1 for q in Counter(s).values())
+
+
+class Solution1:
+    def minimumLength(self, s: str) -> int:
+        cnt = Counter(s)
+        return 2 * len(cnt) - sum(c % 2 for c in cnt.values())
 
 
 class Solution2:
@@ -11,6 +18,15 @@ class Solution2:
         ans = 0
         for q in Counter(s).values():
             ans += 1 if q % 2 else 2
+        return ans
+
+
+class Solution3:
+    def minimumLength(self, s: str) -> int:
+        ans = 0
+        cnt = Counter(s)
+        for c in cnt.values():
+            ans += 2 - c % 2
         return ans
 
 
