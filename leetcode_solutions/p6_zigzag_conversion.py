@@ -1,3 +1,4 @@
+from typing import List
 import unittest
 
 
@@ -20,11 +21,11 @@ class Solution2:
         if numRows == 1:
             return s
         k = (numRows - 1) * 2
-        s = list(s)
+        sl: List = list(s)
         d = -len(s) % k
-        s.extend([""] * d)
+        sl.extend([""] * d)
         ls = len(s)
-        ans = s[::k]
+        ans = sl[::k]
         for i in range(1, k // 2):
             for j in range(0, ls, k):
                 ans.append(s[j + i])
