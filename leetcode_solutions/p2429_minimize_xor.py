@@ -25,7 +25,7 @@ class Solution:
         return ans
 
 
-class Solution:
+class Solution2:
     def minimizeXor(self, num1: int, num2: int) -> int:
         bc = num2.bit_count()
         bits = list(bin(num1)[2:])
