@@ -35,6 +35,8 @@ class Solution:
         return ans[::-1]
 
 
+
+
 class Solution2:  # MLE
     def shortestCommonSupersequence(self, str1: str, str2: str) -> str:
         strs = [[""] * (len(str2) + 1) for _ in range(len(str1) + 1)]
