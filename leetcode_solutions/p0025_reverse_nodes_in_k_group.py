@@ -71,7 +71,7 @@ class Solution3:
         return nxt
 
 
-class Solution:
+class Solution4:
     def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
         prev = result = ListNode()
         prev.next = curr = head
