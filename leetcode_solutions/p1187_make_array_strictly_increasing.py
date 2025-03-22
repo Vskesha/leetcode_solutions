@@ -1,7 +1,7 @@
 import unittest
-from functools import lru_cache
 from bisect import bisect_right
 from collections import defaultdict
+from functools import lru_cache
 
 
 class Solution:

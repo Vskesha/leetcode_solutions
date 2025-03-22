@@ -1,9 +1,8 @@
 import unittest
 from collections import deque
-from typing import Optional, List
+from typing import List, Optional
 
 from leetcode_solutions._test_meta import TestMeta
-
 
 # Definition for a binary tree node.
 

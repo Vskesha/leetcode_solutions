@@ -1,6 +1,5 @@
 import unittest
-from itertools import zip_longest
-from typing import Optional, List
+from typing import List, Optional
 
 
 class ListNode:

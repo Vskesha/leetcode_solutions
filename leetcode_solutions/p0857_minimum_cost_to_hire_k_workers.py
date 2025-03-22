@@ -1,6 +1,6 @@
 import unittest
-from heapq import heappush, heappop, heappushpop
 from fractions import Fraction
+from heapq import heappop, heappush, heappushpop
 
 
 class Solution:

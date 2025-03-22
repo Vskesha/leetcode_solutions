@@ -1,6 +1,6 @@
-from collections import defaultdict, Counter
-from typing import List
 import re
+from collections import Counter, defaultdict
+from typing import List
 
 
 class Solution:

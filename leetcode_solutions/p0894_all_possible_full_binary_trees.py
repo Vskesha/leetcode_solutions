@@ -1,4 +1,4 @@
-from collections import deque, defaultdict
+from collections import defaultdict, deque
 from functools import lru_cache
 from typing import List, Optional
 

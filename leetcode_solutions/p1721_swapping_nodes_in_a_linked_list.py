@@ -1,5 +1,5 @@
 import unittest
-from typing import Optional, List
+from typing import List, Optional
 
 
 # Definition for singly-linked list.

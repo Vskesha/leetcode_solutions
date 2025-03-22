@@ -1,5 +1,5 @@
 import unittest
-from typing import List, Iterable
+from typing import Iterable, List
 
 
 def print_matrix(matrix: Iterable[Iterable[int]]) -> None:

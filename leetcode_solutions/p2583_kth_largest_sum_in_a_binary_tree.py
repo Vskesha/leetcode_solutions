@@ -1,7 +1,7 @@
 import unittest
 from collections import deque
-from heapq import heappushpop, heappush
-from typing import Optional, List
+from heapq import heappush, heappushpop
+from typing import List, Optional
 
 from leetcode_solutions._test_meta import TestMeta
 

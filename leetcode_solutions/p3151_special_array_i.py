@@ -4,6 +4,7 @@ from typing import List
 
 from leetcode_solutions._test_meta import TestMeta
 
+
 class Solution:
     def isArraySpecial(self, nums: List[int]) -> bool:
         pr = (nums[0] - 1) % 2

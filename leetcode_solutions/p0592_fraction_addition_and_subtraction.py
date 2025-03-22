@@ -3,7 +3,6 @@ from fractions import Fraction
 from math import gcd
 
 from leetcode_solutions._test_meta import TestMeta
-from fractions import Fraction
 
 
 class Solution:

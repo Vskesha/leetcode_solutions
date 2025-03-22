@@ -1,5 +1,5 @@
-from functools import lru_cache
 from collections import deque
+from functools import lru_cache
 from typing import List
 
 

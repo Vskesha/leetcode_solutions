@@ -2,7 +2,7 @@ import unittest
 from functools import reduce
 from itertools import permutations
 from math import inf, isclose
-from operator import truediv, add, sub, mul
+from operator import add, mul, sub, truediv
 from typing import List
 
 div = lambda x, y: reduce(truediv, (x, y)) if y else inf

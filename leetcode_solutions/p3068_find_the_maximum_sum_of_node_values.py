@@ -1,7 +1,7 @@
 import time
 from collections import defaultdict
 from functools import wraps
-from heapq import heappop, heappush, heapify
+from heapq import heapify, heappop, heappush
 from typing import List
 
 

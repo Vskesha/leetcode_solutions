@@ -1,6 +1,6 @@
 # Definition for singly-linked list.
 from functools import wraps
-from typing import Optional, List
+from typing import List, Optional
 
 
 class ListNode:

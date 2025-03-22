@@ -1,5 +1,5 @@
 import unittest
-from bisect import bisect_right, bisect_left
+from bisect import bisect_left, bisect_right
 from heapq import heapify, heappop, heappush
 from typing import List
 

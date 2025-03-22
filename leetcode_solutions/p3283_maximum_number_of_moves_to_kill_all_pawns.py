@@ -1,5 +1,5 @@
 import unittest
-from collections import deque, defaultdict
+from collections import defaultdict, deque
 from functools import cache
 from math import inf
 from typing import List

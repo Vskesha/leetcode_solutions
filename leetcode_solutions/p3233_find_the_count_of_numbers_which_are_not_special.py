@@ -1,5 +1,5 @@
 import unittest
-from math import sqrt, ceil
+from math import ceil, sqrt
 
 
 class Solution:

@@ -1,6 +1,6 @@
-from typing import List
-from collections import Counter
 import unittest
+from collections import Counter
+from typing import List
 
 from leetcode_solutions._test_meta import TestMeta
 

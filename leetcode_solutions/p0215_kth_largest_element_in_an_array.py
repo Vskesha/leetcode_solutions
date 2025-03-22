@@ -1,4 +1,4 @@
-from heapq import heapify, heappop, heappushpop, _heapify_max, _heappop_max
+from heapq import _heapify_max, _heappop_max, heapify, heappop, heappushpop
 
 
 class Solution:
