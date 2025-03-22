@@ -1,6 +1,6 @@
 from collections import deque
 from functools import wraps
-from typing import Optional, List
+from typing import List, Optional
 
 
 # Definition for a binary tree node.

@@ -1,6 +1,6 @@
 import unittest
 from collections import Counter
-from functools import lru_cache, cache
+from functools import cache, lru_cache
 from typing import List
 
 from leetcode_solutions._test_meta import TestMeta

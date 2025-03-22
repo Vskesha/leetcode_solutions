@@ -1,5 +1,5 @@
-from itertools import pairwise
 from functools import cache
+from itertools import pairwise
 from typing import List
 
 

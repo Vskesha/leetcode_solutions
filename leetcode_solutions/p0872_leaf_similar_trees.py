@@ -1,7 +1,7 @@
 from collections import deque
 from functools import wraps
 from itertools import zip_longest
-from typing import Optional, List
+from typing import List, Optional
 
 
 # Definition for a binary tree node.

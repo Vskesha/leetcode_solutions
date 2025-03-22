@@ -1,5 +1,5 @@
 import unittest
-from heapq import heappop, heapreplace, heapify, nsmallest, heappush
+from heapq import heapify, heappop, heappush, heapreplace, nsmallest
 from typing import List
 
 

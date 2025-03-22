@@ -1,6 +1,6 @@
+import unittest
 from collections import defaultdict, deque
 from typing import List
-import unittest
 
 from _test_meta import TestMeta
 

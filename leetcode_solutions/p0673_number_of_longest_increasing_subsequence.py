@@ -1,5 +1,5 @@
 from functools import lru_cache
-from typing import Tuple, Any
+from typing import Any, Tuple
 
 
 # recursive solution

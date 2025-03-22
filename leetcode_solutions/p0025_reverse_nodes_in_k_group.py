@@ -1,6 +1,5 @@
-import test
 import unittest
-from typing import Optional, List
+from typing import List, Optional
 
 
 # Definition for singly-linked list.
@@ -72,7 +71,7 @@ class Solution3:
         return nxt
 
 
-class Solution:
+class Solution4:
     def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
         prev = result = ListNode()
         prev.next = curr = head

@@ -1,5 +1,5 @@
-from collections import defaultdict
 from bisect import bisect_right
+from collections import defaultdict
 
 
 class TimeMap:

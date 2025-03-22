@@ -1,5 +1,5 @@
 import unittest
-from functools import reduce, cache
+from functools import cache, reduce
 from typing import List
 
 from leetcode_solutions._test_meta import TestMeta

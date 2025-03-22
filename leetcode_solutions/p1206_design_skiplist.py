@@ -1,7 +1,7 @@
+import random
 import unittest
 from collections import defaultdict
 from math import inf
-import random
 
 from leetcode_solutions._test_meta import TestMeta
 

@@ -1,5 +1,5 @@
 import unittest
-from heapq import heappush, heappushpop, heappop, nlargest, nsmallest
+from heapq import heappop, heappush, heappushpop, nlargest, nsmallest
 from operator import sub
 from typing import List
 

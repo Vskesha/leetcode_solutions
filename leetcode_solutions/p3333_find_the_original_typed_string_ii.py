@@ -1,6 +1,6 @@
 import unittest
 from functools import reduce
-from itertools import groupby, accumulate
+from itertools import accumulate, groupby
 from math import comb
 
 from leetcode_solutions._test_meta import TestMeta

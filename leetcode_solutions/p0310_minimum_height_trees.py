@@ -1,7 +1,7 @@
-from collections import deque, defaultdict
+import unittest
+from collections import defaultdict, deque
 from heapq import heappushpop
 from typing import List
-import unittest
 
 
 class Solution:

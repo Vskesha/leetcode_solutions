@@ -1,5 +1,5 @@
 from functools import wraps
-from typing import Optional, List, Tuple
+from typing import List, Optional, Tuple
 
 
 # Definition for singly-linked list.

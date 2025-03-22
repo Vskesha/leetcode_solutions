@@ -1,5 +1,5 @@
 import unittest
-from functools import lru_cache, cache
+from functools import cache, lru_cache
 
 
 class Solution:

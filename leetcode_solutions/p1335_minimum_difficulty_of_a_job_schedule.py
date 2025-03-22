@@ -1,7 +1,7 @@
-from itertools import accumulate
 from functools import cache
-from typing import List
+from itertools import accumulate
 from math import inf
+from typing import List
 
 
 class Solution:

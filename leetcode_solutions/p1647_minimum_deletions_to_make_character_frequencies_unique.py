@@ -1,5 +1,5 @@
 from collections import Counter
-from heapq import heappop, heapify
+from heapq import heapify, heappop
 
 
 class Solution:

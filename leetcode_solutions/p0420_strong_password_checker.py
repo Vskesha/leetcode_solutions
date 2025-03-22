@@ -1,6 +1,6 @@
 from functools import lru_cache
+from heapq import heappop, heappush
 from itertools import pairwise
-from heapq import heappush, heappop
 
 
 class Solution:

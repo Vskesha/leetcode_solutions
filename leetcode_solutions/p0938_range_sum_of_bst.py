@@ -1,7 +1,7 @@
 from bisect import bisect_left, bisect_right
 from collections import deque
-from typing import Optional, List
 from functools import wraps
+from typing import List, Optional
 
 
 # Definition for a binary tree node.

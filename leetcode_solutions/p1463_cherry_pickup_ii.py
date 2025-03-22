@@ -1,4 +1,4 @@
-from functools import lru_cache, cache
+from functools import cache, lru_cache
 from typing import List
 
 

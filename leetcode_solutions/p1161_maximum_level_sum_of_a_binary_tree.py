@@ -1,7 +1,7 @@
 import unittest
-from math import inf
 from collections import deque
-from typing import Optional, List
+from math import inf
+from typing import List, Optional
 
 
 # Definition for a binary tree node.

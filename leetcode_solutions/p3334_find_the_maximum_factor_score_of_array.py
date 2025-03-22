@@ -1,6 +1,6 @@
 import unittest
 from itertools import accumulate
-from math import lcm, gcd
+from math import gcd, lcm
 from typing import List
 
 from leetcode_solutions._test_meta import TestMeta

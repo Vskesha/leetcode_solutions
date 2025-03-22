@@ -1,6 +1,6 @@
 import string
 from collections import Counter
-from heapq import heappop, heappush, heapify
+from heapq import heapify, heappop, heappush
 
 
 class Solution:

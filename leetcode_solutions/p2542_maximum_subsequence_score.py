@@ -1,6 +1,6 @@
 import bisect
 import unittest
-from heapq import heappush, heappop
+from heapq import heappop, heappush
 from typing import List
 
 

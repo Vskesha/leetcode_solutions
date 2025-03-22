@@ -1,6 +1,6 @@
 from collections import deque
-from typing import List, Optional
 from math import inf
+from typing import List, Optional
 
 
 # Definition for a binary tree node.

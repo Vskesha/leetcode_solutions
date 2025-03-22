@@ -1,5 +1,5 @@
 import unittest
-from collections import OrderedDict, Counter
+from collections import Counter, OrderedDict
 from typing import List
 
 

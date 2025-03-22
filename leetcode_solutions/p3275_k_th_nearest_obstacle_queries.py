@@ -1,5 +1,5 @@
 import unittest
-from heapq import heappush, heappushpop, heappop
+from heapq import heappop, heappush, heappushpop
 from typing import List
 
 from leetcode_solutions._test_meta import TestMeta

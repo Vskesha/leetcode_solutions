@@ -1,6 +1,5 @@
 import unittest
-from itertools import zip_longest
-from typing import Optional, List
+from typing import List, Optional
 
 
 class ListNode:
@@ -70,7 +69,7 @@ class Solution:
 
 
 @SolutionDecorator
-class Solution:
+class Solution2:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
         ans = curr = ListNode()
         add = 0
@@ -86,6 +85,8 @@ class Solution:
             if l2:
                 l2 = l2.next
         return ans.next
+
+
 class TestSolution(unittest.TestCase):
     def setUp(self):
         self.sol = Solution()

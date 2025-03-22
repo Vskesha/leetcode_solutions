@@ -1,5 +1,5 @@
 import unittest
-from collections import deque, defaultdict
+from collections import defaultdict, deque
 from typing import List
 
 
