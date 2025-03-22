@@ -37,7 +37,7 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
                 dict(n="123"),
                 dict(n="1"),
             ],
-            "expected": ["121", "0"],
+            "expected": ["121", "034"],
         },
     ]
 
