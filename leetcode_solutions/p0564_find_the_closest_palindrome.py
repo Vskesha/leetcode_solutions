@@ -32,12 +32,13 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
     test_cases = [
         {
             "class": Solution,
-            "class_methods": ["nearestPalindromic"] * 2,
+            "class_methods": ["nearestPalindromic"] * 3,
             "kwargs": [
                 dict(n="123"),
                 dict(n="1"),
+                dict(n="1346")
             ],
-            "expected": ["121", "034"],
+            "expected": ["121", "0", "1331"],
         },
     ]
 
