@@ -1,8 +1,8 @@
 import unittest
-from functools import reduce
-from heapq import heapify, heappop, heappush
 from typing import List, Optional
 
+from functools import reduce
+from heapq import heapify, heappop, heappush
 
 class ListNode:
     def __init__(self, val=0, next=None):
