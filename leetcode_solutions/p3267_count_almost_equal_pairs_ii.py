@@ -55,35 +55,6 @@ class Solution2:
         return sum(ans.values())
 
 
-class Solution:
-    def countPairs(self, nums: List[int]) -> int:
-        ml = len(str(max(nums)))
-        cnt = Counter()
-        ans = 0
-
-        for n in nums:
-            no = str(n).zfill(ml)
-            seen = {no}
-            nl = list(no)
-            for i in range(1, ml):
-                for j in range(i):
-                    nl[i], nl[j] = nl[j], nl[i]
-                    seen.add("".join(nl))
-                    for i1 in range(1, ml):
-                        for j1 in range(i1):
-                            if nl[i1] != nl[j1]:
-                                nl[i1], nl[j1] = nl[j1], nl[j1]
-                                seen.add("".join(nl))
-                                nl[i1], nl[j1] = nl[j1], nl[j1]
-                    nl[i], nl[j] = nl[j], nl[i]
-            for nn in seen:
-                if nn in cnt:
-                    ans += cnt[nn]
-            cnt[no] += 1
-
-        return ans
-
-
 class TestSolution(unittest.TestCase, metaclass=TestMeta):
     test_cases = [
         {

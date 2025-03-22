@@ -50,7 +50,6 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
                 ),
             ],
             "expected": [[false, true], [false, false], [true, true]],
-            "assert_methods": ["assertMethod"],
         },
     ]
 
