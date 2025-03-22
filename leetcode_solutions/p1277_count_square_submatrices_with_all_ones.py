@@ -32,7 +32,7 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
     test_cases = [
         {
             "class": Solution,
-            "class_methods": ["countSquares"] * 3,
+            "class_methods": ["countSquares"] * 2,
             "kwargs": [
                 dict(matrix=[[0, 1, 1, 1], [1, 1, 1, 1], [0, 1, 1, 1]]),
                 dict(matrix=[[1, 0, 1], [1, 1, 0], [1, 1, 0]]),
