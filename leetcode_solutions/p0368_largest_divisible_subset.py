@@ -1,4 +1,7 @@
+import unittest
 from typing import List
+
+from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
@@ -16,17 +19,23 @@ class Solution:
         return max(ans, key=len)
 
 
-def test():
-    sol = Solution()
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
+    test_cases = [
+        {
+            "class": Solution,
+            "class_methods": ["largestDivisibleSubset"] * 2,
+            "kwargs": [
+                dict(nums = [1,2,3]),
+                dict(nums = [1,2,4,8]),
+            ],
+            "expected": [
+                [1, 2],
+                [1, 2, 4, 8],
+            ],
+            "assert_methods": ["assertSameLengthSubset"],
+        },
+    ]
 
-    print('Test 1... ', end='')
-    assert sol.largestDivisibleSubset(nums=[1, 2, 3]) == [1, 2]
-    print('OK')
 
-    print('Test 2... ', end='')
-    assert sol.largestDivisibleSubset(nums=[1, 2, 4, 8]) == [1, 2, 4, 8]
-    print('OK')
-
-
-if __name__ == '__main__':
-    test()
+if __name__ == "__main__":
+    unittest.main()
