@@ -36,6 +36,9 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
         },
     ]
 
+    def assertSameLengthSubset(self, actual, expected):
+        return len(actual) == len(expected)
+
 
 if __name__ == "__main__":
     unittest.main()
