@@ -1,5 +1,8 @@
 from pathlib import Path
 
+BLOCKED_TASKS = {
+    0,
+}
 
 def get_first_missing_task(number_from=1):
     p = Path(__file__).parent.absolute()
@@ -21,6 +24,7 @@ def get_first_missing_task(number_from=1):
             except ValueError:
                 pass
 
+    files_set.update(BLOCKED_TASKS)
     for i in range(number_from, 10000):
         if i not in files_set:
             return i
