@@ -1,7 +1,26 @@
+import unittest
 from itertools import groupby
+
+from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
+    cnt_n_say = [""] * 31
+    cnt_n_say[1] = "1"
+    res = []
+
+    for i in range(2, 31):
+        for k, gr in groupby(cnt_n_say[i - 1]):
+            res.append(str(len(list(gr))))
+            res.append(k)
+        cnt_n_say[i] = "".join(res)
+        res.clear()
+
+    def countAndSay(self, n: int) -> str:
+        return self.cnt_n_say[n]
+
+
+class Solutio2:
     def countAndSay(self, n: int) -> str:
         ans = '1'
         for _ in range(n - 1):
@@ -9,7 +28,7 @@ class Solution:
         return ans
 
 
-class Solution1:
+class Solution3:
     def countAndSay(self, n: int) -> str:
         ans = '1'
         for _ in range(n - 1):
@@ -23,7 +42,7 @@ class Solution1:
         return ans
 
 
-class Solution2:
+class Solution4:
     def countAndSay(self, n: int) -> str:
         ans = '1'
         for _ in range(n - 1):
@@ -42,17 +61,34 @@ class Solution2:
         return ans
 
 
-def test():
-    sol = Solution()
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
+    test_cases = [
+        {
+            "class": Solution,
+            "class_methods": ["countAndSay"] * 2,
+            "kwargs": [
+                dict(n=4),
+                dict(n=1),
+            ],
+            "expected": ["1211", "1"],
+        },
+    ]
 
-    print('Test 1... ', end='')
-    assert sol.countAndSay(n=1) == '1'
-    print('OK')
 
-    print('Test 2... ', end='')
-    assert sol.countAndSay(n=4) == '1211'
-    print('OK')
+if __name__ == "__main__":
+    unittest.main()
 
-
-if __name__ == '__main__':
-    test()
+# def test():
+#     sol = Solution()
+#
+#     print('Test 1... ', end='')
+#     assert sol.countAndSay(n=1) == '1'
+#     print('OK')
+#
+#     print('Test 2... ', end='')
+#     assert sol.countAndSay(n=4) == '1211'
+#     print('OK')
+#
+#
+# if __name__ == '__main__':
+#     test()

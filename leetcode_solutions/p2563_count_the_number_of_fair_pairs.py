@@ -1,6 +1,8 @@
 import unittest
 from typing import List
 
+from sortedcontainers import SortedList
+
 from leetcode_solutions._test_meta import TestMeta
 
 
@@ -21,6 +23,19 @@ class Solution:
             if li == i:
                 break
             ans += min(ri, i) - li
+
+        return ans
+
+
+class Solution:
+    def countFairPairs(self, nums: List[int], lower: int, upper: int) -> int:
+        sl = SortedList()
+        lower -= 1
+        ans = 0
+
+        for n in nums:
+            ans += sl.bisect_right(upper - n) - sl.bisect_right(lower - n)
+            sl.add(n)
 
         return ans
 
