@@ -1,5 +1,8 @@
+import unittest
 from heapq import heapify, heappop
 from typing import List
+
+from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
@@ -31,22 +34,39 @@ class Solution2:
 
         return res
 
-
-def test_maximum_happiness_sum():
-    sol = Solution()
-
-    print("Test 1... ", end="")
-    assert sol.maximumHappinessSum(happiness=[1, 2, 3], k=2) == 4
-    print("OK")
-
-    print("Test 2... ", end="")
-    assert sol.maximumHappinessSum(happiness=[1, 1, 1, 1], k=2) == 1
-    print("OK")
-
-    print("Test 3... ", end="")
-    assert sol.maximumHappinessSum(happiness=[2, 3, 4, 5], k=1) == 5
-    print("OK")
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
+    test_cases = [
+        {
+            "class": Solution,
+            "class_methods": ["maximumHappinessSum"] * 3,
+            "kwargs": [
+                dict(happiness=[1, 2, 3], k=2),
+                dict(happiness=[1, 1, 1, 1], k=2),
+                dict(happiness=[2, 3, 4, 5], k=1),
+            ],
+            "expected": [4, 1, 5],
+        },
+    ]
 
 
 if __name__ == "__main__":
-    test_maximum_happiness_sum()
+    unittest.main()
+
+# def test_maximum_happiness_sum():
+#     sol = Solution()
+#
+#     print("Test 1... ", end="")
+#     assert sol.maximumHappinessSum(happiness=[1, 2, 3], k=2) == 4
+#     print("OK")
+#
+#     print("Test 2... ", end="")
+#     assert sol.maximumHappinessSum(happiness=[1, 1, 1, 1], k=2) == 1
+#     print("OK")
+#
+#     print("Test 3... ", end="")
+#     assert sol.maximumHappinessSum(happiness=[2, 3, 4, 5], k=1) == 5
+#     print("OK")
+
+
+# if __name__ == "__main__":
+#     test_maximum_happiness_sum()
