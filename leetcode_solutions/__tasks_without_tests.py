@@ -34,3 +34,4 @@ if __name__ == '__main__':
     files = get_tasks_without_tests(current_dir)
     for file in files:
         print(file)
+    print(f'Found {len(files)} tasks without tests.')
