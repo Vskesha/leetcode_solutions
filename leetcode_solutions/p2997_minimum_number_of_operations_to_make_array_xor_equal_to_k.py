@@ -1,4 +1,7 @@
+import unittest
 from typing import List
+
+from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
@@ -26,22 +29,39 @@ class Solution2:
 
         return res
 
-
-def test_min_operations():
-    sol = Solution()
-
-    print("Test 1 ... ", end="")
-    assert sol.minOperations(nums=[2, 1, 3, 4], k=1) == 2
-    print("OK")
-
-    print("Test 2 ... ", end="")
-    assert sol.minOperations(nums=[2, 0, 2, 0], k=0) == 0
-    print("OK")
-
-    print("Test 3 ... ", end="")
-    assert sol.minOperations(nums=[3, 13, 9, 8, 5, 18, 11, 10], k=13) == 2
-    print("OK")
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
+    test_cases = [
+        {
+            "class": Solution,
+            "class_methods": ["minOperations"] * 3,
+            "kwargs": [
+                dict(nums=[2, 1, 3, 4], k=1),
+                dict(nums=[2, 0, 2, 0], k=0),
+                dict(nums=[3, 13, 9, 8, 5, 18, 11, 10], k=13),
+            ],
+            "expected": [2, 0, 2],
+        },
+    ]
 
 
 if __name__ == "__main__":
-    test_min_operations()
+    unittest.main()
+
+# def test_min_operations():
+#     sol = Solution()
+#
+#     print("Test 1 ... ", end="")
+#     assert sol.minOperations(nums=[2, 1, 3, 4], k=1) == 2
+#     print("OK")
+#
+#     print("Test 2 ... ", end="")
+#     assert sol.minOperations(nums=[2, 0, 2, 0], k=0) == 0
+#     print("OK")
+#
+#     print("Test 3 ... ", end="")
+#     assert sol.minOperations(nums=[3, 13, 9, 8, 5, 18, 11, 10], k=13) == 2
+#     print("OK")
+
+
+# if __name__ == "__main__":
+#     test_min_operations()

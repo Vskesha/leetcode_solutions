@@ -1,4 +1,7 @@
+import unittest
 from typing import List
+
+from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
@@ -24,23 +27,39 @@ class Solution2:
                 return nums[i] + tot
 
         return -1
-
-
-def test():
-    sol = Solution()
-
-    print("Test 1... ", end="")
-    assert sol.largestPerimeter(nums=[5, 5, 5]) == 15
-    print("OK")
-
-    print("Test 2... ", end="")
-    assert sol.largestPerimeter(nums=[1, 12, 1, 2, 5, 50, 3]) == 12
-    print("OK")
-
-    print("Test 3... ", end="")
-    assert sol.largestPerimeter(nums=[5, 5, 50]) == -1
-    print("OK")
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
+    test_cases = [
+        {
+            "class": Solution,
+            "class_methods": ["largestPerimeter"] * 3,
+            "kwargs": [
+                dict(nums=[5, 5, 5]),
+                dict(nums=[1, 12, 1, 2, 5, 50, 3]),
+                dict(nums=[5, 5, 50]),
+            ],
+            "expected": [15, 12, -1],
+        },
+    ]
 
 
 if __name__ == "__main__":
-    test()
+    unittest.main()
+
+# def test():
+#     sol = Solution()
+#
+#     print("Test 1... ", end="")
+#     assert sol.largestPerimeter(nums=[5, 5, 5]) == 15
+#     print("OK")
+#
+#     print("Test 2... ", end="")
+#     assert sol.largestPerimeter(nums=[1, 12, 1, 2, 5, 50, 3]) == 12
+#     print("OK")
+#
+#     print("Test 3... ", end="")
+#     assert sol.largestPerimeter(nums=[5, 5, 50]) == -1
+#     print("OK")
+
+
+# if __name__ == "__main__":
+#     test()
