@@ -1,4 +1,7 @@
+import unittest
 from collections import Counter
+
+from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
@@ -19,17 +22,34 @@ class Solution3:
         return "".join(sorted(s, reverse=True))[1:] + "1"
 
 
-def test():
-    sol = Solution()
-
-    print("Test 1... ", end="")
-    assert sol.maximumOddBinaryNumber(s="010") == "001"
-    print("OK")
-
-    print("Test 2... ", end="")
-    assert sol.maximumOddBinaryNumber(s="0101") == "1001"
-    print("OK")
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
+    test_cases = [
+        {
+            "class": Solution,
+            "class_methods": ["maximumOddBinaryNumber"] * 2,
+            "kwargs": [
+                dict(s="010"),
+                dict(s="0101"),
+            ],
+            "expected": ["001", "1001"],
+        },
+    ]
 
 
 if __name__ == "__main__":
-    test()
+    unittest.main()
+
+# def test():
+#     sol = Solution()
+#
+#     print("Test 1... ", end="")
+#     assert sol.maximumOddBinaryNumber(s="010") == "001"
+#     print("OK")
+#
+#     print("Test 2... ", end="")
+#     assert sol.maximumOddBinaryNumber(s="0101") == "1001"
+#     print("OK")
+
+
+# if __name__ == "__main__":
+#     test()

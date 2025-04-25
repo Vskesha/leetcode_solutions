@@ -1,5 +1,8 @@
+import unittest
 from heapq import heappop, heappush
 from typing import List
+
+from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
@@ -23,17 +26,34 @@ class Solution:
         return ans
 
 
-def test():
-    sol = Solution()
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
+    test_cases = [
+        {
+            "class": Solution,
+            "class_methods": ["maxSpending"] * 2,
+            "kwargs": [
+                dict(values=[[8, 5, 2], [6, 4, 1], [9, 7, 3]]),
+                dict(values=[[10, 8, 6, 4, 2], [9, 7, 5, 3, 2]]),
+            ],
+            "expected": [285, 386],
+        },
+    ]
 
-    print('Test 1... ', end='')
-    assert sol.maxSpending(values=[[8, 5, 2], [6, 4, 1], [9, 7, 3]]) == 285
-    print('ok')
 
-    print('Test 1... ', end='')
-    assert sol.maxSpending(values=[[10, 8, 6, 4, 2], [9, 7, 5, 3, 2]]) == 386
-    print('ok')
+if __name__ == "__main__":
+    unittest.main()
+
+# def test():
+#     sol = Solution()
+#
+#     print('Test 1... ', end='')
+#     assert sol.maxSpending(values=[[8, 5, 2], [6, 4, 1], [9, 7, 3]]) == 285
+#     print('ok')
+#
+#     print('Test 1... ', end='')
+#     assert sol.maxSpending(values=[[10, 8, 6, 4, 2], [9, 7, 5, 3, 2]]) == 386
+#     print('ok')
 
 
-if __name__ == '__main__':
-    test()
+# if __name__ == '__main__':
+#     test()

@@ -1,6 +1,9 @@
+import unittest
 from functools import cache
 from itertools import pairwise
 from typing import List
+
+from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
@@ -106,26 +109,44 @@ class Solution3:
         return res
 
 
-def test():
-    sol = Solution()
-
-    print('Test 1... ', end='')
-    assert sol.numberOfSequence(n=5, sick=[0, 4]) == 4
-    print('OK')
-
-    print('Test 2... ', end='')
-    assert sol.numberOfSequence(n=4, sick=[1]) == 3
-    print('OK')
-
-    print('Test 3... ', end='')
-    assert sol.numberOfSequence(n=5, sick=[0, 1]) == 1
-    print('OK')
-
-    print('Test 4... ', end='')
-    assert sol.numberOfSequence(n=100, sick=[0]) == 1
-    print('OK')
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
+    test_cases = [
+        {
+            "class": Solution,
+            "class_methods": ["numberOfSequence"] * 4,
+            "kwargs": [
+                dict(n=5, sick=[0, 4]),
+                dict(n=4, sick=[1]),
+                dict(n=5, sick=[0, 1]),
+                dict(n=100, sick=[0]),
+            ],
+            "expected": [4, 3, 1, 1],
+        },
+    ]
 
 
-if __name__ == '__main__':
-    test()
+if __name__ == "__main__":
+    unittest.main()
 
+# def test():
+#     sol = Solution()
+#
+#     print('Test 1... ', end='')
+#     assert sol.numberOfSequence(n=5, sick=[0, 4]) == 4
+#     print('OK')
+#
+#     print('Test 2... ', end='')
+#     assert sol.numberOfSequence(n=4, sick=[1]) == 3
+#     print('OK')
+#
+#     print('Test 3... ', end='')
+#     assert sol.numberOfSequence(n=5, sick=[0, 1]) == 1
+#     print('OK')
+#
+#     print('Test 4... ', end='')
+#     assert sol.numberOfSequence(n=100, sick=[0]) == 1
+#     print('OK')
+
+
+# if __name__ == '__main__':
+#     test()
