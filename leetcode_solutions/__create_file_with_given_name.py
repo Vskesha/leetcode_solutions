@@ -31,15 +31,15 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
     test_cases = [
         {
             "class": Solution,
-            "cls_init_args": [],
-            "cls_init_kwargs": dict(),
-            "class_methods": ["class_method"],
-            "args": [[], ],
+            # "cls_init_args": [],
+            # "cls_init_kwargs": dict(),
+            "class_methods": ["class_method"] * n,
+            # "args": [[], ],
             "kwargs": [
                 dict(),
             ],
             "expected": [],
-            "assert_methods": ["assertMethod"],
+            # "assert_methods": ["assertMethod"] * n,
         },
     ]
 
