@@ -1,5 +1,8 @@
+import unittest
 from heapq import nsmallest
 from typing import List
+
+from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
@@ -13,23 +16,45 @@ class Solution:
         lo = money - s - ss
         return money if lo < 0 else lo
 
+
 class Solution2:
     def buyChoco(self, prices: List[int], money: int) -> int:
         cost = sum(nsmallest(2, prices))
-        return money-cost if money >= cost else money
+        return money - cost if money >= cost else money
 
 
-def test():
-    sol = Solution()
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
+    test_cases = [
+        {
+            "class": Solution,
+            # "cls_init_args": [],
+            # "cls_init_kwargs": dict(),
+            "class_methods": ["buyChoco"] * 2,
+            # "args": [[], ],
+            "kwargs": [
+                dict(prices=[1, 2, 2], money=3),
+                dict(prices=[3, 2, 3], money=3),
+            ],
+            "expected": [0, 3],
+            # "assert_methods": ["assertMethod"] * n,
+        },
+    ]
 
-    print('Test 1... ', end='')
-    assert sol.buyChoco(prices = [1,2,2], money = 3) == 0
-    print('OK')
 
-    print('Test 2... ', end='')
-    assert sol.buyChoco(prices = [3,2,3], money = 3) == 3
-    print('OK')
+if __name__ == "__main__":
+    unittest.main()
+
+# def test():
+#     sol = Solution()
+#
+#     print('Test 1... ', end='')
+#     assert sol.buyChoco(prices = [1,2,2], money = 3) == 0
+#     print('OK')
+#
+#     print('Test 2... ', end='')
+#     assert sol.buyChoco(prices = [3,2,3], money = 3) == 3
+#     print('OK')
 
 
-if __name__ == '__main__':
-    test()
+# if __name__ == '__main__':
+#     test()

@@ -1,6 +1,9 @@
+import unittest
 from collections import deque
 from heapq import heappop, heappush
 from typing import List
+
+from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
@@ -118,41 +121,68 @@ class Solution2:
         return self.ans
 
 
-def test_maximum_safeness_factor():
-    sol = Solution()
-
-    print("Test 1... ", end="")
-    assert sol.maximumSafenessFactor(grid=[[1, 0, 0], [0, 0, 0], [0, 0, 1]]) == 0
-    print("OK")
-
-    print("Test 2... ", end="")
-    assert sol.maximumSafenessFactor(grid=[[0, 0, 1], [0, 0, 0], [0, 0, 0]]) == 2
-    print("OK")
-
-    print("Test 3... ", end="")
-    assert (
-        sol.maximumSafenessFactor(
-            grid=[[0, 0, 0, 1], [0, 0, 0, 0], [0, 0, 0, 0], [1, 0, 0, 0]]
-        )
-        == 2
-    )
-    print("OK")
-
-    print("Test 4... ", end="")
-    assert (
-        sol.maximumSafenessFactor(
-            grid=[
-                [0, 0, 0, 0, 0],
-                [1, 1, 1, 1, 0],
-                [1, 0, 0, 0, 0],
-                [1, 0, 1, 1, 1],
-                [0, 0, 0, 0, 0],
-            ]
-        )
-        == 1
-    )
-    print("OK")
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
+    test_cases = [
+        {
+            "class": Solution,
+            "class_methods": ["maximumSafenessFactor"] * 4,
+            "kwargs": [
+                dict(grid=[[1, 0, 0], [0, 0, 0], [0, 0, 1]]),
+                dict(grid=[[0, 0, 1], [0, 0, 0], [0, 0, 0]]),
+                dict(grid=[[0, 0, 0, 1], [0, 0, 0, 0], [0, 0, 0, 0], [1, 0, 0, 0]]),
+                dict(
+                    grid=[
+                        [0, 0, 0, 0, 0],
+                        [1, 1, 1, 1, 0],
+                        [1, 0, 0, 0, 0],
+                        [1, 0, 1, 1, 1],
+                        [0, 0, 0, 0, 0],
+                    ]
+                ),
+            ],
+            "expected": [0, 2, 2, 1],
+        },
+    ]
 
 
 if __name__ == "__main__":
-    test_maximum_safeness_factor()
+    unittest.main()
+
+# def test_maximum_safeness_factor():
+#     sol = Solution()
+#
+#     print("Test 1... ", end="")
+#     assert sol.maximumSafenessFactor(grid=[[1, 0, 0], [0, 0, 0], [0, 0, 1]]) == 0
+#     print("OK")
+#
+#     print("Test 2... ", end="")
+#     assert sol.maximumSafenessFactor(grid=[[0, 0, 1], [0, 0, 0], [0, 0, 0]]) == 2
+#     print("OK")
+#
+#     print("Test 3... ", end="")
+#     assert (
+#         sol.maximumSafenessFactor(
+#             grid=[[0, 0, 0, 1], [0, 0, 0, 0], [0, 0, 0, 0], [1, 0, 0, 0]]
+#         )
+#         == 2
+#     )
+#     print("OK")
+#
+#     print("Test 4... ", end="")
+#     assert (
+#         sol.maximumSafenessFactor(
+#             grid=[
+#                 [0, 0, 0, 0, 0],
+#                 [1, 1, 1, 1, 0],
+#                 [1, 0, 0, 0, 0],
+#                 [1, 0, 1, 1, 1],
+#                 [0, 0, 0, 0, 0],
+#             ]
+#         )
+#         == 1
+#     )
+#     print("OK")
+
+
+# if __name__ == "__main__":
+#     test_maximum_safeness_factor()

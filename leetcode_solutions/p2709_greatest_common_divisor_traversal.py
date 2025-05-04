@@ -1,6 +1,9 @@
 import math
+import unittest
 from collections import defaultdict, deque
 from typing import List
+
+from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
@@ -112,23 +115,39 @@ class Solution3:
             else:
                 divisor += 1
         return ans
-
-
-def test():
-    sol = Solution()
-
-    print("Test 1... ", end="")
-    assert sol.canTraverseAllPairs(nums=[2, 3, 6]) is True
-    print("OK")
-
-    print("Test 2... ", end="")
-    assert sol.canTraverseAllPairs(nums=[3, 9, 5]) is False
-    print("OK")
-
-    print("Test 3... ", end="")
-    assert sol.canTraverseAllPairs(nums=[4, 3, 12, 8]) is True
-    print("OK")
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
+    test_cases = [
+        {
+            "class": Solution,
+            "class_methods": ["canTraverseAllPairs"] * 3,
+            "kwargs": [
+                dict(nums=[2, 3, 6]),
+                dict(nums=[3, 9, 5]),
+                dict(nums=[4, 3, 12, 8]),
+            ],
+            "expected": [True, False, True],
+        },
+    ]
 
 
 if __name__ == "__main__":
-    test()
+    unittest.main()
+
+# def test():
+#     sol = Solution()
+#
+#     print("Test 1... ", end="")
+#     assert sol.canTraverseAllPairs(nums=[2, 3, 6]) is True
+#     print("OK")
+#
+#     print("Test 2... ", end="")
+#     assert sol.canTraverseAllPairs(nums=[3, 9, 5]) is False
+#     print("OK")
+#
+#     print("Test 3... ", end="")
+#     assert sol.canTraverseAllPairs(nums=[4, 3, 12, 8]) is True
+#     print("OK")
+
+
+# if __name__ == "__main__":
+#     test()
