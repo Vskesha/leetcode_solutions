@@ -16,6 +16,31 @@ class Solution:
         for i, j in zip(range(li), range(k, li)):
             ans += (ids[i] + 1) * (ids[j] - ids[j - 1])
         return ans
+class Solution2:
+    def countSubarrays(self, nums: List[int], k: int) -> int:
+        ans = 0
+        mn = max(nums)
+        ln = len(nums)
+        inds = [i for i in range(ln) if nums[i] == mn]
+        inds.append(ln)
+        for i in range(k, len(inds)):
+            ans += (inds[i] - inds[i - 1]) * (inds[i - k] + 1)
+        return ans
+
+
+class Solution3:
+    def countSubarrays(self, nums: List[int], k: int) -> int:
+        ans = 0
+        mn = max(nums)
+        inds = [i for i, n in enumerate(nums) if n == mn]
+        li = len(inds)
+        if li < k:
+            return 0
+        inds.append(len(nums))
+        for si, ei in zip(range(li), range(k - 1, li)):
+            ans += (inds[si] + 1) * (inds[ei + 1] - inds[ei])
+
+        return ans
 
 
 class TestSolution(unittest.TestCase, metaclass=TestMeta):
