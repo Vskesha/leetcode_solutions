@@ -7,8 +7,6 @@ import numpy as np
 
 from leetcode_solutions._test_meta import TestMeta
 
-import numpy as np
-
 
 class Solution:
     def lengthAfterTransformations(self, s: str, t: int, nums: List[int]) -> int:

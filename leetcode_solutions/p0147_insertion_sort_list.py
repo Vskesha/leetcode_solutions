@@ -1,6 +1,6 @@
 import unittest
 from itertools import pairwise
-from typing import Optional, List
+from typing import List, Optional
 
 from leetcode_solutions._test_meta import TestMeta
 
