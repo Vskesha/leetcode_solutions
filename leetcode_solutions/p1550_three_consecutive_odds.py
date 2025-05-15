@@ -4,13 +4,26 @@ from typing import List
 
 class Solution:
     def threeConsecutiveOdds(self, arr: List[int]) -> bool:
+        odds = 0
+        for n in arr:
+            if n % 2:
+                if odds == 2:
+                    return True
+                odds += 1
+            else:
+                odds = 0
+        return False
+
+
+class Solution2:
+    def threeConsecutiveOdds(self, arr: List[int]) -> bool:
         odds = [x % 2 for x in arr]
         return any(
             odds[i] and odds[i + 1] and odds[i + 2] for i in range(len(odds) - 2)
         )
 
 
-class Solution:
+class Solution3:
     def threeConsecutiveOdds(self, arr: List[int]) -> bool:
         if len(arr) < 3:
             return False

@@ -1,6 +1,7 @@
 import unittest
 from collections import Counter
 from functools import cache
+from itertools import accumulate
 
 from leetcode_solutions._test_meta import TestMeta
 
@@ -99,6 +100,45 @@ class Solution2:
             return res
 
         ans = dp(tuple(), 0, ln, 0)
+        return ans
+
+
+class Solution:
+    def countBalancedPermutations(self, num: str) -> int:
+        mod = 10 ** 9 + 7
+        ln = len(num)
+        digits = sorted(map(int, num), reverse=True)
+        acc = list(accumulate(digits, initial=0))
+        sumd = acc[-1]
+        sumd2 = sumd // 2
+        if sumd & 1:
+            return 0
+        freq = Counter(digits)
+        mf = max(freq.values())
+
+        fact = [1] * (mf + 1)
+        for i in range(2, mf + 1):
+            fact[i] = fact[i - 1] * i % mod
+
+        @cache
+        def dp(even, odd, ev_rem) -> int:
+            if even == odd == 0:
+                return 1
+            i = ln - even - odd
+            d = digits[i]
+            res = 0
+            od_rem = sumd - acc[i] - ev_rem
+            if even and ev_rem >= d:
+                res = dp(even - 1, odd, ev_rem - d) * even
+            if odd and od_rem >= d:
+                res = (res + dp(even, odd - 1, ev_rem) * odd) % mod
+            return res
+
+        ans = dp(ln // 2, (ln + 1) // 2, sumd2)
+
+        for fr in freq.values():
+            ans = ans * pow(fact[fr], mod - 2, mod) % mod
+
         return ans
 
 

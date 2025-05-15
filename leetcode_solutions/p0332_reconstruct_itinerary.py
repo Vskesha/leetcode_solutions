@@ -1,5 +1,8 @@
+import unittest
 from collections import defaultdict
 from typing import List
+
+from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
@@ -16,14 +19,54 @@ class Solution:
                 dfs(graph[ap].pop())
             itinerary.append(ap)
 
-        dfs('JFK')
+        dfs("JFK")
         return itinerary[::-1]
+
+
+class Solution1:
+    def findItinerary(self, tickets: List[List[str]]) -> List[str]:
+        adj = defaultdict(list)
+        for fr, to in tickets:
+            adj[fr].append(to)
+        for neibs in adj.values():
+            neibs.sort(reverse=True)
+
+        def dfs(curr):
+            while adj[curr]:
+                dfs(adj[curr].pop())
+            itin.append(curr)
+
+        itin = []
+        dfs("JFK")
+        return itin[::-1]
 
 
 class Solution2:
     def findItinerary(self, tickets: List[List[str]]) -> List[str]:
+        adj = defaultdict(list)
+        for fr, to in tickets:
+            adj[fr].append(to)
+        for neibs in adj.values():
+            neibs.sort(reverse=True)
+
+        def dfs(curr):
+            if not adj[curr]:
+                return [curr]
+            tail = dfs(adj[curr].pop())
+            ans = [curr]
+            if adj[curr]:
+                insertion = dfs(adj[curr].pop())
+                ans.extend(insertion)
+            ans.extend(tail)
+            return ans
+
+        return dfs("JFK")
+
+
+class Solution3:
+    def findItinerary(self, tickets: List[List[str]]) -> List[str]:
         lt = len(tickets)
-        itinerary = ['JFK']
+        itinerary = ["JFK"]
 
         graph = defaultdict(list)
         for fr, to in tickets:
@@ -59,7 +102,7 @@ class Solution2:
 
         def dfs(dep: str) -> None:
             if len(itinerary) == lt + 1:
-                raise StopIteration('end')
+                raise StopIteration("end")
             for i in range(len(graph[dep])):
                 ar = graph[dep].pop(i)
                 if groups() == 1:
@@ -69,69 +112,213 @@ class Solution2:
                 graph[dep].insert(i, ar)
 
         try:
-            dfs('JFK')
+            dfs("JFK")
         except StopIteration:
             pass
         return itinerary
 
 
-def test():
-    sol = Solution()
-    print('Test 1 ... ', end='')
-    assert sol.findItinerary(tickets=[["MUC", "LHR"],
-                                      ["JFK", "MUC"],
-                                      ["SFO", "SJC"],
-                                      ["LHR", "SFO"]])\
-           == ["JFK", "MUC", "LHR", "SFO", "SJC"]
-    print('ok')
-    print('Test 2 ... ', end='')
-    assert sol.findItinerary(tickets=[["JFK", "SFO"],
-                                      ["JFK", "ATL"],
-                                      ["SFO", "ATL"],
-                                      ["ATL", "JFK"],
-                                      ["ATL", "SFO"]])\
-           == ["JFK", "ATL", "JFK", "SFO", "ATL", "SFO"]
-    print('ok')
-    print('Test 3 ... ', end='')
-    assert sol.findItinerary([["JFK", "SFO"], ["JFK", "ATL"], ["SFO", "JFK"],
-                              ["ATL", "AAA"], ["AAA", "BBB"], ["BBB", "ATL"],
-                              ["ATL", "AAA"], ["AAA", "BBB"], ["BBB", "ATL"],
-                              ["ATL", "AAA"], ["AAA", "BBB"], ["BBB", "ATL"],
-                              ["ATL", "AAA"], ["AAA", "BBB"], ["BBB", "ATL"],
-                              ["ATL", "AAA"], ["AAA", "BBB"], ["BBB", "ATL"],
-                              ["ATL", "AAA"], ["AAA", "BBB"], ["BBB", "ATL"],
-                              ["ATL", "AAA"], ["AAA", "BBB"], ["BBB", "ATL"],
-                              ["ATL", "AAA"], ["AAA", "BBB"], ["BBB", "ATL"],
-                              ["ATL", "AAA"], ["AAA", "BBB"], ["BBB", "ATL"],
-                              ["ATL", "AAA"], ["AAA", "BBB"], ["BBB", "ATL"],
-                              ["ATL", "AAA"], ["AAA", "BBB"], ["BBB", "ATL"],
-                              ["ATL", "AAA"], ["AAA", "BBB"], ["BBB", "ATL"],
-                              ["ATL", "AAA"], ["AAA", "BBB"], ["BBB", "ATL"],
-                              ["ATL", "AAA"], ["AAA", "BBB"], ["BBB", "ATL"],
-                              ["ATL", "AAA"], ["AAA", "BBB"], ["BBB", "ATL"],
-                              ["ATL", "AAA"], ["AAA", "BBB"], ["BBB", "ATL"],
-                              ["ATL", "AAA"], ["AAA", "BBB"], ["BBB", "ATL"],
-                              ["ATL", "AAA"], ["AAA", "BBB"], ["BBB", "ATL"],
-                              ["ATL", "AAA"], ["AAA", "BBB"], ["BBB", "ATL"],
-                              ["ATL", "AAA"], ["AAA", "BBB"], ["BBB", "ATL"],
-                              ["ATL", "AAA"], ["AAA", "BBB"], ["BBB", "ATL"],
-                              ["ATL", "AAA"], ["AAA", "BBB"], ["BBB", "ATL"],
-                              ["ATL", "AAA"], ["AAA", "BBB"], ["BBB", "ATL"],
-                              ["ATL", "AAA"], ["AAA", "BBB"], ["BBB", "ATL"],
-                              ["ATL", "AAA"], ["AAA", "BBB"], ["BBB", "ATL"],
-                              ["ATL", "AAA"], ["AAA", "BBB"], ["BBB", "ATL"]]) \
-           == ['JFK', 'SFO', 'JFK', 'ATL', 'AAA', 'BBB', 'ATL', 'AAA', 'BBB',
-               'ATL', 'AAA', 'BBB', 'ATL', 'AAA', 'BBB', 'ATL', 'AAA', 'BBB',
-               'ATL', 'AAA', 'BBB', 'ATL', 'AAA', 'BBB', 'ATL', 'AAA', 'BBB',
-               'ATL', 'AAA', 'BBB', 'ATL', 'AAA', 'BBB', 'ATL', 'AAA', 'BBB',
-               'ATL', 'AAA', 'BBB', 'ATL', 'AAA', 'BBB', 'ATL', 'AAA', 'BBB',
-               'ATL', 'AAA', 'BBB', 'ATL', 'AAA', 'BBB', 'ATL', 'AAA', 'BBB',
-               'ATL', 'AAA', 'BBB', 'ATL', 'AAA', 'BBB', 'ATL', 'AAA', 'BBB',
-               'ATL', 'AAA', 'BBB', 'ATL', 'AAA', 'BBB', 'ATL', 'AAA', 'BBB',
-               'ATL', 'AAA', 'BBB', 'ATL', 'AAA', 'BBB', 'ATL', 'AAA', 'BBB',
-               'ATL']
-    print('ok')
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
+    test_cases = [
+        {
+            "class": Solution,
+            "class_methods": ["findItinerary"] * 3,
+            "kwargs": [
+                dict(
+                    tickets=[
+                        ["MUC", "LHR"],
+                        ["JFK", "MUC"],
+                        ["SFO", "SJC"],
+                        ["LHR", "SFO"],
+                    ]
+                ),
+                dict(
+                    tickets=[
+                        ["JFK", "SFO"],
+                        ["JFK", "ATL"],
+                        ["SFO", "ATL"],
+                        ["ATL", "JFK"],
+                        ["ATL", "SFO"],
+                    ]
+                ),
+                dict(
+                    tickets=[
+                        ["JFK", "SFO"],
+                        ["JFK", "ATL"],
+                        ["SFO", "JFK"],
+                        ["ATL", "AAA"],
+                        ["AAA", "BBB"],
+                        ["BBB", "ATL"],
+                        ["ATL", "AAA"],
+                        ["AAA", "BBB"],
+                        ["BBB", "ATL"],
+                        ["ATL", "AAA"],
+                        ["AAA", "BBB"],
+                        ["BBB", "ATL"],
+                        ["ATL", "AAA"],
+                        ["AAA", "BBB"],
+                        ["BBB", "ATL"],
+                        ["ATL", "AAA"],
+                        ["AAA", "BBB"],
+                        ["BBB", "ATL"],
+                        ["ATL", "AAA"],
+                        ["AAA", "BBB"],
+                        ["BBB", "ATL"],
+                        ["ATL", "AAA"],
+                        ["AAA", "BBB"],
+                        ["BBB", "ATL"],
+                        ["ATL", "AAA"],
+                        ["AAA", "BBB"],
+                        ["BBB", "ATL"],
+                        ["ATL", "AAA"],
+                        ["AAA", "BBB"],
+                        ["BBB", "ATL"],
+                        ["ATL", "AAA"],
+                        ["AAA", "BBB"],
+                        ["BBB", "ATL"],
+                        ["ATL", "AAA"],
+                        ["AAA", "BBB"],
+                        ["BBB", "ATL"],
+                        ["ATL", "AAA"],
+                        ["AAA", "BBB"],
+                        ["BBB", "ATL"],
+                        ["ATL", "AAA"],
+                        ["AAA", "BBB"],
+                        ["BBB", "ATL"],
+                        ["ATL", "AAA"],
+                        ["AAA", "BBB"],
+                        ["BBB", "ATL"],
+                        ["ATL", "AAA"],
+                        ["AAA", "BBB"],
+                        ["BBB", "ATL"],
+                        ["ATL", "AAA"],
+                        ["AAA", "BBB"],
+                        ["BBB", "ATL"],
+                        ["ATL", "AAA"],
+                        ["AAA", "BBB"],
+                        ["BBB", "ATL"],
+                        ["ATL", "AAA"],
+                        ["AAA", "BBB"],
+                        ["BBB", "ATL"],
+                        ["ATL", "AAA"],
+                        ["AAA", "BBB"],
+                        ["BBB", "ATL"],
+                        ["ATL", "AAA"],
+                        ["AAA", "BBB"],
+                        ["BBB", "ATL"],
+                        ["ATL", "AAA"],
+                        ["AAA", "BBB"],
+                        ["BBB", "ATL"],
+                        ["ATL", "AAA"],
+                        ["AAA", "BBB"],
+                        ["BBB", "ATL"],
+                        ["ATL", "AAA"],
+                        ["AAA", "BBB"],
+                        ["BBB", "ATL"],
+                        ["ATL", "AAA"],
+                        ["AAA", "BBB"],
+                        ["BBB", "ATL"],
+                        ["ATL", "AAA"],
+                        ["AAA", "BBB"],
+                        ["BBB", "ATL"],
+                        ["ATL", "AAA"],
+                        ["AAA", "BBB"],
+                        ["BBB", "ATL"],
+                    ]
+                ),
+            ],
+            "expected": [
+                ["JFK", "MUC", "LHR", "SFO", "SJC"],
+                ["JFK", "ATL", "JFK", "SFO", "ATL", "SFO"],
+                [
+                    "JFK",
+                    "SFO",
+                    "JFK",
+                    "ATL",
+                    "AAA",
+                    "BBB",
+                    "ATL",
+                    "AAA",
+                    "BBB",
+                    "ATL",
+                    "AAA",
+                    "BBB",
+                    "ATL",
+                    "AAA",
+                    "BBB",
+                    "ATL",
+                    "AAA",
+                    "BBB",
+                    "ATL",
+                    "AAA",
+                    "BBB",
+                    "ATL",
+                    "AAA",
+                    "BBB",
+                    "ATL",
+                    "AAA",
+                    "BBB",
+                    "ATL",
+                    "AAA",
+                    "BBB",
+                    "ATL",
+                    "AAA",
+                    "BBB",
+                    "ATL",
+                    "AAA",
+                    "BBB",
+                    "ATL",
+                    "AAA",
+                    "BBB",
+                    "ATL",
+                    "AAA",
+                    "BBB",
+                    "ATL",
+                    "AAA",
+                    "BBB",
+                    "ATL",
+                    "AAA",
+                    "BBB",
+                    "ATL",
+                    "AAA",
+                    "BBB",
+                    "ATL",
+                    "AAA",
+                    "BBB",
+                    "ATL",
+                    "AAA",
+                    "BBB",
+                    "ATL",
+                    "AAA",
+                    "BBB",
+                    "ATL",
+                    "AAA",
+                    "BBB",
+                    "ATL",
+                    "AAA",
+                    "BBB",
+                    "ATL",
+                    "AAA",
+                    "BBB",
+                    "ATL",
+                    "AAA",
+                    "BBB",
+                    "ATL",
+                    "AAA",
+                    "BBB",
+                    "ATL",
+                    "AAA",
+                    "BBB",
+                    "ATL",
+                    "AAA",
+                    "BBB",
+                    "ATL",
+                ],
+            ],
+            "assert_methods": ["assertListEqual"] * 3,
+        },
+    ]
 
 
-if __name__ == '__main__':
-    test()
+if __name__ == "__main__":
+    unittest.main()

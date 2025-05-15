@@ -1,6 +1,9 @@
+import unittest
 from collections import deque
 from functools import wraps
 from typing import List, Optional
+
+from leetcode_solutions._test_meta import TestMeta
 
 
 # Definition for a binary tree node.
@@ -95,18 +98,40 @@ class Solution2:
         return ans
 
 
-def test():
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
     null = None
-    sol = Solution()
+    test_cases = [
+        {
+            "class": Solution,
+            "class_methods": ["averageOfLevels"] * 2,
+            "kwargs": [
+                dict(root=[3, 9, 20, null, null, 15, 7]),
+                dict(root=[3, 9, 20, 15, 7]),
+            ],
+            "expected": [
+                [3.00000, 14.50000, 11.00000],
+                [3.00000, 14.50000, 11.00000],
+            ],
+            "assert_methods": ["assertAlmostEqual"] * 2,
+        },
+    ]
 
-    print('Test 1... ', end='')
-    assert sol.averageOfLevels(root=[3, 9, 20, null, null, 15, 7]) == [3.00000, 14.50000, 11.00000]
-    print('OK')
 
-    print('Test 2... ', end='')
-    assert sol.averageOfLevels(root=[3, 9, 20, 15, 7]) == [3.00000, 14.50000, 11.00000]
-    print('OK')
+if __name__ == "__main__":
+    unittest.main()
+
+# def test():
+#     null = None
+#     sol = Solution()
+#
+#     print('Test 1... ', end='')
+#     assert sol.averageOfLevels(root=[3, 9, 20, null, null, 15, 7]) == [3.00000, 14.50000, 11.00000]
+#     print('OK')
+#
+#     print('Test 2... ', end='')
+#     assert sol.averageOfLevels(root=[3, 9, 20, 15, 7]) == [3.00000, 14.50000, 11.00000]
+#     print('OK')
 
 
-if __name__ == '__main__':
-    test()
+# if __name__ == '__main__':
+#     test()

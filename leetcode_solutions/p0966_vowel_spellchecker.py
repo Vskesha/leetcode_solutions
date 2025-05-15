@@ -1,7 +1,42 @@
+import unittest
 from typing import List
+
+from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
+    def spellchecker(self, wordlist: List[str], queries: List[str]) -> List[str]:
+        exact = set(wordlist)
+        capit = {}
+        missv = {}
+        vowels = "aeiou"
+
+        for word in reversed(wordlist):
+            capit[word.lower()] = word
+            key = "".join("_" if ch in vowels else ch for ch in word.lower())
+            missv[key] = word
+
+        output = []
+        for word in queries:
+            if word in exact:
+                output.append(word)
+                continue
+
+            word = word.lower()
+            if word in capit:
+                output.append(capit[word])
+                continue
+
+            key = "".join("_" if ch in vowels else ch for ch in word)
+            if key in missv:
+                output.append(missv[key])
+            else:
+                output.append("")
+
+        return output
+
+
+class Solution2:
     def spellchecker(self, wordlist: List[str], queries: List[str]) -> List[str]:
         wl = set(wordlist)
         lows, vows = {}, {}
@@ -9,10 +44,12 @@ class Solution:
             w = word.lower()
             if w not in lows:
                 lows[w] = word
-            w = (w.replace('e', 'a')
-                 .replace('i', 'a')
-                 .replace('o', 'a')
-                 .replace('u', 'a'))
+            w = (
+                w.replace("e", "a")
+                .replace("i", "a")
+                .replace("o", "a")
+                .replace("u", "a")
+            )
             if w not in vows:
                 vows[w] = word
 
@@ -25,25 +62,27 @@ class Solution:
             if w in lows:
                 ans.append(lows[w])
                 continue
-            w = (w.replace('e', 'a')
-                 .replace('i', 'a')
-                 .replace('o', 'a')
-                 .replace('u', 'a'))
+            w = (
+                w.replace("e", "a")
+                .replace("i", "a")
+                .replace("o", "a")
+                .replace("u", "a")
+            )
             if w in vows:
                 ans.append(vows[w])
                 continue
-            ans.append('')
+            ans.append("")
 
         return ans
 
 
-class Solution2:
+class Solution3:
     def spellchecker(self, wordlist: List[str], queries: List[str]) -> List[str]:
-        vs = 'aeiou'
+        vs = "aeiou"
         wl = set(wordlist)
         low = [word.lower() for word in wordlist]
         lset = set(low)
-        vow = [''.join('*' if c in vs else c for c in w) for w in low]
+        vow = ["".join("*" if c in vs else c for c in w) for w in low]
         vset = set(vow)
         ans = []
         for word in queries:
@@ -55,33 +94,76 @@ class Solution2:
                 i = low.index(w)
                 ans.append(wordlist[i])
                 continue
-            w = ''.join('*' if c in vs else c for c in w)
+            w = "".join("*" if c in vs else c for c in w)
             if w in vset:
                 i = vow.index(w)
                 ans.append(wordlist[i])
                 continue
-            ans.append('')
+            ans.append("")
 
         return ans
 
 
-def test():
-    sol = Solution()
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
+    test_cases = [
+        {
+            "class": Solution,
+            "class_methods": ["spellchecker"] * 2,
+            "kwargs": [
+                dict(
+                    wordlist=["KiTe", "kite", "hare", "Hare"],
+                    queries=[
+                        "kite",
+                        "Kite",
+                        "KiTe",
+                        "Hare",
+                        "HARE",
+                        "Hear",
+                        "hear",
+                        "keti",
+                        "keet",
+                        "keto",
+                    ],
+                ),
+                dict(wordlist=["yellow"], queries=["YellOw"]),
+            ],
+            "expected": [
+                ["kite", "KiTe", "KiTe", "Hare", "hare", "", "", "KiTe", "", "KiTe"],
+                ["yellow"],
+            ],
+            "assert_methods": ["assertListEqual"] * 2,
+        },
+    ]
 
-    print('Test 1... ', end='')
-    assert sol.spellchecker(
-        wordlist=["KiTe", "kite", "hare", "Hare"],
-        queries=["kite", "Kite", "KiTe", "Hare", "HARE", "Hear", "hear", "keti", "keet", "keto"]
-    ) == ["kite", "KiTe", "KiTe", "Hare", "hare", "", "", "KiTe", "", "KiTe"]
-    print('OK')
 
-    print('Test 2... ', end='')
-    assert sol.spellchecker(
-        wordlist=["yellow"],
-        queries=["YellOw"]
-    ) == ["yellow"]
-    print('OK')
+if __name__ == "__main__":
+    unittest.main()
+
+# def test():
+#     sol = Solution()
+#
+#     print("Test 1... ", end="")
+#     assert sol.spellchecker(
+#         wordlist=["KiTe", "kite", "hare", "Hare"],
+#         queries=[
+#             "kite",
+#             "Kite",
+#             "KiTe",
+#             "Hare",
+#             "HARE",
+#             "Hear",
+#             "hear",
+#             "keti",
+#             "keet",
+#             "keto",
+#         ],
+#     ) == ["kite", "KiTe", "KiTe", "Hare", "hare", "", "", "KiTe", "", "KiTe"]
+#     print("OK")
+#
+#     print("Test 2... ", end="")
+#     assert sol.spellchecker(wordlist=["yellow"], queries=["YellOw"]) == ["yellow"]
+#     print("OK")
 
 
-if __name__ == '__main__':
-    test()
+# if __name__ == "__main__":
+#     test()

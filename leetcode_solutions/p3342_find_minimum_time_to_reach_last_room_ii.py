@@ -8,6 +8,26 @@ from leetcode_solutions._test_meta import TestMeta
 class Solution:
     def minTimeToReach(self, moveTime: List[List[int]]) -> int:
         m, n = len(moveTime), len(moveTime[0])
+        visited = [[False] * n for _ in range(m)]
+        visited[0][0] = True
+        heap = [(0, 0, 0, 2)]
+
+        while heap:
+            t, i, j, s = heappop(heap)
+            s = 3 - s
+            for ni, nj in ((i, j + 1), (i + 1, j), (i, j - 1), (i - 1, j)):
+                if 0 <= ni < m and 0 <= nj < n:
+                    if not visited[ni][nj]:
+                        nt = max(t, moveTime[ni][nj]) + s
+                        if ni == m - 1 and nj == n - 1:
+                            return nt
+                        heappush(heap, (nt, ni, nj, s))
+                        visited[ni][nj] = True
+
+
+class Solution2:
+    def minTimeToReach(self, moveTime: List[List[int]]) -> int:
+        m, n = len(moveTime), len(moveTime[0])
         heap = [(0, 0, 0, 1)]
         visited = [[False] * n for _ in range(m)]
         while heap:

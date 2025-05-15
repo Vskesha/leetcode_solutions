@@ -7,8 +7,31 @@ import numpy as np
 
 from leetcode_solutions._test_meta import TestMeta
 
+import numpy as np
+
 
 class Solution:
+    def lengthAfterTransformations(self, s: str, t: int, nums: List[int]) -> int:
+        mod = 10**9 + 7
+        orda = ord("a")
+        base = np.zeros((26, 26), dtype=object)
+        curr = np.eye(26, dtype=object)
+        for i, n in enumerate(nums):
+            for sh in range(1, n + 1):
+                base[i][(i + sh) % 26] = 1
+        while t:
+            if t % 2:
+                curr = curr.dot(base) % mod
+            t //= 2
+            base = base.dot(base) % mod
+        # base = np.linalg.matrix_power(base, t)
+        data = curr.sum(axis=1) % mod
+        cnt = Counter(s)
+        ans = sum(data[ord(ch) - orda] * v % mod for ch, v in cnt.items()) % mod
+        return ans
+
+
+class Solution1:
     def lengthAfterTransformations(self, s: str, t: int, nums: List[int]) -> int:
         sh = ord("a")
         mod = 10**9 + 7
@@ -48,7 +71,7 @@ class Solution:
 
 class Solution2:
     def lengthAfterTransformations(self, s: str, t: int, nums: List[int]) -> int:
-        mod = 10 ** 9 + 7
+        mod = 10**9 + 7
         base = np.zeros((26, 26), dtype=object)
         cur = np.eye(26, dtype=object)
         for i, v in enumerate(nums):
