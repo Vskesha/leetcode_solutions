@@ -21,6 +21,24 @@ class Solution:
         return True
 
 
+class Solution2:
+    def isZeroArray(self, nums: List[int], queries: List[List[int]]) -> bool:
+        ln = len(nums)
+
+        changes = [0] * (ln + 1)
+        for li, ri in queries:
+            changes[li] += 1
+            changes[ri + 1] -= 1
+
+        mx = 0
+        for i, n in enumerate(nums):
+            mx += changes[i]
+            if mx < n:
+                return False
+
+        return True
+
+
 class TestSolution(unittest.TestCase, metaclass=TestMeta):
     test_cases = [
         {

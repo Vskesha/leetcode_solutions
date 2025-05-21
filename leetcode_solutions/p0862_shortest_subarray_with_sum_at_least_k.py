@@ -24,7 +24,7 @@ class Solution:
         return ans if ans <= ln else -1
 
 
-class Solution:
+class Solution2:
     def shortestSubarray(self, nums: List[int], k: int) -> int:
         ln = len(nums)
         q = deque([(0, -1)])
