@@ -28,6 +28,25 @@ class Solution:
         return len(prep)
 
 
+class Solution:
+    def maxRemoval(self, nums: List[int], queries: List[List[int]]) -> int:
+        heapify(queries)
+        taken, prepared = [], []
+
+        for i, n in enumerate(nums):
+            while queries and queries[0][0] <= i:
+                _, r = heappop(queries)
+                heappush(prepared, -r)
+            while taken and taken[0] < i:
+                heappop(taken)
+            while prepared and prepared[0] <= -i and len(taken) < n:
+                heappush(taken, -heappop(prepared))
+            if len(taken) < n:
+                return -1
+
+        return len(prepared)
+
+
 class TestSolution(unittest.TestCase, metaclass=TestMeta):
     test_cases = [
         {

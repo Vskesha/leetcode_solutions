@@ -1,14 +1,42 @@
-import time
 import unittest
 from collections import defaultdict
-from functools import wraps
 from heapq import heapify, heappop, heappush
+from math import inf
 from typing import List
 
 from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
+    def maximumValueSum(self, nums: List[int], k: int, edges: List[List[int]]) -> int:
+        min_pos = inf
+        amount = 0
+        max_neg = -inf
+        sum_pos = sum(nums)
+
+        for n in nums:
+            diff = (n ^ k) - n
+            if diff >= 0:
+                if diff < min_pos:
+                    min_pos = diff
+                amount += 1
+                sum_pos += diff
+            elif diff > max_neg:
+                max_neg = diff
+
+        if amount % 2 == 0:
+            return sum_pos
+        return max(sum_pos - min_pos, sum_pos + max_neg)
+
+
+class Solution1:
+    def maximumValueSum(self, nums: List[int], k: int, edges: List[List[int]]) -> int:
+        diffs = sorted(((n ^ k) - n for n in nums), reverse=True)
+        pairs = (diffs[i] + diffs[i + 1] for i in range(0, len(diffs) - 1, 2))
+        return sum(nums) + sum(p for p in pairs if p > 0)
+
+
+class Solution2:
     def maximumValueSum(self, nums: List[int], k: int, edges: List[List[int]]) -> int:
         ans = sum(nums)
         cost = sorted(((n ^ k) - n for n in nums), reverse=True)
@@ -23,7 +51,7 @@ class Solution:
         return ans
 
 
-class Solution1:
+class Solution3:
     def maximumValueSum(self, nums: List[int], k: int, edges: List[List[int]]) -> int:
         ans = sum(nums)
         heap = [n - (n ^ k) for n in nums]
@@ -39,7 +67,7 @@ class Solution1:
         return ans
 
 
-class Solution2:
+class Solution4:
     def maximumValueSum(self, nums: List[int], k: int, edges: List[List[int]]) -> int:
         self.ans = sum(nums)
 
@@ -76,6 +104,22 @@ class Solution2:
         return self.ans
 
 
+class Solution5:
+    def maximumValueSum(self, nums: List[int], k: int, edges: List[List[int]]) -> int:
+        heap = [n - (n ^ k) for n in nums]
+        heapify(heap)
+        ans = sum(nums)
+
+        while len(heap) > 1:
+            d = -heappop(heap) - heappop(heap)
+            if d > 0:
+                ans += d
+            else:
+                break
+
+        return ans
+
+
 class TestSolution(unittest.TestCase, metaclass=TestMeta):
     test_cases = [
         {
@@ -84,12 +128,30 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "kwargs": [
                 dict(nums=[1, 2, 1], k=3, edges=[[0, 1], [0, 2]]),
                 dict(nums=[2, 3], k=7, edges=[[0, 1]]),
-                dict(nums=[7, 7, 7, 7, 7, 7], k=3, edges=[[0, 1], [0, 2], [0, 3], [0, 4], [0, 5]]),
-                dict(nums=[5, 8, 4, 6, 3, 8], k=7, edges=[[2, 0], [2, 1], [2, 3], [2, 4], [2, 5]]),
-                dict(nums=[0, 1, 2, 0, 1, 2, 5, 0, 2],
-                     k=3,
-                     edges=[[0, 1], [0, 2], [0, 3], [3, 4], [3, 5], [3, 6], [5, 7], [5, 8]],
-                     ),
+                dict(
+                    nums=[7, 7, 7, 7, 7, 7],
+                    k=3,
+                    edges=[[0, 1], [0, 2], [0, 3], [0, 4], [0, 5]],
+                ),
+                dict(
+                    nums=[5, 8, 4, 6, 3, 8],
+                    k=7,
+                    edges=[[2, 0], [2, 1], [2, 3], [2, 4], [2, 5]],
+                ),
+                dict(
+                    nums=[0, 1, 2, 0, 1, 2, 5, 0, 2],
+                    k=3,
+                    edges=[
+                        [0, 1],
+                        [0, 2],
+                        [0, 3],
+                        [3, 4],
+                        [3, 5],
+                        [3, 6],
+                        [5, 7],
+                        [5, 8],
+                    ],
+                ),
             ],
             "expected": [6, 9, 42, 48, 25],
         },
