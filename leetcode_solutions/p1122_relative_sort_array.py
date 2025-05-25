@@ -35,6 +35,14 @@ class Solution3:
         return ans
 
 
+class Solution4:
+    def relativeSortArray(self, arr1: List[int], arr2: List[int]) -> List[int]:
+        la = len(arr2)
+        ai = {x: i for i, x in enumerate(arr2)}
+        arr1.sort(key=lambda x: (ai.get(x, la), x))
+        return arr1
+
+
 class TestSolution(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:

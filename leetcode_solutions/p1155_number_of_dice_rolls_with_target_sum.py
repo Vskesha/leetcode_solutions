@@ -2,7 +2,27 @@ import unittest
 from functools import cache, lru_cache
 
 
+# iterative solution
 class Solution:
+    def numRollsToTarget(self, n: int, k: int, target: int) -> int:
+        mod = 10**9 + 7
+        dp = [0] * (target + 1)
+        dp[0] = 1
+
+        for st in range(n):
+            ndp = [0] * (target + 1)
+            wsum = 0
+            for i in range(st + 1, min(k * (st + 1), target) + 1):
+                wsum = (wsum + dp[i - 1]) % mod
+                ndp[i] = wsum
+                if i >= k:
+                    wsum = (wsum - dp[i - k]) % mod
+            dp = ndp
+
+        return dp[target]
+
+
+class Solution2:
     def numRollsToTarget(self, n: int, k: int, target: int) -> int:
         mod = 10**9 + 7
 
@@ -22,7 +42,7 @@ class Solution:
         return dp(n, k, target)
 
 
-class Solution0:
+class Solution3:
     def numRollsToTarget(self, n: int, k: int, target: int) -> int:
         mod = 1_000_000_007
 
@@ -41,7 +61,7 @@ class Solution0:
         return dp(n, target)
 
 
-class Solution1:
+class Solution4:
     def numRollsToTarget(self, n: int, k: int, target: int) -> int:
         mod = 1_000_000_007
 
@@ -59,7 +79,7 @@ class Solution1:
         return dp(n, target)
 
 
-class Solution2:
+class Solution5:
     def numRollsToTarget(self, n: int, k: int, target: int) -> int:
         MOD = 10**9 + 7
 
@@ -72,6 +92,26 @@ class Solution2:
             ans = 0
             for i in range(1, k + 1):
                 ans = (ans + dp(n - 1, t - i)) % MOD
+            return ans
+
+        return dp(n, target)
+
+
+class Solution6:
+    def numRollsToTarget(self, n: int, k: int, target: int) -> int:
+        mod = 10**9 + 7
+
+        @cache
+        def dp(n, t):
+            if not n:
+                return int(not (t))
+            if t < n or t > n * k:
+                return 0
+
+            ans = 0
+            for i in range(1, k + 1):
+                ans = (ans + dp(n - 1, t - i)) % mod
+
             return ans
 
         return dp(n, target)

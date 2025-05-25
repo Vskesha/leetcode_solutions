@@ -1,4 +1,5 @@
 import unittest
+from collections import defaultdict
 from functools import cache
 from typing import List
 
@@ -113,6 +114,48 @@ class Solution3:
         return teams
 
 
+class Solution4:
+    def numTeams(self, rating: List[int]) -> int:
+        smaller = defaultdict(list)
+        bigger = defaultdict(list)
+        lr = len(rating)
+
+        for i in range(lr):
+            for j in range(i):
+                if rating[i] > rating[j]:
+                    smaller[i].append(j)
+                else:
+                    bigger[i].append(j)
+
+        ans = 0
+        for i in range(lr):
+            for j in smaller[i]:
+                ans += len(smaller[j])
+            for j in bigger[i]:
+                ans += len(bigger[j])
+
+        return ans
+
+
+from sortedcontainers import SortedList
+
+
+class Solution5:
+    def numTeams(self, rating: List[int]) -> int:
+        lr = len(rating) - 1
+        sl = SortedList()
+        low = {r: i for i, r in enumerate(sorted(rating))}
+        res = 0
+
+        for idx, r in enumerate(rating):
+            i = sl.bisect(r)
+            sl.add(r)
+            j = low[r] - i
+            res += i * (lr - idx - 2 * j) + j * idx
+
+        return res
+
+
 class TestSolution(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
@@ -135,7 +178,7 @@ class TestSolution(unittest.TestCase):
 
     def test_numTeams_4(self):
         print("Test numTeams 4... ", end="")
-        self.assertEqual(1, self.sol.numTeams(rating=[3,7,5,6]))
+        self.assertEqual(1, self.sol.numTeams(rating=[3, 7, 5, 6]))
         print("OK")
 
 

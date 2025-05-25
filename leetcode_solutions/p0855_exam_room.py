@@ -456,6 +456,58 @@ class ExamRoom4:
             node.update_height()
             self._update_dist(node)
 
+
+class ExamRoom5:
+
+    def __init__(self, n: int):
+        self.n = n
+        self.heap = [(-n, -1, n)]
+        self.starts = {-1: n}
+        self.ends = {n: -1}
+
+    def seat(self) -> int:
+        d, prev, nxt = heappop(self.heap)
+        while not (prev in self.starts and self.starts[prev] == nxt):
+            d, prev, nxt = heappop(self.heap)
+
+        if prev == -1:
+            curr = 0
+        elif nxt == self.n:
+            curr = self.n - 1
+        else:
+            curr = prev - d
+
+        self.push(prev, curr)
+        self.push(curr, nxt)
+        self.starts[prev] = curr
+        self.starts[curr] = nxt
+        self.ends[curr] = prev
+        self.ends[nxt] = curr
+
+        return curr
+
+    def leave(self, p: int) -> None:
+        prev = self.ends.pop(p)
+        nxt = self.starts.pop(p)
+        self.starts[prev] = nxt
+        self.ends[nxt] = prev
+        self.push(prev, nxt)
+
+    def push(self, start, end):
+        heappush(self.heap, (-self.dist(start, end), start, end))
+
+    def dist(self, prev, nxt):
+        if prev == -1:
+            return nxt
+        if nxt == self.n:
+            return self.n - prev - 1
+        return (nxt - prev) // 2
+
+
+# Your ExamRoom object will be instantiated and called as such:
+# obj = ExamRoom(n)
+# param_1 = obj.seat()
+# obj.leave(p)
 # Your ExamRoom object will be instantiated and called as such:
 # obj = ExamRoom(n)
 # param_1 = obj.seat()
@@ -504,6 +556,34 @@ class TestExamRoom(unittest.TestCase):
         print("DONE\n")
 
     def test_seat_leave_methods_3(self):
+        print("Test ExamRoom 4 ... ")
+        commands = [
+            "ExamRoom",
+            "seat",
+            "seat",
+            "seat",
+            "seat",
+            "leave",
+            "seat",
+            "seat",
+            "seat",
+            "seat",
+            "seat",
+            "seat",
+            "leave",
+            "seat",
+        ]
+        params = [[9], [], [], [], [], [4], [], [], [], [], [], [], [3], []]
+        expected = [None, 0, 8, 4, 2, None, 5, 1, 3, 4, 6, 7, None, 3]
+        exam_room = ExamRoom(*params[0])
+        for i in range(1, len(commands)):
+            print(f"    Test {i} ... ", end="")
+            res = getattr(exam_room, commands[i])(*params[i])
+            self.assertEqual(res, expected[i])
+            print("OK")
+        print("DONE\n")
+
+    def test_seat_leave_methods_4(self):
         print("Test ExamRoom 3 ... ")
         commands = [
             "ExamRoom",

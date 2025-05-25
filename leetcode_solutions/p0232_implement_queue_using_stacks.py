@@ -1,4 +1,36 @@
+import unittest
+
+from leetcode_solutions._test_meta import TestMeta
+
+
 class MyQueue:
+
+    def __init__(self):
+        self.st1 = []
+        self.st2 = []
+
+    def push(self, x: int) -> None:
+        self.st1.append(x)
+
+    def pop(self) -> int:
+        if not self.st2:
+            while self.st1:
+                self.st2.append(self.st1.pop())
+
+        return self.st2.pop()
+
+    def peek(self) -> int:
+        if not self.st2:
+            while self.st1:
+                self.st2.append(self.st1.pop())
+
+        return self.st2[-1]
+
+    def empty(self) -> bool:
+        return not (self.st1 or self.st2)
+
+
+class MyQueue1:
     def __init__(self):
         self.inp = []
         self.out = []
@@ -24,7 +56,7 @@ class MyQueue:
             self.out.append(self.inp.pop())
 
 
-class MyQueue1:
+class MyQueue2:
     def __init__(self):
         self.st = []
         self.aux = []
@@ -44,7 +76,7 @@ class MyQueue1:
         return len(self.st) == 0
 
 
-class MyQueue2:
+class MyQueue3:
     def __init__(self):
         self.main = []
         self.aux = []
@@ -80,22 +112,36 @@ class MyQueue2:
 # param_4 = obj.empty()
 
 
-def test():
-    null = None
-    false = False
-    true = True
-
-    commands = ["MyQueue", "push", "push", "peek", "pop", "empty"]
-    args = [[], [1], [2], [], [], []]
-    outputs = [null, null, null, 1, 1, false]
-
-    queue = MyQueue()
-    for i in range(1, len(commands)):
-        print(f"Test {i}... ", end="")
-        result = getattr(queue, commands[i])(*args[i])
-        assert result == outputs[i]
-        print("OK")
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
+    null, false, true = None, False, True
+    test_cases = [
+        {
+            "class": MyQueue,
+            "class_methods": ["push", "push", "peek", "pop", "empty"],
+            "args": [[1], [2], [], [], []],
+            "expected": [null, null, 1, 1, false],
+        },
+    ]
 
 
 if __name__ == "__main__":
-    test()
+    unittest.main()
+
+# def test():
+#     null = None
+#     false = False
+#     true = True
+#
+#     commands = ["MyQueue", "push", "push", "peek", "pop", "empty"]
+#     args = [[], [1], [2], [], [], []]
+#     outputs = [null, null, null, 1, 1, false]
+#
+#     queue = MyQueue()
+#     for i in range(1, len(commands)):
+#         print(f"Test {i}... ", end="")
+#         result = getattr(queue, commands[i])(*args[i])
+#         assert result == outputs[i]
+#         print("OK")
+
+# if __name__ == "__main__":
+#     test()
