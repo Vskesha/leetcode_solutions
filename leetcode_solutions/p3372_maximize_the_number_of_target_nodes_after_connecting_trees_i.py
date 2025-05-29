@@ -1,4 +1,5 @@
 import unittest
+from collections import defaultdict, deque
 from typing import List
 
 from leetcode_solutions._test_meta import TestMeta
@@ -56,6 +57,83 @@ class Solution2:
             gr[b].append(a)
 
         return [dfs(i, -1, k) + max2 for i in range(n)]
+
+
+class Solution3:
+    def maxTargetNodes(
+        self, edges1: List[List[int]], edges2: List[List[int]], k: int
+    ) -> List[int]:
+        n, m = len(edges1) + 1, len(edges2) + 1
+        if not k:
+            return [1] * n
+
+        adj1 = defaultdict(list)
+        for a, b in edges1:
+            adj1[a].append(b)
+            adj1[b].append(a)
+
+        adj2 = defaultdict(list)
+        for a, b in edges2:
+            adj2[a].append(b)
+            adj2[b].append(a)
+
+        max2 = 1
+        for i in range(m):
+            cnt = 1
+            seen = {i}
+            bfs = deque([i])
+            for _ in range(k - 1):
+                for _ in range(len(bfs)):
+                    curr = bfs.popleft()
+                    for neib in adj2[curr]:
+                        if neib not in seen:
+                            seen.add(neib)
+                            bfs.append(neib)
+                            cnt += 1
+            if cnt > max2:
+                max2 = cnt
+
+        ans = []
+        for i in range(n):
+            cnt = max2 + 1
+            seen = {i}
+            bfs = deque([i])
+            for _ in range(k):
+                for _ in range(len(bfs)):
+                    curr = bfs.popleft()
+                    for neib in adj1[curr]:
+                        if neib not in seen:
+                            seen.add(neib)
+                            bfs.append(neib)
+                            cnt += 1
+            ans.append(cnt)
+
+        return ans
+
+
+class Solution4:
+    def maxTargetNodes(self, edges1: List[List[int]], edges2: List[List[int]], k: int) -> List[int]:
+        def build_sizes(edges: List[List[int]], k) -> List[int]:
+            la = len(edges) + 1
+            adj = [[] for _ in range(la)]
+            for a, b in edges:
+                adj[a].append(b)
+                adj[b].append(a)
+            return [dfs(adj, i, -1, k) for i in range(la)]
+
+        def dfs(adj, node, parent, k):
+            if k < 0:
+                return 0
+            res = 1
+            for neib in adj[node]:
+                if neib != parent:
+                    res += dfs(adj, neib, node, k - 1)
+            return res
+
+        sizes = build_sizes(edges1, k)
+        m2 = max(build_sizes(edges2, k - 1))
+
+        return [x + m2 for x in sizes]
 
 
 class TestSolution(unittest.TestCase, metaclass=TestMeta):
