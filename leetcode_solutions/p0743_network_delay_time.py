@@ -7,6 +7,27 @@ from typing import List
 
 class Solution:
     def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
+        adj = defaultdict(list)
+        for u, v, w in times:
+            adj[u].append((v, w))
+        dijkstra = [inf] * (n + 1)
+        dijkstra[0] = dijkstra[k] = 0
+        heap = [k]
+
+        while heap:
+            curr = heappop(heap)
+            for neib, dt in adj[curr]:
+                dt += dijkstra[curr]
+                if dt < dijkstra[neib]:
+                    dijkstra[neib] = dt
+                    heappush(heap, neib)
+
+        ans = max(dijkstra)
+        return ans if ans < inf else -1
+
+
+class Solution2:
+    def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
         graph = defaultdict(list)
         for fr, to, ti in times:
             graph[fr].append((to, ti))
@@ -26,7 +47,7 @@ class Solution:
         return cti
 
 
-class Solution1:
+class Solution3:
     def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
         graph = defaultdict(list)
         for fr, to, ti in times:
@@ -48,7 +69,7 @@ class Solution1:
         return -1 if ans == inf else ans
 
 
-class Solution2:
+class Solution4:
     def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
         graph = defaultdict(list)
         for fr, to, tm in times:
@@ -71,7 +92,7 @@ class Solution2:
         return ans if len(visited) == n else -1
 
 
-class Solution3:
+class Solution5:
     def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
         nodes = defaultdict(list)
         time = [-1] * n

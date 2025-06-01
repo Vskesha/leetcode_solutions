@@ -5,6 +5,20 @@ from leetcode_solutions._test_meta import TestMeta
 
 class Solution:
     def isValid(self, s: str) -> bool:
+        pairs = {"(": ")", "{": "}", "[": "]"}
+        stack = []
+        for ch in s:
+            if ch in pairs:
+                stack.append(ch)
+            elif stack and ch == pairs[stack[-1]]:
+                stack.pop()
+            else:
+                return False
+        return not stack
+
+
+class Solution2:
+    def isValid(self, s: str) -> bool:
         stack = []
 
         for ch in s:

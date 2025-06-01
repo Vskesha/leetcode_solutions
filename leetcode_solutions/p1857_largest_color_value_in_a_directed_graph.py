@@ -107,6 +107,38 @@ class Solution3:
         return ans
 
 
+class Solution4:
+    def largestPathValue(self, colors: str, edges: List[List[int]]) -> int:
+        n = len(colors)
+        adj = [[] for _ in range(n)]
+        indegree = [0] * n
+        for a, b in edges:
+            adj[a].append(b)
+            indegree[b] += 1
+
+        ans = 0
+        dp = [Counter() for _ in range(n)]
+        bfs = deque(i for i in range(n) if not indegree[i])
+        while bfs:
+            curr = bfs.popleft()
+            dpc = dp[curr]
+            dpc[colors[curr]] += 1
+            if dpc[colors[curr]] > ans:
+                ans = dpc[colors[curr]]
+            for neib in adj[curr]:
+                dpn = dp[neib]
+                for color, amount in dpc.items():
+                    if amount > dpn[color]:
+                        dpn[color] = amount
+                indegree[neib] -= 1
+                if not indegree[neib]:
+                    bfs.append(neib)
+
+        if any(indegree):
+            return -1
+        return ans
+
+
 class TestSolution(unittest.TestCase, metaclass=TestMeta):
     test_cases = [
         {

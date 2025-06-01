@@ -1,5 +1,9 @@
+import unittest
+from collections import deque
 from functools import wraps
 from typing import List, Optional
+
+from leetcode_solutions._test_meta import TestMeta
 
 
 # Definition for singly-linked list.
@@ -7,6 +11,9 @@ class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
+
+    def __repr__(self):
+        return f"ListNode({self.val})"
 
 
 def sol_decorator(cls):
@@ -86,17 +93,77 @@ class Solution2:
             tail.next, tail = head, tail.next
 
 
-def test_reorder_list():
-    sol = sol_decorator(Solution)()
+class Solution:
+    def reorderList(self, head: Optional[ListNode]) -> None:
+        """
+        Do not return anything, modify head in-place instead.
+        """
+        nodes = deque()
+        dummy = ListNode(next=head)
+        while head:
+            nodes.append(head)
+            head = head.next
+        prev = dummy
+        while len(nodes) > 1:
+            prev.next = nodes.popleft()
+            prev = prev.next
+            prev.next = nodes.pop()
+            prev = prev.next
+        if nodes:
+            prev.next = nodes.pop()
+            prev = prev.next
+        prev.next = None
+        return dummy.next
 
-    print("Test 1... ", end="")
-    assert sol.reorderList(head=[1, 2, 3, 4]) == [1, 4, 2, 3]
-    print("OK")
 
-    print("Test 2... ", end="")
-    assert sol.reorderList(head=[1, 2, 3, 4, 5]) == [1, 5, 2, 4, 3]
-    print("OK")
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
+
+    @staticmethod
+    def array_to_linked_list(arr: List[int]) -> Optional[ListNode]:
+        head = None
+        for val in reversed(arr):
+            head = ListNode(val, head)
+        return head
+
+    test_cases = [
+        {
+            "class": Solution,
+            "class_methods": ["reorderList"] * 2,
+            "kwargs": [
+                dict(head=array_to_linked_list([1, 2, 3, 4])),
+                dict(head=array_to_linked_list([1, 2, 3, 4, 5])),
+            ],
+            "expected": [
+                array_to_linked_list([1, 4, 2, 3]),
+                array_to_linked_list([1, 5, 2, 4, 3]),
+            ],
+            "assert_methods": ["assertLinkedListEqual"] * 2,
+        },
+    ]
+
+    def assertLinkedListEqual(self, actual, expected):
+        if actual and expected:
+            self.assertEqual(actual.val, expected.val)
+            self.assertLinkedListEqual(actual.next, expected.next)
+        else:
+            self.assertIsNone(actual)
+            self.assertIsNone(expected)
 
 
 if __name__ == "__main__":
-    test_reorder_list()
+    unittest.main()
+
+# def test_reorder_list():
+#     sol = sol_decorator(Solution)()
+#
+#     print("Test 1... ", end="")
+#     assert sol.reorderList(head=[1, 2, 3, 4]) == [1, 4, 2, 3]
+#     print("OK")
+#
+#     print("Test 2... ", end="")
+#     assert sol.reorderList(head=[1, 2, 3, 4, 5]) == [1, 5, 2, 4, 3]
+#     print("OK")
+
+
+# if __name__ == "__main__":
+#     test_reorder_list()

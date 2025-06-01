@@ -1,4 +1,8 @@
+import unittest
+from collections import deque
 from typing import List
+
+from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
@@ -93,26 +97,69 @@ class Solution3:
         return ans
 
 
-def test_island_perimeter():
-    sol = Solution()
+class Solution4:
+    def islandPerimeter(self, grid: List[List[int]]) -> int:
+        m, n = len(grid), len(grid[0])
+        visited = [[False] * n for _ in range(m)]
+        perimetr = 0
+        for i in range(m):
+            for j in range(n):
+                if not grid[i][j]:
+                    continue
 
-    print("Test 1... ", end="")
-    assert (
-        sol.islandPerimeter(
-            grid=[[0, 1, 0, 0], [1, 1, 1, 0], [0, 1, 0, 0], [1, 1, 0, 0]]
-        )
-        == 16
-    )
-    print("OK")
+                bfs = deque([(i, j)])
+                visited[i][j] = True
+                while bfs:
+                    i, j = bfs.popleft()
+                    for ni, nj in ((i, j + 1), (i + 1, j), (i, j - 1), (i - 1, j)):
+                        if 0 <= ni < m and 0 <= nj < n and grid[ni][nj]:
+                            if not visited[ni][nj]:
+                                visited[ni][nj] = True
+                                bfs.append((ni, nj))
+                        else:
+                            perimetr += 1
 
-    print("Test 2... ", end="")
-    assert sol.islandPerimeter(grid=[[1]]) == 4
-    print("OK")
+                return perimetr
 
-    print("Test 3... ", end="")
-    assert sol.islandPerimeter(grid=[[1, 0]]) == 4
-    print("OK")
+
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
+    test_cases = [
+        {
+            "class": Solution,
+            "class_methods": ["islandPerimeter"] * 3,
+            "kwargs": [
+                dict(grid=[[0, 1, 0, 0], [1, 1, 1, 0], [0, 1, 0, 0], [1, 1, 0, 0]]),
+                dict(grid=[[1]]),
+                dict(grid=[[1, 0]]),
+            ],
+            "expected": [16, 4, 4],
+        },
+    ]
 
 
 if __name__ == "__main__":
-    test_island_perimeter()
+    unittest.main()
+
+# def test_island_perimeter():
+#     sol = Solution()
+#
+#     print("Test 1... ", end="")
+#     assert (
+#         sol.islandPerimeter(
+#             grid=[[0, 1, 0, 0], [1, 1, 1, 0], [0, 1, 0, 0], [1, 1, 0, 0]]
+#         )
+#         == 16
+#     )
+#     print("OK")
+#
+#     print("Test 2... ", end="")
+#     assert sol.islandPerimeter(grid=[[1]]) == 4
+#     print("OK")
+#
+#     print("Test 3... ", end="")
+#     assert sol.islandPerimeter(grid=[[1, 0]]) == 4
+#     print("OK")
+
+
+# if __name__ == "__main__":
+#     test_island_perimeter()

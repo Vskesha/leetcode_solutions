@@ -6,9 +6,62 @@ from typing import List
 class Solution:
     def snakesAndLadders(self, board: List[List[int]]) -> int:
         aux = [-1]
+        for i, row in enumerate(reversed(board)):
+            for val in reversed(row) if i % 2 else row:
+                aux.append(val)
+
+        n = len(board) ** 2
+        visited = [False] * (n + 1)
+        visited[1] = True
+        bfs = deque([1])
+        moves = 0
+        while bfs:
+            moves += 1
+            for _ in range(len(bfs)):
+                curr = bfs.popleft()
+                for nxt in range(curr + 1, curr + 7):
+                    if aux[nxt] != -1:
+                        nxt = aux[nxt]
+                    if not visited[nxt]:
+                        if nxt == n:
+                            return moves
+                        visited[nxt] = True
+                        bfs.append(nxt)
+
+        return -1
+
+
+class Solution2:
+    def snakesAndLadders(self, board: List[List[int]]) -> int:
+        n = len(board) ** 2
+        aux = [-1]
+        for i, row in enumerate(reversed(board)):
+            for val in reversed(row) if i % 2 else row:
+                aux.append(val)
+
+        visited = [False] * (n + 1)
+        visited[1] = True
+        bfs = deque([(1, 0)])
+        while bfs:
+            cell, moves = bfs.popleft()
+            for neib in range(cell + 1, cell + 7):
+                if aux[neib] != -1:
+                    neib = aux[neib]
+                if not visited[neib]:
+                    if neib == n:
+                        return moves + 1
+                    visited[neib] = True
+                    bfs.append((neib, moves + 1))
+
+        return -1
+
+
+class Solution3:
+    def snakesAndLadders(self, board: List[List[int]]) -> int:
+        aux = [-1]
         rev = False
         for row in reversed(board):
-            for cell in (reversed(row) if rev else row):
+            for cell in reversed(row) if rev else row:
                 aux.append(cell)
             rev = not rev
         n = len(board)
@@ -26,7 +79,38 @@ class Solution:
         return -1
 
 
-class Solution0:
+class Solution4:
+    def snakesAndLadders(self, board: List[List[int]]) -> int:
+        n = len(board)
+        n2 = n * n
+        paths = {}
+
+        revert = False
+        cell_num = 1
+        for row in reversed(board):
+            for val in reversed(row) if revert else row:
+                if val != -1:
+                    paths[cell_num] = val
+                cell_num += 1
+            revert = not revert
+
+        visited = {1}
+        bfs = deque([(1, 0)])
+        while bfs:
+            cell, moves = bfs.popleft()
+            for neib in range(cell + 1, cell + 7):
+                if neib in paths:
+                    neib = paths[neib]
+                if neib not in visited:
+                    if neib == n2:
+                        return moves + 1
+                    visited.add(neib)
+                    bfs.append((neib, moves + 1))
+
+        return -1
+
+
+class Solution5:
     def snakesAndLadders(self, board: List[List[int]]) -> int:
         n = len(board)
         n2 = n * n
@@ -47,7 +131,7 @@ class Solution0:
         return -1
 
 
-class Solution1:
+class Solution6:
     def snakesAndLadders(self, board: List[List[int]]) -> int:
         n = len(board)
         n2 = n * n
@@ -65,7 +149,7 @@ class Solution1:
         return -1
 
 
-class Solution2:
+class Solution7:
     def snakesAndLadders(self, board: List[List[int]]) -> int:
         def ladder(i) -> int:
             i -= 1
@@ -101,7 +185,7 @@ class Solution2:
         return -1
 
 
-class Solution3:
+class Solution8:
     def snakesAndLadders(self, board: List[List[int]]) -> int:
         row = len(board)
         column = len(board[0])
