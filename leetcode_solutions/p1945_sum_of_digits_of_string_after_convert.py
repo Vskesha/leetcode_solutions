@@ -15,11 +15,11 @@ class Solution:
 
 class Solution2:
     def getLucky(self, s: str, k: int) -> int:
-        n = int("".join(str(ord(c) - 96) for c in s))
-        while k and n > 9:
-            n = sum(map(int, str(n)))
+        number = int("".join(str(ord(c) - 96) for c in s))
+        while k and number > 9:
+            number = sum(map(int, str(number)))
             k -= 1
-        return n
+        return number
 
 
 class Solution3:

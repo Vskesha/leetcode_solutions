@@ -1,7 +1,7 @@
 from pathlib import Path
 
 
-def rename_not_four_digit():
+def rename_not_four_digit() -> None:
     current_folder = Path(__file__).parent
 
     for item in current_folder.iterdir():
@@ -16,5 +16,5 @@ def rename_not_four_digit():
             item.rename(new_name)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     rename_not_four_digit()

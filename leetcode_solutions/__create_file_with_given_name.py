@@ -1,16 +1,20 @@
 import re
 
 
-def main():
+def main() -> None:
     inp = input("Type title of the problem: ")
 
-    filename = re.sub(r"[^a-zA-Z0-9]+", "_", inp.lower().strip().replace("'", "")) + ".py"
+    filename = re.sub(
+        r"[^a-zA-Z0-9]+",
+        "_",
+        inp.lower().strip().replace("'", "")
+    ) + ".py"
 
     if filename[0].isdigit():
         i = filename.index("_")
         filename = "p" + "0" * (4 - i) + filename
 
-    with open(filename, "x") as f:
+    with open(filename, "x"):
         pass
 
     print(f"Created file: {filename}")

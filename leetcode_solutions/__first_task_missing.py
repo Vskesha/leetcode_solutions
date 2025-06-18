@@ -4,22 +4,23 @@ BLOCKED_TASKS = {
     0,
 }
 
-def get_first_missing_task(number_from=1):
-    p = Path(__file__).parent.absolute()
+
+def get_first_missing_task(number_from: int = 1) -> int:
+    curr_path = Path(__file__).parent.absolute()
 
     files_set = set()
 
-    for f in p.iterdir():
+    for item in curr_path.iterdir():
         if (
-                f.is_file()
-                and f.suffix == '.py'
-                and f.name.startswith('p')
-                and len(f.name) >= 8
-                and f.name[1:5].isdigit()
-                and f.name[5] == '_'
+            item.is_file()
+            and item.suffix == ".py"
+            and item.name.startswith("p")
+            and len(item.name) >= 8
+            and item.name[1:5].isdigit()
+            and item.name[5] == "_"
         ):
             try:
-                task_number = int(f.name[1:5])
+                task_number = int(item.name[1:5])
                 files_set.add(task_number)
             except ValueError:
                 pass
@@ -32,6 +33,6 @@ def get_first_missing_task(number_from=1):
     return 10000
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     fmt = get_first_missing_task()
-    print(f'The first missing task number is: {fmt}')
+    print(f"The first missing task number is: {fmt}")

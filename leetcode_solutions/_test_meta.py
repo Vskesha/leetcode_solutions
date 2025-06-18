@@ -1,3 +1,6 @@
+from typing import Any
+
+
 class TestMeta(type):
     """
     Metaclass for testing classes.
@@ -50,28 +53,32 @@ class TestMeta(type):
         super().__init__(*args, **kwargs)
 
     @staticmethod
-    def get_test_method(obj, i, j):
-        def test_method(instance):
-            test_case = instance.test_cases[i]
+    def get_test_method(obj: Any, test_case_idx: int, method_idx) -> callable:
+        def test_method(instance: Any) -> None:
+            test_case = instance.test_cases[test_case_idx]
             ltc = len(instance.test_cases)
 
-            command = test_case["class_methods"][j]
+            command = test_case["class_methods"][method_idx]
             lcm = len(test_case["class_methods"])
 
             args_list = test_case.get("args", [])
-            arguments = args_list[j] if len(args_list) > j else []
+            arguments = args_list[method_idx] if len(args_list) > method_idx else []
 
             kwargs_list = test_case.get("kwargs", [])
-            kwarguments = kwargs_list[j] if len(kwargs_list) > j else {}
+            kwarguments = kwargs_list[method_idx] if len(kwargs_list) > method_idx else {}
 
             obj_method = getattr(obj, command)
             result = obj_method(*arguments, **kwarguments)
-            expected = test_case["expected"][j]
+            expected = test_case["expected"][method_idx]
 
             amethods = test_case.get("assert_methods", [])
-            assert_method = amethods[j] if len(amethods) > j else "assertEqual"
+            assert_method = amethods[method_idx] if len(amethods) > method_idx else "assertEqual"
 
-            info_str = f"Test {i + 1:0>{len(str(ltc + 1))}}-{j + 1:0>{len(str(lcm + 1))}}. {obj.__class__.__name__}.{command}("
+            info_str = (
+                f"Test {test_case_idx + 1:0>{len(str(ltc + 1))}}-"
+                f"{method_idx + 1:0>{len(str(lcm + 1))}}."
+                f" {obj.__class__.__name__}.{command}("
+            )
             # info_str += ", ".join(f"{arg}" for arg in arguments)
             # if arguments and kwarguments:
             #     info_str += ", "
@@ -111,5 +118,5 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
 
 if __name__ == '__main__':
     unittest.main()
-    
+
 """
