@@ -20,6 +20,24 @@ class Solution:
         return avg
 
 
+class Solution2:
+    def maxAverageRatio(self, classes: List[List[int]], extraStudents: int) -> float:
+        heap = []
+
+        for pas, tot in classes:
+            diff = pas / tot - (pas + 1) / (tot + 1)
+            heappush(heap, (diff, pas, tot))
+
+        for _ in range(extraStudents):
+            _, pas, tot = heappop(heap)
+            pas += 1
+            tot += 1
+            diff = pas / tot - (pas + 1) / (tot + 1)
+            heappush(heap, (diff, pas, tot))
+
+        return sum(pas / tot for _, pas, tot in heap) / len(heap)
+
+
 class TestSolution(unittest.TestCase, metaclass=TestMeta):
     test_cases = [
         {

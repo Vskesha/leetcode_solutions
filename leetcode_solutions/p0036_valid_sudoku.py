@@ -49,6 +49,32 @@ class Solution2:
         return True
 
 
+class Solution3:
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
+        for row in board:
+            digits = [d for d in row if d != "."]
+            if len(digits) != len(set(digits)):
+                return False
+
+        for col in zip(*board):
+            digits = [d for d in col if d != "."]
+            if len(digits) != len(set(digits)):
+                return False
+
+        for sr in range(0, 9, 3):
+            for sc in range(0, 9, 3):
+                digits = [
+                    board[i][j]
+                    for i in range(sr, sr + 3)
+                    for j in range(sc, sc + 3)
+                    if board[i][j] != "."
+                ]
+                if len(digits) != len(set(digits)):
+                    return False
+
+        return True
+
+
 class TestSolution(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
