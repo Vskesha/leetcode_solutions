@@ -6,6 +6,30 @@ from leetcode_solutions._test_meta import TestMeta
 
 class Solution:
     def spellchecker(self, wordlist: List[str], queries: List[str]) -> List[str]:
+        original_words = set(wordlist)
+        lowercase_words = {
+            word.lower(): word
+            for word in reversed(wordlist)
+            }
+        replaced_vowels = {
+            "".join("_" if ch in "aeiou" else ch for ch in word.lower()): word
+            for word in reversed(wordlist)
+        }
+        result = []
+        for word in queries:
+            if word in original_words:
+                result.append(word)
+            elif (word_lower := word.lower()) in lowercase_words:
+                result.append(lowercase_words[word_lower])
+            else:
+                wo_vowels = "".join("_" if ch in "aeiou" else ch for ch in word.lower())
+                result.append(replaced_vowels.get(wo_vowels, ""))
+
+        return result
+
+
+class Solution1:
+    def spellchecker(self, wordlist: List[str], queries: List[str]) -> List[str]:
         exact = set(wordlist)
         capit = {}
         missv = {}
@@ -108,7 +132,7 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
     test_cases = [
         {
             "class": Solution,
-            "class_methods": ["spellchecker"] * 2,
+            "class_methods": ["spellchecker"] * 3,
             "kwargs": [
                 dict(
                     wordlist=["KiTe", "kite", "hare", "Hare"],
@@ -126,10 +150,12 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
                     ],
                 ),
                 dict(wordlist=["yellow"], queries=["YellOw"]),
+                dict(wordlist=["YellOw"], queries=["yollow"]),
             ],
             "expected": [
                 ["kite", "KiTe", "KiTe", "Hare", "hare", "", "", "KiTe", "", "KiTe"],
                 ["yellow"],
+                ["YellOw"],
             ],
             "assert_methods": ["assertListEqual"] * 2,
         },

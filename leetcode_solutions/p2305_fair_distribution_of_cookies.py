@@ -67,13 +67,13 @@ class Solution2:
                 return
             if n - curr_bag < zero_count:
                 return
-            val = cookies[curr_bag]
+            value = cookies[curr_bag]
             for i in range(k):
                 new_zero_count = zero_count - (curr_distribution[i] == 0)
-                curr_distribution[i] += val
+                curr_distribution[i] += value
                 if curr_distribution[i] < self.ans:
                     distribution(curr_bag + 1, new_zero_count)
-                curr_distribution[i] -= val
+                curr_distribution[i] -= value
 
         distribution(0, k)
         return self.ans

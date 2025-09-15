@@ -44,7 +44,6 @@ if __name__ == "__main__":
     with open(filename, "x") as file:
         file.write(test_class_template)
 
-
     print(f"Created file: {filename}")
 
 

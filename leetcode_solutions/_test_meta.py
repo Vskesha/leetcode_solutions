@@ -35,9 +35,9 @@ class TestMeta(type):
 
     test_cases = []
 
-    def __init__(self, *args, **kwargs):
-        ltc = len(self.test_cases)
-        for i, case in enumerate(self.test_cases):
+    def __init__(cls, *args, **kwargs) -> None:
+        ltc = len(cls.test_cases)
+        for i, case in enumerate(cls.test_cases):
             target_class = case["class"]
             cls_init_args = case.get("cls_init_args", [])
             cls_init_kwargs = case.get("cls_init_kwargs", {})
@@ -46,14 +46,22 @@ class TestMeta(type):
             lcm = len(case["class_methods"])
             for j in range(lcm):
                 setattr(
-                    self,
-                    f"test_{target_class.__name__}_{i + 1:0>{len(str(ltc + 1))}}_{j + 1:0>{len(str(lcm + 1))}}",
-                    self.get_test_method(obj, i, j),
+                    cls,
+                    (
+                        f"test_{target_class.__name__}_"
+                        f"{i + 1:0>{len(str(ltc + 1))}}_"
+                        f"{j + 1:0>{len(str(lcm + 1))}}"
+                    ),
+                    cls.get_test_method(obj, i, j),
                 )
         super().__init__(*args, **kwargs)
 
     @staticmethod
-    def get_test_method(obj: Any, test_case_idx: int, method_idx) -> callable:
+    def get_test_method(
+            obj: Any,
+            test_case_idx: int,
+            method_idx: int
+    ) -> callable:
         def test_method(instance: Any) -> None:
             test_case = instance.test_cases[test_case_idx]
             ltc = len(instance.test_cases)
@@ -62,17 +70,29 @@ class TestMeta(type):
             lcm = len(test_case["class_methods"])
 
             args_list = test_case.get("args", [])
-            arguments = args_list[method_idx] if len(args_list) > method_idx else []
+            arguments = (
+                args_list[method_idx]
+                if len(args_list) > method_idx
+                else []
+            )
 
             kwargs_list = test_case.get("kwargs", [])
-            kwarguments = kwargs_list[method_idx] if len(kwargs_list) > method_idx else {}
+            kwarguments = (
+                kwargs_list[method_idx]
+                if len(kwargs_list) > method_idx
+                else {}
+            )
 
             obj_method = getattr(obj, command)
             result = obj_method(*arguments, **kwarguments)
             expected = test_case["expected"][method_idx]
 
             amethods = test_case.get("assert_methods", [])
-            assert_method = amethods[method_idx] if len(amethods) > method_idx else "assertEqual"
+            assert_method = (
+                amethods[method_idx]
+                if len(amethods) > method_idx
+                else "assertEqual"
+            )
 
             info_str = (
                 f"Test {test_case_idx + 1:0>{len(str(ltc + 1))}}-"
