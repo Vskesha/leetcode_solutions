@@ -13,9 +13,9 @@ class Solution:
             if j == len(p):
                 return i == len(s)
 
-            first_match = i < len(s) and (p[j] == s[i] or p[j] == '.')
+            first_match = i < len(s) and (p[j] == s[i] or p[j] == ".")
 
-            if j + 1 < len(p) and p[j + 1] == '*':
+            if j + 1 < len(p) and p[j + 1] == "*":
                 ans = dp(i, j + 2) or (first_match and dp(i + 1, j))
             else:
                 ans = first_match and dp(i + 1, j + 1)
@@ -25,13 +25,14 @@ class Solution:
 
         return dp(0, 0)
 
+
 class Solution2:
     def isMatch(self, s: str, p: str) -> bool:
-        def eq(ch1, ch2):
+        def eq(ch1: str, ch2: str) -> bool:
             return ch1 == ch2 or ch2 == "."
 
         @lru_cache(None)
-        def dfs(i, j) -> bool:
+        def dfs(i: int, j: int) -> bool | None:
             if j == -1:
                 return i == -1
 
@@ -57,22 +58,22 @@ class TestSolution(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.sol = Solution()
 
-    def test_is_match_1(self):
+    def test_is_match_1(self) -> None:
         print("Test isMatch 1... ", end="")
         self.assertFalse(self.sol.isMatch(s="aa", p="a"))
         print("OK")
 
-    def test_is_match_2(self):
+    def test_is_match_2(self) -> None:
         print("Test isMatch 2... ", end="")
         self.assertTrue(self.sol.isMatch(s="aa", p="a*"))
         print("OK")
 
-    def test_is_match_3(self):
+    def test_is_match_3(self) -> None:
         print("Test isMatch 3... ", end="")
         self.assertTrue(self.sol.isMatch(s="ab", p=".*"))
         print("OK")
 
-    def test_is_match_4(self):
+    def test_is_match_4(self) -> None:
         print("Test isMatch 4... ", end="")
         self.assertTrue(self.sol.isMatch(s="aab", p="c*a*b"))
         print("OK")

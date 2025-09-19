@@ -33,7 +33,7 @@ class Solution2:
         aux = [[1] * m for _ in range(n)]
         visited = [[False] * m for _ in range(n)]
 
-        def dfs(i, j):
+        def dfs(i, j) -> int:
             if not visited[i][j]:
                 for y, x in ((i - 1, j), (i, j + 1), (i + 1, j), (i, j - 1)):
                     if 0 <= y < n and 0 <= x < m and grid[i][j] > grid[y][x]:
