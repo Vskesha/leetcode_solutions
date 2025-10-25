@@ -1,3 +1,8 @@
+import unittest
+
+from leetcode_solutions._test_meta import TestMeta
+
+
 class Solution:
     def totalMoney(self, n: int) -> int:
         fw = n // 7
@@ -23,21 +28,20 @@ class Solution2:
         return ans
 
 
-def test():
-    sol = Solution()
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
+    test_cases = [
+        {
+            "class": Solution,
+            "class_methods": ["totalMoney"] * 3,
+            "kwargs": [
+                dict(n=4),
+                dict(n=10),
+                dict(n=20),
+            ],
+            "expected": [10, 37, 96],
+        },
+    ]
 
-    print('Test 1... ', end='')
-    assert sol.totalMoney(n=4) == 10
-    print('OK')
 
-    print('Test 2... ', end='')
-    assert sol.totalMoney(n=10) == 37
-    print('OK')
-
-    print('Test 3... ', end='')
-    assert sol.totalMoney(n=20) == 96
-    print('OK')
-
-
-if __name__ == '__main__':
-    test()
+if __name__ == "__main__":
+    unittest.main()

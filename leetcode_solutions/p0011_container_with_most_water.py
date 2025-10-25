@@ -1,7 +1,33 @@
+import unittest
 from typing import List
+
+from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
+    def maxArea(self, height: List[int]) -> int:
+
+        left, right = 0, len(height) - 1
+        ans = 0
+
+        while left < right:
+            if height[left] < height[right]:
+                ans = max(ans, height[left] * (right - left))
+                curr_height = height[left]
+                left += 1
+                while left < right and height[left] <= curr_height:
+                    left += 1
+            else:
+                ans = max(ans, height[right] * (right - left))
+                curr_height = height[right]
+                right -= 1
+                while left < right and height[right] <= curr_height:
+                    right -= 1
+
+        return ans
+
+
+class Solution1:
     def maxArea(self, height: List[int]) -> int:
 
         l, r = 0, len(height) - 1
@@ -18,24 +44,37 @@ class Solution:
         return ans
 
 
-def test():
-    sol = Solution()
+class Solution2:
+    def maxArea(self, height: List[int]) -> int:
 
-    print('Test 1... ', end='')
-    height = [1, 8, 6, 2, 5, 4, 8, 3, 7]
-    assert sol.maxArea(height) == 49
-    print('OK')
+        left, right = 0, len(height) - 1
+        ans = 0
 
-    print('Test 2... ', end='')
-    height = [1, 1]
-    assert sol.maxArea(height) == 1
-    print('OK')
+        while left < right:
+            if height[left] < height[right]:
+                ans = max(ans, height[left] * (right - left))
+                left += 1
+            else:
+                ans = max(ans, height[right] * (right - left))
+                right -= 1
 
-    print('Test 3... ', end='')
-    height = [4, 3, 2, 1]
-    assert sol.maxArea(height) == 4
-    print('OK')
+        return ans
 
 
-if __name__ == '__main__':
-    test()
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
+    test_cases = [
+        {
+            "class": Solution,
+            "class_methods": ["maxArea"] * 3,
+            "kwargs": [
+                dict(height=[1, 8, 6, 2, 5, 4, 8, 3, 7]),
+                dict(height=[1, 1]),
+                dict(height=[4, 3, 2, 1]),
+            ],
+            "expected": [49, 1, 4],
+        },
+    ]
+
+
+if __name__ == "__main__":
+    unittest.main()
