@@ -17,7 +17,9 @@ class Solution:
                 dp[st][end] = 1 + dp[st + 1][end]
                 for i in range(st + 2, end + 1):
                     if s[i] == s[st]:
-                        dp[st][end] = min(dp[st][end], dp[st][i - 1] + dp[i + 1][end])
+                        dp[st][end] = min(
+                            dp[st][end], dp[st][i - 1] + dp[i + 1][end]
+                        )
 
         return dp[0][ls - 1]
 
@@ -57,7 +59,9 @@ class Solution3:
                     dp[l][r] = 0
                     continue
 
-                dp[l][r] = min(dp[j][i] + dp[i + 1][r] for i in range(j, r)) + 1
+                dp[l][r] = (
+                    min(dp[j][i] + dp[i + 1][r] for i in range(j, r)) + 1
+                )
 
         return dp[0][ls - 1] + 1
 

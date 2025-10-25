@@ -61,7 +61,7 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "kwargs": [
                 dict(nums=[4, 3, 6, 16, 8, 2]),
                 dict(nums=[2, 3, 5, 6, 7]),
-                dict(nums=[3,9,81,6561]),
+                dict(nums=[3, 9, 81, 6561]),
             ],
             "expected": [3, -1, 4],
         },

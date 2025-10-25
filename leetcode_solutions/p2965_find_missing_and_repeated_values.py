@@ -27,8 +27,8 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["findMissingAndRepeatedValues"] * 2,
             "kwargs": [
-                dict(grid = [[1,3],[2,2]]),
-                dict(grid = [[9,1,7],[8,9,2],[3,4,6]]),
+                dict(grid=[[1, 3], [2, 2]]),
+                dict(grid=[[9, 1, 7], [8, 9, 2], [3, 4, 6]]),
             ],
             "expected": [
                 [2, 4],

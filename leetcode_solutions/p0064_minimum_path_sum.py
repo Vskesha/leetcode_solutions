@@ -21,7 +21,9 @@ class TestSolution(unittest.TestCase):
 
     def test_min_path_sum_1(self):
         print("Test minPathSum 1... ", end="")
-        self.assertEqual(self.sol.minPathSum(grid=[[1, 3, 1], [1, 5, 1], [4, 2, 1]]), 7)
+        self.assertEqual(
+            self.sol.minPathSum(grid=[[1, 3, 1], [1, 5, 1], [4, 2, 1]]), 7
+        )
         print("OK")
 
     def test_min_path_sum_2(self):

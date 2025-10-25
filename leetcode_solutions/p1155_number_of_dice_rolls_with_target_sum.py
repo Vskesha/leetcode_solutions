@@ -134,7 +134,9 @@ class TestSolution(unittest.TestCase):
 
     def test_numRollsToTarget_3(self):
         print("Test numRollsToTarget 3 ... ", end="")
-        self.assertEqual(222616187, self.sol.numRollsToTarget(n=30, k=30, target=500))
+        self.assertEqual(
+            222616187, self.sol.numRollsToTarget(n=30, k=30, target=500)
+        )
         print("OK")
 
 

@@ -20,7 +20,10 @@ class Solution:
                     low[node] = min(low[node], low[neib])
 
         graph = defaultdict(list)
-        [(graph[fr].append(to), graph[to].append(fr)) for fr, to in connections]
+        [
+            (graph[fr].append(to), graph[to].append(fr))
+            for fr, to in connections
+        ]
         low, critical = [0] * n, []
         dfs(0, 1, -1)
         return critical

@@ -116,7 +116,9 @@ def test():
 
     print("Test 1... ", end="")
     assert (
-        sol.isEvenOddTree(root=[1, 10, 4, 3, null, 7, 9, 12, 8, 6, null, null, 2])
+        sol.isEvenOddTree(
+            root=[1, 10, 4, 3, null, 7, 9, 12, 8, 6, null, null, 2]
+        )
         is True
     )
     print("OK")

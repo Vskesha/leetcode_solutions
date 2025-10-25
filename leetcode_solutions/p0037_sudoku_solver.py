@@ -185,7 +185,11 @@ class Solution1:
         rows, cols, sqrs = get_taken_in_rows_cols_sqrs()
         allowed = create_allowed_sets(rows, cols, sqrs)
 
-        left = [(i, j) for i, j in product(range(9), repeat=2) if board[i][j] == "."]
+        left = [
+            (i, j)
+            for i, j in product(range(9), repeat=2)
+            if board[i][j] == "."
+        ]
 
         backtrack(allowed, left)
 
@@ -311,7 +315,9 @@ def verify_sudoku(board):
     for sq in range(9):
         sqr, sqc = divmod(sq, 3)
         si, sj = sqr * 3, sqc * 3
-        sqset = {board[i][j] for i in range(si, si + 3) for j in range(sj, sj + 3)}
+        sqset = {
+            board[i][j] for i in range(si, si + 3) for j in range(sj, sj + 3)
+        }
         assert sqset == all_digits
 
 

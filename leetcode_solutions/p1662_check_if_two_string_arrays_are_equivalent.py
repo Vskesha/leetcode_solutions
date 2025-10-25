@@ -12,7 +12,7 @@ class Solution:
 
 class Solution2:
     def arrayStringsAreEqual(self, word1: List[str], word2: List[str]) -> bool:
-        for a, b in zip_longest(''.join(word1), ''.join(word2)):
+        for a, b in zip_longest("".join(word1), "".join(word2)):
             if a != b:
                 return False
         return True
@@ -42,18 +42,27 @@ class Solution3:
 def test():
     sol = Solution()
 
-    print('Test 1... ', end='')
-    assert sol.arrayStringsAreEqual(word1=["ab", "c"], word2=["a", "bc"]) is True
-    print('OK')
+    print("Test 1... ", end="")
+    assert (
+        sol.arrayStringsAreEqual(word1=["ab", "c"], word2=["a", "bc"]) is True
+    )
+    print("OK")
 
-    print('Test 2... ', end='')
-    assert sol.arrayStringsAreEqual(word1=["a", "cb"], word2=["ab", "c"]) is False
-    print('OK')
+    print("Test 2... ", end="")
+    assert (
+        sol.arrayStringsAreEqual(word1=["a", "cb"], word2=["ab", "c"]) is False
+    )
+    print("OK")
 
-    print('Test 3... ', end='')
-    assert sol.arrayStringsAreEqual(word1=["abc", "d", "defg"], word2=["abcddefg"]) is True
-    print('OK')
+    print("Test 3... ", end="")
+    assert (
+        sol.arrayStringsAreEqual(
+            word1=["abc", "d", "defg"], word2=["abcddefg"]
+        )
+        is True
+    )
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

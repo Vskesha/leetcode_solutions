@@ -47,14 +47,24 @@ class Solution2:
 def test():
     sol = Solution()
 
-    print('Test 1... ', end='')
-    assert sol.countNegatives(grid=[[4, 3, 2, -1], [3, 2, 1, -1], [1, 1, -1, -2], [-1, -1, -2, -3]]) == 8
-    print('OK')
+    print("Test 1... ", end="")
+    assert (
+        sol.countNegatives(
+            grid=[
+                [4, 3, 2, -1],
+                [3, 2, 1, -1],
+                [1, 1, -1, -2],
+                [-1, -1, -2, -3],
+            ]
+        )
+        == 8
+    )
+    print("OK")
 
-    print('Test 2... ', end='')
+    print("Test 2... ", end="")
     assert sol.countNegatives(grid=[[3, 2], [1, 0]]) == 0
-    print('OK')
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

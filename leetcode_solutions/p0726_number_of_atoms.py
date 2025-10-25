@@ -75,7 +75,9 @@ class Solution2:
                 element += c
 
         c = stack[-1]
-        return "".join(el if c[el] == 1 else el + str(c[el]) for el in sorted(c.keys()))
+        return "".join(
+            el if c[el] == 1 else el + str(c[el]) for el in sorted(c.keys())
+        )
 
 
 class Solution3:
@@ -110,7 +112,9 @@ class Solution3:
                 stack[-1][el] += n
 
         c = stack[-1]
-        return "".join(el + str(c[el]) if c[el] > 1 else el for el in sorted(c.keys()))
+        return "".join(
+            el + str(c[el]) if c[el] > 1 else el for el in sorted(c.keys())
+        )
 
 
 class TestSolution(unittest.TestCase):
@@ -130,7 +134,9 @@ class TestSolution(unittest.TestCase):
 
     def test_count_of_atoms_3(self):
         print("Test countOfAtoms 3... ", end="")
-        self.assertEqual(self.sol.countOfAtoms(formula="K4(ON(SO3)2)2"), "K4N2O14S4")
+        self.assertEqual(
+            self.sol.countOfAtoms(formula="K4(ON(SO3)2)2"), "K4N2O14S4"
+        )
         print("OK")
 
 

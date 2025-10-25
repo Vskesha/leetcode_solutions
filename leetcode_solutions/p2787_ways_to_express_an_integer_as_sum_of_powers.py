@@ -24,9 +24,9 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["numberOfWays"] * 3,
             "kwargs": [
-                dict(n = 10, x = 2),
-                dict(n = 4, x = 1),
-                dict(n = 64, x = 3),
+                dict(n=10, x=2),
+                dict(n=4, x=1),
+                dict(n=64, x=3),
             ],
             "expected": [1, 2, 1],
         },

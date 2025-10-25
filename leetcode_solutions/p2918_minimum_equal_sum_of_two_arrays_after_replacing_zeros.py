@@ -34,7 +34,9 @@ class Solution3:
 
         if 0 in nums1:
             if 0 in nums2:
-                return max(sum(nums1) + nums1.count(0), sum(nums2) + nums2.count(0))
+                return max(
+                    sum(nums1) + nums1.count(0), sum(nums2) + nums2.count(0)
+                )
             sm2 = sum(nums2)
             if sum(nums1) + nums1.count(0) <= sm2:
                 return sm2

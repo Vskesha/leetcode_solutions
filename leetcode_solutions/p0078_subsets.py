@@ -4,7 +4,11 @@ from typing import List
 
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        return [list(c) for l in range(len(nums) + 1) for c in combinations(nums, l)]
+        return [
+            list(c)
+            for l in range(len(nums) + 1)
+            for c in combinations(nums, l)
+        ]
 
 
 class Solution1:

@@ -9,14 +9,15 @@ class Solution:
         return (
             len(word1) == len(word2)
             and set(word1) == set(word2)
-            and Counter(Counter(word1).values()) == Counter(Counter(word2).values())
+            and Counter(Counter(word1).values())
+            == Counter(Counter(word2).values())
         )
 
 
 class TestSolution(unittest.TestCase, metaclass=TestMeta):
     test_cases = [
         {
-            "class":  Solution,
+            "class": Solution,
             "class_methods": ["closeStrings"] * 3,
             "kwargs": [
                 dict(word1="abc", word2="bca"),

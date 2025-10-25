@@ -50,7 +50,9 @@ class TestSolution(unittest.TestCase):
     def test_generate_parenthesis_2(self):
         print("Test generateParenthesis 2 ... ", end="")
         self.assertTrue(
-            self.contains_all_combinations(self.sol.generateParenthesis(n=1), ["()"])
+            self.contains_all_combinations(
+                self.sol.generateParenthesis(n=1), ["()"]
+            )
         )
         print("OK")
 

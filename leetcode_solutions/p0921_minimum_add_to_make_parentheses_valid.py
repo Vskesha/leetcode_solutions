@@ -22,13 +22,13 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["minAddToMakeValid"] * 2,
             "kwargs": [
-                dict(s = "())"),
-                dict(s = "((("),
+                dict(s="())"),
+                dict(s="((("),
             ],
             "expected": [1, 3],
         },
     ]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

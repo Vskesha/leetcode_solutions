@@ -33,14 +33,22 @@ class Solution2:
 def main():
     sol = Solution()
 
-    print('Test 1 ... ', end='')
-    assert sol.countCharacters(words=["cat", "bt", "hat", "tree"], chars="atach") == 6
-    print('ok')
+    print("Test 1 ... ", end="")
+    assert (
+        sol.countCharacters(words=["cat", "bt", "hat", "tree"], chars="atach")
+        == 6
+    )
+    print("ok")
 
-    print('Test 2 ... ', end='')
-    assert sol.countCharacters(words=["hello", "world", "leetcode"], chars="welldonehoneyr") == 10
-    print('ok')
+    print("Test 2 ... ", end="")
+    assert (
+        sol.countCharacters(
+            words=["hello", "world", "leetcode"], chars="welldonehoneyr"
+        )
+        == 10
+    )
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

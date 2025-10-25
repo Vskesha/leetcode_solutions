@@ -49,7 +49,9 @@ class TestSolution(unittest.TestCase):
 
     def test_min_cost_1(self):
         print("Test minCost 1... ", end="")
-        self.assertEqual(self.sol.minCost(nums=[1, 3, 5, 2], cost=[2, 3, 1, 14]), 8)
+        self.assertEqual(
+            self.sol.minCost(nums=[1, 3, 5, 2], cost=[2, 3, 1, 14]), 8
+        )
         print("OK")
 
     def test_min_cost_2(self):

@@ -24,14 +24,22 @@ class Solution:
 
         return n - 1
 
+
 class TestSolution(unittest.TestCase, metaclass=TestMeta):
     test_cases = [
         {
             "class": Solution,
             "class_methods": ["maxMoves"] * 2,
             "kwargs": [
-                dict(grid = [[2,4,3,5],[5,4,9,3],[3,4,2,11],[10,9,13,15]]),
-                dict(grid = [[3,2,4],[2,1,9],[1,1,7]]),
+                dict(
+                    grid=[
+                        [2, 4, 3, 5],
+                        [5, 4, 9, 3],
+                        [3, 4, 2, 11],
+                        [10, 9, 13, 15],
+                    ]
+                ),
+                dict(grid=[[3, 2, 4], [2, 1, 9], [1, 1, 7]]),
             ],
             "expected": [3, 0],
         },

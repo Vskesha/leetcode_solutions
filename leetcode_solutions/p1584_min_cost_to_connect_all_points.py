@@ -35,7 +35,9 @@ class Solution:
 
         for i in range(lp):
             for j in range(i + 1, lp):
-                d = abs(points[i][0] - points[j][0]) + abs(points[i][1] - points[j][1])
+                d = abs(points[i][0] - points[j][0]) + abs(
+                    points[i][1] - points[j][1]
+                )
                 q.append((d, i, j))
 
         heapify(q)
@@ -50,12 +52,17 @@ class Solution:
 
 def test():
     sol = Solution()
-    print('Test 1 ... ', end='')
-    assert sol.minCostConnectPoints(points=[[0, 0], [2, 2], [3, 10], [5, 2], [7, 0]]) == 20
-    print('ok\nTest 2 ... ', end='')
+    print("Test 1 ... ", end="")
+    assert (
+        sol.minCostConnectPoints(
+            points=[[0, 0], [2, 2], [3, 10], [5, 2], [7, 0]]
+        )
+        == 20
+    )
+    print("ok\nTest 2 ... ", end="")
     assert sol.minCostConnectPoints(points=[[3, 12], [-2, 5], [-4, 1]])
-    print('ok')
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

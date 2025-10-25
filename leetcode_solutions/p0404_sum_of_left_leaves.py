@@ -41,7 +41,11 @@ class Solution2:
             if not node:
                 return 0
             return (
-                (node.val if is_left and not node.left and not node.right else 0)
+                (
+                    node.val
+                    if is_left and not node.left and not node.right
+                    else 0
+                )
                 + dfs(node.left, True)
                 + dfs(node.right, False)
             )
@@ -71,7 +75,10 @@ def main():
     sol = Solution()
 
     print("Test 1 ... ", end="")
-    assert sol.sumOfLeftLeaves(to_binary_tree([3, 9, 20, null, null, 15, 7])) == 24
+    assert (
+        sol.sumOfLeftLeaves(to_binary_tree([3, 9, 20, null, null, 15, 7]))
+        == 24
+    )
     print("OK")
 
     print("Test 2 ... ", end="")

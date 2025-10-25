@@ -41,7 +41,9 @@ class TestSolution(unittest.TestCase):
 
     def test_numIdenticalPairs_1(self):
         print("Test numIdenticalPairs 1... ", end="")
-        self.assertEqual(4, self.sol.numIdenticalPairs(nums=[1, 2, 3, 1, 1, 3]))
+        self.assertEqual(
+            4, self.sol.numIdenticalPairs(nums=[1, 2, 3, 1, 1, 3])
+        )
         print("OK")
 
     def test_numIdenticalPairs_2(self):

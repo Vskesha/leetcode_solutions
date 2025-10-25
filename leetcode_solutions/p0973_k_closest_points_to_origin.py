@@ -48,7 +48,8 @@ class TestSolution(unittest.TestCase):
     def test_kClosest_2(self):
         print("Test kClosest 2... ", end="")
         self.assertSamePoints(
-            [[3, 3], [-2, 4]], self.sol.kClosest(points=[[3, 3], [5, -1], [-2, 4]], k=2)
+            [[3, 3], [-2, 4]],
+            self.sol.kClosest(points=[[3, 3], [5, -1], [-2, 4]], k=2),
         )
         print("OK")
 

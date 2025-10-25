@@ -5,7 +5,7 @@ from leetcode_solutions._test_meta import TestMeta
 
 class Solution:
     def idealArrays(self, n: int, maxValue: int) -> int:
-        mod = 10 ** 9 + 7
+        mod = 10**9 + 7
         dp = [1] * (maxValue + 1)
         dp[0] = 0
 
@@ -18,8 +18,8 @@ class Solution:
         return sum(dp) % mod
 
 
-MOD = 10 ** 9 + 7
-MAX_N = 10 ** 4 + 10
+MOD = 10**9 + 7
+MAX_N = 10**4 + 10
 MAX_P = 15
 
 sieve = [0] * MAX_N

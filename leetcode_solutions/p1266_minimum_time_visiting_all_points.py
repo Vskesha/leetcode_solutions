@@ -4,7 +4,10 @@ from typing import List
 
 class Solution:
     def minTimeToVisitAllPoints(self, points: List[List[int]]) -> int:
-        return sum(max(abs(a[0] - b[0]), abs(a[1] - b[1])) for a, b in pairwise(points))
+        return sum(
+            max(abs(a[0] - b[0]), abs(a[1] - b[1]))
+            for a, b in pairwise(points)
+        )
 
 
 class Solution2:
@@ -31,17 +34,18 @@ class Solution3:
 
         return ans
 
+
 def test():
     sol = Solution()
 
-    print('Test 1... ', end='')
-    assert sol.minTimeToVisitAllPoints(points = [[1,1],[3,4],[-1,0]]) == 7
-    print('OK')
+    print("Test 1... ", end="")
+    assert sol.minTimeToVisitAllPoints(points=[[1, 1], [3, 4], [-1, 0]]) == 7
+    print("OK")
 
-    print('Test 2... ', end='')
-    assert sol.minTimeToVisitAllPoints(points = [[3,2],[-2,2]]) == 5
-    print('OK')
+    print("Test 2... ", end="")
+    assert sol.minTimeToVisitAllPoints(points=[[3, 2], [-2, 2]]) == 5
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

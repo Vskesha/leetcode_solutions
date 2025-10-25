@@ -54,7 +54,9 @@ class TestSolution(unittest.TestCase):
         print("Test dailyTemperatures 1... ", end="")
         self.assertListEqual(
             [1, 1, 4, 2, 1, 1, 0, 0],
-            self.sol.dailyTemperatures(temperatures=[73, 74, 75, 71, 69, 72, 76, 73]),
+            self.sol.dailyTemperatures(
+                temperatures=[73, 74, 75, 71, 69, 72, 76, 73]
+            ),
         )
         print("OK")
 

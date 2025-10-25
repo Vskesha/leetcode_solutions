@@ -5,16 +5,16 @@ from typing import List
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         idx = sorted((n, i) for i, n in enumerate(nums))
-        l, r = 0, len(nums) - 1
+        li, r = 0, len(nums) - 1
 
-        while l < r:
-            sm = idx[l][0] + idx[r][0]
+        while li < r:
+            sm = idx[li][0] + idx[r][0]
             if sm == target:
-                return [idx[l][1], idx[r][1]]
+                return [idx[li][1], idx[r][1]]
             elif sm > target:
                 r -= 1
             else:
-                l += 1
+                li += 1
 
 
 class Solution2:
@@ -43,17 +43,19 @@ class TestSolution(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.sol = Solution()
 
-    def test_two_sum_1(self):
+    def test_two_sum_1(self) -> None:
         print("Test twoSum 1... ", end="")
-        self.assertEqual(self.sol.twoSum(nums=[2, 7, 11, 15], target=9), [0, 1])
+        self.assertEqual(
+            self.sol.twoSum(nums=[2, 7, 11, 15], target=9), [0, 1]
+        )
         print("OK")
 
-    def test_two_sum_2(self):
+    def test_two_sum_2(self) -> None:
         print("Test twoSum 2... ", end="")
         self.assertEqual(self.sol.twoSum(nums=[3, 2, 4], target=6), [1, 2])
         print("OK")
 
-    def test_two_sum_3(self):
+    def test_two_sum_3(self) -> None:
         print("Test twoSum 3... ", end="")
         self.assertEqual(self.sol.twoSum(nums=[3, 3], target=6), [0, 1])
         print("OK")

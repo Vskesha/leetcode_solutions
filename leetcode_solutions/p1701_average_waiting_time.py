@@ -57,7 +57,9 @@ class TestSolution(unittest.TestCase):
     def test_average_waiting_time_2(self):
         print("Test averageWaitingTime 2... ", end="")
         self.assertAlmostEqual(
-            self.sol.averageWaitingTime(customers=[[5, 2], [5, 4], [10, 3], [20, 1]]),
+            self.sol.averageWaitingTime(
+                customers=[[5, 2], [5, 4], [10, 3], [20, 1]]
+            ),
             3.25,
             places=5,
         )

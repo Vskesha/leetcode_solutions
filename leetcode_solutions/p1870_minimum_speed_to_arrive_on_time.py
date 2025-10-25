@@ -25,10 +25,10 @@ class Solution:
 
 def main():
     sol = Solution()
-    print('1 ===', sol.minSpeedOnTime(dist=[1, 3, 2], hour=6))
-    print('3 ===', sol.minSpeedOnTime(dist=[1, 3, 2], hour=2.7))
-    print('-1 ==', sol.minSpeedOnTime(dist=[1, 3, 2], hour=1.9))
+    print("1 ===", sol.minSpeedOnTime(dist=[1, 3, 2], hour=6))
+    print("3 ===", sol.minSpeedOnTime(dist=[1, 3, 2], hour=2.7))
+    print("-1 ==", sol.minSpeedOnTime(dist=[1, 3, 2], hour=1.9))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

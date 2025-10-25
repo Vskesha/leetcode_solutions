@@ -15,7 +15,9 @@ class TreeNode:
 
 
 class Solution:
-    def kthLargestPerfectSubtree(self, root: Optional[TreeNode], k: int) -> int:
+    def kthLargestPerfectSubtree(
+        self, root: Optional[TreeNode], k: int
+    ) -> int:
         heap = []
         self.dfs(root, heap, k)
         return heap[0] if len(heap) == k else -1
@@ -65,7 +67,12 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["kthLargestPerfectSubtree"] * 3,
             "kwargs": [
-                dict(root=array_to_tree([5, 3, 6, 5, 2, 5, 7, 1, 8, null, null, 6, 8]), k=2),
+                dict(
+                    root=array_to_tree(
+                        [5, 3, 6, 5, 2, 5, 7, 1, 8, null, null, 6, 8]
+                    ),
+                    k=2,
+                ),
                 dict(root=array_to_tree([1, 2, 3, 4, 5, 6, 7]), k=1),
                 dict(root=array_to_tree([1, 2, 3, null, 4]), k=3),
             ],

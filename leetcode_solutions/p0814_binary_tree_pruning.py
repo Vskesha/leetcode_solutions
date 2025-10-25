@@ -83,15 +83,35 @@ def test_prune_tree():
     sol = Solution()
 
     print("Test 1... ", end="")
-    assert sol.pruneTree(root=[1, null, 0, 0, 1]) == [1, null, 0, null, 1]  # noqa
+    assert sol.pruneTree(root=[1, null, 0, 0, 1]) == [
+        1,
+        null,
+        0,
+        null,
+        1,
+    ]  # noqa
     print("OK")
 
     print("Test 2... ", end="")
-    assert sol.pruneTree(root=[1, 0, 1, 0, 0, 0, 1]) == [1, null, 1, null, 1]  # noqa
+    assert sol.pruneTree(root=[1, 0, 1, 0, 0, 0, 1]) == [
+        1,
+        null,
+        1,
+        null,
+        1,
+    ]  # noqa
     print("OK")
 
     print("Test 3... ", end="")
-    assert sol.pruneTree(root=[1, 1, 0, 1, 1, 0, 1, 0]) == [1, 1, 0, 1, 1, null, 1]  # noqa
+    assert sol.pruneTree(root=[1, 1, 0, 1, 1, 0, 1, 0]) == [
+        1,
+        1,
+        0,
+        1,
+        1,
+        null,
+        1,
+    ]  # noqa
     print("OK")
 
 

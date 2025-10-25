@@ -31,12 +31,16 @@ class TestSolution(unittest.TestCase):
 
     def test_rangeSum_1(self):
         print("Test rangeSum 1... ", end="")
-        self.assertEqual(13, self.sol.rangeSum(nums=[1, 2, 3, 4], n=4, left=1, right=5))
+        self.assertEqual(
+            13, self.sol.rangeSum(nums=[1, 2, 3, 4], n=4, left=1, right=5)
+        )
         print("OK")
 
     def test_rangeSum_2(self):
         print("Test rangeSum 2... ", end="")
-        self.assertEqual(6, self.sol.rangeSum(nums=[1, 2, 3, 4], n=4, left=3, right=4))
+        self.assertEqual(
+            6, self.sol.rangeSum(nums=[1, 2, 3, 4], n=4, left=3, right=4)
+        )
         print("OK")
 
     def test_rangeSum_3(self):

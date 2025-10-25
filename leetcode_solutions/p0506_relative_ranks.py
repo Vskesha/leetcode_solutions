@@ -5,7 +5,9 @@ class Solution:
     def findRelativeRanks(self, score: List[int]) -> List[str]:
         medals = [str(i + 1) for i in range(len(score))]
         medals[0:3] = ["Gold Medal", "Silver Medal", "Bronze Medal"]
-        places = {sc: medals[i] for i, sc in enumerate(sorted(score, reverse=True))}
+        places = {
+            sc: medals[i] for i, sc in enumerate(sorted(score, reverse=True))
+        }
         return [places[sc] for sc in score]
 
 

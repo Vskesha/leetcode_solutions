@@ -12,14 +12,14 @@ class Solution:
 def test():
     sol = Solution()
 
-    print('Test 1 ... ', end='')
+    print("Test 1 ... ", end="")
     assert sol.integerBreak(n=2) == 1
-    print('ok')
+    print("ok")
 
-    print('Test 1 ... ', end='')
+    print("Test 1 ... ", end="")
     assert sol.integerBreak(n=10) == 36
-    print('ok')
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

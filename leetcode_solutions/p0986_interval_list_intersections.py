@@ -53,7 +53,9 @@ class TestSolution(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.sol = Solution()
 
-    def same_intervals(self, first: List[List[int]], second: List[List[int]]) -> bool:
+    def same_intervals(
+        self, first: List[List[int]], second: List[List[int]]
+    ) -> bool:
         return all(map(lambda x, y: x == y, first, second))
 
     def test_interval_intersection_1(self):

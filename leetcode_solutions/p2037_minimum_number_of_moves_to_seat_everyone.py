@@ -22,14 +22,16 @@ class TestSolution(unittest.TestCase):
     def test_min_moves_to_seat_2(self):
         print("Test minMovesToSeat 2 ... ", end="")
         self.assertEqual(
-            self.sol.minMovesToSeat(seats=[4, 1, 5, 9], students=[1, 3, 2, 6]), 7
+            self.sol.minMovesToSeat(seats=[4, 1, 5, 9], students=[1, 3, 2, 6]),
+            7,
         )
         print("OK")
 
     def test_min_moves_to_seat_3(self):
         print("Test minMovesToSeat 3 ... ", end="")
         self.assertEqual(
-            self.sol.minMovesToSeat(seats=[2, 2, 6, 6], students=[1, 3, 2, 6]), 4
+            self.sol.minMovesToSeat(seats=[2, 2, 6, 6], students=[1, 3, 2, 6]),
+            4,
         )
         print("OK")
 

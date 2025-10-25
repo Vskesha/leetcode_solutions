@@ -166,7 +166,9 @@ class TestSolution(unittest.TestCase):
 
     def test_numberToWords_1(self):
         print("Test numberToWords 1... ", end="")
-        self.assertEqual(self.sol.numberToWords(num=123), "One Hundred Twenty Three")
+        self.assertEqual(
+            self.sol.numberToWords(num=123), "One Hundred Twenty Three"
+        )
         print("OK")
 
     def test_numberToWords_2(self):

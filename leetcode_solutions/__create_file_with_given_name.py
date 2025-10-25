@@ -4,11 +4,10 @@ import re
 def main() -> None:
     inp = input("Type title of the problem: ")
 
-    filename = re.sub(
-        r"[^a-zA-Z0-9]+",
-        "_",
-        inp.lower().strip().replace("'", "")
-    ) + ".py"
+    filename = (
+        re.sub(r"[^a-zA-Z0-9]+", "_", inp.lower().strip().replace("'", ""))
+        + ".py"
+    )
 
     if filename[0].isdigit():
         i = filename.index("_")

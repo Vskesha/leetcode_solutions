@@ -33,7 +33,7 @@ class Solution2:
                     dp.append(i + dp[j])
             ldp = len(dp)
 
-        cnt = Counter(dp[1:n + 1])
+        cnt = Counter(dp[1 : n + 1])
         mv = max(cnt.values())
         return sum(v == mv for v in cnt.values())
 

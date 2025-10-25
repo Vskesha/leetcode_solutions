@@ -5,10 +5,19 @@ from leetcode_solutions._test_meta import TestMeta
 
 class Solution:
     def stringCount(self, n: int) -> int:
-        mod = 10 ** 9 + 7
+        mod = 10**9 + 7
 
-        return (pow(26, n, mod) - (pow(25, n, mod) - pow(24, n, mod)) * 3 - pow(23, n, mod) + (
-                pow(24, n - 1, mod) * 2 - pow(25, n - 1, mod) - pow(23, n - 1, mod)) * n) % mod
+        return (
+            pow(26, n, mod)
+            - (pow(25, n, mod) - pow(24, n, mod)) * 3
+            - pow(23, n, mod)
+            + (
+                pow(24, n - 1, mod) * 2
+                - pow(25, n - 1, mod)
+                - pow(23, n - 1, mod)
+            )
+            * n
+        ) % mod
 
 
 class TestSolution(unittest.TestCase, metaclass=TestMeta):

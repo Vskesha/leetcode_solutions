@@ -2,7 +2,9 @@ from typing import List
 
 
 class Solution:
-    def sumOfDistancesInTree(self, n: int, edges: List[List[int]]) -> List[int]:
+    def sumOfDistancesInTree(
+        self, n: int, edges: List[List[int]]
+    ) -> List[int]:
         graph = {i: [] for i in range(n)}
         for fr, to in edges:
             graph[fr].append(to)

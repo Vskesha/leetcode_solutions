@@ -16,21 +16,23 @@ class Solution:
 
 def test():
     sol = Solution()
-    print('Test 1 ... ', end='')
-    assert sol.kWeakestRows(mat=[[1, 1, 0, 0, 0],
-                                 [1, 1, 1, 1, 0],
-                                 [1, 0, 0, 0, 0],
-                                 [1, 1, 0, 0, 0],
-                                 [1, 1, 1, 1, 1]],
-                             k=3) == [2, 0, 3]
-    print('ok\nTest 2 ... ', end='')
-    assert sol.kWeakestRows(mat=[[1, 0, 0, 0],
-                                 [1, 1, 1, 1],
-                                 [1, 0, 0, 0],
-                                 [1, 0, 0, 0]],
-                            k=2) == [0, 2]
-    print('ok')
+    print("Test 1 ... ", end="")
+    assert sol.kWeakestRows(
+        mat=[
+            [1, 1, 0, 0, 0],
+            [1, 1, 1, 1, 0],
+            [1, 0, 0, 0, 0],
+            [1, 1, 0, 0, 0],
+            [1, 1, 1, 1, 1],
+        ],
+        k=3,
+    ) == [2, 0, 3]
+    print("ok\nTest 2 ... ", end="")
+    assert sol.kWeakestRows(
+        mat=[[1, 0, 0, 0], [1, 1, 1, 1], [1, 0, 0, 0], [1, 0, 0, 0]], k=2
+    ) == [0, 2]
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

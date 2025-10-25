@@ -3,7 +3,9 @@ from typing import List
 
 
 class Solution:
-    def restoreMatrix(self, rowSum: List[int], colSum: List[int]) -> List[List[int]]:
+    def restoreMatrix(
+        self, rowSum: List[int], colSum: List[int]
+    ) -> List[List[int]]:
         m, n = len(rowSum), len(colSum)
         grid = [[0] * n for _ in range(m)]
         r = c = 0
@@ -22,7 +24,9 @@ class Solution:
 
 
 class Solution1:
-    def restoreMatrix(self, rowSum: List[int], colSum: List[int]) -> List[List[int]]:
+    def restoreMatrix(
+        self, rowSum: List[int], colSum: List[int]
+    ) -> List[List[int]]:
         m, n = len(rowSum), len(colSum)
         grid = [[0] * n for _ in range(m)]
 
@@ -36,7 +40,9 @@ class Solution1:
 
 
 class Solution2:
-    def restoreMatrix(self, rowSum: List[int], colSum: List[int]) -> List[List[int]]:
+    def restoreMatrix(
+        self, rowSum: List[int], colSum: List[int]
+    ) -> List[List[int]]:
         m = len(colSum)
         n = len(rowSum)
         mat = [[0] * m for _ in range(n)]

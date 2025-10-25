@@ -26,7 +26,9 @@ class TestSolution(unittest.TestCase):
         print("Test sortPeople 2... ", end="")
         self.assertListEqual(
             ["Bob", "Alice", "Bob"],
-            self.sol.sortPeople(names=["Alice", "Bob", "Bob"], heights=[155, 185, 150]),
+            self.sol.sortPeople(
+                names=["Alice", "Bob", "Bob"], heights=[155, 185, 150]
+            ),
         )
         print("OK")
 

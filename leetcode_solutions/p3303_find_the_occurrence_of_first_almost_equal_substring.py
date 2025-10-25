@@ -47,16 +47,16 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["minStartingIndex"] * 5,
             "kwargs": [
-                dict(s = "abcdefg", pattern = "bcdffg"),
-                dict(s = "ababbababa", pattern = "bacaba"),
-                dict(s = "abcd", pattern = "dba"),
-                dict(s = "dde", pattern = "d"),
-                dict(s = "gghghh", pattern = "hh"),
+                dict(s="abcdefg", pattern="bcdffg"),
+                dict(s="ababbababa", pattern="bacaba"),
+                dict(s="abcd", pattern="dba"),
+                dict(s="dde", pattern="d"),
+                dict(s="gghghh", pattern="hh"),
             ],
             "expected": [1, 4, -1, 0, 1],
         },
     ]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

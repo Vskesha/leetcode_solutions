@@ -25,8 +25,8 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["largestDivisibleSubset"] * 2,
             "kwargs": [
-                dict(nums = [1,2,3]),
-                dict(nums = [1,2,4,8]),
+                dict(nums=[1, 2, 3]),
+                dict(nums=[1, 2, 4, 8]),
             ],
             "expected": [
                 [1, 2],

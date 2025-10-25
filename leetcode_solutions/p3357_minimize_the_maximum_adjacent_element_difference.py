@@ -49,19 +49,14 @@ class Solution:
             y = maxb - md
             for lb, rb, am in gaps:
                 if (
-                        (
-                                abs(rb - x) <= md and
-                                abs(x - lb) <= md
-                        )
-                        or (
-                        abs(rb - y) <= md and
-                        abs(y - lb) <= md)
-                        or (
+                    (abs(rb - x) <= md and abs(x - lb) <= md)
+                    or (abs(rb - y) <= md and abs(y - lb) <= md)
+                    or (
                         am > 1
                         and abs(rb - y) <= md
                         and abs(y - x) <= md
                         and abs(x - lb) <= md
-                )
+                    )
                 ):
                     continue
                 possible = False

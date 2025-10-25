@@ -38,7 +38,26 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
                 dict(nums=[1, 3, 4, 8, 7, 9, 3, 5, 1], k=2),
                 dict(nums=[2, 4, 2, 2, 5, 2], k=2),
                 dict(
-                    nums=[4, 2, 9, 8, 2, 12, 7, 12, 10, 5, 8, 5, 5, 7, 9, 2, 5, 11],
+                    nums=[
+                        4,
+                        2,
+                        9,
+                        8,
+                        2,
+                        12,
+                        7,
+                        12,
+                        10,
+                        5,
+                        8,
+                        5,
+                        5,
+                        7,
+                        9,
+                        2,
+                        5,
+                        11,
+                    ],
                     k=14,
                 ),
             ],
@@ -61,7 +80,9 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
         },
     ]
 
-    def assertMaxDiffIsLessEqual(self, result: List[List[int]], expected: int) -> None:
+    def assertMaxDiffIsLessEqual(
+        self, result: List[List[int]], expected: int
+    ) -> None:
         expected_list, expected_diff = expected
         self.assertEqual(len(result), len(expected_list))
         for res, exp in zip(result, expected_list):

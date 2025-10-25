@@ -48,7 +48,9 @@ class TestSolution(unittest.TestCase):
 
     def test_wordBreak_1(self):
         print("Test wordBreak 1... ", end="")
-        self.assertTrue(self.sol.wordBreak(s="leetcode", wordDict=["leet", "code"]))
+        self.assertTrue(
+            self.sol.wordBreak(s="leetcode", wordDict=["leet", "code"])
+        )
         print("OK")
 
     def test_wordBreak_2(self):

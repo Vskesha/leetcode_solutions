@@ -91,7 +91,9 @@ class TestSolution(unittest.TestCase):
 
     def test_min_cost_2(self):
         print("Test minCost 2... ", end="")
-        self.assertEqual(0, self.sol.minCost(colors="abc", neededTime=[1, 2, 3]))
+        self.assertEqual(
+            0, self.sol.minCost(colors="abc", neededTime=[1, 2, 3])
+        )
         print("OK")
 
     def test_min_cost_3(self):

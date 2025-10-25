@@ -4,7 +4,7 @@ class Graph:
         self.nodes = nodes or {}
 
     def __repr__(self):
-        return f'Graph({self.nodes})'
+        return f"Graph({self.nodes})"
 
     def topological_sort(self):
         ans = []
@@ -34,7 +34,7 @@ class Graph:
             elif type(curr_node) is GraphNode:
                 ans.append(curr_node.value)
             else:
-                raise ValueError(f'Incorrect value in {curr_node}')
+                raise ValueError(f"Incorrect value in {curr_node}")
 
         if nodes_left:  # there is a cycle in graph
             raise IndexError("It's impossible to sort")
@@ -50,21 +50,23 @@ class GraphNode:
         self.neighbours = neighbours or []
 
     def __repr__(self):
-        return f'GraphNode({self.value})'
+        return f"GraphNode({self.value})"
 
 
 class NodesGroup(Graph, GraphNode):
-    
+
     def __init__(self, nodes=None, value=None, income=0, neighbours=None):
         super().__init__(nodes)
         super(Graph, self).__init__(value, income, neighbours)
 
     def __repr__(self):
-        return f'NodeGroup({self.nodes})'
+        return f"NodeGroup({self.nodes})"
 
 
 class Solution:
-    def sortItems(self, n: int, m: int, group: list[int], beforeItems: list[list[int]]) -> list[int]:
+    def sortItems(
+        self, n: int, m: int, group: list[int], beforeItems: list[list[int]]
+    ) -> list[int]:
         # creating of graph with m empty groups
         graph = Graph()
         graph.nodes = {i: NodesGroup() for i in range(m)}
@@ -107,14 +109,25 @@ class Solution:
 
 def main():
     sol = Solution()
-    print(' [6, 3, 4, 1, 5, 2, 0, 7]\n',
-          sol.sortItems(n=8, m=2,
-                        group=[-1, -1, 1, 0, 0, 1, 0, -1],
-                        beforeItems=[[], [6], [5], [6], [3, 6], [], [], []]))
-    print(' []\n', sol.sortItems(n=8, m=2,
-                                 group=[-1, -1, 1, 0, 0, 1, 0, -1],
-                                 beforeItems=[[], [6], [5], [6], [3], [], [4], []]))
+    print(
+        " [6, 3, 4, 1, 5, 2, 0, 7]\n",
+        sol.sortItems(
+            n=8,
+            m=2,
+            group=[-1, -1, 1, 0, 0, 1, 0, -1],
+            beforeItems=[[], [6], [5], [6], [3, 6], [], [], []],
+        ),
+    )
+    print(
+        " []\n",
+        sol.sortItems(
+            n=8,
+            m=2,
+            group=[-1, -1, 1, 0, 0, 1, 0, -1],
+            beforeItems=[[], [6], [5], [6], [3], [], [4], []],
+        ),
+    )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

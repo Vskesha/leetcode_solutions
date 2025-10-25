@@ -49,7 +49,14 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "kwargs": [
                 dict(grid=[[1, 0], [0, 1]]),
                 dict(grid=[[1, 0], [1, 1]]),
-                dict(grid=[[1, 1, 0, 0], [0, 0, 1, 0], [0, 0, 1, 0], [0, 0, 0, 1]]),
+                dict(
+                    grid=[
+                        [1, 1, 0, 0],
+                        [0, 0, 1, 0],
+                        [0, 0, 1, 0],
+                        [0, 0, 0, 1],
+                    ]
+                ),
             ],
             "expected": [0, 3, 4],
         },

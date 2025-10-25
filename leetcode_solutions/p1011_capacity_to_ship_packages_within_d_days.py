@@ -88,18 +88,25 @@ class TestSolution(unittest.TestCase):
     def test_shipWithinDays_1(self):
         print("Test shipWithinDays 1 ... ", end="")
         self.assertEqual(
-            15, self.sol.shipWithinDays(weights=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], days=5)
+            15,
+            self.sol.shipWithinDays(
+                weights=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], days=5
+            ),
         )
         print("OK")
 
     def test_shipWithinDays_2(self):
         print("Test shipWithinDays 2 ... ", end="")
-        self.assertEqual(6, self.sol.shipWithinDays(weights=[3, 2, 2, 4, 1, 4], days=3))
+        self.assertEqual(
+            6, self.sol.shipWithinDays(weights=[3, 2, 2, 4, 1, 4], days=3)
+        )
         print("OK")
 
     def test_shipWithinDays_3(self):
         print("Test shipWithinDays 3 ... ", end="")
-        self.assertEqual(3, self.sol.shipWithinDays(weights=[1, 2, 3, 1, 1], days=4))
+        self.assertEqual(
+            3, self.sol.shipWithinDays(weights=[1, 2, 3, 1, 1], days=4)
+        )
         print("OK")
 
 

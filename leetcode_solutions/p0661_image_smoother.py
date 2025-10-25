@@ -33,26 +33,24 @@ class Solution2:
 def test():
     sol = Solution()
 
-    print('Test 1... ', end='')
-    for a, b in zip(sol.imageSmoother(img=[[1, 1, 1],
-                                           [1, 0, 1],
-                                           [1, 1, 1]]),
-                    [[0, 0, 0],
-                     [0, 0, 0],
-                     [0, 0, 0]]):
+    print("Test 1... ", end="")
+    for a, b in zip(
+        sol.imageSmoother(img=[[1, 1, 1], [1, 0, 1], [1, 1, 1]]),
+        [[0, 0, 0], [0, 0, 0], [0, 0, 0]],
+    ):
         assert a == b
-    print('OK')
+    print("OK")
 
-    print('Test 2... ', end='')
-    for a, b in zip(sol.imageSmoother(img=[[100, 200, 100],
-                                           [200, 50, 200],
-                                           [100, 200, 100]]),
-                    [[137, 141, 137],
-                     [141, 138, 141],
-                     [137, 141, 137]]):
+    print("Test 2... ", end="")
+    for a, b in zip(
+        sol.imageSmoother(
+            img=[[100, 200, 100], [200, 50, 200], [100, 200, 100]]
+        ),
+        [[137, 141, 137], [141, 138, 141], [137, 141, 137]],
+    ):
         assert a == b
-    print('OK')
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

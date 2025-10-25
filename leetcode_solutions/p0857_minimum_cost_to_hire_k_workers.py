@@ -70,7 +70,9 @@ class TestSolution(unittest.TestCase):
     def test_mincost_to_hire_workers_1(self):
         print("Test mincostToHireWorkers 1... ", end="")
         self.assertAlmostEqual(
-            self.sol.mincostToHireWorkers(quality=[10, 20, 5], wage=[70, 50, 30], k=2),
+            self.sol.mincostToHireWorkers(
+                quality=[10, 20, 5], wage=[70, 50, 30], k=2
+            ),
             105.00000,
             places=5,
         )

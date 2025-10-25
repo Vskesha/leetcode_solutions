@@ -8,7 +8,8 @@ from leetcode_solutions._test_meta import TestMeta
 class Solution:
     def countPrefixSuffixPairs(self, words: List[str]) -> int:
         return sum(
-            w.startswith(ps) and w.endswith(ps) for ps, w in combinations(words, 2)
+            w.startswith(ps) and w.endswith(ps)
+            for ps, w in combinations(words, 2)
         )
 
 
@@ -17,7 +18,9 @@ class Solution2:
         ans = 0
         for j in range(1, len(words)):
             for i in range(j):
-                if words[j].startswith(words[i]) and words[j].endswith(words[i]):
+                if words[j].startswith(words[i]) and words[j].endswith(
+                    words[i]
+                ):
                     ans += 1
         return ans
 

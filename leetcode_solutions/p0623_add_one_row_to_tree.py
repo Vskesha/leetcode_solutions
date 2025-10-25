@@ -20,7 +20,9 @@ class SolDecor:
         instance.addOneRow = self.addOneRow
         return instance
 
-    def addOneRow(self, root: Optional[List], val: int, depth: int) -> Optional[List]:
+    def addOneRow(
+        self, root: Optional[List], val: int, depth: int
+    ) -> Optional[List]:
         root = self.arr_to_tree(root)
         result = self.originalAddOneRow(root, val, depth)
         return self.tree_to_arr(result)

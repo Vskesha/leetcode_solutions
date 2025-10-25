@@ -30,7 +30,9 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["smallestRange"] * 2,
             "kwargs": [
-                dict(nums=[[4, 10, 15, 24, 26], [0, 9, 12, 20], [5, 18, 22, 30]]),
+                dict(
+                    nums=[[4, 10, 15, 24, 26], [0, 9, 12, 20], [5, 18, 22, 30]]
+                ),
                 dict(nums=[[1, 2, 3], [1, 2, 3], [1, 2, 3]]),
             ],
             "expected": [

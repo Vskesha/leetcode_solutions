@@ -5,9 +5,9 @@ from typing import List
 
 class Solution:
     def profitableSchemes(
-            self, n: int, minProfit: int, group: List[int], profit: List[int]
+        self, n: int, minProfit: int, group: List[int], profit: List[int]
     ) -> int:
-        mod = 10 ** 9 + 7
+        mod = 10**9 + 7
         dp = [[1] * (n + 1)] + [[0] * (n + 1) for _ in range(minProfit)]
 
         for gr, pr in zip(group, profit):
@@ -49,7 +49,10 @@ class TestSolution(unittest.TestCase):
     def test_profitable_schemes_1(self):
         print("Test profitableSchemes 1... ", end="")
         self.assertEqual(
-            self.sol.profitableSchemes(n=5, minProfit=3, group=[2, 2], profit=[2, 3]), 2
+            self.sol.profitableSchemes(
+                n=5, minProfit=3, group=[2, 2], profit=[2, 3]
+            ),
+            2,
         )
         print("OK")
 

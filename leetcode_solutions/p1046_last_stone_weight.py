@@ -24,12 +24,12 @@ class Solution2:
 
 def test():
     sol = Solution()
-    print('Test 1 ... ', end='')
-    assert sol.lastStoneWeight(stones = [2,7,4,1,8,1]) == 1
-    print('ok\nTest 2 ... ', end='')
-    assert sol.lastStoneWeight(stones = [1]) == 1
-    print('ok')
+    print("Test 1 ... ", end="")
+    assert sol.lastStoneWeight(stones=[2, 7, 4, 1, 8, 1]) == 1
+    print("ok\nTest 2 ... ", end="")
+    assert sol.lastStoneWeight(stones=[1]) == 1
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

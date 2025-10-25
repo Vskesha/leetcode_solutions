@@ -13,7 +13,9 @@ class TreeNode:
 
 
 class Solution:
-    def rangeSumBST(self, root: Optional[TreeNode], low: int, high: int) -> int:
+    def rangeSumBST(
+        self, root: Optional[TreeNode], low: int, high: int
+    ) -> int:
         def dp(node):
             if not node:
                 return 0
@@ -26,7 +28,9 @@ class Solution:
 
 
 class Solution1:
-    def rangeSumBST(self, root: Optional[TreeNode], low: int, high: int) -> int:
+    def rangeSumBST(
+        self, root: Optional[TreeNode], low: int, high: int
+    ) -> int:
         def inorder(node, vals):
             if not node:
                 return
@@ -44,7 +48,9 @@ class Solution1:
 
 
 class Solution2:
-    def rangeSumBST(self, root: Optional[TreeNode], low: int, high: int) -> int:
+    def rangeSumBST(
+        self, root: Optional[TreeNode], low: int, high: int
+    ) -> int:
         def inorder(node, vals):
             if not node:
                 return
@@ -66,7 +72,9 @@ def sol_decorator(cls):
         def __init__(self, *args, **kwargs):
             self.original = cls(*args, **kwargs)
 
-        def rangeSumBST(self, root: Optional[List], low: int, high: int) -> int:
+        def rangeSumBST(
+            self, root: Optional[List], low: int, high: int
+        ) -> int:
             root = self.list2tree(nums=root)
             return self.original.rangeSumBST(root=root, low=low, high=high)
 
@@ -99,12 +107,16 @@ def test():
     sol = sol_decorator(Solution)()
 
     print("Test 1... ", end="")
-    assert sol.rangeSumBST(root=[10, 5, 15, 3, 7, null, 18], low=7, high=15) == 32
+    assert (
+        sol.rangeSumBST(root=[10, 5, 15, 3, 7, null, 18], low=7, high=15) == 32
+    )
     print("OK")
 
     print("Test 2... ", end="")
     assert (
-        sol.rangeSumBST(root=[10, 5, 15, 3, 7, 13, 18, 1, null, 6], low=6, high=10)
+        sol.rangeSumBST(
+            root=[10, 5, 15, 3, 7, 13, 18, 1, null, 6], low=6, high=10
+        )
         == 23
     )
     print("OK")

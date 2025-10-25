@@ -32,14 +32,14 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["robotSim"] * 3,
             "kwargs": [
-                dict(commands = [4,-1,3], obstacles = []),
-                dict(commands = [4,-1,4,-2,4], obstacles = [[2,4]]),
-                dict(commands = [6,-1,-1,6], obstacles = []),
+                dict(commands=[4, -1, 3], obstacles=[]),
+                dict(commands=[4, -1, 4, -2, 4], obstacles=[[2, 4]]),
+                dict(commands=[6, -1, -1, 6], obstacles=[]),
             ],
             "expected": [25, 65, 36],
         },
     ]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

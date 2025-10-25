@@ -25,8 +25,8 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["maximumCandies"] * 2,
             "kwargs": [
-                dict(candies = [5,8,6], k = 3),
-                dict(candies = [2,5], k = 11),
+                dict(candies=[5, 8, 6], k=3),
+                dict(candies=[2, 5], k=11),
             ],
             "expected": [5, 0],
         },

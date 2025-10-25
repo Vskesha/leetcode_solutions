@@ -116,7 +116,9 @@ class Solution2:
             for x, y in [(0, 1), (0, -1), (-1, 0), (1, 0)]:
                 if 0 <= (x + start[0]) < ROW and 0 <= (y + start[1]) < COL:
                     # increment count
-                    count += dfs((x + start[0], y + start[1]), end, curpath + 1)
+                    count += dfs(
+                        (x + start[0], y + start[1]), end, curpath + 1
+                    )
                     # remove square from visited
             visited.remove(start)
             return count
@@ -127,29 +129,24 @@ class Solution2:
 def test():
     sol = Solution()
 
-    print('Test 1... ', end='')
-    assert sol.uniquePathsIII(
-        grid=[[1, 0, 0, 0],
-              [0, 0, 0, 0],
-              [0, 0, 2, -1]]
-    ) == 2
-    print('OK')
+    print("Test 1... ", end="")
+    assert (
+        sol.uniquePathsIII(grid=[[1, 0, 0, 0], [0, 0, 0, 0], [0, 0, 2, -1]])
+        == 2
+    )
+    print("OK")
 
-    print('Test 2... ', end='')
-    assert sol.uniquePathsIII(
-        grid=[[1, 0, 0, 0],
-              [0, 0, 0, 0],
-              [0, 0, 0, 2]]
-    ) == 4
-    print('OK')
+    print("Test 2... ", end="")
+    assert (
+        sol.uniquePathsIII(grid=[[1, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 2]])
+        == 4
+    )
+    print("OK")
 
-    print('Test 3... ', end='')
-    assert sol.uniquePathsIII(
-        grid=[[0, 1],
-              [2, 0]]
-    ) == 0
-    print('OK')
+    print("Test 3... ", end="")
+    assert sol.uniquePathsIII(grid=[[0, 1], [2, 0]]) == 0
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

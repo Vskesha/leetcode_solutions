@@ -44,7 +44,16 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
                 "change",
                 "find",
             ],
-            "args": [[10], [2, 10], [1, 10], [3, 10], [5, 10], [10], [1, 20], [10]],
+            "args": [
+                [10],
+                [2, 10],
+                [1, 10],
+                [3, 10],
+                [5, 10],
+                [10],
+                [1, 20],
+                [10],
+            ],
             "expected": [-1, null, null, null, null, 1, null, 2],
         },
     ]

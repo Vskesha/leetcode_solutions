@@ -10,7 +10,9 @@ class Solution:
         for i in range(1, m):
             for j in range(1, n):
                 if dp[i][j]:
-                    dp[i][j] = min(dp[i - 1][j - 1], dp[i - 1][j], dp[i][j - 1]) + 1
+                    dp[i][j] = (
+                        min(dp[i - 1][j - 1], dp[i - 1][j], dp[i][j - 1]) + 1
+                    )
 
         return max(max(row) for row in dp) ** 2
 
@@ -57,7 +59,9 @@ class TestSolution(unittest.TestCase):
 
     def test_maximal_square_2(self):
         print("Test maximalSquare 2... ", end="")
-        self.assertEqual(self.sol.maximalSquare(matrix=[["0", "1"], ["1", "0"]]), 1)
+        self.assertEqual(
+            self.sol.maximalSquare(matrix=[["0", "1"], ["1", "0"]]), 1
+        )
         print("OK")
 
     def test_maximal_square_3(self):

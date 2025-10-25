@@ -67,14 +67,14 @@ class Solution2:
 
 def test():
     sol = Solution()
-    print('Test 1 ... ', end='')
-    assert True == sol.buddyStrings('ab', 'ba')
-    print('ok\nTest 2 ... ', end='')
-    assert False == sol.buddyStrings('ab', 'ab')
-    print('ok\nTest 3 ... ', end='')
-    assert True == sol.buddyStrings('aa', 'aa')
-    print('ok')
+    print("Test 1 ... ", end="")
+    assert True == sol.buddyStrings("ab", "ba")
+    print("ok\nTest 2 ... ", end="")
+    assert False == sol.buddyStrings("ab", "ab")
+    print("ok\nTest 3 ... ", end="")
+    assert True == sol.buddyStrings("aa", "aa")
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

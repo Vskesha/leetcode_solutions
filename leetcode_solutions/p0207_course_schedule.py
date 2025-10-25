@@ -3,7 +3,9 @@ from typing import List
 
 
 class Solution:
-    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+    def canFinish(
+        self, numCourses: int, prerequisites: List[List[int]]
+    ) -> bool:
         # topological_sort
 
         income = [0] * numCourses
@@ -26,7 +28,9 @@ class Solution:
 
 
 class Solution1:
-    def canFinish(self, numCourses: int, prerequisites: list[list[int]]) -> bool:
+    def canFinish(
+        self, numCourses: int, prerequisites: list[list[int]]
+    ) -> bool:
         graph = [[] for _ in range(numCourses)]
         indegrees = [0] * numCourses
         for second, first in prerequisites:
@@ -51,7 +55,9 @@ class Solution1:
 
 
 class Solution2:
-    def canFinish(self, numCourses: int, prerequisites: list[list[int]]) -> bool:
+    def canFinish(
+        self, numCourses: int, prerequisites: list[list[int]]
+    ) -> bool:
 
         graph = [[] for _ in range(numCourses)]
         for second, first in prerequisites:
@@ -82,14 +88,14 @@ class Solution2:
 def main():
     sol = Solution()
 
-    print('Test 1 ... ', end='')
+    print("Test 1 ... ", end="")
     assert sol.canFinish(numCourses=2, prerequisites=[[1, 0]]) is True
-    print('OK')
+    print("OK")
 
-    print('Test 2 ... ', end='')
+    print("Test 2 ... ", end="")
     assert sol.canFinish(numCourses=2, prerequisites=[[1, 0], [0, 1]]) is False
-    print('OK')
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

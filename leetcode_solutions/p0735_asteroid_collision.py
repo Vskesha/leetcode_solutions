@@ -18,10 +18,10 @@ class Solution:
 
 def main():
     sol = Solution()
-    print(' [5, 10]\n', sol.asteroidCollision(asteroids=[5, 10, -5]))
-    print(' []\n', sol.asteroidCollision(asteroids=[8, -8]))
-    print(' [10]\n', sol.asteroidCollision(asteroids=[10, 2, -5]))
+    print(" [5, 10]\n", sol.asteroidCollision(asteroids=[5, 10, -5]))
+    print(" []\n", sol.asteroidCollision(asteroids=[8, -8]))
+    print(" [10]\n", sol.asteroidCollision(asteroids=[10, 2, -5]))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

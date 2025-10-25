@@ -6,7 +6,9 @@ from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
-    def maxAverageRatio(self, classes: List[List[int]], extraStudents: int) -> float:
+    def maxAverageRatio(
+        self, classes: List[List[int]], extraStudents: int
+    ) -> float:
         heap = [(p / t - (p + 1) / (t + 1), p, t) for p, t in classes]
         heapify(heap)
 
@@ -21,7 +23,9 @@ class Solution:
 
 
 class Solution2:
-    def maxAverageRatio(self, classes: List[List[int]], extraStudents: int) -> float:
+    def maxAverageRatio(
+        self, classes: List[List[int]], extraStudents: int
+    ) -> float:
         heap = []
 
         for pas, tot in classes:
@@ -45,7 +49,9 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class_methods": ["maxAverageRatio"] * 2,
             "kwargs": [
                 dict(classes=[[1, 2], [3, 5], [2, 2]], extraStudents=2),
-                dict(classes=[[2, 4], [3, 9], [4, 5], [2, 10]], extraStudents=4),
+                dict(
+                    classes=[[2, 4], [3, 9], [4, 5], [2, 10]], extraStudents=4
+                ),
             ],
             "expected": [0.78333, 0.53485],
             "assert_methods": ["assertAlmostEqual5"] * 2,

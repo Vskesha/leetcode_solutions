@@ -44,7 +44,7 @@ class RoomCleaner(Robot):
         self.cleaned = set()
 
     def move(self) -> bool:
-        drow, dcol = self.dir_coords[self.direction: self.direction + 2]
+        drow, dcol = self.dir_coords[self.direction : self.direction + 2]
         row = self.row + drow
         col = self.col + dcol
         if (

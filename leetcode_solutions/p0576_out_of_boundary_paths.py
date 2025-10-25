@@ -18,7 +18,10 @@ class Solution:
             for i in range(1, m + 1):
                 for j in range(1, n + 1):
                     ngr[i][j] = (
-                        gr[i - 1][j] + gr[i + 1][j] + gr[i][j - 1] + gr[i][j + 1]
+                        gr[i - 1][j]
+                        + gr[i + 1][j]
+                        + gr[i][j - 1]
+                        + gr[i][j + 1]
                     ) % MOD
             gr = ngr
         return ans
@@ -55,7 +58,9 @@ def test():
     print("OK")
 
     print("Test 3... ", end="")
-    assert sol.findPaths(m=1, n=2, maxMove=50, startRow=0, startColumn=0) == 150
+    assert (
+        sol.findPaths(m=1, n=2, maxMove=50, startRow=0, startColumn=0) == 150
+    )
     print("OK")
 
 

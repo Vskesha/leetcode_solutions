@@ -46,12 +46,19 @@ class Solution2:
             if all(a != b for a, b in pairwise(mask))
         ]
         adj = {
-            mask: [mask2 for mask2 in valid if all(a != b for a, b in zip(mask, mask2))]
+            mask: [
+                mask2
+                for mask2 in valid
+                if all(a != b for a, b in zip(mask, mask2))
+            ]
             for mask in valid
         }
         dp = {mask: 1 for mask in valid}
         for _ in range(n - 1):
-            dp = {mask: sum(dp[mask2] for mask2 in adj[mask]) % mod for mask in valid}
+            dp = {
+                mask: sum(dp[mask2] for mask2 in adj[mask]) % mod
+                for mask in valid
+            }
         return sum(dp.values()) % mod
 
 
@@ -65,7 +72,11 @@ class Solution3:
             if all(a != b for a, b in pairwise(mask))
         ]
         adj = {
-            mask: [mask2 for mask2 in valid if all(a != b for a, b in zip(mask, mask2))]
+            mask: [
+                mask2
+                for mask2 in valid
+                if all(a != b for a, b in zip(mask, mask2))
+            ]
             for mask in valid
         }
 

@@ -7,7 +7,10 @@ from _test_meta import TestMeta
 
 class Solution:
     def checkIfPrerequisite(
-        self, numCourses: int, prerequisites: List[List[int]], queries: List[List[int]]
+        self,
+        numCourses: int,
+        prerequisites: List[List[int]],
+        queries: List[List[int]],
     ) -> List[bool]:
         n = numCourses
         graph = [[] for _ in range(n)]
@@ -41,7 +44,11 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["checkIfPrerequisite"] * 3,
             "kwargs": [
-                dict(numCourses=2, prerequisites=[[1, 0]], queries=[[0, 1], [1, 0]]),
+                dict(
+                    numCourses=2,
+                    prerequisites=[[1, 0]],
+                    queries=[[0, 1], [1, 0]],
+                ),
                 dict(numCourses=2, prerequisites=[], queries=[[1, 0], [0, 1]]),
                 dict(
                     numCourses=3,

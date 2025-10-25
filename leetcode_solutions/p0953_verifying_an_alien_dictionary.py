@@ -40,7 +40,8 @@ class TestSolution(unittest.TestCase):
         print("Test isAlienSorted 2... ", end="")
         self.assertFalse(
             self.sol.isAlienSorted(
-                words=["word", "world", "row"], order="worldabcefghijkmnpqstuvxyz"
+                words=["word", "world", "row"],
+                order="worldabcefghijkmnpqstuvxyz",
             )
         )
         print("OK")

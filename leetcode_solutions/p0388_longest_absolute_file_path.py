@@ -25,7 +25,9 @@ class TestSolution(unittest.TestCase):
     def test_length_longest_path_1(self):
         print("Test lengthLongestPath 1... ", end="")
         self.assertEqual(
-            self.sol.lengthLongestPath(input="dir\n\tsubdir1\n\tsubdir2\n\t\tfile.ext"),
+            self.sol.lengthLongestPath(
+                input="dir\n\tsubdir1\n\tsubdir2\n\t\tfile.ext"
+            ),
             20,
         )
         print("OK")

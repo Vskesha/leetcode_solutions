@@ -37,8 +37,22 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["findCommonResponse"] * 2,
             "kwargs": [
-                dict(responses=[["good", "ok", "good", "ok"], ["ok", "bad", "good", "ok", "ok"], ["good"], ["bad"]]),
-                dict(responses=[["good", "ok", "good"], ["ok", "bad"], ["bad", "notsure"], ["great", "good"]]),
+                dict(
+                    responses=[
+                        ["good", "ok", "good", "ok"],
+                        ["ok", "bad", "good", "ok", "ok"],
+                        ["good"],
+                        ["bad"],
+                    ]
+                ),
+                dict(
+                    responses=[
+                        ["good", "ok", "good"],
+                        ["ok", "bad"],
+                        ["bad", "notsure"],
+                        ["great", "good"],
+                    ]
+                ),
             ],
             "expected": ["good", "bad"],
         },

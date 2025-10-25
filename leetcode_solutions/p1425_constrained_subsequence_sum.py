@@ -86,18 +86,18 @@ class Solution3:
 def test():
     sol = Solution()
 
-    print('Test 1 ... ', end='')
+    print("Test 1 ... ", end="")
     assert sol.constrainedSubsetSum(nums=[10, 2, -10, 5, 20], k=2) == 37
-    print('ok')
+    print("ok")
 
-    print('Test 2 ... ', end='')
+    print("Test 2 ... ", end="")
     assert sol.constrainedSubsetSum(nums=[-1, -2, -3], k=1) == -1
-    print('ok')
+    print("ok")
 
-    print('Test 3 ... ', end='')
+    print("Test 3 ... ", end="")
     assert sol.constrainedSubsetSum(nums=[10, -2, -10, -5, 20], k=2) == 23
-    print('ok')
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

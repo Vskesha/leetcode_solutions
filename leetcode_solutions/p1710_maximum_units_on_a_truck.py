@@ -63,7 +63,10 @@ class TestSolution(unittest.TestCase):
     def test_maximum_units_1(self):
         print("Test maximumUnits 1... ", end="")
         self.assertEqual(
-            self.sol.maximumUnits(boxTypes=[[1, 3], [2, 2], [3, 1]], truckSize=4), 8
+            self.sol.maximumUnits(
+                boxTypes=[[1, 3], [2, 2], [3, 1]], truckSize=4
+            ),
+            8,
         )
         print("OK")
 

@@ -27,14 +27,14 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["minSubarray"] * 3,
             "kwargs": [
-                dict(nums = [3,1,4,2], p = 6),
-                dict(nums = [6,3,5,2], p = 9),
-                dict(nums = [1,2,3], p = 3),
+                dict(nums=[3, 1, 4, 2], p=6),
+                dict(nums=[6, 3, 5, 2], p=9),
+                dict(nums=[1, 2, 3], p=3),
             ],
             "expected": [1, 2, 0],
         },
     ]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

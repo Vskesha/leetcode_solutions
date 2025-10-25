@@ -5,7 +5,9 @@ from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
-    def lexicographicallySmallestArray(self, nums: List[int], limit: int) -> List[int]:
+    def lexicographicallySmallestArray(
+        self, nums: List[int], limit: int
+    ) -> List[int]:
         ln = len(nums)
         nis = sorted((n, i) for i, n in enumerate(nums))
         j = 0
@@ -32,7 +34,11 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
                 dict(nums=[1, 7, 6, 18, 2, 1], limit=3),
                 dict(nums=[1, 7, 28, 19, 10], limit=3),
             ],
-            "expected": [[1, 3, 5, 8, 9], [1, 6, 7, 18, 1, 2], [1, 7, 28, 19, 10]],
+            "expected": [
+                [1, 3, 5, 8, 9],
+                [1, 6, 7, 18, 1, 2],
+                [1, 7, 28, 19, 10],
+            ],
             "assert_methods": ["assertListEqual"] * 3,
         },
     ]

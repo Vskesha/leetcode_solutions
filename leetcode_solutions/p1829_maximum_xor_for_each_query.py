@@ -42,11 +42,7 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
                 dict(nums=[2, 3, 4, 7], maximumBit=3),
                 dict(nums=[0, 1, 2, 2, 5, 7], maximumBit=3),
             ],
-            "expected": [
-                [0, 3, 2, 3],
-                [5, 2, 6, 5],
-                [4, 3, 6, 4, 6, 7]
-            ],
+            "expected": [[0, 3, 2, 3], [5, 2, 6, 5], [4, 3, 6, 4, 6, 7]],
             "assert_methods": ["assertListEqual"] * 3,
         },
     ]

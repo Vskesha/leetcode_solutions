@@ -5,7 +5,7 @@ from leetcode_solutions._test_meta import TestMeta
 
 class Solution:
     def numberOfWays(self, n: int, x: int, y: int) -> int:
-        mod = 10 ** 9 + 7
+        mod = 10**9 + 7
 
         stirling = [0] * (x + 1)
         stirling[1] = 1

@@ -114,7 +114,8 @@ class TestSolution(unittest.TestCase):
     def test_distribute_cookies_2(self):
         print("Test distributeCookies 2 ... ", end="")
         self.assertEqual(
-            self.sol.distributeCookies(cookies=[6, 1, 3, 2, 2, 4, 1, 2], k=3), 7
+            self.sol.distributeCookies(cookies=[6, 1, 3, 2, 2, 4, 1, 2], k=3),
+            7,
         )
         print("OK")
 

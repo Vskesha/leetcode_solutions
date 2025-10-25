@@ -101,17 +101,38 @@ class Skiplist2:
 # obj.add(num)
 # param_3 = obj.erase(num)
 
+
 class TestSolution(unittest.TestCase, metaclass=TestMeta):
     null, true, false = None, True, False
     test_cases = [
         {
             "class": Skiplist,
-            "class_methods": ["add", "add", "add", "search", "add", "search", "erase", "erase", "search"],
+            "class_methods": [
+                "add",
+                "add",
+                "add",
+                "search",
+                "add",
+                "search",
+                "erase",
+                "erase",
+                "search",
+            ],
             "args": [[1], [2], [3], [0], [4], [1], [0], [1], [1]],
-            "expected": [null, null, null, false, null, true, false, true, false],
+            "expected": [
+                null,
+                null,
+                null,
+                false,
+                null,
+                true,
+                false,
+                true,
+                false,
+            ],
         },
     ]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

@@ -25,7 +25,9 @@ class Solution2:
         for i in range(ls):
             new = [0]
             for j in range(ls):
-                new.append(dp[j] + 1 if s[i] == rs[j] else max(dp[j + 1], new[-1]))
+                new.append(
+                    dp[j] + 1 if s[i] == rs[j] else max(dp[j + 1], new[-1])
+                )
             dp = new
 
         return dp[-1]
@@ -34,14 +36,14 @@ class Solution2:
 def test():
     sol = Solution()
 
-    print('Test 1 ... ', end='')
+    print("Test 1 ... ", end="")
     assert sol.longestPalindromeSubseq(s="bbbab") == 4
-    print('ok')
+    print("ok")
 
-    print('Test 2 ... ', end='')
+    print("Test 2 ... ", end="")
     assert sol.longestPalindromeSubseq(s="cbbd") == 2
-    print('ok')
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

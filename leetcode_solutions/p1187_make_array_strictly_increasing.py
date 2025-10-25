@@ -42,7 +42,9 @@ class Solution2:
 
             without_change = dp(idx + 1, arr1[idx])
             with_change = (
-                dp(idx + 1, arr2[i2]) + 1 if i2 < l2 and arr2[i2] < arr1[idx] else 10000
+                dp(idx + 1, arr2[i2]) + 1
+                if i2 < l2 and arr2[i2] < arr1[idx]
+                else 10000
             )
             return min(without_change, with_change)
 
@@ -58,21 +60,28 @@ class TestSolution(unittest.TestCase):
     def test_make_array_increasing_1(self):
         print("Test makeArrayIncreasing 1... ", end="")
         self.assertEqual(
-            self.sol.makeArrayIncreasing(arr1=[1, 5, 3, 6, 7], arr2=[1, 3, 2, 4]), 1
+            self.sol.makeArrayIncreasing(
+                arr1=[1, 5, 3, 6, 7], arr2=[1, 3, 2, 4]
+            ),
+            1,
         )
         print("OK")
 
     def test_make_array_increasing_2(self):
         print("Test makeArrayIncreasing 2... ", end="")
         self.assertEqual(
-            self.sol.makeArrayIncreasing(arr1=[1, 5, 3, 6, 7], arr2=[4, 3, 1]), 2
+            self.sol.makeArrayIncreasing(arr1=[1, 5, 3, 6, 7], arr2=[4, 3, 1]),
+            2,
         )
         print("OK")
 
     def test_make_array_increasing_3(self):
         print("Test makeArrayIncreasing 3... ", end="")
         self.assertEqual(
-            self.sol.makeArrayIncreasing(arr1=[1, 5, 3, 6, 7], arr2=[1, 6, 3, 3]), -1
+            self.sol.makeArrayIncreasing(
+                arr1=[1, 5, 3, 6, 7], arr2=[1, 6, 3, 3]
+            ),
+            -1,
         )
         print("OK")
 

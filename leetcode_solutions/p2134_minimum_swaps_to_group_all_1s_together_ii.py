@@ -28,7 +28,9 @@ class TestSolution(unittest.TestCase):
 
     def test_minSwaps_2(self):
         print("Test minSwaps 2... ", end="")
-        self.assertEqual(2, self.sol.minSwaps(nums=[0, 1, 1, 1, 0, 0, 1, 1, 0]))
+        self.assertEqual(
+            2, self.sol.minSwaps(nums=[0, 1, 1, 1, 0, 0, 1, 1, 0])
+        )
         print("OK")
 
     def test_minSwaps_3(self):

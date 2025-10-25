@@ -115,6 +115,8 @@ class Solution3:
             else:
                 divisor += 1
         return ans
+
+
 class TestSolution(unittest.TestCase, metaclass=TestMeta):
     test_cases = [
         {

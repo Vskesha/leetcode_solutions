@@ -36,12 +36,16 @@ class TestSolution(unittest.TestCase):
 
     def test_longest_subarray_1(self):
         print("Test longestSubarray_1 ... ", end="")
-        self.assertEqual(self.sol.longestSubarray(nums=[8, 2, 4, 7], limit=4), 2)
+        self.assertEqual(
+            self.sol.longestSubarray(nums=[8, 2, 4, 7], limit=4), 2
+        )
         print("OK")
 
     def test_longest_subarray_2(self):
         print("Test longestSubarray_2 ... ", end="")
-        self.assertEqual(self.sol.longestSubarray(nums=[10, 1, 2, 4, 7, 2], limit=5), 4)
+        self.assertEqual(
+            self.sol.longestSubarray(nums=[10, 1, 2, 4, 7, 2], limit=5), 4
+        )
         print("OK")
 
     def test_longest_subarray_3(self):

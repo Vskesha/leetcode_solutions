@@ -33,10 +33,10 @@ class Solution:
                 ans = max(ans, len(cycle))
                 if len(cycle) == 2:
                     tl += tails[cycle[0]] + tails[cycle[1]]
-        
+
         ans = max(ans, tl)
         return ans
-    
+
 
 class TestSolution(unittest.TestCase, metaclass=TestMeta):
     test_cases = [
@@ -44,9 +44,9 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["maximumInvitations"] * 3,
             "kwargs": [
-                dict(favorite = [2,2,1,2]),
-                dict(favorite = [1,2,0]),
-                dict(favorite = [3,0,1,4,1]),
+                dict(favorite=[2, 2, 1, 2]),
+                dict(favorite=[1, 2, 0]),
+                dict(favorite=[3, 0, 1, 4, 1]),
             ],
             "expected": [3, 3, 4],
         },

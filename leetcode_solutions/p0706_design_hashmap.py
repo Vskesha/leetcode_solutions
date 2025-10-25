@@ -76,6 +76,7 @@ class MyHashMap2:
     def remove(self, key: int) -> None:
         self.arr[key] = -1
 
+
 # Your MyHashMap object will be instantiated and called as such:
 # obj = MyHashMap()
 # obj.put(key,value)

@@ -22,7 +22,9 @@ class DisjointSet:
 
 
 class Solution:
-    def distanceLimitedPathsExist(self, n: int, edgeList: List[List[int]], queries: List[List[int]]) -> List[bool]:
+    def distanceLimitedPathsExist(
+        self, n: int, edgeList: List[List[int]], queries: List[List[int]]
+    ) -> List[bool]:
         ds = DisjointSet(n)
 
         for i, query in enumerate(queries):
@@ -47,16 +49,22 @@ class Solution:
 def test():
     sol = Solution()
 
-    print('Test 1... ', end='')
-    assert sol.distanceLimitedPathsExist(n=3, edgeList=[[0, 1, 2], [1, 2, 4], [2, 0, 8], [1, 0, 16]],
-                                         queries=[[0, 1, 2], [0, 2, 5]]) == [False, True]
-    print('OK')
+    print("Test 1... ", end="")
+    assert sol.distanceLimitedPathsExist(
+        n=3,
+        edgeList=[[0, 1, 2], [1, 2, 4], [2, 0, 8], [1, 0, 16]],
+        queries=[[0, 1, 2], [0, 2, 5]],
+    ) == [False, True]
+    print("OK")
 
-    print('Test 2... ', end='')
-    assert sol.distanceLimitedPathsExist(n=5, edgeList=[[0, 1, 10], [1, 2, 5], [2, 3, 9], [3, 4, 13]],
-                                         queries=[[0, 4, 14], [1, 4, 13]]) == [True, False]
-    print('OK')
+    print("Test 2... ", end="")
+    assert sol.distanceLimitedPathsExist(
+        n=5,
+        edgeList=[[0, 1, 10], [1, 2, 5], [2, 3, 9], [3, 4, 13]],
+        queries=[[0, 4, 14], [1, 4, 13]],
+    ) == [True, False]
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

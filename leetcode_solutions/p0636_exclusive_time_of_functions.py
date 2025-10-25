@@ -41,7 +41,9 @@ class Solution1:
         ans = [0] * n
 
         def get_total_time(times):
-            return sum(times[i + 1] - times[i] for i in range(0, len(times), 2))
+            return sum(
+                times[i + 1] - times[i] for i in range(0, len(times), 2)
+            )
 
         for log in logs:
             pid, action, time = log.split(":")
@@ -98,7 +100,9 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["exclusiveTime"] * 4,
             "kwargs": [
-                dict(n=2, logs=["0:start:0", "1:start:2", "1:end:5", "0:end:6"]),
+                dict(
+                    n=2, logs=["0:start:0", "1:start:2", "1:end:5", "0:end:6"]
+                ),
                 dict(
                     n=1,
                     logs=[

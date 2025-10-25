@@ -37,7 +37,9 @@ class TestSolution(unittest.TestCase):
     def test_prison_after_n_days_2(self):
         print("Test prisonAfterNDays 2... ", end="")
         self.assertListEqual(
-            self.sol.prisonAfterNDays(cells=[1, 0, 0, 1, 0, 0, 1, 0], n=1000000000),
+            self.sol.prisonAfterNDays(
+                cells=[1, 0, 0, 1, 0, 0, 1, 0], n=1000000000
+            ),
             [0, 0, 1, 1, 1, 1, 1, 0],
         )
         print("OK")

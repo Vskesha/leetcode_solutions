@@ -20,7 +20,9 @@ class TestSolution(unittest.TestCase):
 
     def test_largest_altitude_2(self):
         print("Test largestAltitude 2... ", end="")
-        self.assertEqual(self.sol.largestAltitude(gain=[-4, -3, -2, -1, 4, 3, 2]), 0)
+        self.assertEqual(
+            self.sol.largestAltitude(gain=[-4, -3, -2, -1, 4, 3, 2]), 0
+        )
         print("OK")
 
 

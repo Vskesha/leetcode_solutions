@@ -35,8 +35,6 @@ class Solution:
         return ans[::-1]
 
 
-
-
 class Solution2:  # MLE
     def shortestCommonSupersequence(self, str1: str, str2: str) -> str:
         strs = [[""] * (len(str2) + 1) for _ in range(len(str1) + 1)]
@@ -80,14 +78,19 @@ class TestSolution(unittest.TestCase):
     def test_shortest_common_supersequence_1(self):
         print("Test shortestCommonSupersequence 1... ", end="")
         self.assertEqual(
-            len(self.sol.shortestCommonSupersequence(str1="abac", str2="cab")), 5
+            len(self.sol.shortestCommonSupersequence(str1="abac", str2="cab")),
+            5,
         )
         print("OK")
 
     def test_shortest_common_supersequence_2(self):
         print("Test shortestCommonSupersequence 2... ", end="")
         self.assertEqual(
-            len(self.sol.shortestCommonSupersequence(str1="aaaaaaaa", str2="aaaaaaaa")),
+            len(
+                self.sol.shortestCommonSupersequence(
+                    str1="aaaaaaaa", str2="aaaaaaaa"
+                )
+            ),
             8,
         )
         print("OK")
@@ -95,7 +98,11 @@ class TestSolution(unittest.TestCase):
     def test_shortest_common_supersequence_3(self):
         print("Test shortestCommonSupersequence 3... ", end="")
         self.assertEqual(
-            len(self.sol.shortestCommonSupersequence(str1="bcacaaab", str2="bbabaccc")),
+            len(
+                self.sol.shortestCommonSupersequence(
+                    str1="bcacaaab", str2="bbabaccc"
+                )
+            ),
             13,
         )
         print("OK")

@@ -17,7 +17,9 @@ class TreeNode:
 
 
 class Solution:
-    def replaceValueInTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+    def replaceValueInTree(
+        self, root: Optional[TreeNode]
+    ) -> Optional[TreeNode]:
         root.val = 0
 
         row = [root]

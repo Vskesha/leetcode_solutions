@@ -44,8 +44,21 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["countPaths"] * 2,
             "kwargs": [
-                dict(n=7, roads=[[0, 6, 7], [0, 1, 2], [1, 2, 3], [1, 3, 3], [6, 3, 3], [3, 5, 1], [6, 5, 1], [2, 5, 1],
-                                 [0, 4, 5], [4, 6, 2]]),
+                dict(
+                    n=7,
+                    roads=[
+                        [0, 6, 7],
+                        [0, 1, 2],
+                        [1, 2, 3],
+                        [1, 3, 3],
+                        [6, 3, 3],
+                        [3, 5, 1],
+                        [6, 5, 1],
+                        [2, 5, 1],
+                        [0, 4, 5],
+                        [4, 6, 2],
+                    ],
+                ),
                 dict(n=2, roads=[[1, 0, 10]]),
             ],
             "expected": [4, 1],

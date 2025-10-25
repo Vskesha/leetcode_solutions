@@ -3,12 +3,16 @@ from itertools import cycle
 
 class Solution:
     def minOperations(self, s: str) -> int:
-        return min(d := sum(s[i] == str(i % 2) for i in range(len(s))), len(s) - d)
+        return min(
+            d := sum(s[i] == str(i % 2) for i in range(len(s))), len(s) - d
+        )
 
 
 class Solution2:
     def minOperations(self, s: str) -> int:
-        return min(d := sum(a == b for a, b in zip(s, cycle('01'))), len(s) - d)
+        return min(
+            d := sum(a == b for a, b in zip(s, cycle("01"))), len(s) - d
+        )
 
 
 class Solution3:
@@ -25,7 +29,7 @@ class Solution4:
         return min(d, len(s) - d)
 
 
-class Solution5 :
+class Solution5:
     def minOperations(self, s: str) -> int:
         d1 = d2 = 0
         for i, c in enumerate(s):
@@ -39,18 +43,18 @@ class Solution5 :
 def test():
     sol = Solution()
 
-    print('Test 1... ', end='')
+    print("Test 1... ", end="")
     assert sol.minOperations(s="0100") == 1
-    print('OK')
+    print("OK")
 
-    print('Test 2... ', end='')
+    print("Test 2... ", end="")
     assert sol.minOperations(s="10") == 0
-    print('OK')
+    print("OK")
 
-    print('Test 3... ', end='')
+    print("Test 3... ", end="")
     assert sol.minOperations(s="1111") == 2
-    print('OK')
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

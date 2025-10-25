@@ -37,7 +37,14 @@ def test():
     sol = Solution()
 
     print("Test 1... ", end="")
-    assert sol.rearrangeArray(nums=[3, 1, -2, -5, 2, -4]) == [3, -2, 1, -5, 2, -4]
+    assert sol.rearrangeArray(nums=[3, 1, -2, -5, 2, -4]) == [
+        3,
+        -2,
+        1,
+        -5,
+        2,
+        -4,
+    ]
     print("OK")
 
     print("Test 2... ", end="")

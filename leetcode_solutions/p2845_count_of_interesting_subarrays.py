@@ -7,7 +7,7 @@ from leetcode_solutions._test_meta import TestMeta
 
 class Solution:
     def countInterestingSubarrays(
-            self, nums: List[int], modulo: int, k: int
+        self, nums: List[int], modulo: int, k: int
     ) -> int:
         n = len(nums)
         cnt = Counter([0])

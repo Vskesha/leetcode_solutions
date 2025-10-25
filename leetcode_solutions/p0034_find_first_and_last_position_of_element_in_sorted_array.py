@@ -43,22 +43,22 @@ class Solution2:
 def test():
     sol = Solution()
 
-    print('Test 1 ... ', end='')
+    print("Test 1 ... ", end="")
     assert sol.searchRange(nums=[5, 7, 7, 8, 8, 10], target=8) == [3, 4]
-    print('ok')
+    print("ok")
 
-    print('Test 2 ... ', end='')
+    print("Test 2 ... ", end="")
     assert sol.searchRange(nums=[5, 7, 7, 8, 8, 10], target=6) == [-1, -1]
-    print('ok')
+    print("ok")
 
-    print('Test 3 ... ', end='')
+    print("Test 3 ... ", end="")
     assert sol.searchRange(nums=[], target=0) == [-1, -1]
-    print('ok')
+    print("ok")
 
-    print('Test 4 ... ', end='')
+    print("Test 4 ... ", end="")
     assert sol.searchRange(nums=[1], target=1) == [0, 0]
-    print('ok')
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

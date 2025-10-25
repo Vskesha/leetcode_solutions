@@ -37,7 +37,9 @@ class Solution2:
             if price < min_price:
                 min_price = price
             else:
-                max_profit = max(max_profit, price - min_price + profits[i + 1])
+                max_profit = max(
+                    max_profit, price - min_price + profits[i + 1]
+                )
 
         return max_profit
 
@@ -79,7 +81,9 @@ class TestSolution(unittest.TestCase):
 
     def test_maxProfit_1(self):
         print("Test maxProfit 1... ", end="")
-        self.assertEqual(6, self.sol.maxProfit(prices=[3, 3, 5, 0, 0, 3, 1, 4]))
+        self.assertEqual(
+            6, self.sol.maxProfit(prices=[3, 3, 5, 0, 0, 3, 1, 4])
+        )
         print("OK")
 
     def test_maxProfit_2(self):

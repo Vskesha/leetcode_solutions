@@ -60,9 +60,11 @@ class TestSolution(unittest.TestCase):
 
     def test_first_missing_positive_3(self):
         print("Test firstMissingPositive 3... ", end="")
-        self.assertEqual(self.sol.firstMissingPositive(nums=[7, 8, 9, 11, 12]), 1)
+        self.assertEqual(
+            self.sol.firstMissingPositive(nums=[7, 8, 9, 11, 12]), 1
+        )
         print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

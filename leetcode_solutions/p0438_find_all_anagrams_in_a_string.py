@@ -24,13 +24,13 @@ class Solution:
 
 def main():
     sol = Solution()
-    print('Test 1 ... ', end='')
+    print("Test 1 ... ", end="")
     assert sol.findAnagrams(s="cbaebabacd", p="abc") == [0, 6]
-    print('ok')
-    print('Test 2 ... ', end='')
+    print("ok")
+    print("Test 2 ... ", end="")
     assert sol.findAnagrams(s="abab", p="ab") == [0, 1, 2]
-    print('ok')
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

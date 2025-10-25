@@ -18,7 +18,10 @@ class Solution:
                 return False
 
         for si, sj in product(range(0, 9, 3), repeat=2):
-            sq = [board[i][j] for i, j in product(range(si, si + 3), range(sj, sj + 3))]
+            sq = [
+                board[i][j]
+                for i, j in product(range(si, si + 3), range(sj, sj + 3))
+            ]
             if not is_valid(sq):
                 return False
 

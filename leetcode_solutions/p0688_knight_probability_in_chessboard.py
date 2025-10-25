@@ -2,7 +2,9 @@ from functools import lru_cache
 
 
 class Solution:
-    def knightProbability(self, n: int, k: int, row: int, column: int) -> float:
+    def knightProbability(
+        self, n: int, k: int, row: int, column: int
+    ) -> float:
         @lru_cache(None)
         def dfs(i, j, k):
             if i < 0 or i >= n or j < 0 or j >= n:
@@ -32,7 +34,9 @@ class Solution:
 
 # recursive dp solution
 class Solution1:
-    def knightProbability(self, n: int, k: int, row: int, column: int) -> float:
+    def knightProbability(
+        self, n: int, k: int, row: int, column: int
+    ) -> float:
         @lru_cache(None)
         def pr(i: int, j: int, moves: int):
             if i < 0 or i >= n or j < 0 or j >= n:
@@ -61,7 +65,9 @@ class Solution1:
 
 # iterative dp solution
 class Solution2:
-    def knightProbability(self, n: int, k: int, row: int, column: int) -> float:
+    def knightProbability(
+        self, n: int, k: int, row: int, column: int
+    ) -> float:
         if k == 0:
             return 1
 

@@ -27,8 +27,8 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["findMaxAverage"] * 2,
             "kwargs": [
-                dict(nums = [1,12,-5,-6,50,3], k = 4),
-                dict(nums = [5], k = 1),
+                dict(nums=[1, 12, -5, -6, 50, 3], k=4),
+                dict(nums=[5], k=1),
             ],
             "expected": [12.75000, 5.00000],
             "assert_methods": ["assertAlmostEqualFivePlaces"] * 2,

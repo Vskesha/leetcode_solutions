@@ -38,8 +38,22 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["numEnclaves"] * 2,
             "kwargs": [
-                dict(grid=[[0, 0, 0, 0], [1, 0, 1, 0], [0, 1, 1, 0], [0, 0, 0, 0]]),
-                dict(grid=[[0, 1, 1, 0], [0, 0, 1, 0], [0, 0, 1, 0], [0, 0, 0, 0]]),
+                dict(
+                    grid=[
+                        [0, 0, 0, 0],
+                        [1, 0, 1, 0],
+                        [0, 1, 1, 0],
+                        [0, 0, 0, 0],
+                    ]
+                ),
+                dict(
+                    grid=[
+                        [0, 1, 1, 0],
+                        [0, 0, 1, 0],
+                        [0, 0, 1, 0],
+                        [0, 0, 0, 0],
+                    ]
+                ),
             ],
             "expected": [3, 0],
         },

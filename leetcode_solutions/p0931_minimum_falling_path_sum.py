@@ -55,7 +55,9 @@ class Solution2:
                 return inf
             if i == m:
                 return 0
-            return min(dp(i + 1, dj) for dj in range(j - 1, j + 2)) + matrix[i][j]
+            return (
+                min(dp(i + 1, dj) for dj in range(j - 1, j + 2)) + matrix[i][j]
+            )
 
         return min(dp(0, j) for j in range(n))
 
@@ -80,13 +82,18 @@ class TestSolution(unittest.TestCase):
     def test_min_falling_path_sum_1(self):
         print("Test minFallingPathSum 1... ", end="")
         self.assertEqual(
-            self.sol.minFallingPathSum(matrix=[[2, 1, 3], [6, 5, 4], [7, 8, 9]]), 13
+            self.sol.minFallingPathSum(
+                matrix=[[2, 1, 3], [6, 5, 4], [7, 8, 9]]
+            ),
+            13,
         )
         print("OK")
 
     def test_min_falling_path_sum_2(self):
         print("Test minFallingPathSum 2... ", end="")
-        self.assertEqual(self.sol.minFallingPathSum(matrix=[[-19, 57], [-40, -5]]), -59)
+        self.assertEqual(
+            self.sol.minFallingPathSum(matrix=[[-19, 57], [-40, -5]]), -59
+        )
         print("OK")
 
 

@@ -16,7 +16,9 @@ class Solution:
             for fr, to in edges:
                 adj[fr].add(to)
                 adj[to].add(fr)
-            ends = deque(node for node, neibs in adj.items() if len(neibs) == 1)
+            ends = deque(
+                node for node, neibs in adj.items() if len(neibs) == 1
+            )
             dia = defaultdict(int)
             while len(ends) > 1:
                 node = ends.popleft()
@@ -47,8 +49,24 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
                 dict(edges1=[[0, 1]], edges2=[[0, 1]]),
                 dict(edges1=[[0, 1], [0, 2], [0, 3]], edges2=[[0, 1]]),
                 dict(
-                    edges1=[[0, 1], [0, 2], [0, 3], [2, 4], [2, 5], [3, 6], [2, 7]],
-                    edges2=[[0, 1], [0, 2], [0, 3], [2, 4], [2, 5], [3, 6], [2, 7]],
+                    edges1=[
+                        [0, 1],
+                        [0, 2],
+                        [0, 3],
+                        [2, 4],
+                        [2, 5],
+                        [3, 6],
+                        [2, 7],
+                    ],
+                    edges2=[
+                        [0, 1],
+                        [0, 2],
+                        [0, 3],
+                        [2, 4],
+                        [2, 5],
+                        [3, 6],
+                        [2, 7],
+                    ],
                 ),
             ],
             "expected": [3, 3, 5],

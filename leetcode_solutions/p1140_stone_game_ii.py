@@ -23,7 +23,9 @@ class Solution:
                     - ap[i]
                 )
 
-            return min(dfs(i + j, max(m, j), True) for j in range(1, 2 * m + 1))
+            return min(
+                dfs(i + j, max(m, j), True) for j in range(1, 2 * m + 1)
+            )
 
         return dfs(0, 1, True)
 

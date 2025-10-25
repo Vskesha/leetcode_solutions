@@ -25,12 +25,16 @@ class TestSolution(unittest.TestCase):
 
     def test_find_center_1(self):
         print("Test findCenter 1 ... ", end="")
-        self.assertEqual(self.sol.findCenter(edges=[[1, 2], [2, 3], [4, 2]]), 2)
+        self.assertEqual(
+            self.sol.findCenter(edges=[[1, 2], [2, 3], [4, 2]]), 2
+        )
         print("OK")
 
     def test_find_center_2(self):
         print("Test findCenter 2 ... ", end="")
-        self.assertEqual(self.sol.findCenter(edges=[[1, 2], [5, 1], [1, 3], [1, 4]]), 1)
+        self.assertEqual(
+            self.sol.findCenter(edges=[[1, 2], [5, 1], [1, 3], [1, 4]]), 1
+        )
         print("OK")
 
 

@@ -85,14 +85,19 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class_methods": ["splitListToParts"] * 2,
             "kwargs": [
                 dict(head=array_to_linked_list([1, 2, 3]), k=5),
-                dict(head=array_to_linked_list([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]), k=3),
+                dict(
+                    head=array_to_linked_list([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]),
+                    k=3,
+                ),
             ],
             "expected": [exp1, exp2],
             "assert_methods": ["assertListOfLinkedListsEqual"] * 2,
         },
     ]
 
-    def assertListOfLinkedListsEqual(self, lists1: List[ListNode], lists2: List[ListNode]):
+    def assertListOfLinkedListsEqual(
+        self, lists1: List[ListNode], lists2: List[ListNode]
+    ):
         self.assertEqual(len(lists1), len(lists2))
         for head1, head2 in zip(lists1, lists2):
             self.assertLinkedListEqual(head1, head2)
@@ -104,6 +109,7 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             head2 = head2.next
         self.assertIsNone(head1)
         self.assertIsNone(head2)
+
 
 if __name__ == "__main__":
     unittest.main()

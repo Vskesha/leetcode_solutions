@@ -34,18 +34,24 @@ class TestSolution(unittest.TestCase):
     def test_is_n_straight_hand1(self):
         print("Test isNStraightHand 1 ... ", end="")
         self.assertTrue(
-            self.sol.isNStraightHand(hand=[1, 2, 3, 6, 2, 3, 4, 7, 8], groupSize=3)
+            self.sol.isNStraightHand(
+                hand=[1, 2, 3, 6, 2, 3, 4, 7, 8], groupSize=3
+            )
         )
         print("OK")
 
     def test_is_n_straight_hand2(self):
         print("Test isNStraightHand 2 ... ", end="")
-        self.assertFalse(self.sol.isNStraightHand(hand=[1, 2, 3, 4, 5], groupSize=4))
+        self.assertFalse(
+            self.sol.isNStraightHand(hand=[1, 2, 3, 4, 5], groupSize=4)
+        )
         print("OK")
 
     def test_is_n_straight_hand3(self):
         print("Test isNStraightHand 3 ... ", end="")
-        self.assertTrue(self.sol.isNStraightHand(hand=[1, 1, 2, 2, 3, 3], groupSize=3))
+        self.assertTrue(
+            self.sol.isNStraightHand(hand=[1, 1, 2, 2, 3, 3], groupSize=3)
+        )
         print("OK")
 
 

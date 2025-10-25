@@ -83,7 +83,9 @@ class TestSolution(unittest.TestCase):
 
     def test_canReachCorner_2(self):
         print("Test canReachCorner 2... ", end="")
-        self.assertFalse(self.sol.canReachCorner(X=3, Y=3, circles=[[1, 1, 2]]))
+        self.assertFalse(
+            self.sol.canReachCorner(X=3, Y=3, circles=[[1, 1, 2]])
+        )
         print("OK")
 
     def test_canReachCorner_3(self):

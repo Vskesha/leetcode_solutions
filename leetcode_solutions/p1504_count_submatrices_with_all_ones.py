@@ -42,6 +42,8 @@ class Solution1:
                     j -= 1
 
         return ans
+
+
 class Solution2:
     def numSubmat(self, mat: List[List[int]]) -> int:
         ans = 0
@@ -70,13 +72,16 @@ class TestSolution(unittest.TestCase):
 
     def test_num_submat_1(self):
         print("Test numSubmat 1 ... ", end="")
-        self.assertEqual(self.sol.numSubmat(mat=[[1, 0, 1], [1, 1, 0], [1, 1, 0]]), 13)
+        self.assertEqual(
+            self.sol.numSubmat(mat=[[1, 0, 1], [1, 1, 0], [1, 1, 0]]), 13
+        )
         print("OK")
 
     def test_num_submat_2(self):
         print("Test numSubmat 2 ... ", end="")
         self.assertEqual(
-            self.sol.numSubmat(mat=[[0, 1, 1, 0], [0, 1, 1, 1], [1, 1, 1, 0]]), 24
+            self.sol.numSubmat(mat=[[0, 1, 1, 0], [0, 1, 1, 1], [1, 1, 1, 0]]),
+            24,
         )
         print("OK")
 

@@ -120,7 +120,15 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "kwargs": [
                 dict(
                     edges1=[[0, 1], [0, 2], [2, 3], [2, 4]],
-                    edges2=[[0, 1], [0, 2], [0, 3], [2, 7], [1, 4], [4, 5], [4, 6]],
+                    edges2=[
+                        [0, 1],
+                        [0, 2],
+                        [0, 3],
+                        [2, 7],
+                        [1, 4],
+                        [4, 5],
+                        [4, 6],
+                    ],
                 ),
                 dict(
                     edges1=[[0, 1], [0, 2], [0, 3], [0, 4]],

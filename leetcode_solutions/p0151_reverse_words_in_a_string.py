@@ -13,17 +13,23 @@ class TestSolution(unittest.TestCase):
 
     def test_reverse_words1(self):
         print("Test reverseWords 1... ", end="")
-        self.assertEqual(self.sol.reverseWords(s="the sky is blue"), "blue is sky the")
+        self.assertEqual(
+            self.sol.reverseWords(s="the sky is blue"), "blue is sky the"
+        )
         print("OK")
 
     def test_reverse_words2(self):
         print("Test reverseWords 2... ", end="")
-        self.assertEqual(self.sol.reverseWords(s="  hello world  "), "world hello")
+        self.assertEqual(
+            self.sol.reverseWords(s="  hello world  "), "world hello"
+        )
         print("OK")
 
     def test_reverse_words3(self):
         print("Test reverseWords 3... ", end="")
-        self.assertEqual(self.sol.reverseWords(s="a good   example"), "example good a")
+        self.assertEqual(
+            self.sol.reverseWords(s="a good   example"), "example good a"
+        )
         print("OK")
 
 

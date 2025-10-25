@@ -15,7 +15,9 @@ def sol_decorator(cls):
         def __init__(self, *args, **kwargs):
             self.original = cls(*args, **kwargs)
 
-        def removeZeroSumSublists(self, head: Optional[List]) -> Optional[List]:
+        def removeZeroSumSublists(
+            self, head: Optional[List]
+        ) -> Optional[List]:
             head = self.arr2linkedlist(head)
             removed = self.original.removeZeroSumSublists(head)
             return self.linkedlist2arr(removed)
@@ -39,7 +41,9 @@ def sol_decorator(cls):
 
 
 class Solution:
-    def removeZeroSumSublists(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    def removeZeroSumSublists(
+        self, head: Optional[ListNode]
+    ) -> Optional[ListNode]:
         dummy = ListNode(0, head)
         sums = {0: dummy}
         total = 0
@@ -61,7 +65,9 @@ class Solution:
 
 
 class Solution2:
-    def removeZeroSumSublists(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    def removeZeroSumSublists(
+        self, head: Optional[ListNode]
+    ) -> Optional[ListNode]:
         dummy = ListNode(0, head)
         tot = 0
         sums = {tot: dummy}

@@ -4,7 +4,9 @@ from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
-    def numberOfPowerfulInt(self, start: int, finish: int, limit: int, s: str) -> int:
+    def numberOfPowerfulInt(
+        self, start: int, finish: int, limit: int, s: str
+    ) -> int:
         tofinish = self.num_pow(finish, limit, s)
         tostart = self.num_pow(start - 1, limit, s)
         return tofinish - tostart
@@ -32,11 +34,15 @@ class Solution:
 
 
 class Solution2:
-    def numberOfPowerfulInt(self, start: int, finish: int, limit: int, s: str) -> int:
+    def numberOfPowerfulInt(
+        self, start: int, finish: int, limit: int, s: str
+    ) -> int:
         sfinish, sstart = str(finish), str(start)
         tofinish = self.num_pow(sfinish, limit, s)
         tostart = self.num_pow(sstart, limit, s)
-        additional = sstart.endswith(s) and all(int(d) <= limit for d in sstart)
+        additional = sstart.endswith(s) and all(
+            int(d) <= limit for d in sstart
+        )
         ans = tofinish - tostart + additional
         return ans
 
@@ -71,7 +77,9 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
                 dict(start=15, finish=215, limit=6, s="10"),
                 dict(start=1000, finish=2000, limit=4, s="3000"),
                 dict(start=1, finish=971, limit=9, s="72"),
-                dict(start=63935267123, finish=334359420935946, limit=6, s="3"),
+                dict(
+                    start=63935267123, finish=334359420935946, limit=6, s="3"
+                ),
             ],
             "expected": [5, 2, 0, 9, 340924566339],
         },

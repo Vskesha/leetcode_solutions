@@ -21,8 +21,8 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["makeTheIntegerZero"] * 2,
             "kwargs": [
-                dict(num1 = 3, num2 = -2),
-                dict(num1 = 5, num2 = 7),
+                dict(num1=3, num2=-2),
+                dict(num1=5, num2=7),
             ],
             "expected": [3, -1],
         },

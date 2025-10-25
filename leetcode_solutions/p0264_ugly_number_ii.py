@@ -24,7 +24,7 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["nthUglyNumber"] * 2,
             "kwargs": [
-                dict(n = 10),
+                dict(n=10),
                 dict(n=1),
             ],
             "expected": [12, 1],
@@ -32,5 +32,5 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
     ]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

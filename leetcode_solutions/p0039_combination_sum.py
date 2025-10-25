@@ -5,7 +5,9 @@ from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
-    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+    def combinationSum(
+        self, candidates: List[int], target: int
+    ) -> List[List[int]]:
         candidates.sort()
         res = []
         lc = len(candidates)
@@ -27,7 +29,9 @@ class Solution:
 
 
 class Solution1:
-    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+    def combinationSum(
+        self, candidates: List[int], target: int
+    ) -> List[List[int]]:
         ans = []
         lc = len(candidates)
 
@@ -46,7 +50,9 @@ class Solution1:
 
 
 class Solution2:
-    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+    def combinationSum(
+        self, candidates: List[int], target: int
+    ) -> List[List[int]]:
         ans = []
 
         def cmb(comb, sm, last):
@@ -75,12 +81,18 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
                 dict(candidates=[2, 3, 5], target=8),
                 dict(candidates=[2], target=1),
             ],
-            "expected": [[[2, 2, 3], [7]], [[2, 2, 2, 2], [2, 3, 3], [3, 5]], []],
+            "expected": [
+                [[2, 2, 3], [7]],
+                [[2, 2, 2, 2], [2, 3, 3], [3, 5]],
+                [],
+            ],
             "assert_methods": ["assertCombinationsEqual"] * 3,
         },
     ]
 
-    def assertCombinationsEqual(self, combs1: List[List[int]], combs2: List[List[int]]):
+    def assertCombinationsEqual(
+        self, combs1: List[List[int]], combs2: List[List[int]]
+    ):
         self.assertEqual(len(combs1), len(combs2))
         combs1 = {tuple(sorted(c)) for c in combs1}
         combs2 = {tuple(sorted(c)) for c in combs2}

@@ -80,16 +80,26 @@ class Solution2:
 def test():
     sol = Solution()
 
-    print('Test 1... ', end='')
-    assert sol.spiralOrder(matrix=[[1, 2, 3], [4, 5, 6], [7, 8, 9]]) == [1, 2, 3, 6, 9, 8, 7, 4, 5]
-    print('OK')
+    print("Test 1... ", end="")
+    assert sol.spiralOrder(matrix=[[1, 2, 3], [4, 5, 6], [7, 8, 9]]) == [
+        1,
+        2,
+        3,
+        6,
+        9,
+        8,
+        7,
+        4,
+        5,
+    ]
+    print("OK")
 
-    print('Test 2... ', end='')
-    assert sol.spiralOrder(matrix=[[1, 2, 3, 4],
-                                   [5, 6, 7, 8],
-                                   [9, 10, 11, 12]]) == [1, 2, 3, 4, 8, 12, 11, 10, 9, 5, 6, 7]
-    print('OK')
+    print("Test 2... ", end="")
+    assert sol.spiralOrder(
+        matrix=[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]
+    ) == [1, 2, 3, 4, 8, 12, 11, 10, 9, 5, 6, 7]
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

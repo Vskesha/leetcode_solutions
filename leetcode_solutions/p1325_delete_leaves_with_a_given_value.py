@@ -19,7 +19,7 @@ def sol_decorator(cls):
             self.original = cls(*args, **kwargs)
 
         def removeLeafNodes(
-                self, root: Optional[List], target: int
+            self, root: Optional[List], target: int
         ) -> Optional[List]:
             root = self.list2tree(root)
             result = self.original.removeLeafNodes(root, target)
@@ -63,7 +63,7 @@ def sol_decorator(cls):
                     li = i
                 i += 1
 
-            return arr[:li + 1]
+            return arr[: li + 1]
 
     return Wrapper
 
@@ -90,7 +90,9 @@ def test_remove_leaf_nodes():
     null = None
 
     print("Test 1... ", end="")
-    assert sol.removeLeafNodes(root=[1, 2, 3, 2, null, 2, 4], target=2) == [  # noqa
+    assert sol.removeLeafNodes(
+        root=[1, 2, 3, 2, null, 2, 4], target=2
+    ) == [  # noqa
         1,
         null,
         3,
@@ -100,11 +102,19 @@ def test_remove_leaf_nodes():
     print("OK")
 
     print("Test 2... ", end="")
-    assert sol.removeLeafNodes(root=[1, 3, 3, 3, 2], target=3) == [1, 3, null, null, 2]  # noqa
+    assert sol.removeLeafNodes(root=[1, 3, 3, 3, 2], target=3) == [
+        1,
+        3,
+        null,
+        null,
+        2,
+    ]  # noqa
     print("OK")
 
     print("Test 3... ", end="")
-    assert sol.removeLeafNodes(root=[1, 2, null, 2, null, 2], target=2) == [1]  # noqa
+    assert sol.removeLeafNodes(root=[1, 2, null, 2, null, 2], target=2) == [
+        1
+    ]  # noqa
     print("OK")
 
 

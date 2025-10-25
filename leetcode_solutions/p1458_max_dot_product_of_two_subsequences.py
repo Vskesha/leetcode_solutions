@@ -43,18 +43,18 @@ class Solution2:
 def test():
     sol = Solution()
 
-    print('Test 1 ... ', end='')
+    print("Test 1 ... ", end="")
     assert sol.maxDotProduct(nums1=[2, 1, -2, 5], nums2=[3, 0, -6]) == 18
-    print('ok')
+    print("ok")
 
-    print('Test 2 ... ', end='')
+    print("Test 2 ... ", end="")
     assert sol.maxDotProduct(nums1=[3, -2], nums2=[2, -6, 7]) == 21
-    print('ok')
+    print("ok")
 
-    print('Test 3 ... ', end='')
+    print("Test 3 ... ", end="")
     assert sol.maxDotProduct(nums1=[-1, -1], nums2=[1, 1]) == -1
-    print('ok')
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

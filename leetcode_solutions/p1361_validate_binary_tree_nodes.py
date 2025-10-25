@@ -3,7 +3,9 @@ from typing import List
 
 
 class Solution:
-    def validateBinaryTreeNodes(self, n: int, leftChild: List[int], rightChild: List[int]) -> bool:
+    def validateBinaryTreeNodes(
+        self, n: int, leftChild: List[int], rightChild: List[int]
+    ) -> bool:
         income = [0] * n
         for i in range(n):
             for val in (leftChild[i], rightChild[i]):
@@ -34,7 +36,9 @@ class Solution:
 
 
 class Solution1:
-    def validateBinaryTreeNodes(self, n: int, leftChild: List[int], rightChild: List[int]) -> bool:
+    def validateBinaryTreeNodes(
+        self, n: int, leftChild: List[int], rightChild: List[int]
+    ) -> bool:
         income = [0] * (n + 1)
         for a, b in zip(leftChild, rightChild):
             income[a] += 1
@@ -64,7 +68,9 @@ class Solution1:
 
 
 class Solution2:
-    def validateBinaryTreeNodes(self, n: int, leftChild: List[int], rightChild: List[int]) -> bool:
+    def validateBinaryTreeNodes(
+        self, n: int, leftChild: List[int], rightChild: List[int]
+    ) -> bool:
         income = [0] * (n + 1)
         for a, b in zip(leftChild, rightChild):
             income[a] += 1
@@ -97,18 +103,31 @@ class Solution2:
 def test():
     sol = Solution()
 
-    print('Test 1 ... ', end='')
-    assert sol.validateBinaryTreeNodes(n=4, leftChild=[1, -1, 3, -1], rightChild=[2, -1, -1, -1]) == True
-    print('ok')
+    print("Test 1 ... ", end="")
+    assert (
+        sol.validateBinaryTreeNodes(
+            n=4, leftChild=[1, -1, 3, -1], rightChild=[2, -1, -1, -1]
+        )
+        == True
+    )
+    print("ok")
 
-    print('Test 2 ... ', end='')
-    assert sol.validateBinaryTreeNodes(n=4, leftChild=[1, -1, 3, -1], rightChild=[2, 3, -1, -1]) == False
-    print('ok')
+    print("Test 2 ... ", end="")
+    assert (
+        sol.validateBinaryTreeNodes(
+            n=4, leftChild=[1, -1, 3, -1], rightChild=[2, 3, -1, -1]
+        )
+        == False
+    )
+    print("ok")
 
-    print('Test 3 ... ', end='')
-    assert sol.validateBinaryTreeNodes(n=2, leftChild=[1, 0], rightChild=[-1, -1]) == False
-    print('ok')
+    print("Test 3 ... ", end="")
+    assert (
+        sol.validateBinaryTreeNodes(n=2, leftChild=[1, 0], rightChild=[-1, -1])
+        == False
+    )
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

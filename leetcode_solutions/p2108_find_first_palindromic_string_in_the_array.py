@@ -30,11 +30,16 @@ def test():
     sol = Solution()
 
     print("Test 1... ", end="")
-    assert sol.firstPalindrome(words=["abc", "car", "ada", "racecar", "cool"]) == "ada"
+    assert (
+        sol.firstPalindrome(words=["abc", "car", "ada", "racecar", "cool"])
+        == "ada"
+    )
     print("OK")
 
     print("Test 2... ", end="")
-    assert sol.firstPalindrome(words=["notapalindrome", "racecar"]) == "racecar"
+    assert (
+        sol.firstPalindrome(words=["notapalindrome", "racecar"]) == "racecar"
+    )
     print("OK")
 
     print("Test 3... ", end="")

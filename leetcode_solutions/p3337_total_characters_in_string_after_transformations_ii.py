@@ -9,7 +9,9 @@ from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
-    def lengthAfterTransformations(self, s: str, t: int, nums: List[int]) -> int:
+    def lengthAfterTransformations(
+        self, s: str, t: int, nums: List[int]
+    ) -> int:
         mod = 10**9 + 7
         orda = ord("a")
         base = np.zeros((26, 26), dtype=object)
@@ -25,12 +27,16 @@ class Solution:
         # base = np.linalg.matrix_power(base, t)
         data = curr.sum(axis=1) % mod
         cnt = Counter(s)
-        ans = sum(data[ord(ch) - orda] * v % mod for ch, v in cnt.items()) % mod
+        ans = (
+            sum(data[ord(ch) - orda] * v % mod for ch, v in cnt.items()) % mod
+        )
         return ans
 
 
 class Solution1:
-    def lengthAfterTransformations(self, s: str, t: int, nums: List[int]) -> int:
+    def lengthAfterTransformations(
+        self, s: str, t: int, nums: List[int]
+    ) -> int:
         sh = ord("a")
         mod = 10**9 + 7
 
@@ -68,7 +74,9 @@ class Solution1:
 
 
 class Solution2:
-    def lengthAfterTransformations(self, s: str, t: int, nums: List[int]) -> int:
+    def lengthAfterTransformations(
+        self, s: str, t: int, nums: List[int]
+    ) -> int:
         mod = 10**9 + 7
         base = np.zeros((26, 26), dtype=object)
         cur = np.eye(26, dtype=object)

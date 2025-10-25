@@ -3,6 +3,7 @@
 # You should not implement it, or speculate about its implementation
 # """
 
+
 class NestedInteger:
     def isInteger(self) -> bool:
         """
@@ -15,7 +16,7 @@ class NestedInteger:
         Return None if this NestedInteger holds a nested list
         """
 
-    def getList(self) -> ['NestedInteger']:
+    def getList(self) -> ["NestedInteger"]:
         """
         @return the nested list that this NestedInteger holds, if it holds a nested list
         Return None if this NestedInteger holds a single integer
@@ -112,6 +113,7 @@ class NestedIterator3:
 
     def hasNext(self) -> bool:
         return self.i != self.l
+
 
 # Your NestedIterator object will be instantiated and called as such:
 # i, v = NestedIterator(nestedList), []

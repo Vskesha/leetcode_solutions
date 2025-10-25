@@ -16,7 +16,7 @@ class Solution2:
         count = Counter(t)
         for ch in s:
             count[ch] -= 1
-        ans = ''
+        ans = ""
         for ch, q in count.items():
             if q:
                 return ch
@@ -24,12 +24,12 @@ class Solution2:
 
 def test():
     sol = Solution()
-    print('Test 1 ... ', end='')
-    assert sol.findTheDifference(s="abcd", t="abcde") == 'e'
-    print('ok\nTest 2 ... ', end='')
-    assert sol.findTheDifference(s="", t="y") == 'y'
-    print('ok')
+    print("Test 1 ... ", end="")
+    assert sol.findTheDifference(s="abcd", t="abcde") == "e"
+    print("ok\nTest 2 ... ", end="")
+    assert sol.findTheDifference(s="", t="y") == "y"
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

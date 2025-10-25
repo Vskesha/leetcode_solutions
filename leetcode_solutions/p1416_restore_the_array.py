@@ -21,7 +21,7 @@ class Solution:
             if s[i] != "0":
                 for j in range(i + 1, i + lk):
                     dp[i] = (dp[i] + dp[j]) % mod
-                if s[i:i + lk] <= k:
+                if s[i : i + lk] <= k:
                     dp[i] = (dp[i] + dp[i + lk]) % mod
 
         return dp[0]

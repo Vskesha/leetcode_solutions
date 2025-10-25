@@ -29,6 +29,7 @@ class Solution2:
 
         return res
 
+
 class TestSolution(unittest.TestCase, metaclass=TestMeta):
     test_cases = [
         {

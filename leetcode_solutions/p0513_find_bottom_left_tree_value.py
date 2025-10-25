@@ -70,7 +70,10 @@ def test():
     print("OK")
 
     print("Test 2... ", end="")
-    assert sol.findBottomLeftValue(root=[1, 2, 3, 4, null, 5, 6, null, null, 7]) == 7
+    assert (
+        sol.findBottomLeftValue(root=[1, 2, 3, 4, null, 5, 6, null, null, 7])
+        == 7
+    )
     print("OK")
 
 

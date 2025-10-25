@@ -3,7 +3,12 @@ from typing import List
 
 
 class Solution:
-    def buildMatrix(self, k: int, rowConditions: List[List[int]], colConditions: List[List[int]]) -> List[List[int]]:
+    def buildMatrix(
+        self,
+        k: int,
+        rowConditions: List[List[int]],
+        colConditions: List[List[int]],
+    ) -> List[List[int]]:
 
         def get_indexes(conditions, k):
             income = [0] * (k + 1)
@@ -50,8 +55,18 @@ class TestSolution(unittest.TestCase):
         colConditions: List[List[int]],
     ) -> None:
         lm = len(matrix)
-        rindex = {matrix[i][j]: i for i in range(lm) for j in range(lm) if matrix[i][j]}
-        cindex = {matrix[i][j]: j for i in range(lm) for j in range(lm) if matrix[i][j]}
+        rindex = {
+            matrix[i][j]: i
+            for i in range(lm)
+            for j in range(lm)
+            if matrix[i][j]
+        }
+        cindex = {
+            matrix[i][j]: j
+            for i in range(lm)
+            for j in range(lm)
+            if matrix[i][j]
+        }
         for a, b in rowConditions:
             self.assertLess(rindex[a], rindex[b])
         for a, b in colConditions:
@@ -63,7 +78,9 @@ class TestSolution(unittest.TestCase):
         rowConditions = [[1, 2], [3, 2]]
         colConditions = [[2, 1], [3, 2]]
         matrix = self.sol.buildMatrix(k, rowConditions, colConditions)
-        self.assertMatrixSatisfiesConditions(matrix, rowConditions, colConditions)
+        self.assertMatrixSatisfiesConditions(
+            matrix, rowConditions, colConditions
+        )
         print("OK")
 
     def test_buildMatrix_2(self):

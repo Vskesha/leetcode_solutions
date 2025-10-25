@@ -65,7 +65,9 @@ class TestSolution(unittest.TestCase):
 
     def test_maximum_gain_2(self):
         print("Test maximumGain 2... ", end="")
-        self.assertEqual(self.sol.maximumGain(s="aabbaaxybbaabb", x=5, y=4), 20)
+        self.assertEqual(
+            self.sol.maximumGain(s="aabbaaxybbaabb", x=5, y=4), 20
+        )
         print("OK")
 
 

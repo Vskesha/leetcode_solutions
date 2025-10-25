@@ -8,7 +8,9 @@ class Solution:
         snum = str(num)
         for ch in snum:
             if ch != "9":
-                return int(snum.replace(ch, "9")) - int(snum.replace(snum[0], "0"))
+                return int(snum.replace(ch, "9")) - int(
+                    snum.replace(snum[0], "0")
+                )
         else:
             return num
 

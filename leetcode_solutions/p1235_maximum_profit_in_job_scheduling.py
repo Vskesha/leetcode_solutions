@@ -30,7 +30,9 @@ def test():
     print("Test 1... ", end="")
     assert (
         sol.jobScheduling(
-            startTime=[1, 2, 3, 3], endTime=[3, 4, 5, 6], profit=[50, 10, 40, 70]
+            startTime=[1, 2, 3, 3],
+            endTime=[3, 4, 5, 6],
+            profit=[50, 10, 40, 70],
         )
         == 120
     )
@@ -49,7 +51,10 @@ def test():
 
     print("Test 3... ", end="")
     assert (
-        sol.jobScheduling(startTime=[1, 1, 1], endTime=[2, 3, 4], profit=[5, 6, 4]) == 6
+        sol.jobScheduling(
+            startTime=[1, 1, 1], endTime=[2, 3, 4], profit=[5, 6, 4]
+        )
+        == 6
     )
     print("OK")
 

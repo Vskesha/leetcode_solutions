@@ -107,12 +107,16 @@ class TestSolution(unittest.TestCase):
 
     def test_fraction_to_decimal_1(self):
         print("Test fractionToDecimal 1... ", end="")
-        self.assertEqual(self.sol.fractionToDecimal(numerator=1, denominator=2), "0.5")
+        self.assertEqual(
+            self.sol.fractionToDecimal(numerator=1, denominator=2), "0.5"
+        )
         print("OK")
 
     def test_fraction_to_decimal_2(self):
         print("Test fractionToDecimal 2... ", end="")
-        self.assertEqual(self.sol.fractionToDecimal(numerator=2, denominator=1), "2")
+        self.assertEqual(
+            self.sol.fractionToDecimal(numerator=2, denominator=1), "2"
+        )
         print("OK")
 
     def test_fraction_to_decimal_3(self):

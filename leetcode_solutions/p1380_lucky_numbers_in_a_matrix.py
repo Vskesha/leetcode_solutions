@@ -23,7 +23,10 @@ class TestSolution(unittest.TestCase):
     def test_luckyNumbers_1(self):
         print("Test luckyNumbers 1... ", end="")
         self.assertListEqual(
-            [15], self.sol.luckyNumbers(matrix=[[3, 7, 8], [9, 11, 13], [15, 16, 17]])
+            [15],
+            self.sol.luckyNumbers(
+                matrix=[[3, 7, 8], [9, 11, 13], [15, 16, 17]]
+            ),
         )
         print("OK")
 
@@ -39,7 +42,9 @@ class TestSolution(unittest.TestCase):
 
     def test_luckyNumbers_3(self):
         print("Test luckyNumbers 3... ", end="")
-        self.assertListEqual([7], self.sol.luckyNumbers(matrix=[[7, 8], [1, 2]]))
+        self.assertListEqual(
+            [7], self.sol.luckyNumbers(matrix=[[7, 8], [1, 2]])
+        )
         print("OK")
 
 

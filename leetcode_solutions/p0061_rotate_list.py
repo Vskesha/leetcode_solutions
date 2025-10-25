@@ -12,7 +12,9 @@ class ListNode:
 
 
 class Solution:
-    def rotateRight(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+    def rotateRight(
+        self, head: Optional[ListNode], k: int
+    ) -> Optional[ListNode]:
         if not head:
             return None
 

@@ -29,9 +29,9 @@ class Solution2:
 
 def main():
     sol = Solution()
-    print('5 ===', sol.findKthLargest(nums=[3, 2, 1, 5, 6, 4], k=2))
-    print('4 ===', sol.findKthLargest(nums=[3, 2, 3, 1, 2, 4, 5, 5, 6], k=4))
+    print("5 ===", sol.findKthLargest(nums=[3, 2, 1, 5, 6, 4], k=2))
+    print("4 ===", sol.findKthLargest(nums=[3, 2, 3, 1, 2, 4, 5, 5, 6], k=4))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

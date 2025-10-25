@@ -6,7 +6,9 @@ from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
-    def getFinalState(self, nums: List[int], k: int, multiplier: int) -> List[int]:
+    def getFinalState(
+        self, nums: List[int], k: int, multiplier: int
+    ) -> List[int]:
         heap = [(n, i) for i, n in enumerate(nums)]
         heapify(heap)
 
@@ -21,7 +23,9 @@ class Solution:
 
 
 class Solution0:
-    def getFinalState(self, nums: List[int], k: int, multiplier: int) -> List[int]:
+    def getFinalState(
+        self, nums: List[int], k: int, multiplier: int
+    ) -> List[int]:
         if multiplier == 1:
             return nums
 
@@ -53,7 +57,9 @@ class Solution0:
 
 
 class Solution1:
-    def getFinalState(self, nums: List[int], k: int, multiplier: int) -> List[int]:
+    def getFinalState(
+        self, nums: List[int], k: int, multiplier: int
+    ) -> List[int]:
         h = [(v, i) for i, v in enumerate(nums)]
         heapify(h)
 
@@ -70,7 +76,9 @@ class Solution1:
 
 
 class Solution2:
-    def getFinalState(self, nums: List[int], k: int, multiplier: int) -> List[int]:
+    def getFinalState(
+        self, nums: List[int], k: int, multiplier: int
+    ) -> List[int]:
         h = [[v, i] for i, v in enumerate(nums)]
         heapify(h)
 

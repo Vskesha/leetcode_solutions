@@ -56,16 +56,16 @@ class Solution3:
 
 def test():
     sol = Solution()
-    print('Test 1 ... ', end='')
+    print("Test 1 ... ", end="")
     assert sol.minDeletions(s="aab") == 0
-    print('ok')
-    print('Test 2 ... ', end='')
+    print("ok")
+    print("Test 2 ... ", end="")
     assert sol.minDeletions(s="aaabbbcc") == 2
-    print('ok')
-    print('Test 3 ... ', end='')
+    print("ok")
+    print("Test 3 ... ", end="")
     assert sol.minDeletions(s="ceabaacb") == 2
-    print('ok')
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

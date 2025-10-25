@@ -55,14 +55,19 @@ class TestSolution(unittest.TestCase):
 
     def test_minimumOperations_1(self):
         print("Test minimumOperations 1... ", end="")
-        self.assertEqual(2, self.sol.minimumOperations(nums = [3,5,1,2], target = [4,6,2,4]))
+        self.assertEqual(
+            2,
+            self.sol.minimumOperations(nums=[3, 5, 1, 2], target=[4, 6, 2, 4]),
+        )
         print("OK")
 
     def test_minimumOperations_2(self):
         print("Test minimumOperations 2... ", end="")
-        self.assertEqual(5, self.sol.minimumOperations(nums = [1,3,2], target = [2,1,4]))
+        self.assertEqual(
+            5, self.sol.minimumOperations(nums=[1, 3, 2], target=[2, 1, 4])
+        )
         print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

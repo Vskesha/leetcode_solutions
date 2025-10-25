@@ -11,7 +11,9 @@ class Solution2:
         res = []
         add = 0
 
-        for x, y in zip_longest(map(int, reversed(a)), map(int, reversed(b)), fillvalue=0):
+        for x, y in zip_longest(
+            map(int, reversed(a)), map(int, reversed(b)), fillvalue=0
+        ):
             add, cur = divmod(x + y + add, 2)
             res.append(cur)
 

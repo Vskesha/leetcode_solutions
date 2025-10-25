@@ -49,14 +49,14 @@ class Solution3:
 def test():
     sol = Solution()
 
-    print('Test 1... ', end='')
+    print("Test 1... ", end="")
     assert sol.longestCommonPrefix(["flower", "flow", "flight"]) == "fl"
-    print('OK')
+    print("OK")
 
-    print('Test 2... ', end='')
+    print("Test 2... ", end="")
     assert sol.longestCommonPrefix(["dog", "racecar", "car"]) == "racecar"
-    print('OK')
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

@@ -27,6 +27,8 @@ class Solution2:
                 return nums[i] + tot
 
         return -1
+
+
 class TestSolution(unittest.TestCase, metaclass=TestMeta):
     test_cases = [
         {

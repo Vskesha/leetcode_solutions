@@ -96,7 +96,14 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["minCost"] * 3,
             "kwargs": [
-                dict(grid=[[1, 1, 1, 1], [2, 2, 2, 2], [1, 1, 1, 1], [2, 2, 2, 2]]),
+                dict(
+                    grid=[
+                        [1, 1, 1, 1],
+                        [2, 2, 2, 2],
+                        [1, 1, 1, 1],
+                        [2, 2, 2, 2],
+                    ]
+                ),
                 dict(grid=[[1, 1, 3], [3, 2, 2], [1, 1, 4]]),
                 dict(grid=[[1, 2], [4, 3]]),
             ],

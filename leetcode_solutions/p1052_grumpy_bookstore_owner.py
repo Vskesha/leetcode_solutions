@@ -57,7 +57,9 @@ class TestSolution(unittest.TestCase):
 
     def test_max_satisfied_2(self):
         print("Test maxSatisfied 2 ... ", end="")
-        self.assertEqual(self.sol.maxSatisfied(customers=[1], grumpy=[0], minutes=1), 1)
+        self.assertEqual(
+            self.sol.maxSatisfied(customers=[1], grumpy=[0], minutes=1), 1
+        )
         print("OK")
 
 

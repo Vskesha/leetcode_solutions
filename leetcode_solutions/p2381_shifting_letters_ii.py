@@ -14,7 +14,8 @@ class Solution:
             shs[j + 1] -= d
 
         return "".join(
-            chr((ord(ch) - 97 + sh) % 26 + 97) for ch, sh in zip(s, accumulate(shs))
+            chr((ord(ch) - 97 + sh) % 26 + 97)
+            for ch, sh in zip(s, accumulate(shs))
         )
 
 

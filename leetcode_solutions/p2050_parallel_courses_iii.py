@@ -3,7 +3,9 @@ from typing import List
 
 
 class Solution:
-    def minimumTime(self, n: int, relations: List[List[int]], time: List[int]) -> int:
+    def minimumTime(
+        self, n: int, relations: List[List[int]], time: List[int]
+    ) -> int:
         income = [0] * n
         graph = [[] for _ in range(n)]
 
@@ -29,14 +31,23 @@ class Solution:
 def test():
     sol = Solution()
 
-    print('Test 1 ... ', end='')
-    assert sol.minimumTime(n=3, relations=[[1, 3], [2, 3]], time=[3, 2, 5]) == 8
-    print('ok')
+    print("Test 1 ... ", end="")
+    assert (
+        sol.minimumTime(n=3, relations=[[1, 3], [2, 3]], time=[3, 2, 5]) == 8
+    )
+    print("ok")
 
-    print('Test 2 ... ', end='')
-    assert sol.minimumTime(n=5, relations=[[1, 5], [2, 5], [3, 5], [3, 4], [4, 5]], time=[1, 2, 3, 4, 5]) == 12
-    print('ok')
+    print("Test 2 ... ", end="")
+    assert (
+        sol.minimumTime(
+            n=5,
+            relations=[[1, 5], [2, 5], [3, 5], [3, 4], [4, 5]],
+            time=[1, 2, 3, 4, 5],
+        )
+        == 12
+    )
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

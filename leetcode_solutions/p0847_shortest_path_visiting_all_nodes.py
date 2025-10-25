@@ -4,7 +4,7 @@ from typing import List
 
 class Solution:
     def shortestPathLength(self, graph: List[List[int]]) -> int:
-        ans = float('inf')
+        ans = float("inf")
         lg = len(graph)
         vis_all = (1 << lg) - 1
 
@@ -21,7 +21,7 @@ class Solution:
                     break
                 for neib in graph[curr]:
                     new_vis = vis | (1 << neib)
-                    prev = visited[neib].get(new_vis, float('inf'))
+                    prev = visited[neib].get(new_vis, float("inf"))
                     if moves + 1 < prev:
                         bfs.append((moves + 1, neib, new_vis))
                         visited[neib][new_vis] = moves + 1
@@ -30,7 +30,7 @@ class Solution:
 
 class Solution2:
     def shortestPathLength(self, graph: List[List[int]]) -> int:
-        ans = float('inf')
+        ans = float("inf")
         lg = len(graph)
 
         for n in range(lg):
@@ -46,7 +46,7 @@ class Solution2:
                     break
                 for neib in graph[curr]:
                     new_vis = vis.union({neib})
-                    prev = visited[neib].get(new_vis, float('inf'))
+                    prev = visited[neib].get(new_vis, float("inf"))
                     if moves + 1 < prev:
                         bfs.append((moves + 1, neib, new_vis))
                         visited[neib][new_vis] = moves + 1
@@ -55,12 +55,15 @@ class Solution2:
 
 def test():
     sol = Solution()
-    print('Test 1 ... ', end='')
+    print("Test 1 ... ", end="")
     assert sol.shortestPathLength(graph=[[1, 2, 3], [0], [0], [0]]) == 4
-    print('ok\nTest 2 ... ', end='')
-    assert sol.shortestPathLength(graph=[[1], [0, 2, 4], [1, 3, 4], [2], [1, 2]]) == 4
-    print('ok')
+    print("ok\nTest 2 ... ", end="")
+    assert (
+        sol.shortestPathLength(graph=[[1], [0, 2, 4], [1, 3, 4], [2], [1, 2]])
+        == 4
+    )
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

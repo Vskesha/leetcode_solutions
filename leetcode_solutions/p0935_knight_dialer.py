@@ -1,17 +1,22 @@
 class Solution:
     def knightDialer(self, n: int) -> int:
-        mod = 10 ** 9 + 7
+        mod = 10**9 + 7
         a = b = c = d = 1
 
         for _ in range(n - 1):
-            a, b, c, d = (b + c) % mod, a * 2 % mod, (a * 2 + d) % mod, c * 2 % mod
+            a, b, c, d = (
+                (b + c) % mod,
+                a * 2 % mod,
+                (a * 2 + d) % mod,
+                c * 2 % mod,
+            )
 
         return (4 * a + 2 * b + 2 * c + d) % mod + int(n == 1)
 
 
 class Solution1:
     def knightDialer(self, n: int) -> int:
-        mod = 10 ** 9 + 7
+        mod = 10**9 + 7
 
         dp = [1] * 10
         for _ in range(n - 1):
@@ -30,7 +35,7 @@ class Solution2:
         if n == 1:
             return 10
 
-        mod = 10 ** 9 + 7
+        mod = 10**9 + 7
         a, b, c, d = 4, 2, 2, 1
 
         for _ in range(n - 1):
@@ -41,9 +46,19 @@ class Solution2:
 
 class Solution3:
     def knightDialer(self, n: int) -> int:
-        mod = 10 ** 9 + 7
-        adj_map = {1: [6, 8], 2: [7, 9], 3: [4, 8], 4: [3, 9, 0], 5: [],
-                   6: [1, 7, 0], 7: [2, 6], 8: [1, 3], 9: [2, 4], 0: [4, 6]}
+        mod = 10**9 + 7
+        adj_map = {
+            1: [6, 8],
+            2: [7, 9],
+            3: [4, 8],
+            4: [3, 9, 0],
+            5: [],
+            6: [1, 7, 0],
+            7: [2, 6],
+            8: [1, 3],
+            9: [2, 4],
+            0: [4, 6],
+        }
 
         dp = [1] * 10
 
@@ -59,7 +74,7 @@ class Solution3:
 
 class Solution4:
     def knightDialer(self, n: int) -> int:
-        mod = 10 ** 9 + 7
+        mod = 10**9 + 7
 
         dp = [1] * 10
         for _ in range(n - 1):
@@ -82,18 +97,18 @@ class Solution4:
 def test():
     sol = Solution()
 
-    print('Test 1... ', end='')
+    print("Test 1... ", end="")
     assert sol.knightDialer(n=1) == 10
-    print('OK')
+    print("OK")
 
-    print('Test 2... ', end='')
+    print("Test 2... ", end="")
     assert sol.knightDialer(n=2) == 20
-    print('OK')
+    print("OK")
 
-    print('Test 3... ', end='')
+    print("Test 3... ", end="")
     assert sol.knightDialer(n=3131) == 136006598
-    print('OK')
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

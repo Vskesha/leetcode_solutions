@@ -15,7 +15,9 @@ class ListNode:
 
 
 class Solution:
-    def spiralMatrix(self, m: int, n: int, head: Optional[ListNode]) -> List[List[int]]:
+    def spiralMatrix(
+        self, m: int, n: int, head: Optional[ListNode]
+    ) -> List[List[int]]:
         dirs = (0, 1, 0, -1, 0)
         i = j = di = 0
         mat = [[-1] * n for _ in range(m)]
@@ -34,7 +36,9 @@ class Solution:
 
 
 class Solution1:
-    def spiralMatrix(self, m: int, n: int, head: Optional[ListNode]) -> List[List[int]]:
+    def spiralMatrix(
+        self, m: int, n: int, head: Optional[ListNode]
+    ) -> List[List[int]]:
 
         def get_coordinates(b, r):
             l = t = 0
@@ -67,7 +71,9 @@ class Solution1:
 
 
 class Solution2:
-    def spiralMatrix(self, m: int, n: int, head: Optional[ListNode]) -> List[List[int]]:
+    def spiralMatrix(
+        self, m: int, n: int, head: Optional[ListNode]
+    ) -> List[List[int]]:
         def get_values(head):
             while head:
                 yield head.val
@@ -126,7 +132,9 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
                 dict(
                     m=3,
                     n=5,
-                    head=array_to_linked_list([3, 0, 2, 6, 8, 1, 7, 9, 4, 2, 5, 5, 0]),
+                    head=array_to_linked_list(
+                        [3, 0, 2, 6, 8, 1, 7, 9, 4, 2, 5, 5, 0]
+                    ),
                 ),
                 dict(m=1, n=4, head=array_to_linked_list([0, 1, 2])),
             ],

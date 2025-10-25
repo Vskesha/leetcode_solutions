@@ -73,6 +73,7 @@ class Solution1:
         backtrack(0)
         return res
 
+
 class Solution2:
     def constructDistancedSequence(self, n: int) -> List[int]:
         nums = SortedList(range(1, n + 1))
@@ -95,8 +96,7 @@ class Solution2:
                         return True
                     res[mi] = 0
                     nums.add(n)
-                elif (mi + n < lr and
-                      res[mi + n] == 0):
+                elif mi + n < lr and res[mi + n] == 0:
                     res[mi] = res[mi + n] = n
                     nums.remove(n)
                     if dfs(nums, mi + 1):
@@ -123,7 +123,7 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "expected": [
                 [3, 1, 2, 3, 2],
                 [5, 3, 1, 4, 3, 5, 2, 4, 2],
-                [7, 5, 3, 6, 4, 3, 5, 7, 4, 6, 2, 1, 2]
+                [7, 5, 3, 6, 4, 3, 5, 7, 4, 6, 2, 1, 2],
             ],
             "assert_methods": ["assertListEqual"] * 3,
         },

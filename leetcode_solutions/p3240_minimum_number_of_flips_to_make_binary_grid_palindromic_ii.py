@@ -37,7 +37,13 @@ class Solution1:
         mr, mc = grid[m // 2], [grid[r][n // 2] for r in range(m)]
         ans = (
             sum(
-                min(ts := grid[r][c] + grid[~r][c] + grid[r][~c] + grid[~r][~c], 4 - ts)
+                min(
+                    ts := grid[r][c]
+                    + grid[~r][c]
+                    + grid[r][~c]
+                    + grid[~r][~c],
+                    4 - ts,
+                )
                 for r in range(m // 2)
                 for c in range(n // 2)
             )
@@ -49,9 +55,16 @@ class Solution1:
         return (
             ans + mans
             if mans
-            else ans + 2
-            if (ro * sum(mr) + co * sum(mc) - ro * co * grid[m // 2][n // 2] * 2) % 4
-            else ans
+            else (
+                ans + 2
+                if (
+                    ro * sum(mr)
+                    + co * sum(mc)
+                    - ro * co * grid[m // 2][n // 2] * 2
+                )
+                % 4
+                else ans
+            )
         )
 
 
@@ -157,7 +170,9 @@ class TestSolution(unittest.TestCase):
 
     def test_minFlips_1(self):
         print("Test minFlips 1... ", end="")
-        self.assertEqual(3, self.sol.minFlips(grid=[[1, 0, 0], [0, 1, 0], [0, 0, 1]]))
+        self.assertEqual(
+            3, self.sol.minFlips(grid=[[1, 0, 0], [0, 1, 0], [0, 0, 1]])
+        )
         print("OK")
 
     def test_minFlips_2(self):

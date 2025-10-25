@@ -16,18 +16,18 @@ class Solution2:
 def test():
     sol = Solution()
 
-    print('Test 1 ... ', end='')
+    print("Test 1 ... ", end="")
     assert sol.getLastMoment(n=4, left=[4, 3], right=[0, 1]) == 4
-    print('ok')
+    print("ok")
 
-    print('Test 2 ... ', end='')
+    print("Test 2 ... ", end="")
     assert sol.getLastMoment(n=7, left=[], right=[0, 1, 2, 3, 4, 5, 6, 7]) == 7
-    print('ok')
+    print("ok")
 
-    print('Test 3 ... ', end='')
+    print("Test 3 ... ", end="")
     assert sol.getLastMoment(n=7, left=[0, 1, 2, 3, 4, 5, 6, 7], right=[]) == 7
-    print('ok')
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

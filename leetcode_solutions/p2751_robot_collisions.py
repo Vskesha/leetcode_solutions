@@ -6,7 +6,7 @@ class Solution:
     def survivedRobotsHealths(
         self, positions: List[int], healths: List[int], directions: str
     ) -> List[int]:
-        stack, ans, idx= [], [], range(len(positions))
+        stack, ans, idx = [], [], range(len(positions))
         for _, h, d, i in sorted(zip(positions, healths, directions, idx)):
             if d == "R":
                 stack.append((i, h))
@@ -46,7 +46,9 @@ class TestSolution(unittest.TestCase):
         print("Test survivedRobotsHealths 2... ", end="")
         self.assertEqual(
             self.sol.survivedRobotsHealths(
-                positions=[3, 5, 2, 6], healths=[10, 10, 15, 12], directions="RLRL"
+                positions=[3, 5, 2, 6],
+                healths=[10, 10, 15, 12],
+                directions="RLRL",
             ),
             [14],
         )
@@ -56,7 +58,9 @@ class TestSolution(unittest.TestCase):
         print("Test survivedRobotsHealths 3... ", end="")
         self.assertEqual(
             self.sol.survivedRobotsHealths(
-                positions=[1, 2, 5, 6], healths=[10, 10, 11, 11], directions="RLRL"
+                positions=[1, 2, 5, 6],
+                healths=[10, 10, 11, 11],
+                directions="RLRL",
             ),
             [],
         )

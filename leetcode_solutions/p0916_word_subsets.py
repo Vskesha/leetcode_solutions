@@ -31,11 +31,23 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class_methods": ["wordSubsets"] * 2,
             "kwargs": [
                 dict(
-                    words1=["amazon", "apple", "facebook", "google", "leetcode"],
+                    words1=[
+                        "amazon",
+                        "apple",
+                        "facebook",
+                        "google",
+                        "leetcode",
+                    ],
                     words2=["e", "o"],
                 ),
                 dict(
-                    words1=["amazon", "apple", "facebook", "google", "leetcode"],
+                    words1=[
+                        "amazon",
+                        "apple",
+                        "facebook",
+                        "google",
+                        "leetcode",
+                    ],
                     words2=["l", "e"],
                 ),
             ],

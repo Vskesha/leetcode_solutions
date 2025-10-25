@@ -12,7 +12,8 @@ class Solution:
         potions.sort()
         lp = len(potions)
         return [
-            lp - bisect_left(potions, (success - 1) // spell + 1) for spell in spells
+            lp - bisect_left(potions, (success - 1) // spell + 1)
+            for spell in spells
         ]
 
 

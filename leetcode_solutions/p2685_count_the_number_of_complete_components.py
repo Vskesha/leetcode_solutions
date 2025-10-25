@@ -38,8 +38,8 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["countCompleteComponents"] * 2,
             "kwargs": [
-                dict(n = 6, edges = [[0,1],[0,2],[1,2],[3,4]]),
-                dict(n = 6, edges = [[0,1],[0,2],[1,2],[3,4],[3,5]])
+                dict(n=6, edges=[[0, 1], [0, 2], [1, 2], [3, 4]]),
+                dict(n=6, edges=[[0, 1], [0, 2], [1, 2], [3, 4], [3, 5]]),
             ],
             "expected": [3, 1],
         },

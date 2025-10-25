@@ -11,7 +11,10 @@ class Solution:
 
 class Solution1:
     def minDifference(self, nums: List[int]) -> int:
-        return min(a - b for a, b in zip(sorted(nlargest(4, nums)), nsmallest(4, nums)))
+        return min(
+            a - b
+            for a, b in zip(sorted(nlargest(4, nums)), nsmallest(4, nums))
+        )
 
 
 class Solution2:

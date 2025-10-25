@@ -95,13 +95,13 @@ class Solution5:
 
 def test():
     sol = Solution()
-    print('Test 1 ... ', end='')
+    print("Test 1 ... ", end="")
     assert sol.combinationSum4(nums=[1, 2, 3], target=4) == 7
-    print('ok')
-    print('Test 2 ... ', end='')
+    print("ok")
+    print("Test 2 ... ", end="")
     assert sol.combinationSum4(nums=[9], target=3) == 0
-    print('ok')
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

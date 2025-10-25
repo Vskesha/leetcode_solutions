@@ -36,8 +36,8 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["jump"] * 2,
             "kwargs": [
-                dict(nums = [2,3,1,1,4]),
-                dict(nums = [2,3,0,1,4]),
+                dict(nums=[2, 3, 1, 1, 4]),
+                dict(nums=[2, 3, 0, 1, 4]),
             ],
             "expected": [2, 2],
         },

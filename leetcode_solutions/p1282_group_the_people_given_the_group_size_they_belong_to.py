@@ -26,18 +26,22 @@ class Solution2:
         for size in sorted(gr.keys()):
             vals = gr[size]
             for i in range(0, len(vals), size):
-                ans.append(vals[i:i+size])
+                ans.append(vals[i : i + size])
 
         return ans
 
 
 def test():
     sol = Solution()
-    print(' [[5], [0, 1, 2], [3, 4, 6]]\n',
-          sol.groupThePeople(groupSizes=[3, 3, 3, 3, 3, 1, 3]))
-    print(' [[1], [0, 5], [2, 3, 4]]\n',
-          sol.groupThePeople(groupSizes=[2, 1, 3, 3, 3, 2]))
+    print(
+        " [[5], [0, 1, 2], [3, 4, 6]]\n",
+        sol.groupThePeople(groupSizes=[3, 3, 3, 3, 3, 1, 3]),
+    )
+    print(
+        " [[1], [0, 5], [2, 3, 4]]\n",
+        sol.groupThePeople(groupSizes=[2, 1, 3, 3, 3, 2]),
+    )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

@@ -81,7 +81,11 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "kwargs": [
                 dict(root=array_to_tree([2, 3, 5, 8, 13, 21, 34])),
                 dict(root=array_to_tree([7, 13, 11])),
-                dict(root=array_to_tree([0, 1, 2, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2])),
+                dict(
+                    root=array_to_tree(
+                        [0, 1, 2, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2]
+                    )
+                ),
             ],
             "expected": [
                 array_to_tree([2, 5, 3, 8, 13, 21, 34]),

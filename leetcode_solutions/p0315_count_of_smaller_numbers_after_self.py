@@ -22,6 +22,7 @@ class Solution:
 
         return counts
 
+
 class Solution2:
     def countSmaller(self, nums: List[int]) -> List[int]:
         nmin = min(nums)
@@ -93,7 +94,9 @@ class TestSolution(unittest.TestCase):
 
     def test_countSmaller_1(self):
         print("Test countSmaller 1... ", end="")
-        self.assertListEqual([2, 1, 1, 0], self.sol.countSmaller(nums=[5, 2, 6, 1]))
+        self.assertListEqual(
+            [2, 1, 1, 0], self.sol.countSmaller(nums=[5, 2, 6, 1])
+        )
         print("OK")
 
     def test_countSmaller_2(self):

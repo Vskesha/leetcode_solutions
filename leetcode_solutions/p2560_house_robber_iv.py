@@ -46,8 +46,8 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["minCapability"] * 2,
             "kwargs": [
-                dict(nums = [2,3,5,9], k = 2),
-                dict(nums = [2,7,9,3,1], k = 2),
+                dict(nums=[2, 3, 5, 9], k=2),
+                dict(nums=[2, 7, 9, 3, 1], k=2),
             ],
             "expected": [5, 2],
         },

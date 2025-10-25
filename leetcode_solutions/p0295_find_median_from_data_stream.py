@@ -73,8 +73,7 @@ def add_test(i):
     def test_case(self):
         print(f"Test MedianFinder {i}... ", end="")
         self.assertEqual(
-            self.expected[i],
-            getattr(self.mf, self.commands[i])(*self.args[i])
+            self.expected[i], getattr(self.mf, self.commands[i])(*self.args[i])
         )
         print("OK")
 
@@ -89,11 +88,18 @@ class MetaTest(type):
 
 
 class TestMedianFinder(unittest.TestCase, metaclass=MetaTest):
-    commands = ["MedianFinder", "addNum", "addNum", "findMedian", "addNum", "findMedian"]
+    commands = [
+        "MedianFinder",
+        "addNum",
+        "addNum",
+        "findMedian",
+        "addNum",
+        "findMedian",
+    ]
     args = [[], [1], [2], [], [3], []]
     expected = [None, None, None, 1.5, None, 2.0]
     mf = MedianFinder()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

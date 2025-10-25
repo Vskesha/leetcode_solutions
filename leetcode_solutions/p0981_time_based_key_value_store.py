@@ -12,10 +12,11 @@ class TimeMap:
 
     def get(self, key: str, timestamp: int) -> str:
         if key not in self.data:
-            return ''
+            return ""
         lst = self.data[key]
         i = bisect_right(lst, timestamp, key=lambda x: x[0])
-        return lst[i - 1][1] if i else ''
+        return lst[i - 1][1] if i else ""
+
 
 # Your TimeMap object will be instantiated and called as such:
 # obj = TimeMap()

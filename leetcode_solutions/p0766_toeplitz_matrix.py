@@ -45,15 +45,19 @@ class TestSolution(unittest.TestCase):
         cls.sol = Solution()
 
     def test_is_toeplitz_matrix_1(self):
-        print('Test isToeplitzMatrix 1... ', end='')
-        self.assertTrue(self.sol.isToeplitzMatrix(matrix=[[1, 2, 3, 4], [5, 1, 2, 3], [9, 5, 1, 2]]))
-        print('OK')
+        print("Test isToeplitzMatrix 1... ", end="")
+        self.assertTrue(
+            self.sol.isToeplitzMatrix(
+                matrix=[[1, 2, 3, 4], [5, 1, 2, 3], [9, 5, 1, 2]]
+            )
+        )
+        print("OK")
 
     def test_is_toeplitz_matrix_2(self):
-        print('Test isToeplitzMatrix 2... ', end='')
+        print("Test isToeplitzMatrix 2... ", end="")
         self.assertFalse(self.sol.isToeplitzMatrix(matrix=[[1, 2], [2, 2]]))
-        print('OK')
+        print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

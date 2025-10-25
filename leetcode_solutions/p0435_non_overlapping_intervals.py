@@ -17,10 +17,15 @@ class Solution:
 
 def main():
     sol = Solution()
-    print('1 ===', sol.eraseOverlapIntervals(intervals=[[1, 2], [2, 3], [3, 4], [1, 3]]))
-    print('2 ===', sol.eraseOverlapIntervals(intervals=[[1, 2], [1, 2], [1, 2]]))
-    print('0 ===', sol.eraseOverlapIntervals(intervals=[[1, 2], [2, 3]]))
+    print(
+        "1 ===",
+        sol.eraseOverlapIntervals(intervals=[[1, 2], [2, 3], [3, 4], [1, 3]]),
+    )
+    print(
+        "2 ===", sol.eraseOverlapIntervals(intervals=[[1, 2], [1, 2], [1, 2]])
+    )
+    print("0 ===", sol.eraseOverlapIntervals(intervals=[[1, 2], [2, 3]]))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

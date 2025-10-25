@@ -34,19 +34,20 @@ class Solution:
 
         return ans
 
+
 class TestSolution(unittest.TestCase, metaclass=TestMeta):
     test_cases = [
         {
             "class": Solution,
             "class_methods": ["longestCommonPrefix"] * 2,
             "kwargs": [
-                dict(arr1 = [1,10,100], arr2 = [1000]),
-                dict(arr1 = [1,2,3], arr2 = [4,4,4]),
+                dict(arr1=[1, 10, 100], arr2=[1000]),
+                dict(arr1=[1, 2, 3], arr2=[4, 4, 4]),
             ],
             "expected": [3, 0],
         },
     ]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

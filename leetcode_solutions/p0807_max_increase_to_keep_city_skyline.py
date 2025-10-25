@@ -33,23 +33,22 @@ class Solution2:
 def test():
     sol = Solution()
 
-    print('Test 1... ', end='')
-    assert sol.maxIncreaseKeepingSkyline(
-        grid=[[3, 0, 8, 4],
-              [2, 4, 5, 7],
-              [9, 2, 6, 3],
-              [0, 3, 1, 0]]
-    ) == 35
-    print('OK')
+    print("Test 1... ", end="")
+    assert (
+        sol.maxIncreaseKeepingSkyline(
+            grid=[[3, 0, 8, 4], [2, 4, 5, 7], [9, 2, 6, 3], [0, 3, 1, 0]]
+        )
+        == 35
+    )
+    print("OK")
 
-    print('Test 2... ', end='')
-    assert sol.maxIncreaseKeepingSkyline(
-        grid=[[0, 0, 0],
-              [0, 0, 0],
-              [0, 0, 0]]
-    ) == 0
-    print('OK')
+    print("Test 2... ", end="")
+    assert (
+        sol.maxIncreaseKeepingSkyline(grid=[[0, 0, 0], [0, 0, 0], [0, 0, 0]])
+        == 0
+    )
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

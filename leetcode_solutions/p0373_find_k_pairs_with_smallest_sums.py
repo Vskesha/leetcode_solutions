@@ -55,7 +55,9 @@ class TestSolution(unittest.TestCase):
         print("Test kSmallestPairs 1... ", end="")
         self.assertTrue(
             self.same_lists(
-                self.sol.kSmallestPairs(nums1=[1, 7, 11], nums2=[2, 4, 6], k=3),
+                self.sol.kSmallestPairs(
+                    nums1=[1, 7, 11], nums2=[2, 4, 6], k=3
+                ),
                 [[1, 2], [1, 4], [1, 6]],
             )
         )

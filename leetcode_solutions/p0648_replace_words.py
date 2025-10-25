@@ -55,7 +55,8 @@ class TestSolution(unittest.TestCase):
         print("Test replaceWords 2 ... ", end="")
         self.assertEqual(
             self.sol.replaceWords(
-                dictionary=["a", "b", "c"], sentence="aadsfasf absbs bbab cadsfafs"
+                dictionary=["a", "b", "c"],
+                sentence="aadsfasf absbs bbab cadsfafs",
             ),
             "a a b c",
         )
@@ -151,26 +152,26 @@ class TestSolution(unittest.TestCase):
                     "qxw",
                 ],
                 sentence="ikkbp miszkays wqjferqoxjwvbieyk gvcfldkiavww "
-                         "vhokchxz dvypwyb bxahfzcfanteibiltins ueebf "
-                         "lqhflvwxksi dco kddxmckhvqifbuzkhstp wc ytzzlm "
-                         "gximjuhzfdjuamhsu gdkbmhpnvy ifvifheoxqlbosfww "
-                         "mengfdydekwttkhbzenk wjhmmyltmeufqvcpcxg hthcuovils "
-                         "ldipovluo aiprogn nusquzpmnogtjkklfhta klxvvlvyh "
-                         "nxzgnrveghc mpppfhzjkbucv cqcft uwmahhqradjtf "
-                         "iaaasabqqzmbcig zcpvpyypsmodtoiif qjuiqtfhzcpnmtk "
-                         "yzfragcextvx ivnvgkaqs iplazv jurtsyh gzixfeugj "
-                         "rnukjgtjpim hscyhgoru aledyrmzwhsz xbahcwfwm hzd "
-                         "ygelddphxnbh rvjxtlqfnlmwdoezh zawfkko "
-                         "iwhkcddxgpqtdrjrcv bbfj mhs nenrqfkbf spfpazr "
-                         "wrkjiwyf cw dtd cqibzmuuhukwylrnld dtaxhddidfwqs "
-                         "bgnnoxgyynol hg dijhrrpnwjlju muzzrrsypzgwvblf "
-                         "zbugltrnyzbg hktdviastoireyiqf qvufxgcixvhrjqtna "
-                         "ipfzhuvgo daee r nlipyfszvxlwqw yoq "
-                         "dewpgtcrzausqwhh qzsaobsghgm ichlpsjlsrwzhbyfhm "
-                         "ksenb bqprarpgnyemzwifqzz oai pnqottd nygesjtlpala "
-                         "qmxixtooxtbrzyorn gyvukjpc s mxhlkdaycskj "
-                         "uvwmerplaibeknltuvd ocnn frotscysdyclrc "
-                         "ckcttaceuuxzcghw pxbd oklwhcppuziixpvihihp",
+                "vhokchxz dvypwyb bxahfzcfanteibiltins ueebf "
+                "lqhflvwxksi dco kddxmckhvqifbuzkhstp wc ytzzlm "
+                "gximjuhzfdjuamhsu gdkbmhpnvy ifvifheoxqlbosfww "
+                "mengfdydekwttkhbzenk wjhmmyltmeufqvcpcxg hthcuovils "
+                "ldipovluo aiprogn nusquzpmnogtjkklfhta klxvvlvyh "
+                "nxzgnrveghc mpppfhzjkbucv cqcft uwmahhqradjtf "
+                "iaaasabqqzmbcig zcpvpyypsmodtoiif qjuiqtfhzcpnmtk "
+                "yzfragcextvx ivnvgkaqs iplazv jurtsyh gzixfeugj "
+                "rnukjgtjpim hscyhgoru aledyrmzwhsz xbahcwfwm hzd "
+                "ygelddphxnbh rvjxtlqfnlmwdoezh zawfkko "
+                "iwhkcddxgpqtdrjrcv bbfj mhs nenrqfkbf spfpazr "
+                "wrkjiwyf cw dtd cqibzmuuhukwylrnld dtaxhddidfwqs "
+                "bgnnoxgyynol hg dijhrrpnwjlju muzzrrsypzgwvblf "
+                "zbugltrnyzbg hktdviastoireyiqf qvufxgcixvhrjqtna "
+                "ipfzhuvgo daee r nlipyfszvxlwqw yoq "
+                "dewpgtcrzausqwhh qzsaobsghgm ichlpsjlsrwzhbyfhm "
+                "ksenb bqprarpgnyemzwifqzz oai pnqottd nygesjtlpala "
+                "qmxixtooxtbrzyorn gyvukjpc s mxhlkdaycskj "
+                "uvwmerplaibeknltuvd ocnn frotscysdyclrc "
+                "ckcttaceuuxzcghw pxbd oklwhcppuziixpvihihp",
             ),
             "i miszkays w gvcfldkiavww v dvypwyb bxahfzcfanteibiltins ueebf "
             "lqhflvwxksi dc k w ytzzlm gximjuhzfdjuamhsu gdkbmhpnvy i "
@@ -181,7 +182,7 @@ class TestSolution(unittest.TestCase):
             "bgnnoxgyynol h dijhrrpnwjlju muzzrrsypzgwvblf z h q i daee r "
             "nlipyfszvxlwqw yoq dewpgtcrzausqwhh q i k bqprarpgnyemzwifqzz "
             "oai pnqottd nygesjtlpala q gyvukjpc s mxhlkdaycskj "
-            "uvwmerplaibeknltuvd ocnn f c pxbd oklwhcppuziixpvihihp"
+            "uvwmerplaibeknltuvd ocnn f c pxbd oklwhcppuziixpvihihp",
         )
         print("OK")
 

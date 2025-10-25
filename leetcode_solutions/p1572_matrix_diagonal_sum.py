@@ -16,7 +16,14 @@ class Solution2:
         lm = len(mat) // 2
         res = 0
         for i in range(lm):
-            res += sum([mat[i][i], mat[-i - 1][i], mat[i][-i - 1], mat[-i - 1][-i - 1]])
+            res += sum(
+                [
+                    mat[i][i],
+                    mat[-i - 1][i],
+                    mat[i][-i - 1],
+                    mat[-i - 1][-i - 1],
+                ]
+            )
         if len(mat) % 2:
             res += mat[lm][lm]
         return res

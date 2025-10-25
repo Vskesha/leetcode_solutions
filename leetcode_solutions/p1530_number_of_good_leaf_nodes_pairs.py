@@ -63,7 +63,9 @@ class Solution1:
             for i in range(1, distance):
                 self.pairs += distances_left[i] * acc_distances_right[~i]
             for i in range(distance, 0, -1):
-                distances_left[i] = distances_left[i - 1] + distances_right[i - 1]
+                distances_left[i] = (
+                    distances_left[i - 1] + distances_right[i - 1]
+                )
 
             return distances_left
 
@@ -94,7 +96,9 @@ class Solution2:
                 for j in range(distance - i + 1):
                     pairs_left += distances_left[i] * distances_right[j]
             for i in range(distance, 0, -1):
-                distances_left[i] = distances_left[i - 1] + distances_right[i - 1]
+                distances_left[i] = (
+                    distances_left[i - 1] + distances_right[i - 1]
+                )
             distances_left[0] = 0
 
             return pairs_left, distances_left

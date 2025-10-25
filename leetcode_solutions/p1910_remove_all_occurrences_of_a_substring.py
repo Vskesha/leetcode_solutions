@@ -8,9 +8,10 @@ class Solution:
         lp = len(part)
         i = s.find(part)
         while i != -1:
-            s = s[:i] + s[i + lp:]
+            s = s[:i] + s[i + lp :]
             i = s.find(part)
         return s
+
 
 class TestSolution(unittest.TestCase, metaclass=TestMeta):
     test_cases = [
@@ -18,8 +19,8 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["removeOccurrences"] * 2,
             "kwargs": [
-                dict(s = "daabcbaabcbc", part = "abc"),
-                dict(s = "axxxxyyyyb", part = "xy"),
+                dict(s="daabcbaabcbc", part="abc"),
+                dict(s="axxxxyyyyb", part="xy"),
             ],
             "expected": ["dab", "ab"],
         },

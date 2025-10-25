@@ -65,21 +65,25 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["constructFromPrePost"] * 2,
             "kwargs": [
-                dict(preorder = [1,2,4,5,3,6,7], postorder = [4,5,2,6,7,3,1]),
-                dict(preorder = [1], postorder = [1]),
+                dict(
+                    preorder=[1, 2, 4, 5, 3, 6, 7],
+                    postorder=[4, 5, 2, 6, 7, 3, 1],
+                ),
+                dict(preorder=[1], postorder=[1]),
             ],
             "expected": [
-                array_to_tree([1,2,3,4,5,6,7]),
+                array_to_tree([1, 2, 3, 4, 5, 6, 7]),
                 array_to_tree([1]),
             ],
             "assert_methods": ["assertSamePrePost"] * 2,
         },
     ]
 
-    def assertSamePrePost(self, actual: Optional[TreeNode], expected: Optional[TreeNode]) -> None:
+    def assertSamePrePost(
+        self, actual: Optional[TreeNode], expected: Optional[TreeNode]
+    ) -> None:
         self.assertListEqual(self.preorder(actual), self.preorder(expected))
         self.assertListEqual(self.postorder(actual), self.postorder(expected))
-
 
     def preorder(self, root: Optional[TreeNode]):
         ans = []

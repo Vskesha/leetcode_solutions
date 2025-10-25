@@ -79,14 +79,18 @@ class Solution2:
         for i in range(1, n):
             dist[i][0] = min(dist[i][0], dist[i - 1][0] + 1)
             for j in range(1, m):
-                dist[i][j] = min(dist[i][j], min(dist[i][j - 1], dist[i - 1][j]) + 1)
+                dist[i][j] = min(
+                    dist[i][j], min(dist[i][j - 1], dist[i - 1][j]) + 1
+                )
 
         for j in range(m - 2, -1, -1):
             dist[n - 1][j] = min(dist[n - 1][j], dist[n - 1][j + 1] + 1)
         for i in range(n - 2, -1, -1):
             dist[i][m - 1] = min(dist[i][m - 1], dist[i + 1][m - 1] + 1)
             for j in range(m - 2, -1, -1):
-                dist[i][j] = min(dist[i][j], min(dist[i][j + 1], dist[i + 1][j]) + 1)
+                dist[i][j] = min(
+                    dist[i][j], min(dist[i][j + 1], dist[i + 1][j]) + 1
+                )
 
         return dist
 
@@ -94,20 +98,20 @@ class Solution2:
 def test():
     sol = Solution()
 
-    print('Test 1 ... ', end='')
+    print("Test 1 ... ", end="")
     mat = [[0, 0, 0], [0, 1, 0], [0, 0, 0]]
     out = [[0, 0, 0], [0, 1, 0], [0, 0, 0]]
     for i, m in enumerate(sol.updateMatrix(mat)):
         assert out[i] == m
-    print('OK')
+    print("OK")
 
-    print('Test 2 ... ', end='')
+    print("Test 2 ... ", end="")
     mat = [[0, 0, 0], [0, 1, 0], [1, 1, 1]]
     out = [[0, 0, 0], [0, 1, 0], [1, 2, 1]]
     for i, m in enumerate(sol.updateMatrix(mat)):
         assert out[i] == m
-    print('OK')
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

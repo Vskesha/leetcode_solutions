@@ -44,7 +44,9 @@ class TestSolution(unittest.TestCase):
 
     def test_kthDistinct_2(self):
         print("Test kthDistinct 2... ", end="")
-        self.assertEqual("aaa", self.sol.kthDistinct(arr=["aaa", "aa", "a"], k=1))
+        self.assertEqual(
+            "aaa", self.sol.kthDistinct(arr=["aaa", "aa", "a"], k=1)
+        )
         print("OK")
 
     def test_kthDistinct_3(self):

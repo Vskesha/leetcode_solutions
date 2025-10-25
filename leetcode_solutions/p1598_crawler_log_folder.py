@@ -29,13 +29,18 @@ class TestSolution(unittest.TestCase):
     def test_min_operations_2(self):
         print("Test minOperations 2... ", end="")
         self.assertEqual(
-            self.sol.minOperations(logs=["d1/", "d2/", "./", "d3/", "../", "d31/"]), 3
+            self.sol.minOperations(
+                logs=["d1/", "d2/", "./", "d3/", "../", "d31/"]
+            ),
+            3,
         )
         print("OK")
 
     def test_min_operations_3(self):
         print("Test minOperations 3... ", end="")
-        self.assertEqual(self.sol.minOperations(logs=["d1/", "../", "../", "../"]), 0)
+        self.assertEqual(
+            self.sol.minOperations(logs=["d1/", "../", "../", "../"]), 0
+        )
         print("OK")
 
 

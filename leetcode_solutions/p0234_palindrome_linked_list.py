@@ -38,7 +38,12 @@ class Solution1:
         first.next = None
 
         while fast and fast.next:
-            fast, first, second, first.next = fast.next.next, second, second.next, first
+            fast, first, second, first.next = (
+                fast.next.next,
+                second,
+                second.next,
+                first,
+            )
 
         if not fast:
             first = first.next

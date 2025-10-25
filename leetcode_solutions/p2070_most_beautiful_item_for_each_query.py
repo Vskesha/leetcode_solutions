@@ -7,7 +7,9 @@ from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
-    def maximumBeauty(self, items: List[List[int]], queries: List[int]) -> List[int]:
+    def maximumBeauty(
+        self, items: List[List[int]], queries: List[int]
+    ) -> List[int]:
         items.sort()
         prices = [pr for pr, _ in items]
         accb = list(accumulate([b for _, b in items], initial=0, func=max))
@@ -20,7 +22,10 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["maximumBeauty"] * 3,
             "kwargs": [
-                dict(items=[[1, 2], [3, 2], [2, 4], [5, 6], [3, 5]], queries=[1, 2, 3, 4, 5, 6]),
+                dict(
+                    items=[[1, 2], [3, 2], [2, 4], [5, 6], [3, 5]],
+                    queries=[1, 2, 3, 4, 5, 6],
+                ),
                 dict(items=[[1, 2], [1, 2], [1, 3], [1, 4]], queries=[1]),
                 dict(items=[[10, 1000]], queries=[5]),
             ],

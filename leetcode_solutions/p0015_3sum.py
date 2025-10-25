@@ -64,7 +64,9 @@ class TestSolution(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.sol = Solution()
 
-    def assertSameTriplets(self, result: List[List[int]], expected: List[List[int]]):
+    def assertSameTriplets(
+        self, result: List[List[int]], expected: List[List[int]]
+    ):
         self.assertEqual(len(result), len(expected))
         result = set(tuple(sorted(triplet)) for triplet in result)
         expected = set(tuple(sorted(triplet)) for triplet in expected)
@@ -73,7 +75,8 @@ class TestSolution(unittest.TestCase):
     def test_three_sum_1(self):
         print("Test threeSum 1... ", end="")
         self.assertSameTriplets(
-            self.sol.threeSum(nums=[-1, 0, 1, 2, -1, -4]), [[-1, -1, 2], [-1, 0, 1]]
+            self.sol.threeSum(nums=[-1, 0, 1, 2, -1, -4]),
+            [[-1, -1, 2], [-1, 0, 1]],
         )
         print("OK")
 

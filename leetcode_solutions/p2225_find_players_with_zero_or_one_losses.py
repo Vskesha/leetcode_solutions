@@ -47,7 +47,8 @@ def test():
 
     print("Test 2... ", end="")
     for a, b in zip(
-        sol.findWinners(matches=[[2, 3], [1, 3], [5, 4], [6, 4]]), [[1, 2, 5, 6], []]
+        sol.findWinners(matches=[[2, 3], [1, 3], [5, 4], [6, 4]]),
+        [[1, 2, 5, 6], []],
     ):
         assert a == b
     print("OK")

@@ -35,7 +35,9 @@ class TestSolution(unittest.TestCase):
 
     def test_subarrays_div_by_k1(self):
         print("Test subarraysDivByK 1 ... ", end="")
-        self.assertEqual(self.sol.subarraysDivByK(nums=[4, 5, 0, -2, -3, 1], k=5), 7)
+        self.assertEqual(
+            self.sol.subarraysDivByK(nums=[4, 5, 0, -2, -3, 1], k=5), 7
+        )
         print("OK")
 
     def test_subarrays_div_by_k2(self):

@@ -33,7 +33,9 @@ class TestSolution(unittest.TestCase):
 
     def test_check_subarray_sum3(self):
         print("Test checkSubarraySum 3 ... ", end="")
-        self.assertFalse(self.sol.checkSubarraySum(nums=[23, 2, 6, 4, 7], k=13))
+        self.assertFalse(
+            self.sol.checkSubarraySum(nums=[23, 2, 6, 4, 7], k=13)
+        )
         print("OK")
 
 

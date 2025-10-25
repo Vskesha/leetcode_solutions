@@ -9,11 +9,11 @@ class Solution:
         most_com = counter.most_common()
         hf = (ls + 1) // 2
         if most_com[0][1] > hf:
-            return ''
-        aux = ''.join(c * n for c, n in most_com)
+            return ""
+        aux = "".join(c * n for c, n in most_com)
         aux1 = aux[:hf]
         aux2 = aux[hf:]
-        res = ''
+        res = ""
         for i in range(len(aux2)):
             res += aux1[i] + aux2[i]
         if len(aux1) > len(aux2):
@@ -34,22 +34,22 @@ class Solution2:
         most_com = counter.most_common()
 
         if most_com[0][1] > (ls + 1) // 2:
-            return ''
+            return ""
 
-        res = [''] * ls
+        res = [""] * ls
         taker = take(most_com)
         for i in range(0, ls, 2):
             res[i] = next(taker)
         for i in range(1, ls, 2):
             res[i] = next(taker)
-        return ''.join(res)
+        return "".join(res)
 
 
 def main():
     sol = Solution()
-    print('aba ===', sol.reorganizeString(s='aab'))
-    print(' ===', sol.reorganizeString(s='aaab'))
+    print("aba ===", sol.reorganizeString(s="aab"))
+    print(" ===", sol.reorganizeString(s="aaab"))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

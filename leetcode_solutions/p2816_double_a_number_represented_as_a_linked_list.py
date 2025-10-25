@@ -52,6 +52,7 @@ class Solution:
 
         return dummy if dummy.val else dummy.next
 
+
 class TestSolution(unittest.TestCase, metaclass=TestMeta):
     test_cases = [
         {

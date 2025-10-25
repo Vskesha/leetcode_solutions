@@ -24,7 +24,9 @@ class TestSolution(unittest.TestCase):
 
     def test_longest_arith_seq_length_2(self):
         print("Test longestArithSeqLength 2 ... ", end="")
-        self.assertEqual(self.sol.longestArithSeqLength(nums=[9, 4, 7, 2, 10]), 3)
+        self.assertEqual(
+            self.sol.longestArithSeqLength(nums=[9, 4, 7, 2, 10]), 3
+        )
         print("OK")
 
     def test_longest_arith_seq_length_3(self):

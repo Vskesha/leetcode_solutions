@@ -15,14 +15,15 @@ class Solution:
 
         return ans
 
+
 class TestSolution(unittest.TestCase, metaclass=TestMeta):
     test_cases = [
         {
             "class": Solution,
             "class_methods": ["maxAbsoluteSum"] * 2,
             "kwargs": [
-                dict(nums = [1,-3,2,3,-4]),
-                dict(nums = [2,-5,1,-4,3,-2]),
+                dict(nums=[1, -3, 2, 3, -4]),
+                dict(nums=[2, -5, 1, -4, 3, -2]),
             ],
             "expected": [5, 8],
         },

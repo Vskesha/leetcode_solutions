@@ -37,18 +37,18 @@ class Solution2:
 def test():
     sol = Solution()
 
-    print('Test 1 ... ', end='')
+    print("Test 1 ... ", end="")
     assert sol.eliminateMaximum(dist=[1, 3, 4], speed=[1, 1, 1]) == 3
-    print('ok')
+    print("ok")
 
-    print('Test 2 ... ', end='')
+    print("Test 2 ... ", end="")
     assert sol.eliminateMaximum(dist=[1, 1, 2, 3], speed=[1, 1, 1, 1]) == 1
-    print('ok')
+    print("ok")
 
-    print('Test 3 ... ', end='')
+    print("Test 3 ... ", end="")
     assert sol.eliminateMaximum(dist=[3, 2, 4], speed=[5, 3, 2]) == 1
-    print('ok')
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

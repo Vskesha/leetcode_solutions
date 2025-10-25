@@ -9,13 +9,15 @@ class Solution:
         res = []
 
         for num in nums:
-            index = abs(num)-1
-            if nums[index]<0:
-                res.append(index+1)
+            index = abs(num) - 1
+            if nums[index] < 0:
+                res.append(index + 1)
             else:
                 nums[index] = -nums[index]
 
         return res
+
+
 class Solution2:
     def findDuplicates(self, nums: List[int]) -> List[int]:
         seen = set()
@@ -27,6 +29,7 @@ class Solution2:
             else:
                 seen.add(n)
         return ans
+
 
 class TestSolution(unittest.TestCase, metaclass=TestMeta):
     test_cases = [
@@ -49,5 +52,5 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
         self.assertSetEqual(set(actual), set(expected))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

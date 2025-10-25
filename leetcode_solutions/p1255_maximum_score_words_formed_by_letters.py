@@ -8,7 +8,9 @@ class Solution:
     ) -> int:
         words_counters = [Counter(word) for word in words]
         letter_counter = Counter(letters)
-        words_scores = [sum(score[ord(ch) - 97] for ch in word) for word in words]
+        words_scores = [
+            sum(score[ord(ch) - 97] for ch in word) for word in words
+        ]
         lw = len(words)
 
         def backtrack(sc, i) -> int:

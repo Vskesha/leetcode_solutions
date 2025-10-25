@@ -11,7 +11,9 @@ class ListNode:
 
 
 class Solution:
-    def nodesBetweenCriticalPoints(self, head: Optional[ListNode]) -> List[int]:
+    def nodesBetweenCriticalPoints(
+        self, head: Optional[ListNode]
+    ) -> List[int]:
         criticals = []
         i = 0
         prev = head.val
@@ -47,7 +49,9 @@ class TestSolution(unittest.TestCase):
     def test_nodes_between_critical_points_1(self):
         print("Test nodesBetweenCriticalPoints 1... ", end="")
         self.assertListEqual(
-            self.sol.nodesBetweenCriticalPoints(self.array_to_list(head=[3, 1])),
+            self.sol.nodesBetweenCriticalPoints(
+                self.array_to_list(head=[3, 1])
+            ),
             [-1, -1],
         )
         print("OK")

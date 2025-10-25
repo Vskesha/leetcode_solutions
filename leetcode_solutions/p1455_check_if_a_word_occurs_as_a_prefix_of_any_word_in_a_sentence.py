@@ -18,7 +18,10 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class_methods": ["isPrefixOfWord"] * 3,
             "kwargs": [
                 dict(sentence="i love eating burger", searchWord="burg"),
-                dict(sentence="this problem is an easy problem", searchWord="pro"),
+                dict(
+                    sentence="this problem is an easy problem",
+                    searchWord="pro",
+                ),
                 dict(sentence="i am tired", searchWord="you"),
             ],
             "expected": [4, 2, -1],

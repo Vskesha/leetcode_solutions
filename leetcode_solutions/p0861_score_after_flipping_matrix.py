@@ -31,21 +31,32 @@ class Solution2:
             first = row[0]
             for j, val in enumerate(row):
                 tot[j] += val if first else not val
-        return sum(max(val, m - val) * 2 ** (n - i - 1) for i, val in enumerate(tot))
+        return sum(
+            max(val, m - val) * 2 ** (n - i - 1) for i, val in enumerate(tot)
+        )
 
 
 class Solution3:
     def matrixScore(self, grid: List[List[int]]) -> int:
         m, n = len(grid), len(grid[0])
-        return sum(max(val, m - val) * 2 ** (n - i - 1) for i, val in
-                   enumerate([sum(row[j] if row[0] else not row[j] for row in grid) for j in range(n)]))
+        return sum(
+            max(val, m - val) * 2 ** (n - i - 1)
+            for i, val in enumerate(
+                [
+                    sum(row[j] if row[0] else not row[j] for row in grid)
+                    for j in range(n)
+                ]
+            )
+        )
 
 
 def test_matrix_score():
     sol = Solution()
 
     print("Test 1... ", end="")
-    assert sol.matrixScore(grid=[[0, 0, 1, 1], [1, 0, 1, 0], [1, 1, 0, 0]]) == 39
+    assert (
+        sol.matrixScore(grid=[[0, 0, 1, 1], [1, 0, 1, 0], [1, 1, 0, 0]]) == 39
+    )
     print("OK")
 
     print("Test 2... ", end="")

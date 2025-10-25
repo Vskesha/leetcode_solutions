@@ -15,7 +15,9 @@ class Solution:
         for i in range(n - 1, -1, -1):
             new_dp = [0] * (n + 1)
             for rem in range(1, n + 1):
-                new_dp[rem] = min(dp[rem], dp[max(rem - time[i] - 1, 0)] + cost[i])
+                new_dp[rem] = min(
+                    dp[rem], dp[max(rem - time[i] - 1, 0)] + cost[i]
+                )
             dp = new_dp
 
         return dp[n]

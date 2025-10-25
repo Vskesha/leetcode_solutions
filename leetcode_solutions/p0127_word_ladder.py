@@ -5,7 +5,9 @@ from typing import List
 
 
 class Solution:
-    def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
+    def ladderLength(
+        self, beginWord: str, endWord: str, wordList: List[str]
+    ) -> int:
         words = set(wordList)
         if endWord not in words:
             return 0
@@ -36,7 +38,9 @@ class Solution:
 
 
 class Solution0:
-    def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
+    def ladderLength(
+        self, beginWord: str, endWord: str, wordList: List[str]
+    ) -> int:
         if endWord not in wordList:
             return 0
         if beginWord not in wordList:
@@ -67,7 +71,9 @@ class Solution0:
 
 
 class Solution1:
-    def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
+    def ladderLength(
+        self, beginWord: str, endWord: str, wordList: List[str]
+    ) -> int:
         words = set(wordList)
         if endWord not in words:
             return 0
@@ -96,7 +102,9 @@ class Solution1:
 
 
 class Solution2:
-    def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
+    def ladderLength(
+        self, beginWord: str, endWord: str, wordList: List[str]
+    ) -> int:
         def differs_one_letter(w1: str, w2: str) -> bool:
             # return len(w1) == len(w2) and sum(a != b for a, b in zip(w1, w2)) == 1
             if len(w1) != len(w2):
@@ -140,7 +148,9 @@ class Solution2:
 
 
 class Solution3:
-    def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
+    def ladderLength(
+        self, beginWord: str, endWord: str, wordList: List[str]
+    ) -> int:
         def differs_one_letter(w1: str, w2: str) -> bool:
             diff = False
             for a, b in zip(w1, w2):
@@ -162,7 +172,9 @@ class Solution3:
                     graph[j].append(i)
 
         queue = deque(
-            i for i, w in enumerate(wordList) if differs_one_letter(w, beginWord)
+            i
+            for i, w in enumerate(wordList)
+            if differs_one_letter(w, beginWord)
         )
         visited = set(queue)
         dist = 2

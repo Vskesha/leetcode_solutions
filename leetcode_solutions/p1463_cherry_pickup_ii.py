@@ -73,7 +73,10 @@ def test():
     sol = Solution()
 
     print("Test 1... ", end="")
-    assert sol.cherryPickup(grid=[[3, 1, 1], [2, 5, 1], [1, 5, 5], [2, 1, 1]]) == 24
+    assert (
+        sol.cherryPickup(grid=[[3, 1, 1], [2, 5, 1], [1, 5, 5], [2, 1, 1]])
+        == 24
+    )
     print("OK")
 
     print("Test 1... ", end="")

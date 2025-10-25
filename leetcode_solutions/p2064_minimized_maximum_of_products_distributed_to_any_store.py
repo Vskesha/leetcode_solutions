@@ -29,6 +29,7 @@ class Solution2:
         _, q, k = heappop(heap)
         return (q - 1) // k + 1
 
+
 class TestSolution(unittest.TestCase, metaclass=TestMeta):
     test_cases = [
         {

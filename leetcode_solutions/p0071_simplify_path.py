@@ -24,7 +24,9 @@ class TestSolution(unittest.TestCase):
 
     def test_simplify_path_2(self):
         print("Test simplifyPath 2... ", end="")
-        self.assertEqual(self.sol.simplifyPath(path="/home//foo/"), "/home/foo")
+        self.assertEqual(
+            self.sol.simplifyPath(path="/home//foo/"), "/home/foo"
+        )
         print("OK")
 
     def test_simplify_path_3(self):

@@ -20,7 +20,7 @@ class Solution:
         return dp(goal, n)
 
 
-#iterative solution
+# iterative solution
 class Solution2:
     def numMusicPlaylists(self, n: int, goal: int, k: int) -> int:
         mod = 1_000_000_007
@@ -39,10 +39,10 @@ class Solution2:
 
 def main():
     sol = Solution()
-    print('6 ===', sol.numMusicPlaylists(n=3, goal=3, k=1))
-    print('6 ===', sol.numMusicPlaylists(n=2, goal=3, k=0))
-    print('2 ===', sol.numMusicPlaylists(n=2, goal=3, k=1))
+    print("6 ===", sol.numMusicPlaylists(n=3, goal=3, k=1))
+    print("6 ===", sol.numMusicPlaylists(n=2, goal=3, k=0))
+    print("2 ===", sol.numMusicPlaylists(n=2, goal=3, k=1))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

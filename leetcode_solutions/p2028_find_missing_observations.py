@@ -19,11 +19,11 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["missingRolls"] * 3,
             "kwargs": [
-                dict(rolls = [3,2,4,3], mean = 4, n = 2),
-                dict(rolls = [1,5,6], mean = 3, n = 4),
-                dict(rolls = [1,2,3,4], mean = 6, n = 4),
+                dict(rolls=[3, 2, 4, 3], mean=4, n=2),
+                dict(rolls=[1, 5, 6], mean=3, n=4),
+                dict(rolls=[1, 2, 3, 4], mean=6, n=4),
             ],
-            "expected": [[6,6], [2,3,2,2], []],
+            "expected": [[6, 6], [2, 3, 2, 2], []],
             "assert_methods": ["assertCorrectMissingRolls"] * 3,
         },
     ]
@@ -33,5 +33,5 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
         self.assertEqual(sum(result), sum(expected))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

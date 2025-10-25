@@ -106,11 +106,15 @@ def test_find_circle_num():
     sol = Solution()
 
     print("Test 1... ", end="")
-    assert sol.findCircleNum(isConnected=[[1, 1, 0], [1, 1, 0], [0, 0, 1]]) == 2
+    assert (
+        sol.findCircleNum(isConnected=[[1, 1, 0], [1, 1, 0], [0, 0, 1]]) == 2
+    )
     print("OK")
 
     print("Test 2... ", end="")
-    assert sol.findCircleNum(isConnected=[[1, 0, 0], [0, 1, 0], [0, 0, 1]]) == 3
+    assert (
+        sol.findCircleNum(isConnected=[[1, 0, 0], [0, 1, 0], [0, 0, 1]]) == 3
+    )
     print("OK")
 
 

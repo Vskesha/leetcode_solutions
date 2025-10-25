@@ -6,7 +6,9 @@ class neighborSum:
     def __init__(self, grid: List[List[int]]):
         self.n = len(grid)
         self.grid = grid
-        self.inds = {grid[i][j]: (i, j) for i in range(self.n) for j in range(self.n)}
+        self.inds = {
+            grid[i][j]: (i, j) for i in range(self.n) for j in range(self.n)
+        }
         self.adj_cache = {}
         self.dia_cache = {}
 
@@ -48,6 +50,8 @@ class neighborSum:
 
     def __repr__(self):
         return f"neighborSum({self.grid})"
+
+
 # Your neighborSum object will be instantiated and called as such:
 # obj = neighborSum(grid)
 # param_1 = obj.adjacentSum(value)
@@ -60,7 +64,11 @@ class Meta(type):
             arguments = case["arguments"]
             sol = neighborSum(*arguments[0])
             for j in range(1, len(arguments)):
-                setattr(self, f"test_case_{i + 1}_{j}", self.get_test_method(sol, i, j))
+                setattr(
+                    self,
+                    f"test_case_{i + 1}_{j}",
+                    self.get_test_method(sol, i, j),
+                )
         super().__init__(*args, **kwargs)
 
     def get_test_method(self, sol, i, j):
@@ -87,12 +95,29 @@ class TestSolution(unittest.TestCase, metaclass=Meta):
                 "diagonalSum",
                 "diagonalSum",
             ],
-            "arguments": [[[[0, 1, 2], [3, 4, 5], [6, 7, 8]]], [1], [4], [4], [8]],
+            "arguments": [
+                [[[0, 1, 2], [3, 4, 5], [6, 7, 8]]],
+                [1],
+                [4],
+                [4],
+                [8],
+            ],
             "expected": [null, 6, 16, 16, 4],
         },
         {
             "commands": ["neighborSum", "adjacentSum", "diagonalSum"],
-            "arguments": [[[[1, 2, 0, 3], [4, 7, 15, 6], [8, 9, 10, 11], [12, 13, 14, 5]]], [15], [9]],
+            "arguments": [
+                [
+                    [
+                        [1, 2, 0, 3],
+                        [4, 7, 15, 6],
+                        [8, 9, 10, 11],
+                        [12, 13, 14, 5],
+                    ]
+                ],
+                [15],
+                [9],
+            ],
             "expected": [null, 23, 45],
         },
     ]

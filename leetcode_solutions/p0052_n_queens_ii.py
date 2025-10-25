@@ -5,7 +5,11 @@ class Solution:
         self.dia2 = set()
 
     def can_place(self, r, c) -> bool:
-        return c not in self.cols and r - c not in self.dia1 and r + c not in self.dia2
+        return (
+            c not in self.cols
+            and r - c not in self.dia1
+            and r + c not in self.dia2
+        )
 
     def place(self, r, c) -> None:
         self.cols.add(c)

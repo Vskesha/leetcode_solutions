@@ -5,8 +5,16 @@ from typing import List
 class Solution:
     def minFlips(self, grid: List[List[int]]) -> int:
         return min(
-            sum(row[i] != row[~i] for row in grid for i in range(len(grid[0]) // 2)),
-            sum(col[i] != col[~i] for col in zip(*grid) for i in range(len(grid) // 2)),
+            sum(
+                row[i] != row[~i]
+                for row in grid
+                for i in range(len(grid[0]) // 2)
+            ),
+            sum(
+                col[i] != col[~i]
+                for col in zip(*grid)
+                for i in range(len(grid) // 2)
+            ),
         )
 
 
@@ -36,7 +44,9 @@ class TestSolution(unittest.TestCase):
 
     def test_minFlips_1(self):
         print("Test minFlips 1... ", end="")
-        self.assertEqual(2, self.sol.minFlips(grid=[[1, 0, 0], [0, 0, 0], [0, 0, 1]]))
+        self.assertEqual(
+            2, self.sol.minFlips(grid=[[1, 0, 0], [0, 0, 0], [0, 0, 1]])
+        )
         print("OK")
 
     def test_minFlips_2(self):

@@ -97,9 +97,16 @@ if __name__ == "__main__":
 def main():
     sol = Solution()
     print("Test 1 ... ", end="")
-    assert sol.minExtraChar(s="leetscode", dictionary=["leet", "code", "leetcode"]) == 1
+    assert (
+        sol.minExtraChar(
+            s="leetscode", dictionary=["leet", "code", "leetcode"]
+        )
+        == 1
+    )
     print("ok\nTest 2 ... ", end="")
-    assert sol.minExtraChar(s="sayhelloworld", dictionary=["hello", "world"]) == 3
+    assert (
+        sol.minExtraChar(s="sayhelloworld", dictionary=["hello", "world"]) == 3
+    )
     print("ok")
 
 

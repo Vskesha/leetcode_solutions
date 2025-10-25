@@ -58,9 +58,7 @@ class TestMeta(type):
 
     @staticmethod
     def get_test_method(
-            obj: Any,
-            test_case_idx: int,
-            method_idx: int
+        obj: Any, test_case_idx: int, method_idx: int
     ) -> callable:
         def test_method(instance: Any) -> None:
             test_case = instance.test_cases[test_case_idx]
@@ -71,9 +69,7 @@ class TestMeta(type):
 
             args_list = test_case.get("args", [])
             arguments = (
-                args_list[method_idx]
-                if len(args_list) > method_idx
-                else []
+                args_list[method_idx] if len(args_list) > method_idx else []
             )
 
             kwargs_list = test_case.get("kwargs", [])

@@ -15,12 +15,16 @@ def sol_decorator(cls):
         def __init__(self, *args, **kwargs):
             self.original = cls(*args, **kwargs)
 
-        def deleteNode(self, head: Optional[List], node: int) -> Optional[List]:
+        def deleteNode(
+            self, head: Optional[List], node: int
+        ) -> Optional[List]:
             head, node = self.arr2linkedlist(head, node)
             self.original.deleteNode(node)
             return self.linkedlist2arr(head)
 
-        def arr2linkedlist(self, arr: List, node: int) -> Tuple[ListNode, ListNode]:
+        def arr2linkedlist(
+            self, arr: List, node: int
+        ) -> Tuple[ListNode, ListNode]:
             head = None
             lnode = None
             for val in reversed(arr):

@@ -29,7 +29,9 @@ class Solution2:
         if len(word) < 3:
             return False
 
-        allowed = set(string.ascii_lowercase + string.ascii_uppercase + string.digits)
+        allowed = set(
+            string.ascii_lowercase + string.ascii_uppercase + string.digits
+        )
         vowels = "aeiou"
         has_vowel = False
         has_consonant = False

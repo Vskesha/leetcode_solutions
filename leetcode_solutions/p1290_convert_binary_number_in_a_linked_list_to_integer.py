@@ -20,6 +20,7 @@ class Solution:
 
         return ans
 
+
 class TestSolution(unittest.TestCase, metaclass=TestMeta):
 
     @staticmethod
@@ -29,14 +30,13 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             head = ListNode(val, head)
         return head
 
-
     test_cases = [
         {
             "class": Solution,
             "class_methods": ["getDecimalValue"] * 2,
             "kwargs": [
-                dict(head = arr_to_linked_list([1,0,1])),
-                dict(head = arr_to_linked_list([0])),
+                dict(head=arr_to_linked_list([1, 0, 1])),
+                dict(head=arr_to_linked_list([0])),
             ],
             "expected": [5, 0],
         },
@@ -45,5 +45,3 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
 
 if __name__ == "__main__":
     unittest.main()
-
-

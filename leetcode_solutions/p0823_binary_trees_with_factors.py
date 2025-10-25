@@ -20,7 +20,7 @@ class Solution:
                 if left * right == num:
                     ans += 2 * dp[left] * dp[right] % mod
                 li += 1
-            if left ** 2 == num:
+            if left**2 == num:
                 ans += pow(dp[left], 2, mod)
             ans %= mod
             dp[num] = ans
@@ -94,14 +94,14 @@ class Solution2:
 def test():
     sol = Solution()
 
-    print('Test 1 ...', end='')
+    print("Test 1 ...", end="")
     assert sol.numFactoredBinaryTrees(arr=[2, 4]) == 3
-    print('ok')
+    print("ok")
 
-    print('Test 2 ...', end='')
+    print("Test 2 ...", end="")
     assert sol.numFactoredBinaryTrees(arr=[2, 4, 5, 10]) == 7
-    print('ok')
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

@@ -125,7 +125,9 @@ class TestSolution(unittest.TestCase):
 
     def test_decode_string_3(self):
         print("Test decodeString 3... ", end="")
-        self.assertEqual(self.sol.decodeString(s="2[abc]3[cd]ef"), "abcabccdcdcdef")
+        self.assertEqual(
+            self.sol.decodeString(s="2[abc]3[cd]ef"), "abcabccdcdcdef"
+        )
         print("OK")
 
 

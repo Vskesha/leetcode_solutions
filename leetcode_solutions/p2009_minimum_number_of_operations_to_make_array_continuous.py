@@ -6,7 +6,7 @@ class Solution:
     def minOperations(self, nums: List[int]) -> int:
         new_nums = sorted(set(nums))
         ans = ln = len(nums)
-        lnn =len(new_nums)
+        lnn = len(new_nums)
         i = j = 0
         while i < lnn - ln + ans:
             right = new_nums[i] + ln
@@ -21,7 +21,7 @@ class Solution1:
     def minOperations(self, nums: List[int]) -> int:
         new_nums = sorted(set(nums))
         ln = len(nums)
-        lnn =len(new_nums)
+        lnn = len(new_nums)
         i = j = 0
         c = 1
         while i < lnn - c:
@@ -50,24 +50,27 @@ class Solution2:
 class Solution3:
     def minOperations(self, nums: List[int]) -> int:
         new_nums = sorted(set(nums))
-        return min(len(nums) + i - bisect_right(new_nums, new_nums[i] + len(nums) - 1) for i in range(len(new_nums)))
+        return min(
+            len(nums) + i - bisect_right(new_nums, new_nums[i] + len(nums) - 1)
+            for i in range(len(new_nums))
+        )
 
 
 def test():
     sol = Solution()
 
-    print('Test 1 ... ', end='')
+    print("Test 1 ... ", end="")
     assert sol.minOperations(nums=[4, 2, 5, 3]) == 0
-    print('ok')
+    print("ok")
 
-    print('Test 2 ... ', end='')
+    print("Test 2 ... ", end="")
     assert sol.minOperations(nums=[1, 2, 3, 5, 6]) == 1
-    print('ok')
+    print("ok")
 
-    print('Test 3 ... ', end='')
+    print("Test 3 ... ", end="")
     assert sol.minOperations(nums=[1, 10, 100, 1000]) == 3
-    print('ok')
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

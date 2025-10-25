@@ -144,7 +144,11 @@ class TestSolution(unittest.TestCase):
     def test_wordBreak_2(self):
         print("Test wordBreak 2... ", end="")
         self.assertSameStrings(
-            ["pine apple pen apple", "pineapple pen apple", "pine applepen apple"],
+            [
+                "pine apple pen apple",
+                "pineapple pen apple",
+                "pine applepen apple",
+            ],
             self.sol.wordBreak(
                 s="pineapplepenapple",
                 wordDict=["apple", "pen", "applepen", "pine", "pineapple"],

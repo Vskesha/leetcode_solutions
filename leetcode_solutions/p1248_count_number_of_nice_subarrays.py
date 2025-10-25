@@ -15,7 +15,8 @@ class Solution1:
     def numberOfSubarrays(self, nums: List[int], k: int) -> int:
         idx = [-1] + [i for i, n in enumerate(nums) if n % 2] + [len(nums)]
         return sum(
-            (b - a) * (d - c) for a, b, c, d in zip(idx, idx[1:], idx[k:], idx[k + 1:])
+            (b - a) * (d - c)
+            for a, b, c, d in zip(idx, idx[1:], idx[k:], idx[k + 1 :])
         )
 
 
@@ -70,7 +71,9 @@ class TestSolution(unittest.TestCase):
 
     def test_number_of_subarrays_1(self):
         print("Test numberOfSubarrays 1... ", end="")
-        self.assertEqual(self.sol.numberOfSubarrays(nums=[1, 1, 2, 1, 1], k=3), 2)
+        self.assertEqual(
+            self.sol.numberOfSubarrays(nums=[1, 1, 2, 1, 1], k=3), 2
+        )
         print("OK")
 
     def test_number_of_subarrays_2(self):
@@ -81,7 +84,10 @@ class TestSolution(unittest.TestCase):
     def test_number_of_subarrays_3(self):
         print("Test numberOfSubarrays 3... ", end="")
         self.assertEqual(
-            self.sol.numberOfSubarrays(nums=[2, 2, 2, 1, 2, 2, 1, 2, 2, 2], k=2), 16
+            self.sol.numberOfSubarrays(
+                nums=[2, 2, 2, 1, 2, 2, 1, 2, 2, 2], k=2
+            ),
+            16,
         )
         print("OK")
 

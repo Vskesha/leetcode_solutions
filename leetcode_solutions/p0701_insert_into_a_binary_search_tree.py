@@ -12,7 +12,9 @@ class TreeNode:
 
 
 class Solution:
-    def insertIntoBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
+    def insertIntoBST(
+        self, root: Optional[TreeNode], val: int
+    ) -> Optional[TreeNode]:
         if not root:
             return TreeNode(val)
         if root.val > val:

@@ -72,7 +72,10 @@ def test():
 
     print("Test 1... ", end="")
     assert (
-        sol.maxAncestorDiff(root=[8, 3, 10, 1, 6, null, 14, null, null, 4, 7, 13]) == 7
+        sol.maxAncestorDiff(
+            root=[8, 3, 10, 1, 6, null, 14, null, null, 4, 7, 13]
+        )
+        == 7
     )
     print("OK")
 

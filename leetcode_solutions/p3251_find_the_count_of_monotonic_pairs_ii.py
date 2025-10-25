@@ -8,7 +8,7 @@ from leetcode_solutions._test_meta import TestMeta
 
 class Solution:
     def countOfPairs(self, nums: List[int]) -> int:
-        mod = 10 ** 9 + 7
+        mod = 10**9 + 7
         digits = nums[0]
         for prev, curr in pairwise(nums):
             if curr < prev:

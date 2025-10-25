@@ -38,7 +38,10 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
                 dict(sentence1="My name is Haley", sentence2="My Haley"),
                 dict(sentence1="of", sentence2="A lot of words"),
                 dict(sentence1="Eating right now", sentence2="Eating"),
-                dict(sentence1="qbaVXO Msgr aEWD v ekcb", sentence2="Msgr aEWD ekcb"),
+                dict(
+                    sentence1="qbaVXO Msgr aEWD v ekcb",
+                    sentence2="Msgr aEWD ekcb",
+                ),
             ],
             "expected": [True, False, True, False],
         },

@@ -7,7 +7,9 @@ from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
-    def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
+    def combinationSum2(
+        self, candidates: List[int], target: int
+    ) -> List[List[int]]:
         cands = sorted([val, cnt] for val, cnt in Counter(candidates).items())
         lc = len(cands)
         comb = []
@@ -34,7 +36,9 @@ class Solution:
 
 
 class Solution3:
-    def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
+    def combinationSum2(
+        self, candidates: List[int], target: int
+    ) -> List[List[int]]:
         candidates.sort()
         lc = len(candidates)
 

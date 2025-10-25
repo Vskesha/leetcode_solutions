@@ -45,7 +45,10 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class_methods": ["countConsistentStrings"] * 3,
             "kwargs": [
                 dict(allowed="ab", words=["ad", "bd", "aaab", "baa", "badab"]),
-                dict(allowed="abc", words=["a", "b", "c", "ab", "ac", "bc", "abc"]),
+                dict(
+                    allowed="abc",
+                    words=["a", "b", "c", "ab", "ac", "bc", "abc"],
+                ),
                 dict(
                     allowed="cad",
                     words=["cc", "acd", "b", "ba", "bac", "bad", "ac", "d"],

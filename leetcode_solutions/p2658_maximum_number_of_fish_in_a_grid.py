@@ -54,8 +54,22 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["findMaxFish"] * 2,
             "kwargs": [
-                dict(grid=[[0, 2, 1, 0], [4, 0, 0, 3], [1, 0, 0, 4], [0, 3, 2, 0]]),
-                dict(grid=[[1, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 1]]),
+                dict(
+                    grid=[
+                        [0, 2, 1, 0],
+                        [4, 0, 0, 3],
+                        [1, 0, 0, 4],
+                        [0, 3, 2, 0],
+                    ]
+                ),
+                dict(
+                    grid=[
+                        [1, 0, 0, 0],
+                        [0, 0, 0, 0],
+                        [0, 0, 0, 0],
+                        [0, 0, 0, 1],
+                    ]
+                ),
             ],
             "expected": [7, 1],
         },

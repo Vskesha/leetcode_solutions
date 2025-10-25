@@ -47,8 +47,8 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["minimumDifference"] * 2,
             "kwargs": [
-                dict(nums = [3,1,2]),
-                dict(nums = [7,9,5,8,1,3]),
+                dict(nums=[3, 1, 2]),
+                dict(nums=[7, 9, 5, 8, 1, 3]),
             ],
             "expected": [-1, 1],
         },

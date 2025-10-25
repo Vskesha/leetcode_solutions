@@ -13,8 +13,14 @@ class Solution:
             if i > 1 and nums[i - 1] == nums[i - 2] and dp(i - 2):
                 return True
 
-            if i > 2 and (nums[i - 1] == nums[i - 2] == nums[i - 3] or nums[i - 3] + 2 == nums[i - 2] + 1 == nums[
-                i - 1]) and dp(i - 3):
+            if (
+                i > 2
+                and (
+                    nums[i - 1] == nums[i - 2] == nums[i - 3]
+                    or nums[i - 3] + 2 == nums[i - 2] + 1 == nums[i - 1]
+                )
+                and dp(i - 3)
+            ):
                 return True
 
             return False
@@ -35,7 +41,10 @@ class Solution2:
             if dp[i - 2] and nums[i - 1] == nums[i - 2]:
                 dp[i] = True
             if dp[i - 3]:
-                if nums[i - 1] == nums[i - 2] == nums[i - 3] or nums[i - 3] + 2 == nums[i - 2] + 1 == nums[i - 1]:
+                if (
+                    nums[i - 1] == nums[i - 2] == nums[i - 3]
+                    or nums[i - 3] + 2 == nums[i - 2] + 1 == nums[i - 1]
+                ):
                     dp[i] = True
 
         return dp[ln]
@@ -43,9 +52,9 @@ class Solution2:
 
 def main():
     sol = Solution()
-    print('True ===', sol.validPartition(nums=[4, 4, 4, 5, 6]))
-    print('False ===', sol.validPartition(nums=[1, 1, 1, 2]))
+    print("True ===", sol.validPartition(nums=[4, 4, 4, 5, 6]))
+    print("False ===", sol.validPartition(nums=[1, 1, 1, 2]))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

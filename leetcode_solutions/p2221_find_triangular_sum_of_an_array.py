@@ -9,7 +9,9 @@ from leetcode_solutions._test_meta import TestMeta
 class Solution:
     def triangularSum(self, nums: List[int]) -> int:
         n = len(nums) - 1
-        return sum(num * math.comb(n, k) % 10 for k, num in enumerate(nums)) % 10
+        return (
+            sum(num * math.comb(n, k) % 10 for k, num in enumerate(nums)) % 10
+        )
 
 
 class Solution1:

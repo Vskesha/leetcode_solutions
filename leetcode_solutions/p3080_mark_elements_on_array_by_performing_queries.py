@@ -6,7 +6,9 @@ from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
-    def unmarkedSumArray(self, nums: List[int], queries: List[List[int]]) -> List[int]:
+    def unmarkedSumArray(
+        self, nums: List[int], queries: List[List[int]]
+    ) -> List[int]:
         tsum = sum(nums)
 
         heap = []
@@ -38,7 +40,10 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["unmarkedSumArray"] * 2,
             "kwargs": [
-                dict(nums=[1, 2, 2, 1, 2, 3, 1], queries=[[1, 2], [3, 3], [4, 2]]),
+                dict(
+                    nums=[1, 2, 2, 1, 2, 3, 1],
+                    queries=[[1, 2], [3, 3], [4, 2]],
+                ),
                 dict(nums=[1, 4, 2, 3], queries=[[0, 1]]),
             ],
             "expected": [[8, 3, 0], [7]],

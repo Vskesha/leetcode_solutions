@@ -16,7 +16,9 @@ def time_taken(func):
 
 
 class Solution:
-    tuples = {t for t in product(range(3), repeat=3) if t[0] != t[1] and t[1] != t[2]}
+    tuples = {
+        t for t in product(range(3), repeat=3) if t[0] != t[1] and t[1] != t[2]
+    }
     combs = {}
     for t in tuples:
         combs[t] = []
@@ -42,7 +44,9 @@ class Solution2:
         mod = 10**9 + 7
 
         prev = {
-            t: 1 for t in product(range(3), repeat=3) if t[0] != t[1] and t[1] != t[2]
+            t: 1
+            for t in product(range(3), repeat=3)
+            if t[0] != t[1] and t[1] != t[2]
         }
 
         for _ in range(1, n):

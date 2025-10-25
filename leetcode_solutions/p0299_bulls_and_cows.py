@@ -27,7 +27,7 @@ class Solution2:
         for ch in nonbullguess:
             nonbullnumber += min(nonbullguess[ch], nonbullsecret[ch])
 
-        return f'{bullnumber}A{nonbullnumber}B'
+        return f"{bullnumber}A{nonbullnumber}B"
 
 
 class TestSolution(unittest.TestCase):
@@ -36,15 +36,15 @@ class TestSolution(unittest.TestCase):
         cls.sol = Solution()
 
     def test_get_hint_1(self):
-        print('Test getHint 1... ', end='')
-        self.assertEqual(self.sol.getHint(secret='1807', guess='7810'), '1A3B')
-        print('OK')
+        print("Test getHint 1... ", end="")
+        self.assertEqual(self.sol.getHint(secret="1807", guess="7810"), "1A3B")
+        print("OK")
 
     def test_get_hint_2(self):
-        print('Test getHint 2... ', end='')
-        self.assertEqual(self.sol.getHint(secret='1123', guess='0111'), '1A1B')
-        print('OK')
+        print("Test getHint 2... ", end="")
+        self.assertEqual(self.sol.getHint(secret="1123", guess="0111"), "1A1B")
+        print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

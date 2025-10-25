@@ -117,7 +117,9 @@ class TestSolution(unittest.TestCase):
 
     def test_three_sum_closest_1(self):
         print("Test threeSumClosest 1... ", end="")
-        self.assertEqual(self.sol.threeSumClosest(nums=[-1, 2, 1, -4], target=1), 2)
+        self.assertEqual(
+            self.sol.threeSumClosest(nums=[-1, 2, 1, -4], target=1), 2
+        )
         print("OK")
 
     def test_three_sum_closest_2(self):
@@ -127,7 +129,9 @@ class TestSolution(unittest.TestCase):
 
     def test_three_sum_closest_3(self):
         print("Test threeSumClosest 3... ", end="")
-        self.assertEqual(self.sol.threeSumClosest(nums=[-2, -1, 1, 4], target=0), 1)
+        self.assertEqual(
+            self.sol.threeSumClosest(nums=[-2, -1, 1, 4], target=0), 1
+        )
         print("OK")
 
 

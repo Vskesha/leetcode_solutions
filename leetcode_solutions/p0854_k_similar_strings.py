@@ -53,7 +53,8 @@ class Solution2:
                             bfs.append(path + (i,))
 
             return (
-                max(dfs(tuple(i for i in ids if i not in c)) for c in cycles) + 1
+                max(dfs(tuple(i for i in ids if i not in c)) for c in cycles)
+                + 1
                 if cycles
                 else 0
             )

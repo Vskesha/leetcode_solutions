@@ -79,7 +79,10 @@ class TestSolution(unittest.TestCase):
     def test_find_second_minimum_value2(self):
         print("Test findSecondMinimumValue 2 ... ", end="")
         self.assertEqual(
-            self.sol.findSecondMinimumValue(root=self.list_to_tree(root=[2, 2, 2])), -1
+            self.sol.findSecondMinimumValue(
+                root=self.list_to_tree(root=[2, 2, 2])
+            ),
+            -1,
         )
         print("OK")
 

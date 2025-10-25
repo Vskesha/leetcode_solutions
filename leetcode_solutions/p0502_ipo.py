@@ -5,7 +5,9 @@ from typing import List
 
 
 class Solution:
-    def findMaximizedCapital(self, k: int, w: int, profits: List[int], capital: List[int]) -> int:
+    def findMaximizedCapital(
+        self, k: int, w: int, profits: List[int], capital: List[int]
+    ) -> int:
         cp = list(zip(capital, profits))
         heapify(cp)
         af = []
@@ -22,7 +24,9 @@ class Solution:
 
 
 class Solution1:
-    def findMaximizedCapital(self, k: int, w: int, profits: List[int], capital: List[int]) -> int:
+    def findMaximizedCapital(
+        self, k: int, w: int, profits: List[int], capital: List[int]
+    ) -> int:
         profits = [x for _, x in sorted(zip(capital, profits))]
         capital.sort()
         heap = []
@@ -42,7 +46,9 @@ class Solution1:
 
 
 class Solution2:
-    def findMaximizedCapital(self, k: int, w: int, profits: List[int], capital: List[int]) -> int:
+    def findMaximizedCapital(
+        self, k: int, w: int, profits: List[int], capital: List[int]
+    ) -> int:
         cp = sorted((c, p) for c, p in zip(capital, profits))
         heap = []
         pi = 0
@@ -61,7 +67,9 @@ class Solution2:
 
 
 class Solution3:
-    def findMaximizedCapital(self, k: int, w: int, profits: List[int], capital: List[int]) -> int:
+    def findMaximizedCapital(
+        self, k: int, w: int, profits: List[int], capital: List[int]
+    ) -> int:
         cp = sorted(zip(capital, profits))
         heap = []
         i, lp = 0, len(cp)
@@ -77,7 +85,9 @@ class Solution3:
 
 
 class Solution4:
-    def findMaximizedCapital(self, k: int, w: int, profits: List[int], capital: List[int]) -> int:
+    def findMaximizedCapital(
+        self, k: int, w: int, profits: List[int], capital: List[int]
+    ) -> int:
         cp = list(zip(capital, profits))
         heapify(cp)
         heap = []
@@ -98,14 +108,24 @@ class TestSolution(unittest.TestCase):
 
     def test_find_maximized_capital_1(self):
         print("Test findMaximizedCapital 1 ... ", end="")
-        self.assertEqual(self.sol.findMaximizedCapital(k = 2, w = 0, profits = [1,2,3], capital = [0,1,1]), 4)
+        self.assertEqual(
+            self.sol.findMaximizedCapital(
+                k=2, w=0, profits=[1, 2, 3], capital=[0, 1, 1]
+            ),
+            4,
+        )
         print("OK")
 
     def test_find_maximized_capital_2(self):
         print("Test findMaximizedCapital 2 ... ", end="")
-        self.assertEqual(self.sol.findMaximizedCapital(k = 3, w = 0, profits = [1,2,3], capital = [0,1,2]), 6)
+        self.assertEqual(
+            self.sol.findMaximizedCapital(
+                k=3, w=0, profits=[1, 2, 3], capital=[0, 1, 2]
+            ),
+            6,
+        )
         print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

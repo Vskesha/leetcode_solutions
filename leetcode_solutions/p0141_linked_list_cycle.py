@@ -19,7 +19,9 @@ def sol_decorator(cls):
             head = self.arr2linkedlist(head, pos)
             return self.original.hasCycle(head)
 
-        def arr2linkedlist(self, arr: Optional[List], pos: int) -> Optional[ListNode]:
+        def arr2linkedlist(
+            self, arr: Optional[List], pos: int
+        ) -> Optional[ListNode]:
             if not arr:
                 return None
 

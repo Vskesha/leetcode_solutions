@@ -20,22 +20,22 @@ class Solution:
 
 def test():
     sol = Solution()
-    print('Test 1 ... ', end='')
+    print("Test 1 ... ", end="")
     assert sol.find132pattern([1, 2, 3, 4]) is False
-    print('ok')
-    print('Test 2 ... ', end='')
+    print("ok")
+    print("Test 2 ... ", end="")
     assert sol.find132pattern([3, 1, 4, 2]) is True
-    print('ok')
-    print('Test 3 ... ', end='')
+    print("ok")
+    print("Test 3 ... ", end="")
     assert sol.find132pattern([-1, 3, 2, 0]) is True
-    print('ok')
-    print('Test 4 ... ', end='')
+    print("ok")
+    print("Test 4 ... ", end="")
     assert sol.find132pattern([1, 0, 1, -4, -3]) is False
-    print('ok')
-    print('Test 5 ... ', end='')
+    print("ok")
+    print("Test 5 ... ", end="")
     assert sol.find132pattern(nums=[1, 3, 2, 4, 5, 6, 7, 8, 9, 10]) is True
-    print('ok')
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

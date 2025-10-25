@@ -14,7 +14,9 @@ class TreeNode:
 
 
 class Solution:
-    def treeQueries(self, root: Optional[TreeNode], queries: List[int]) -> List[int]:
+    def treeQueries(
+        self, root: Optional[TreeNode], queries: List[int]
+    ) -> List[int]:
 
         def ldfs(node, ch):
             if not node:
@@ -73,7 +75,21 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "kwargs": [
                 dict(
                     root=array_to_tree(
-                        [1, 3, 4, 2, null, 6, 5, null, null, null, null, null, 7]
+                        [
+                            1,
+                            3,
+                            4,
+                            2,
+                            null,
+                            6,
+                            5,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            7,
+                        ]
                     ),
                     queries=[4],
                 ),

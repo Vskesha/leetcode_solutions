@@ -5,7 +5,9 @@ from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
-    def minDamage(self, power: int, damage: List[int], health: List[int]) -> int:
+    def minDamage(
+        self, power: int, damage: List[int], health: List[int]
+    ) -> int:
         n = len(damage)
 
         times = [(h - 1) // power + 1 for h in health]
@@ -20,20 +22,22 @@ class Solution:
             td -= d
 
         return ans
+
+
 class TestSolution(unittest.TestCase, metaclass=TestMeta):
     test_cases = [
         {
             "class": Solution,
             "class_methods": ["minDamage"] * 3,
             "kwargs": [
-                dict(power = 4, damage = [1,2,3,4], health = [4,5,6,8]),
-                dict(power = 1, damage = [1,1,1,1], health = [1,2,3,4]),
-                dict(power = 8, damage = [40], health = [59]),
+                dict(power=4, damage=[1, 2, 3, 4], health=[4, 5, 6, 8]),
+                dict(power=1, damage=[1, 1, 1, 1], health=[1, 2, 3, 4]),
+                dict(power=8, damage=[40], health=[59]),
             ],
             "expected": [39, 20, 320],
         },
     ]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

@@ -10,9 +10,11 @@ class Solution:
         if plen < 4:
             return 6 - plen
 
-        ans = 3 - (int(any(ch.islower() for ch in password)) +
-                   int(any(ch.isupper() for ch in password)) +
-                   int(any(ch.isdigit() for ch in password)))
+        ans = 3 - (
+            int(any(ch.islower() for ch in password))
+            + int(any(ch.isupper() for ch in password))
+            + int(any(ch.isdigit() for ch in password))
+        )
 
         if plen < 6:
             return max(6 - plen, ans)
@@ -56,7 +58,7 @@ class Solution:
 # difficult dp solution
 class Solution1:
     def strongPasswordChecker(self, password: str) -> int:
-        CHARS = 'abAB01'
+        CHARS = "abAB01"
         LP = len(password)
 
         def nmask(mask, ch):  # REWRITE
@@ -83,13 +85,26 @@ class Solution1:
                 return 100
 
             return min(
-                dp(ln + 1, pos + 1, nmask(mask, password[pos]), nrep(rep, password[pos])),
+                dp(
+                    ln + 1,
+                    pos + 1,
+                    nmask(mask, password[pos]),
+                    nrep(rep, password[pos]),
+                ),
                 1 + dp(ln, pos + 1, mask, rep),
-                1 + min(dp(ln + 1, pos + 1, nmask(mask, ch), nrep(rep, ch)) for ch in CHARS),
-                1 + min(dp(ln + 1, pos, nmask(mask, ch), nrep(rep, ch)) for ch in CHARS)
+                1
+                + min(
+                    dp(ln + 1, pos + 1, nmask(mask, ch), nrep(rep, ch))
+                    for ch in CHARS
+                ),
+                1
+                + min(
+                    dp(ln + 1, pos, nmask(mask, ch), nrep(rep, ch))
+                    for ch in CHARS
+                ),
             )
 
-        return dp(0, 0, 0, '')
+        return dp(0, 0, 0, "")
 
 
 class Solution2:
@@ -204,26 +219,26 @@ class Solution3:
 def test():
     sol = Solution()
 
-    print('Test 1... ', end='')
+    print("Test 1... ", end="")
     assert sol.strongPasswordChecker(password="a") == 5
-    print('OK')
+    print("OK")
 
-    print('Test 2... ', end='')
+    print("Test 2... ", end="")
     assert sol.strongPasswordChecker(password="aA1") == 3
-    print('OK')
+    print("OK")
 
-    print('Test 3... ', end='')
+    print("Test 3... ", end="")
     assert sol.strongPasswordChecker(password="1337C0d3") == 0
-    print('OK')
+    print("OK")
 
-    print('Test 4... ', end='')
+    print("Test 4... ", end="")
     assert sol.strongPasswordChecker(password="bbaaaaaaaaaaaaaaacccccc") == 8
-    print('OK')
+    print("OK")
 
-    print('Test 5... ', end='')
+    print("Test 5... ", end="")
     assert sol.strongPasswordChecker(password="ABABABABABABABABABAB1") == 2
-    print('OK')
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

@@ -8,7 +8,9 @@ from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
-    def maximumValueSum(self, nums: List[int], k: int, edges: List[List[int]]) -> int:
+    def maximumValueSum(
+        self, nums: List[int], k: int, edges: List[List[int]]
+    ) -> int:
         min_pos = inf
         amount = 0
         max_neg = -inf
@@ -30,14 +32,18 @@ class Solution:
 
 
 class Solution1:
-    def maximumValueSum(self, nums: List[int], k: int, edges: List[List[int]]) -> int:
+    def maximumValueSum(
+        self, nums: List[int], k: int, edges: List[List[int]]
+    ) -> int:
         diffs = sorted(((n ^ k) - n for n in nums), reverse=True)
         pairs = (diffs[i] + diffs[i + 1] for i in range(0, len(diffs) - 1, 2))
         return sum(nums) + sum(p for p in pairs if p > 0)
 
 
 class Solution2:
-    def maximumValueSum(self, nums: List[int], k: int, edges: List[List[int]]) -> int:
+    def maximumValueSum(
+        self, nums: List[int], k: int, edges: List[List[int]]
+    ) -> int:
         ans = sum(nums)
         cost = sorted(((n ^ k) - n for n in nums), reverse=True)
 
@@ -52,7 +58,9 @@ class Solution2:
 
 
 class Solution3:
-    def maximumValueSum(self, nums: List[int], k: int, edges: List[List[int]]) -> int:
+    def maximumValueSum(
+        self, nums: List[int], k: int, edges: List[List[int]]
+    ) -> int:
         ans = sum(nums)
         heap = [n - (n ^ k) for n in nums]
         heapify(heap)
@@ -68,7 +76,9 @@ class Solution3:
 
 
 class Solution4:
-    def maximumValueSum(self, nums: List[int], k: int, edges: List[List[int]]) -> int:
+    def maximumValueSum(
+        self, nums: List[int], k: int, edges: List[List[int]]
+    ) -> int:
         self.ans = sum(nums)
 
         cost = [(n ^ k) - n for n in nums]
@@ -105,7 +115,9 @@ class Solution4:
 
 
 class Solution5:
-    def maximumValueSum(self, nums: List[int], k: int, edges: List[List[int]]) -> int:
+    def maximumValueSum(
+        self, nums: List[int], k: int, edges: List[List[int]]
+    ) -> int:
         heap = [n - (n ^ k) for n in nums]
         heapify(heap)
         ans = sum(nums)

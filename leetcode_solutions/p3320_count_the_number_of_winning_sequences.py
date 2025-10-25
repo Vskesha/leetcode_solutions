@@ -8,7 +8,7 @@ from leetcode_solutions._test_meta import TestMeta
 class Solution:
     def countWinningSequences(self, s: str) -> int:
         ls = len(s)
-        mod = 10 ** 9 + 7
+        mod = 10**9 + 7
         mcs = "FWE"
         s = [mcs.find(ch) for ch in s]
 
@@ -27,7 +27,10 @@ class Solution:
                         ndp[mc][v + d] = (ndp[mc][v + d] + combs) % mod
             dp = ndp
 
-        return sum(sum(v for k, v in cnt.items() if k > 0) % mod for cnt in dp) % mod
+        return (
+            sum(sum(v for k, v in cnt.items() if k > 0) % mod for cnt in dp)
+            % mod
+        )
 
 
 class TestSolution(unittest.TestCase, metaclass=TestMeta):

@@ -71,7 +71,9 @@ class Solution3:
             return False
         if p.val != q.val:
             return False
-        return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
+        return self.isSameTree(p.left, q.left) and self.isSameTree(
+            p.right, q.right
+        )
 
 
 class TestSolution(unittest.TestCase):
@@ -105,7 +107,8 @@ class TestSolution(unittest.TestCase):
         print("Test isSameTree 1... ", end="")
         self.assertTrue(
             self.sol.isSameTree(
-                p=self.tree_from_list([1, 2, 3]), q=self.tree_from_list([1, 2, 3])
+                p=self.tree_from_list([1, 2, 3]),
+                q=self.tree_from_list([1, 2, 3]),
             )
         )
         print("OK")
@@ -114,7 +117,8 @@ class TestSolution(unittest.TestCase):
         print("Test isSameTree 2... ", end="")
         self.assertFalse(
             self.sol.isSameTree(
-                p=self.tree_from_list([1, 2]), q=self.tree_from_list([1, None, 2])
+                p=self.tree_from_list([1, 2]),
+                q=self.tree_from_list([1, None, 2]),
             )
         )
         print("OK")
@@ -123,7 +127,8 @@ class TestSolution(unittest.TestCase):
         print("Test isSameTree 3... ", end="")
         self.assertFalse(
             self.sol.isSameTree(
-                p=self.tree_from_list([1, 2, 1]), q=self.tree_from_list([1, 1, 2])
+                p=self.tree_from_list([1, 2, 1]),
+                q=self.tree_from_list([1, 1, 2]),
             )
         )
         print("OK")

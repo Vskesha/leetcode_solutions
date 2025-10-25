@@ -68,7 +68,9 @@ def test():
 
     print("Test 2... ", end="")
     assert (
-        sol.equalPairs(grid=[[3, 1, 2, 2], [1, 4, 4, 5], [2, 4, 2, 2], [2, 4, 2, 2]])
+        sol.equalPairs(
+            grid=[[3, 1, 2, 2], [1, 4, 4, 5], [2, 4, 2, 2], [2, 4, 2, 2]]
+        )
         == 3
     )
     print("OK")

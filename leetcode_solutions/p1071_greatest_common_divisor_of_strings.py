@@ -27,7 +27,7 @@ class Solution2:
                 if str1 == snip * k1 and str2 == snip * k2:
                     return snip
 
-        return ''
+        return ""
 
 
 class TestSolution(unittest.TestCase):
@@ -37,12 +37,16 @@ class TestSolution(unittest.TestCase):
 
     def test_gcd_of_strings_1(self):
         print("Test gcdOfStrings 1... ", end="")
-        self.assertEqual(self.sol.gcdOfStrings(str1="ABCABC", str2="ABC"), "ABC")
+        self.assertEqual(
+            self.sol.gcdOfStrings(str1="ABCABC", str2="ABC"), "ABC"
+        )
         print("OK")
 
     def test_gcd_of_strings_2(self):
         print("Test gcdOfStrings 2... ", end="")
-        self.assertEqual(self.sol.gcdOfStrings(str1="ABABAB", str2="ABAB"), "AB")
+        self.assertEqual(
+            self.sol.gcdOfStrings(str1="ABABAB", str2="ABAB"), "AB"
+        )
         print("OK")
 
     def test_gcd_of_strings_3(self):
@@ -51,5 +55,5 @@ class TestSolution(unittest.TestCase):
         print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

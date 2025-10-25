@@ -19,7 +19,8 @@ class Solution2:
     def threeConsecutiveOdds(self, arr: List[int]) -> bool:
         odds = [x % 2 for x in arr]
         return any(
-            odds[i] and odds[i + 1] and odds[i + 2] for i in range(len(odds) - 2)
+            odds[i] and odds[i + 1] and odds[i + 2]
+            for i in range(len(odds) - 2)
         )
 
 

@@ -14,7 +14,9 @@ class Solution:
 class Solution1:
     def totalMoney(self, n: int) -> int:
         w = n // 7
-        return sum(28 + 7 * i for i in range(w)) + sum(w + i + 1 for i in range(n % 7))
+        return sum(28 + 7 * i for i in range(w)) + sum(
+            w + i + 1 for i in range(n % 7)
+        )
 
 
 class Solution2:

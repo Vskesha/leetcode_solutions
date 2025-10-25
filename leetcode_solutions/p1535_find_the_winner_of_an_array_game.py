@@ -19,14 +19,14 @@ class Solution:
 def test():
     sol = Solution()
 
-    print('Test 1 ... ', end='')
+    print("Test 1 ... ", end="")
     assert sol.getWinner(arr=[2, 1, 3, 5, 4, 6, 7], k=2) == 5
-    print('ok')
+    print("ok")
 
-    print('Test 2 ... ', end='')
+    print("Test 2 ... ", end="")
     assert sol.getWinner(arr=[3, 2, 1], k=10) == 3
-    print('ok')
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

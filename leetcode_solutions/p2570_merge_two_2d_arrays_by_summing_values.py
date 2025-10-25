@@ -5,7 +5,9 @@ from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
-    def mergeArrays(self, nums1: List[List[int]], nums2: List[List[int]]) -> List[List[int]]:
+    def mergeArrays(
+        self, nums1: List[List[int]], nums2: List[List[int]]
+    ) -> List[List[int]]:
         i = j = 0
         ln1, ln2 = len(nums1), len(nums2)
         res = []
@@ -38,7 +40,10 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["mergeArrays"] * 2,
             "kwargs": [
-                dict(nums1=[[1, 2], [2, 3], [4, 5]], nums2=[[1, 4], [3, 2], [4, 1]]),
+                dict(
+                    nums1=[[1, 2], [2, 3], [4, 5]],
+                    nums2=[[1, 4], [3, 2], [4, 1]],
+                ),
                 dict(nums1=[[2, 4], [3, 6], [5, 5]], nums2=[[1, 3], [4, 3]]),
             ],
             "expected": [
@@ -49,7 +54,9 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
         },
     ]
 
-    def assertSameIdValues(self, actual: List[List[int]], expected: List[List[int]]) -> None:
+    def assertSameIdValues(
+        self, actual: List[List[int]], expected: List[List[int]]
+    ) -> None:
         self.assertEqual(len(actual), len(expected))
         for act, exp in zip(actual, expected):
             self.assertListEqual(act, exp)

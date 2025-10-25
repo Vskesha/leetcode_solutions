@@ -5,7 +5,9 @@ from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
-    def construct2DArray(self, original: List[int], m: int, n: int) -> List[List[int]]:
+    def construct2DArray(
+        self, original: List[int], m: int, n: int
+    ) -> List[List[int]]:
         lo = len(original)
 
         if m * n != lo:
@@ -19,7 +21,9 @@ class Solution:
 
 
 class Solution2:
-    def construct2DArray(self, original: List[int], m: int, n: int) -> List[List[int]]:
+    def construct2DArray(
+        self, original: List[int], m: int, n: int
+    ) -> List[List[int]]:
         lo = len(original)
 
         if m * n != lo:
@@ -34,7 +38,9 @@ class Solution2:
 
 
 class Solution3:
-    def construct2DArray(self, original: List[int], m: int, n: int) -> List[List[int]]:
+    def construct2DArray(
+        self, original: List[int], m: int, n: int
+    ) -> List[List[int]]:
         lo = len(original)
 
         if m * n != lo:

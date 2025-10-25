@@ -53,7 +53,11 @@ class Solution3:
     def largestLocal(self, grid: List[List[int]]) -> List[List[int]]:
         return [
             [
-                max(grid[y][x] for y in range(i, i + 3) for x in range(j, j + 3))
+                max(
+                    grid[y][x]
+                    for y in range(i, i + 3)
+                    for x in range(j, j + 3)
+                )
                 for j in range(len(grid) - 2)
             ]
             for i in range(len(grid) - 2)

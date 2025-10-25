@@ -37,18 +37,18 @@ class Solution2:
 def test():
     sol = Solution()
 
-    print('Test 1... ', end='')
+    print("Test 1... ", end="")
     assert sol.maxProduct(nums=[3, 4, 5, 2]) == 12
-    print('OK')
+    print("OK")
 
-    print('Test 2... ', end='')
+    print("Test 2... ", end="")
     assert sol.maxProduct(nums=[1, 5, 4, 5]) == 16
-    print('OK')
+    print("OK")
 
-    print('Test 3... ', end='')
+    print("Test 3... ", end="")
     assert sol.maxProduct(nums=[3, 7]) == 12
-    print('OK')
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

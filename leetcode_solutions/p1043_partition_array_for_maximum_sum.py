@@ -50,7 +50,10 @@ def test():
     print("OK")
 
     print("Test 2... ", end="")
-    assert sol.maxSumAfterPartitioning(arr=[1, 4, 1, 5, 7, 3, 6, 1, 9, 9, 3], k=4) == 83
+    assert (
+        sol.maxSumAfterPartitioning(arr=[1, 4, 1, 5, 7, 3, 6, 1, 9, 9, 3], k=4)
+        == 83
+    )
     print("OK")
 
     print("Test 3... ", end="")

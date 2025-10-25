@@ -80,10 +80,16 @@ class Solution3:
 
         for _ in range(k):
             if not rheap or (lheap and lheap[0] <= rheap[0]):
-                total += heapreplace(lheap, costs[l]) if l < r else heappop(lheap)
+                total += (
+                    heapreplace(lheap, costs[l]) if l < r else heappop(lheap)
+                )
                 l += 1
             else:
-                total += heapreplace(rheap, costs[r - 1]) if l < r else heappop(rheap)
+                total += (
+                    heapreplace(rheap, costs[r - 1])
+                    if l < r
+                    else heappop(rheap)
+                )
                 r -= 1
 
         return total
@@ -203,7 +209,24 @@ class TestSolution(unittest.TestCase):
         print("Test totalCost 4... ", end="")
         self.assertEqual(
             self.sol.totalCost(
-                costs=[31, 25, 72, 79, 74, 65, 84, 91, 18, 59, 27, 9, 81, 33, 17, 58],
+                costs=[
+                    31,
+                    25,
+                    72,
+                    79,
+                    74,
+                    65,
+                    84,
+                    91,
+                    18,
+                    59,
+                    27,
+                    9,
+                    81,
+                    33,
+                    17,
+                    58,
+                ],
                 k=11,
                 candidates=2,
             ),

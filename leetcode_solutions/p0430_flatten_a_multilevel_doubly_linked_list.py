@@ -8,7 +8,7 @@ class Node:
 
 
 class Solution:
-    def flatten(self, head: 'Optional[Node]') -> 'Optional[Node]':
+    def flatten(self, head: "Optional[Node]") -> "Optional[Node]":
 
         curr = head
 
@@ -34,5 +34,5 @@ def test():
     sol = Solution()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

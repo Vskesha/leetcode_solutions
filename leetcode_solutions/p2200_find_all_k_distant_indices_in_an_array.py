@@ -5,7 +5,9 @@ from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
-    def findKDistantIndices(self, nums: List[int], key: int, k: int) -> List[int]:
+    def findKDistantIndices(
+        self, nums: List[int], key: int, k: int
+    ) -> List[int]:
         j = 0
         ans = []
         ln = len(nums)

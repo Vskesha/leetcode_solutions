@@ -133,12 +133,16 @@ class TestSolution(unittest.TestCase):
 
     def test_network_delay_time_2(self):
         print("test networkDelayTime 2... ", end="")
-        self.assertEqual(self.sol.networkDelayTime(times=[[1, 2, 1]], n=2, k=1), 1)
+        self.assertEqual(
+            self.sol.networkDelayTime(times=[[1, 2, 1]], n=2, k=1), 1
+        )
         print("OK")
 
     def test_network_delay_time_3(self):
         print("test networkDelayTime 3... ", end="")
-        self.assertEqual(self.sol.networkDelayTime(times=[[1, 2, 1]], n=2, k=2), -1)
+        self.assertEqual(
+            self.sol.networkDelayTime(times=[[1, 2, 1]], n=2, k=2), -1
+        )
         print("OK")
 
 

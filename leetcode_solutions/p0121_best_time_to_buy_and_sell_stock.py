@@ -46,15 +46,15 @@ class TestSolution(unittest.TestCase):
         cls.sol = Solution()
 
     def test_maxProfit_1(self):
-        print('Test maxProfit 1... ', end='')
+        print("Test maxProfit 1... ", end="")
         self.assertEqual(5, self.sol.maxProfit(prices=[7, 1, 5, 3, 6, 4]))
-        print('OK')
+        print("OK")
 
     def test_maxProfit_2(self):
-        print('Test maxProfit 2... ', end='')
+        print("Test maxProfit 2... ", end="")
         self.assertEqual(0, self.sol.maxProfit(prices=[7, 6, 4, 3, 1]))
-        print('OK')
+        print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

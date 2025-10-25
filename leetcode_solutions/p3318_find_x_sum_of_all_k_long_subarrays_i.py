@@ -80,7 +80,7 @@ class Solution2:
                 ans.append(acc[i] - acc[j])
             return ans
 
-        frd = Counter(nums[:k - 1])
+        frd = Counter(nums[: k - 1])
         frl = SortedList((-frd[n], -n) for n in sn)
         xsum = sum(fr * n for fr, n in frl[:x])
 

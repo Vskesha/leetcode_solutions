@@ -28,10 +28,23 @@ class Solution:
 
 def main():
     sol = Solution()
-    print('4 ===', sol.maximalNetworkRank(n=4, roads=[[0, 1], [0, 3], [1, 2], [1, 3]]))
-    print('5 ===', sol.maximalNetworkRank(n=5, roads=[[0, 1], [0, 3], [1, 2], [1, 3], [2, 3], [2, 4]]))
-    print('5 ===', sol.maximalNetworkRank(n=8, roads=[[0, 1], [1, 2], [2, 3], [2, 4], [5, 6], [5, 7]]))
+    print(
+        "4 ===",
+        sol.maximalNetworkRank(n=4, roads=[[0, 1], [0, 3], [1, 2], [1, 3]]),
+    )
+    print(
+        "5 ===",
+        sol.maximalNetworkRank(
+            n=5, roads=[[0, 1], [0, 3], [1, 2], [1, 3], [2, 3], [2, 4]]
+        ),
+    )
+    print(
+        "5 ===",
+        sol.maximalNetworkRank(
+            n=8, roads=[[0, 1], [1, 2], [2, 3], [2, 4], [5, 6], [5, 7]]
+        ),
+    )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

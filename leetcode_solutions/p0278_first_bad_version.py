@@ -22,16 +22,16 @@ def test():
     global bad
     sol = Solution()
 
-    print('Test 1... ', end='')
+    print("Test 1... ", end="")
     bad = 4
     assert sol.firstBadVersion(n=5) == 4
-    print('OK')
+    print("OK")
 
-    print('Test 2... ', end='')
+    print("Test 2... ", end="")
     bad = 1
     assert sol.firstBadVersion(n=1) == 1
-    print('OK')
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

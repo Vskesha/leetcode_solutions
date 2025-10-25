@@ -14,8 +14,8 @@ class Solution:
             for j in range(1, k + 1):
                 _, end, val = events[idx]
                 next_idx = bisect_left(events_starts, end + 1)
-                with_curr = val + dp[next_idx][j-1]
-                without_curr = dp[idx+1][j]
+                with_curr = val + dp[next_idx][j - 1]
+                without_curr = dp[idx + 1][j]
                 dp[idx][j] = max(without_curr, with_curr)
 
         return dp[0][k]
@@ -44,10 +44,15 @@ class Solution2:
 
 def main():
     sol = Solution()
-    print('7 ===', sol.maxValue(events=[[1, 2, 4], [3, 4, 3], [2, 3, 1]], k=2))
-    print('10 ==', sol.maxValue(events=[[1, 2, 4], [3, 4, 3], [2, 3, 10]], k=2))
-    print('9 ===', sol.maxValue(events=[[1, 1, 1], [2, 2, 2], [3, 3, 3], [4, 4, 4]], k=3))
+    print("7 ===", sol.maxValue(events=[[1, 2, 4], [3, 4, 3], [2, 3, 1]], k=2))
+    print(
+        "10 ==", sol.maxValue(events=[[1, 2, 4], [3, 4, 3], [2, 3, 10]], k=2)
+    )
+    print(
+        "9 ===",
+        sol.maxValue(events=[[1, 1, 1], [2, 2, 2], [3, 3, 3], [4, 4, 4]], k=3),
+    )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

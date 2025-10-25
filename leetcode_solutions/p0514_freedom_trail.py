@@ -88,7 +88,8 @@ def test_find_rotate_steps():
     print("Test 3... ", end="")
     assert (
         sol.findRotateSteps(
-            ring="caotmcaataijjxi", key="oatjiioicitatajtijciocjcaaxaaatmctxamacaamjjx"
+            ring="caotmcaataijjxi",
+            key="oatjiioicitatajtijciocjcaaxaaatmctxamacaamjjx",
         )
         == 137
     )

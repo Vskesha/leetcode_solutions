@@ -6,7 +6,9 @@ from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
-    def countSubIslands(self, grid1: List[List[int]], grid2: List[List[int]]) -> int:
+    def countSubIslands(
+        self, grid1: List[List[int]], grid2: List[List[int]]
+    ) -> int:
         m, n = len(grid2), len(grid2[0])
         ans = 0
 
@@ -41,14 +43,43 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["countSubIslands"] * 2,
             "kwargs": [
-                dict(grid1 = [[1,1,1,0,0],[0,1,1,1,1],[0,0,0,0,0],[1,0,0,0,0],[1,1,0,1,1]], grid2 = [[1,1,1,0,0],[0,0,1,1,1],[0,1,0,0,0],[1,0,1,1,0],[0,1,0,1,0]]),
-                dict(grid1 = [[1,0,1,0,1],[1,1,1,1,1],[0,0,0,0,0],[1,1,1,1,1],[1,0,1,0,1]], grid2 = [[0,0,0,0,0],[1,1,1,1,1],[0,1,0,1,0],[0,1,0,1,0],[1,0,0,0,1]]),
+                dict(
+                    grid1=[
+                        [1, 1, 1, 0, 0],
+                        [0, 1, 1, 1, 1],
+                        [0, 0, 0, 0, 0],
+                        [1, 0, 0, 0, 0],
+                        [1, 1, 0, 1, 1],
+                    ],
+                    grid2=[
+                        [1, 1, 1, 0, 0],
+                        [0, 0, 1, 1, 1],
+                        [0, 1, 0, 0, 0],
+                        [1, 0, 1, 1, 0],
+                        [0, 1, 0, 1, 0],
+                    ],
+                ),
+                dict(
+                    grid1=[
+                        [1, 0, 1, 0, 1],
+                        [1, 1, 1, 1, 1],
+                        [0, 0, 0, 0, 0],
+                        [1, 1, 1, 1, 1],
+                        [1, 0, 1, 0, 1],
+                    ],
+                    grid2=[
+                        [0, 0, 0, 0, 0],
+                        [1, 1, 1, 1, 1],
+                        [0, 1, 0, 1, 0],
+                        [0, 1, 0, 1, 0],
+                        [1, 0, 0, 0, 1],
+                    ],
+                ),
             ],
             "expected": [3, 2],
         },
     ]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
-

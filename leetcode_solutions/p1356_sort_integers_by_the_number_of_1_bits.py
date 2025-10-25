@@ -24,7 +24,9 @@ class TestSolution(unittest.TestCase):
         print("Test sortByBits 2 ... ", end="")
         self.assertListEqual(
             [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024],
-            self.sol.sortByBits(arr=[1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1]),
+            self.sol.sortByBits(
+                arr=[1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1]
+            ),
         )
         print("OK")
 

@@ -8,7 +8,9 @@ from leetcode_solutions._test_meta import TestMeta
 
 class Solution:
     def numTimesAllBlue(self, flips: List[int]) -> int:
-        return sum(1 for i, m in enumerate(accumulate(flips, func=max), 1) if i == m)
+        return sum(
+            1 for i, m in enumerate(accumulate(flips, func=max), 1) if i == m
+        )
 
 
 class Solution1:

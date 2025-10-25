@@ -6,7 +6,7 @@ from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
-    mn = 10 ** 6 + 1
+    mn = 10**6 + 1
     primes_grid = [True] * mn
     primes = []
     for i in range(2, mn):
@@ -20,7 +20,7 @@ class Solution:
     def closestPrimes(self, left: int, right: int) -> List[int]:
         li = bisect_left(self.primes, left)
         ri = bisect_right(self.primes, right)
-        min_diff = 10 ** 6
+        min_diff = 10**6
         ans = [-1, -1]
         for i in range(li, ri - 1):
             diff = self.primes[i + 1] - self.primes[i]

@@ -28,9 +28,9 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["maxTwoEvents"] * 3,
             "kwargs": [
-                dict(events = [[1,3,2],[4,5,2],[2,4,3]]),
-                dict(events = [[1,3,2],[4,5,2],[1,5,5]]),
-                dict(events = [[1,5,3],[1,5,1],[6,6,5]]),
+                dict(events=[[1, 3, 2], [4, 5, 2], [2, 4, 3]]),
+                dict(events=[[1, 3, 2], [4, 5, 2], [1, 5, 5]]),
+                dict(events=[[1, 5, 3], [1, 5, 1], [6, 6, 5]]),
             ],
             "expected": [4, 5, 8],
         },

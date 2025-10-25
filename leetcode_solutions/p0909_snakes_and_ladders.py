@@ -143,7 +143,9 @@ class Solution6:
             for j in range(c, min(c + 6, n2)):
                 if j + 1 not in visited:
                     visited.add(j + 1)
-                    ld = board[n - j // n - 1][n - j % n - 1 if j // n % 2 else j % n]
+                    ld = board[n - j // n - 1][
+                        n - j % n - 1 if j // n % 2 else j % n
+                    ]
                     bfs.append((j + 1 if ld == -1 else ld, d + 1))
 
         return -1
@@ -259,7 +261,9 @@ class TestSolution(unittest.TestCase):
         print("Test snakesAndLadders 3... ", end="")
         self.assertEqual(
             -1,
-            self.sol.snakesAndLadders(board=[[1, 1, -1], [1, 1, 1], [-1, 1, 1]]),
+            self.sol.snakesAndLadders(
+                board=[[1, 1, -1], [1, 1, 1], [-1, 1, 1]]
+            ),
         )
         print("OK")
 

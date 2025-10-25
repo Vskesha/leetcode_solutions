@@ -14,8 +14,8 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["strStr"] * 2,
             "kwargs": [
-                dict(haystack = "sadbutsad", needle = "sad"),
-                dict(haystack = "leetcode", needle = "leeto"),
+                dict(haystack="sadbutsad", needle="sad"),
+                dict(haystack="leetcode", needle="leeto"),
             ],
             "expected": [0, -1],
         },

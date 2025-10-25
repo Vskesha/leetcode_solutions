@@ -9,7 +9,9 @@ class ListNode:
 
 
 class Solution:
-    def reverseBetween(self, head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
+    def reverseBetween(
+        self, head: Optional[ListNode], left: int, right: int
+    ) -> Optional[ListNode]:
         if left == right:
             return head
 
@@ -34,5 +36,5 @@ def test():
     sol = Solution()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

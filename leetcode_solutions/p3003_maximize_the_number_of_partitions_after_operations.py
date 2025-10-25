@@ -63,9 +63,9 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["maxPartitionsAfterOperations"] * 3,
             "kwargs": [
-                dict(s = "accca", k = 2),
-                dict(s = "aabaab", k = 3),
-                dict(s = "xxyz", k = 1),
+                dict(s="accca", k=2),
+                dict(s="aabaab", k=3),
+                dict(s="xxyz", k=1),
             ],
             "expected": [3, 1, 4],
         },

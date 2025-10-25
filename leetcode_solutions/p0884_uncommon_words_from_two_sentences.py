@@ -23,7 +23,9 @@ class Solution:
 class Solution2:
     def uncommonFromSentences(self, s1: str, s2: str) -> List[str]:
         return [
-            word for word, cnt in Counter(s1.split() + s2.split()).items() if cnt == 1
+            word
+            for word, cnt in Counter(s1.split() + s2.split()).items()
+            if cnt == 1
         ]
 
 

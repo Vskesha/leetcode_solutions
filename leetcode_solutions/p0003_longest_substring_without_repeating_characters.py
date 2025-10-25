@@ -96,5 +96,5 @@ class TestSolution(unittest.TestCase):
         print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

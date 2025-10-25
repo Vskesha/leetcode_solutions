@@ -21,7 +21,10 @@ class Solution2:  # Time Limit Exceeded
 
         for i in range(1, len(arr1)):
             for j in range(i):
-                ans = max(ans, abs(arr1[i] - arr1[j]) + abs(arr2[i] - arr2[j]) + i - j)
+                ans = max(
+                    ans,
+                    abs(arr1[i] - arr1[j]) + abs(arr2[i] - arr2[j]) + i - j,
+                )
 
         return ans
 
@@ -41,7 +44,9 @@ class TestSolution(unittest.TestCase):
     def test_max_abs_val_expr_2(self):
         print("Test maxAbsValExpr 2... ", end="")
         self.assertEqual(
-            self.sol.maxAbsValExpr(arr1=[1, -2, -5, 0, 10], arr2=[0, -2, -1, -7, -4]),
+            self.sol.maxAbsValExpr(
+                arr1=[1, -2, -5, 0, 10], arr2=[0, -2, -1, -7, -4]
+            ),
             20,
         )
         print("OK")

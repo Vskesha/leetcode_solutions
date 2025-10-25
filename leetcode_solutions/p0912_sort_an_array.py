@@ -183,7 +183,9 @@ class TestSolution(unittest.TestCase):
 
     def test_sortArray_1(self):
         print("Test sortArray 1... ", end="")
-        self.assertListEqual([1, 2, 3, 5], self.sol.sortArray(nums=[5, 2, 3, 1]))
+        self.assertListEqual(
+            [1, 2, 3, 5], self.sol.sortArray(nums=[5, 2, 3, 1])
+        )
         print("OK")
 
     def test_sortArray_2(self):

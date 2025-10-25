@@ -62,7 +62,8 @@ class Solution2:
         m, n = len(board), len(board[0])
         m_n, mn = m + n, m * n
         vals = sorted(
-            [(board[i][j], i, j) for i in range(m) for j in range(n)], reverse=True
+            [(board[i][j], i, j) for i in range(m) for j in range(n)],
+            reverse=True,
         )
         ans = -inf
 

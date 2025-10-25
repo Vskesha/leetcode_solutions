@@ -3,7 +3,9 @@ from typing import List
 
 
 class Solution:
-    def countRoutes(self, locations: List[int], start: int, finish: int, fuel: int) -> int:
+    def countRoutes(
+        self, locations: List[int], start: int, finish: int, fuel: int
+    ) -> int:
         start_loc = locations[start]
         finish_loc = locations[finish]
         locations.sort()
@@ -33,18 +35,21 @@ class Solution:
 def test():
     sol = Solution()
 
-    print('Test 1... ', end='')
-    assert sol.countRoutes(locations=[2, 3, 6, 8, 4], start=1, finish=3, fuel=5) == 4
-    print('OK')
+    print("Test 1... ", end="")
+    assert (
+        sol.countRoutes(locations=[2, 3, 6, 8, 4], start=1, finish=3, fuel=5)
+        == 4
+    )
+    print("OK")
 
-    print('Test 2... ', end='')
+    print("Test 2... ", end="")
     assert sol.countRoutes(locations=[4, 3, 1], start=1, finish=0, fuel=6) == 5
-    print('OK')
+    print("OK")
 
-    print('Test 3... ', end='')
+    print("Test 3... ", end="")
     assert sol.countRoutes(locations=[5, 2, 1], start=0, finish=2, fuel=3) == 0
-    print('OK')
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

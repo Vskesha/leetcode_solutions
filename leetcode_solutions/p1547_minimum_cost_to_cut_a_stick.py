@@ -28,7 +28,8 @@ class Solution2:
             if right - left == 1:
                 return 0
             min_cost = min(
-                cost(left, mid) + cost(mid, right) for mid in range(left + 1, right)
+                cost(left, mid) + cost(mid, right)
+                for mid in range(left + 1, right)
             )
             return min_cost + cuts[right] - cuts[left]
 

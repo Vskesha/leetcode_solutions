@@ -53,6 +53,7 @@ class TestSolution(unittest.TestCase):
                 return 1
             else:
                 return -1
+
         return guess_func
 
     def test_guessNumber_1(self):
@@ -83,5 +84,5 @@ class TestSolution(unittest.TestCase):
         print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

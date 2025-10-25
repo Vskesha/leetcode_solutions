@@ -44,18 +44,18 @@ class Solution2:
 def test():
     sol = Solution()
 
-    print('Test 1 ... ', end='')
+    print("Test 1 ... ", end="")
     assert sol.wordPattern(pattern="abba", s="dog cat cat dog") is True
-    print('OK')
+    print("OK")
 
-    print('Test 2 ... ', end='')
+    print("Test 2 ... ", end="")
     assert sol.wordPattern(pattern="abba", s="dog cat cat fish") is False
-    print('OK')
+    print("OK")
 
-    print('Test 3 ... ', end='')
+    print("Test 3 ... ", end="")
     assert sol.wordPattern(pattern="aaaa", s="dog cat cat dog") is False
-    print('OK')
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

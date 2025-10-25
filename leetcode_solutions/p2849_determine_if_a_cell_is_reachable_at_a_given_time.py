@@ -4,13 +4,17 @@ from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
-    def isReachableAtTime(self, sx: int, sy: int, fx: int, fy: int, t: int) -> bool:
+    def isReachableAtTime(
+        self, sx: int, sy: int, fx: int, fy: int, t: int
+    ) -> bool:
         m = max(abs(sx - fx), abs(sy - fy))
         return (m > 0 or t != 1) and t >= m
 
 
 class Solution2:
-    def isReachableAtTime(self, sx: int, sy: int, fx: int, fy: int, t: int) -> bool:
+    def isReachableAtTime(
+        self, sx: int, sy: int, fx: int, fy: int, t: int
+    ) -> bool:
         if sx == fx and sy == fy:
             return not t == 1
         return t >= max(abs(sx - fx), abs(sy - fy))

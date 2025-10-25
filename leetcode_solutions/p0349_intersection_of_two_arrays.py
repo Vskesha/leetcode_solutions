@@ -14,7 +14,10 @@ def test_intersection():
     print("OK")
 
     print("Test 2... ", end="")
-    assert set(sol.intersection(nums1=[4, 9, 5], nums2=[9, 4, 9, 8, 4])) == {9, 4}
+    assert set(sol.intersection(nums1=[4, 9, 5], nums2=[9, 4, 9, 8, 4])) == {
+        9,
+        4,
+    }
     print("OK")
 
 

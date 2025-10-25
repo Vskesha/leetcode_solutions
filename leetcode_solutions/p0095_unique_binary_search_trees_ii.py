@@ -20,7 +20,7 @@ class Solution:
             ans_list = []
             for i, val in enumerate(vals):
                 lefts = vals[:i]
-                rights = vals[i + 1:]
+                rights = vals[i + 1 :]
                 for left in trees(lefts):
                     for right in trees(rights):
                         ans_list.append(TreeNode(val, left, right))
@@ -38,5 +38,5 @@ def main():
     sol.generateTrees(n=4)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

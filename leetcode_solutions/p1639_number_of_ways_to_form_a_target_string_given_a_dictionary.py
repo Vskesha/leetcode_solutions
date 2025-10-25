@@ -21,7 +21,9 @@ class Solution:
         for i in range(1, lt + 1):
             new = [0] * size
             for j in range(1, size):
-                new[j] = (new[j - 1] + aux[i + j - 2][target[i - 1]] * dp[j]) % mod
+                new[j] = (
+                    new[j - 1] + aux[i + j - 2][target[i - 1]] * dp[j]
+                ) % mod
             dp = new
 
         return dp[-1]
@@ -39,7 +41,9 @@ class Solution1:
         for i in range(1, lt + 1):
             new = [0] * (lw + 1)
             for j in range(i, lw - lt + i + 1):
-                new[j] = (new[j - 1] + aux[j - 1][target[i - 1]] * dp[j - 1]) % mod
+                new[j] = (
+                    new[j - 1] + aux[j - 1][target[i - 1]] * dp[j - 1]
+                ) % mod
             dp = new
 
         return dp[lw]

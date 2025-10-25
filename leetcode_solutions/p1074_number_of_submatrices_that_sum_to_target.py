@@ -2,7 +2,9 @@ from typing import List
 
 
 class Solution:
-    def numSubmatrixSumTarget(self, matrix: List[List[int]], target: int) -> int:
+    def numSubmatrixSumTarget(
+        self, matrix: List[List[int]], target: int
+    ) -> int:
         r, c = len(matrix), len(matrix[0])
         acc = [[0] * (c + 1) for _ in range(r + 1)]
 
@@ -18,14 +20,19 @@ class Solution:
                 tot = acc[y2][x2]
                 for y1 in range(y2):
                     for x1 in range(x2):
-                        if tot - acc[y1][x2] - acc[y2][x1] + acc[y1][x1] == target:
+                        if (
+                            tot - acc[y1][x2] - acc[y2][x1] + acc[y1][x1]
+                            == target
+                        ):
                             ans += 1
 
         return ans
 
 
 class Solution2:
-    def numSubmatrixSumTarget(self, matrix: List[List[int]], target: int) -> int:
+    def numSubmatrixSumTarget(
+        self, matrix: List[List[int]], target: int
+    ) -> int:
         c = len(matrix[0])
         res = 0
         for row in matrix:
@@ -51,7 +58,9 @@ def test():
 
     print("Test 1... ", end="")
     assert (
-        sol.numSubmatrixSumTarget(matrix=[[0, 1, 0], [1, 1, 1], [0, 1, 0]], target=0)
+        sol.numSubmatrixSumTarget(
+            matrix=[[0, 1, 0], [1, 1, 1], [0, 1, 0]], target=0
+        )
         == 4
     )
     print("OK")

@@ -39,17 +39,31 @@ class SeatManager2:
 def test():
     null = None
 
-    funcs = ["SeatManager", "reserve", "reserve", "unreserve", "reserve", "reserve", "reserve", "reserve", "unreserve"]
+    funcs = [
+        "SeatManager",
+        "reserve",
+        "reserve",
+        "unreserve",
+        "reserve",
+        "reserve",
+        "reserve",
+        "reserve",
+        "unreserve",
+    ]
     args = [[5], [], [], [2], [], [], [], [], [5]]
     outs = [null, 1, 2, null, 2, 3, 4, 5, null]
 
     sm = SeatManager(*args[0])
     for i in range(1, len(args)):
-        print(f'Test {i} ... ', end='')
-        func = sm.reserve if funcs[i] == 'reserve' else sm.unreserve if funcs[i] == 'unreserve' else None
+        print(f"Test {i} ... ", end="")
+        func = (
+            sm.reserve
+            if funcs[i] == "reserve"
+            else sm.unreserve if funcs[i] == "unreserve" else None
+        )
         assert func(*args[i]) == outs[i]
-        print('ok')
+        print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

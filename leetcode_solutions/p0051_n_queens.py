@@ -18,7 +18,13 @@ class Solution:
                 ans.append([rows[c] for c in comb])
 
         ans = []
-        btr(n, set(), [], ["." * i + "Q" + "." * (n - i - 1) for i in range(n)], ans)
+        btr(
+            n,
+            set(),
+            [],
+            ["." * i + "Q" + "." * (n - i - 1) for i in range(n)],
+            ans,
+        )
 
         return ans
 

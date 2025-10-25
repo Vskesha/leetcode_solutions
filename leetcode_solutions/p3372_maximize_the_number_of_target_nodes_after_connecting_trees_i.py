@@ -112,7 +112,9 @@ class Solution3:
 
 
 class Solution4:
-    def maxTargetNodes(self, edges1: List[List[int]], edges2: List[List[int]], k: int) -> List[int]:
+    def maxTargetNodes(
+        self, edges1: List[List[int]], edges2: List[List[int]], k: int
+    ) -> List[int]:
         def build_sizes(edges: List[List[int]], k) -> List[int]:
             la = len(edges) + 1
             adj = [[] for _ in range(la)]
@@ -144,7 +146,15 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "kwargs": [
                 dict(
                     edges1=[[0, 1], [0, 2], [2, 3], [2, 4]],
-                    edges2=[[0, 1], [0, 2], [0, 3], [2, 7], [1, 4], [4, 5], [4, 6]],
+                    edges2=[
+                        [0, 1],
+                        [0, 2],
+                        [0, 3],
+                        [2, 7],
+                        [1, 4],
+                        [4, 5],
+                        [4, 6],
+                    ],
                     k=2,
                 ),
                 dict(

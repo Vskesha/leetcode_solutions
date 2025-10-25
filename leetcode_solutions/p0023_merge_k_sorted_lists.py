@@ -11,7 +11,9 @@ class ListNode:
 
 
 class Solution:
-    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
+    def mergeKLists(
+        self, lists: List[Optional[ListNode]]
+    ) -> Optional[ListNode]:
         heap = [(node.val, i) for i, node in enumerate(lists) if node]
         heapify(heap)
         dummy = curr = ListNode()
@@ -28,7 +30,9 @@ class Solution:
 
 
 class Solution1:
-    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
+    def mergeKLists(
+        self, lists: List[Optional[ListNode]]
+    ) -> Optional[ListNode]:
         def merge_two_lists(
             list1: Optional[ListNode], list2: Optional[ListNode]
         ) -> Optional[ListNode]:
@@ -49,7 +53,9 @@ class Solution1:
 
 
 class Solution2:
-    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
+    def mergeKLists(
+        self, lists: List[Optional[ListNode]]
+    ) -> Optional[ListNode]:
         lts = []
         for i in lists:
             while i:
@@ -63,7 +69,9 @@ class Solution2:
 
 
 class Solution3:
-    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
+    def mergeKLists(
+        self, lists: List[Optional[ListNode]]
+    ) -> Optional[ListNode]:
         def merge_two_lists(list1, list2):
             result = current = ListNode()
             while list1 and list2:
@@ -84,7 +92,9 @@ class Solution3:
 
 
 class Solution4:
-    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
+    def mergeKLists(
+        self, lists: List[Optional[ListNode]]
+    ) -> Optional[ListNode]:
         result = curr = ListNode()
         lists = [l for l in lists if l]
         while lists:

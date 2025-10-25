@@ -60,7 +60,9 @@ class Solution2:
     def maxMoves(self, kx: int, ky: int, positions: List[List[int]]) -> int:
         sz = 50
         diff = (-2, -1, 1, 2)
-        dirs = [(dx, dy) for dx in diff for dy in diff if abs(dx) + abs(dy) == 3]
+        dirs = [
+            (dx, dy) for dx in diff for dy in diff if abs(dx) + abs(dy) == 3
+        ]
         memo = defaultdict(dict)
 
         def get_moves(kpos, tpos):

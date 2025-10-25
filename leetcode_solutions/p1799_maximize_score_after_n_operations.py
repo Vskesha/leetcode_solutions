@@ -18,7 +18,9 @@ class Solution:
             mask -= 1 << i
             for j in range(i + 1, 2 * n):
                 if (mask >> j) & 1:
-                    gcds = sorted(dp(i + 1, mask - (1 << j)) + [gcd(nums[i], nums[j])])
+                    gcds = sorted(
+                        dp(i + 1, mask - (1 << j)) + [gcd(nums[i], nums[j])]
+                    )
                     score = sum(((i + 1) * gcds[i]) for i in range(len(gcds)))
                     if score > tot:
                         ans = gcds

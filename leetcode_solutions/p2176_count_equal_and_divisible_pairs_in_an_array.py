@@ -21,8 +21,8 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["countPairs"] * 2,
             "kwargs": [
-                dict(nums = [3,1,2,2,2,1,3], k = 2),
-                dict(nums = [1,2,3,4], k = 1),
+                dict(nums=[3, 1, 2, 2, 2, 1, 3], k=2),
+                dict(nums=[1, 2, 3, 4], k=1),
             ],
             "expected": [4, 0],
         },

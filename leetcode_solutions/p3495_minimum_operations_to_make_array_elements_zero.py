@@ -33,9 +33,9 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["minOperations"] * 3,
             "kwargs": [
-                dict(queries = [[1,2],[2,4]]),
-                dict(queries = [[2,6]]),
-                dict(queries = [[13,16]]),
+                dict(queries=[[1, 2], [2, 4]]),
+                dict(queries=[[2, 6]]),
+                dict(queries=[[13, 16]]),
             ],
             "expected": [3, 4, 5],
         },

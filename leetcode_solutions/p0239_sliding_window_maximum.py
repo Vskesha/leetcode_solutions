@@ -27,9 +27,12 @@ class Solution:
 
 def main():
     sol = Solution()
-    print(' [3, 3, 5, 5, 6, 7]\n', sol.maxSlidingWindow(nums=[1, 3, -1, -3, 5, 3, 6, 7], k=3))
-    print(' [1]\n', sol.maxSlidingWindow(nums=[1], k=1))
+    print(
+        " [3, 3, 5, 5, 6, 7]\n",
+        sol.maxSlidingWindow(nums=[1, 3, -1, -3, 5, 3, 6, 7], k=3),
+    )
+    print(" [1]\n", sol.maxSlidingWindow(nums=[1], k=1))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -23,6 +23,7 @@ class MyStack:
     def empty(self) -> bool:
         return not self.stack
 
+
 # Your MyStack object will be instantiated and called as such:
 # obj = MyStack()
 # obj.push(x)

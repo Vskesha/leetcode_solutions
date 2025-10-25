@@ -16,6 +16,8 @@ class Solution:
         for i, j in zip(range(li), range(k, li)):
             ans += (ids[i] + 1) * (ids[j] - ids[j - 1])
         return ans
+
+
 class Solution2:
     def countSubarrays(self, nums: List[int], k: int) -> int:
         ans = 0

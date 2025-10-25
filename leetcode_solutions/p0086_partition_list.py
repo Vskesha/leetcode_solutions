@@ -41,9 +41,12 @@ class Solution2:
 
 def main():
     sol = Solution()
-    head = ListNode(1, ListNode(4, ListNode(3, ListNode(2, ListNode(5, ListNode(2, None))))))
+    head = ListNode(
+        1,
+        ListNode(4, ListNode(3, ListNode(2, ListNode(5, ListNode(2, None))))),
+    )
     sol.partition(head, 3)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

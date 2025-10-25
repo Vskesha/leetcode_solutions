@@ -6,7 +6,9 @@ from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
-    def getFinalState(self, nums: List[int], k: int, multiplier: int) -> List[int]:
+    def getFinalState(
+        self, nums: List[int], k: int, multiplier: int
+    ) -> List[int]:
         if multiplier == 1:
             return nums
 
@@ -48,7 +50,12 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
                 dict(nums=[1, 2, 5], k=1, multiplier=2),
                 dict(nums=[4, 2, 4], k=3, multiplier=2),
             ],
-            "expected": [[8, 4, 6, 5, 6], [999999307, 999999993], [2, 2, 5], [8, 8, 4]],
+            "expected": [
+                [8, 4, 6, 5, 6],
+                [999999307, 999999993],
+                [2, 2, 5],
+                [8, 8, 4],
+            ],
             "assert_methods": ["assertListEqual"] * 4,
         },
     ]

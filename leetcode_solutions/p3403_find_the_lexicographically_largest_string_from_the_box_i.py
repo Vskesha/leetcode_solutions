@@ -7,7 +7,9 @@ class Solution:
     def answerString(self, word: str, numFriends: int) -> str:
         k = len(word) - numFriends + 1
         return (
-            max(word[i : i + k] for i in range(len(word))) if numFriends > 1 else word
+            max(word[i : i + k] for i in range(len(word)))
+            if numFriends > 1
+            else word
         )
 
 

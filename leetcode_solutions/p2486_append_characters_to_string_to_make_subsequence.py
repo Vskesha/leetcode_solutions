@@ -32,7 +32,9 @@ class TestSolution(unittest.TestCase):
 
     def test_append_characters1(self):
         print("Test appendCharacters 1 ... ", end="")
-        self.assertEqual(self.sol.appendCharacters(s="coaching", t="coding"), 4)
+        self.assertEqual(
+            self.sol.appendCharacters(s="coaching", t="coding"), 4
+        )
         print("OK")
 
     def test_append_characters2(self):

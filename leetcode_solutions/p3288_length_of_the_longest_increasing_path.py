@@ -33,7 +33,9 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["maxPathLength"] * 2,
             "kwargs": [
-                dict(coordinates=[[3, 1], [2, 2], [4, 1], [0, 0], [5, 3]], k=1),
+                dict(
+                    coordinates=[[3, 1], [2, 2], [4, 1], [0, 0], [5, 3]], k=1
+                ),
                 dict(coordinates=[[2, 1], [7, 0], [5, 6]], k=2),
             ],
             "expected": [3, 2],

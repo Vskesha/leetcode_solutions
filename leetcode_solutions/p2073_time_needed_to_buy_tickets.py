@@ -5,7 +5,9 @@ from typing import List
 
 class Solution:
     def timeRequiredToBuy(self, tickets: List[int], k: int) -> int:
-        return sum(min(tickets[k] - (i > k), am) for i, am in enumerate(tickets))
+        return sum(
+            min(tickets[k] - (i > k), am) for i, am in enumerate(tickets)
+        )
 
 
 class Solution1:
@@ -50,7 +52,9 @@ class TestSolution(unittest.TestCase):
 
     def test_time_required_to_buy_2(self):
         print("Test timeRequiredToBuy 2... ", end="")
-        self.assertEqual(self.sol.timeRequiredToBuy(tickets=[5, 1, 1, 1], k=0), 8)
+        self.assertEqual(
+            self.sol.timeRequiredToBuy(tickets=[5, 1, 1, 1], k=0), 8
+        )
         print("OK")
 
 

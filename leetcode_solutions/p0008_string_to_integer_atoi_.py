@@ -27,7 +27,7 @@ class Solution:
         if not res[-1].isdigit():
             return 0
 
-        number = int(''.join(res))
+        number = int("".join(res))
 
         p2 = pow(2, 31)
         if number < -p2:
@@ -44,7 +44,7 @@ class Solution2:
         for ch in s:
             if ch.isdigit():
                 result.append(ch)
-            elif ch in '+-':
+            elif ch in "+-":
                 if result:
                     break
                 result.append(ch)
@@ -59,7 +59,7 @@ class Solution2:
         if not result[-1].isdigit():
             return 0
 
-        number = int(''.join(result))
+        number = int("".join(result))
 
         mn = pow(2, 31)
         if number < -mn:
@@ -71,12 +71,12 @@ class Solution2:
 
 class Solution3:
     def myAtoi(self, s: str) -> int:
-        sign = ''
-        number = ''
+        sign = ""
+        number = ""
         i, l = 0, len(s)
-        while i < l and s[i] == ' ':
+        while i < l and s[i] == " ":
             i += 1
-        if i < l and (s[i] == '+' or s[i] == '-'):
+        if i < l and (s[i] == "+" or s[i] == "-"):
             sign = s[i]
             i += 1
         while i < l and s[i].isnumeric():
@@ -86,10 +86,10 @@ class Solution3:
             x = int(sign + number)
         else:
             return 0
-        if x < - 2 ** 31:
-            return - 2 ** 31
-        if x > 2 ** 31 - 1:
-            return 2 ** 31 - 1
+        if x < -(2**31):
+            return -(2**31)
+        if x > 2**31 - 1:
+            return 2**31 - 1
         return x
 
 

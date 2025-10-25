@@ -28,7 +28,9 @@ class TestSolution(unittest.TestCase):
 
     def test_findPeakElement_2(self):
         print("Test findPeakElement 2... ", end="")
-        self.assertIn(self.sol.findPeakElement(nums=[1, 2, 1, 3, 5, 6, 4]), [1, 5])
+        self.assertIn(
+            self.sol.findPeakElement(nums=[1, 2, 1, 3, 5, 6, 4]), [1, 5]
+        )
         print("OK")
 
 

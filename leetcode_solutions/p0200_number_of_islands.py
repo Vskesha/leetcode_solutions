@@ -89,10 +89,18 @@ class Solution2:
                 if x and grid[y][x - 1] == "1" and not visited[y][x - 1]:
                     bfs.append((y, x - 1))
                     visited[y][x - 1] = True
-                if y < n - 1 and grid[y + 1][x] == "1" and not visited[y + 1][x]:
+                if (
+                    y < n - 1
+                    and grid[y + 1][x] == "1"
+                    and not visited[y + 1][x]
+                ):
                     bfs.append((y + 1, x))
                     visited[y + 1][x] = True
-                if x < m - 1 and grid[y][x + 1] == "1" and not visited[y][x + 1]:
+                if (
+                    x < m - 1
+                    and grid[y][x + 1] == "1"
+                    and not visited[y][x + 1]
+                ):
                     bfs.append((y, x + 1))
                     visited[y][x + 1] = True
 

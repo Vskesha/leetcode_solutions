@@ -10,7 +10,9 @@ class ListNode:
 
 # Reversing given lists and adding respecting nodes and forming new linked list from the end
 class Solution:
-    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+    def addTwoNumbers(
+        self, l1: Optional[ListNode], l2: Optional[ListNode]
+    ) -> Optional[ListNode]:
 
         def reverse(l_list: ListNode):
             cur, nxt = l_list, l_list.next
@@ -40,7 +42,9 @@ class Solution:
 
 # Solution through the transformation to int, addindg and transformation to linked list
 class Solution2:
-    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+    def addTwoNumbers(
+        self, l1: Optional[ListNode], l2: Optional[ListNode]
+    ) -> Optional[ListNode]:
         n1 = 0
         while l1:
             n1 = n1 * 10 + l1.val
@@ -63,5 +67,5 @@ def test():
     sol = Solution()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

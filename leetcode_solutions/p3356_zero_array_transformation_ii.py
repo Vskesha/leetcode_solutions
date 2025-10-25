@@ -40,7 +40,9 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["minZeroArray"] * 2,
             "kwargs": [
-                dict(nums=[2, 0, 2], queries=[[0, 2, 1], [0, 2, 1], [1, 1, 3]]),
+                dict(
+                    nums=[2, 0, 2], queries=[[0, 2, 1], [0, 2, 1], [1, 1, 3]]
+                ),
                 dict(nums=[4, 3, 2, 1], queries=[[1, 3, 2], [0, 2, 1]]),
             ],
             "expected": [2, -1],

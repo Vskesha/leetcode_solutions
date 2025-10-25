@@ -21,6 +21,7 @@ class Solution:
             ans = max([lans, rans, lsum + rsum + node.val])
             sum_ = max(0, node.val + max(lsum, rsum))
             return ans, sum_
+
         ret = dfs(root)[0]
         return ret
 
@@ -72,16 +73,16 @@ def test():
     sol = Solution()
     null = None
 
-    print('Test 1... ', end='')
+    print("Test 1... ", end="")
     root = [1, 2, 3]
     assert sol.maxPathSum(list_to_tree(root)) == 6
-    print('OK')
+    print("OK")
 
-    print('Test 2... ', end='')
+    print("Test 2... ", end="")
     root = [-10, 9, 20, null, null, 15, 7]
     assert sol.maxPathSum(list_to_tree(root)) == 42
-    print('OK')
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

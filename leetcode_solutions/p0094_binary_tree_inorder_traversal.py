@@ -48,7 +48,13 @@ def sol_decorator(cls):
 @sol_decorator
 class Solution:
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-        return self.inorderTraversal(root.left) + [root.val] + self.inorderTraversal(root.right) if root else []
+        return (
+            self.inorderTraversal(root.left)
+            + [root.val]
+            + self.inorderTraversal(root.right)
+            if root
+            else []
+        )
 
 
 @sol_decorator
@@ -92,6 +98,7 @@ class Solution3:
                 inorder(node.left)
                 ans.append(node.val)
                 inorder(node.right)
+
         ans = []
         inorder(root)
         return ans
@@ -101,18 +108,18 @@ def test():
     null = None
     sol = Solution()
 
-    print('Test 1... ', end='')
+    print("Test 1... ", end="")
     assert sol.inorderTraversal(root=[1, null, 2, 3]) == [1, 3, 2]
-    print('OK')
+    print("OK")
 
-    print('Test 2... ', end='')
+    print("Test 2... ", end="")
     assert sol.inorderTraversal(root=[]) == []
-    print('OK')
+    print("OK")
 
-    print('Test 3... ', end='')
+    print("Test 3... ", end="")
     assert sol.inorderTraversal(root=[1]) == [1]
-    print('OK')
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

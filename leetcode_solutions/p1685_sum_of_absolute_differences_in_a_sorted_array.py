@@ -49,14 +49,20 @@ class Solution3:
 def test():
     sol = Solution()
 
-    print('Test 1... ', end='')
+    print("Test 1... ", end="")
     assert sol.getSumAbsoluteDifferences(nums=[2, 3, 5]) == [4, 3, 5]
-    print('OK')
+    print("OK")
 
-    print('Test 2... ', end='')
-    assert sol.getSumAbsoluteDifferences(nums=[1, 4, 6, 8, 10]) == [24, 15, 13, 15, 21]
-    print('OK')
+    print("Test 2... ", end="")
+    assert sol.getSumAbsoluteDifferences(nums=[1, 4, 6, 8, 10]) == [
+        24,
+        15,
+        13,
+        15,
+        21,
+    ]
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

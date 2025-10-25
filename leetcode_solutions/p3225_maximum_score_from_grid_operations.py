@@ -37,8 +37,12 @@ class Solution1:
             if s == n - 1:
                 return 0
             if not u:
-                return max(d2(u, s, 0, c) + d1(not u, c) for c in range(s + 1, n))
-            return max(d2(u, s, n - 1, c - 1) + d1(not u, c) for c in range(s + 1, n))
+                return max(
+                    d2(u, s, 0, c) + d1(not u, c) for c in range(s + 1, n)
+                )
+            return max(
+                d2(u, s, n - 1, c - 1) + d1(not u, c) for c in range(s + 1, n)
+            )
 
         @lru_cache(1000)
         def d2(u: bool, s: int, r: int, c: int) -> int:
@@ -58,7 +62,10 @@ class Solution2:
         def peak(s: int) -> int:
             if s == n - 1:
                 return 0
-            return max(slope_down(s, n - 1, c - 1) + valley(c) for c in range(s + 1, n))
+            return max(
+                slope_down(s, n - 1, c - 1) + valley(c)
+                for c in range(s + 1, n)
+            )
 
         @lru_cache(1000)
         def valley(s: int) -> int:

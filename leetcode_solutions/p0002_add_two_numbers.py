@@ -3,7 +3,7 @@ from typing import List, Optional
 
 
 class ListNode:
-    def __init__(self, val=0, next_val=None):
+    def __init__(self, val=0, next_val=None) -> None:
         self.val = val
         self.next = next_val
 
@@ -70,7 +70,9 @@ class Solution:
 
 @SolutionDecorator
 class Solution2:
-    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+    def addTwoNumbers(
+        self, l1: Optional[ListNode], l2: Optional[ListNode]
+    ) -> Optional[ListNode]:
         ans = curr = ListNode()
         add = 0
 

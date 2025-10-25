@@ -88,7 +88,10 @@ class TestSolution(unittest.TestCase):
         self.assertEqual(
             13,
             self.sol.secondMinimum(
-                n=5, edges=[[1, 2], [1, 3], [1, 4], [3, 4], [4, 5]], time=3, change=5
+                n=5,
+                edges=[[1, 2], [1, 3], [1, 4], [3, 4], [4, 5]],
+                time=3,
+                change=5,
             ),
         )
         print("OK")

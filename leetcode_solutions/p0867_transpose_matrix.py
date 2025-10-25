@@ -3,7 +3,10 @@ from typing import List
 
 class Solution:
     def transpose(self, matrix: List[List[int]]) -> List[List[int]]:
-        return [[matrix[i][j] for i in range(len(matrix))] for j in range(len(matrix[0]))]
+        return [
+            [matrix[i][j] for i in range(len(matrix))]
+            for j in range(len(matrix[0]))
+        ]
 
 
 class Solution1:
@@ -26,18 +29,21 @@ class Solution2:
 def test():
     sol = Solution()
 
-    print('Test 1... ', end='')
-    for a, b in zip(sol.transpose(matrix=[[1, 2, 3], [4, 5, 6], [7, 8, 9]]),
-                    [[1, 4, 7], [2, 5, 8], [3, 6, 9]]):
+    print("Test 1... ", end="")
+    for a, b in zip(
+        sol.transpose(matrix=[[1, 2, 3], [4, 5, 6], [7, 8, 9]]),
+        [[1, 4, 7], [2, 5, 8], [3, 6, 9]],
+    ):
         assert a == b
-    print('OK')
+    print("OK")
 
-    print('Test 2... ', end='')
-    for a, b in zip(sol.transpose(matrix=[[1, 2, 3], [4, 5, 6]]),
-                    [[1, 4], [2, 5], [3, 6]]):
+    print("Test 2... ", end="")
+    for a, b in zip(
+        sol.transpose(matrix=[[1, 2, 3], [4, 5, 6]]), [[1, 4], [2, 5], [3, 6]]
+    ):
         assert a == b
-    print('OK')
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

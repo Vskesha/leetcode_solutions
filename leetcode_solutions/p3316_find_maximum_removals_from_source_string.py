@@ -7,7 +7,9 @@ from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
-    def maxRemovals(self, source: str, pattern: str, targetIndices: List[int]) -> int:
+    def maxRemovals(
+        self, source: str, pattern: str, targetIndices: List[int]
+    ) -> int:
         ti = set(targetIndices)
         ls, lp = len(source), len(pattern)
 
@@ -27,7 +29,9 @@ class Solution:
 
 
 class Solution1:
-    def maxRemovals(self, source: str, pattern: str, targetIndices: List[int]) -> int:
+    def maxRemovals(
+        self, source: str, pattern: str, targetIndices: List[int]
+    ) -> int:
         ti = set(targetIndices)
         ls, lp = len(source), len(pattern)
 
@@ -48,7 +52,9 @@ class Solution1:
 
 
 class Solution2:
-    def maxRemovals(self, source: str, pattern: str, targetIndices: List[int]) -> int:
+    def maxRemovals(
+        self, source: str, pattern: str, targetIndices: List[int]
+    ) -> int:
         ti = set(targetIndices)
         ls, lp = len(source), len(pattern)
 
@@ -71,7 +77,9 @@ class Solution2:
 
 
 class Solution3:
-    def maxRemovals(self, source: str, pattern: str, targetIndices: List[int]) -> int:
+    def maxRemovals(
+        self, source: str, pattern: str, targetIndices: List[int]
+    ) -> int:
         ti = set(targetIndices)
         ls, lp = len(source), len(pattern)
 
@@ -108,7 +116,11 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
                 dict(source="abbaa", pattern="aba", targetIndices=[0, 1, 2]),
                 dict(source="bcda", pattern="d", targetIndices=[0, 3]),
                 dict(source="dda", pattern="dda", targetIndices=[0, 1, 2]),
-                dict(source="yeyeykyded", pattern="yeyyd", targetIndices=[0, 2, 3, 4]),
+                dict(
+                    source="yeyeykyded",
+                    pattern="yeyyd",
+                    targetIndices=[0, 2, 3, 4],
+                ),
             ],
             "expected": [1, 2, 0, 2],
         },

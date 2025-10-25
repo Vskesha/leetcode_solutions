@@ -30,13 +30,13 @@ class Solution2:
 
 def main():
     sol = Solution()
-    print('Test 1 ... ', end='')
+    print("Test 1 ... ", end="")
     assert sol.canPartition(nums=[1, 5, 11, 5]) is True
-    print('ok')
-    print('Test 2 ... ', end='')
+    print("ok")
+    print("Test 2 ... ", end="")
     assert sol.canPartition(nums=[1, 2, 3, 5]) is False
-    print('ok')
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

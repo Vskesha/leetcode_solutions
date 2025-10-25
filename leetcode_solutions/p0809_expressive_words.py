@@ -14,7 +14,11 @@ class Solution:
                 return False
 
             for a, b in zip(lw1, ls):
-                if (a[0] != b[0]) or (len(a) > len(b)) or (len(a) == 1 and len(b) == 2):
+                if (
+                    (a[0] != b[0])
+                    or (len(a) > len(b))
+                    or (len(a) == 1 and len(b) == 2)
+                ):
                     return False
 
             return True
@@ -32,7 +36,11 @@ class Solution2:
                 return False
 
             for a, b in zip(lw1, lw2):
-                if (a[0] != b[0]) or (len(a) > len(b)) or (len(a) == 1 and len(b) == 2):
+                if (
+                    (a[0] != b[0])
+                    or (len(a) > len(b))
+                    or (len(a) == 1 and len(b) == 2)
+                ):
                     return False
 
             return True
@@ -48,14 +56,20 @@ class TestSolution(unittest.TestCase):
     def test_expressive_words_1(self):
         print("Test expressiveWords 1... ", end="")
         self.assertEqual(
-            self.sol.expressiveWords(s="heeellooo", words=["hello", "hi", "helo"]), 1
+            self.sol.expressiveWords(
+                s="heeellooo", words=["hello", "hi", "helo"]
+            ),
+            1,
         )
         print("OK")
 
     def test_expressive_words_2(self):
         print("Test expressiveWords 2... ", end="")
         self.assertEqual(
-            self.sol.expressiveWords(s="zzzzzyyyyy", words=["zzyy", "zy", "zyy"]), 3
+            self.sol.expressiveWords(
+                s="zzzzzyyyyy", words=["zzyy", "zy", "zyy"]
+            ),
+            3,
         )
         print("OK")
 

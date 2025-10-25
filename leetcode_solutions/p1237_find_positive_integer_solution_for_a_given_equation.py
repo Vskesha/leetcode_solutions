@@ -36,14 +36,18 @@ def sol_decorator(cls):
 
         def findSolution(self, function_id: int, z: int) -> List[List[int]]:
             custom_function = CustomFunction(function_id)
-            return self.original.findSolution(customfunction=custom_function, z=z)
+            return self.original.findSolution(
+                customfunction=custom_function, z=z
+            )
 
     return Wrapper
 
 
 @sol_decorator
 class Solution:
-    def findSolution(self, customfunction: "CustomFunction", z: int) -> List[List[int]]:
+    def findSolution(
+        self, customfunction: "CustomFunction", z: int
+    ) -> List[List[int]]:
         x = 1
         y = z
         res = []
@@ -64,7 +68,11 @@ def test_find_solution():
     sol = Solution()
 
     print("Test 1 ... ", end="")
-    assert sol.findSolution(function_id=1, z=4) == [[1, 3], [2, 2], [3, 1]]  # noqa
+    assert sol.findSolution(function_id=1, z=4) == [
+        [1, 3],
+        [2, 2],
+        [3, 1],
+    ]  # noqa
     print("OK")
 
     print("Test 2 ... ", end="")
@@ -72,19 +80,35 @@ def test_find_solution():
     print("OK")
 
     print("Test 3 ... ", end="")
-    assert sol.findSolution(function_id=3, z=10) == [[1, 9], [2, 6], [3, 1]]  # noqa
+    assert sol.findSolution(function_id=3, z=10) == [
+        [1, 9],
+        [2, 6],
+        [3, 1],
+    ]  # noqa
     print("OK")
 
     print("Test 4 ... ", end="")
-    assert sol.findSolution(function_id=4, z=10) == [[1, 3], [6, 2], [9, 1]]  # noqa
+    assert sol.findSolution(function_id=4, z=10) == [
+        [1, 3],
+        [6, 2],
+        [9, 1],
+    ]  # noqa
     print("OK")
 
     print("Test 5 ... ", end="")
-    assert sol.findSolution(function_id=5, z=50) == [[1, 7], [5, 5], [7, 1]]  # noqa
+    assert sol.findSolution(function_id=5, z=50) == [
+        [1, 7],
+        [5, 5],
+        [7, 1],
+    ]  # noqa
     print("OK")
 
     print("Test 6 ... ", end="")
-    assert sol.findSolution(function_id=6, z=16) == [[1, 3], [2, 2], [3, 1]]  # noqa
+    assert sol.findSolution(function_id=6, z=16) == [
+        [1, 3],
+        [2, 2],
+        [3, 1],
+    ]  # noqa
     print("OK")
 
     print("Test 7 ... ", end="")
@@ -92,11 +116,19 @@ def test_find_solution():
     print("OK")
 
     print("Test 8 ... ", end="")
-    assert sol.findSolution(function_id=8, z=32) == [[1, 32], [2, 8], [4, 2]]  # noqa
+    assert sol.findSolution(function_id=8, z=32) == [
+        [1, 32],
+        [2, 8],
+        [4, 2],
+    ]  # noqa
     print("OK")
 
     print("Test 9 ... ", end="")
-    assert sol.findSolution(function_id=9, z=32) == [[2, 4], [8, 2], [32, 1]]  # noqa
+    assert sol.findSolution(function_id=9, z=32) == [
+        [2, 4],
+        [8, 2],
+        [32, 1],
+    ]  # noqa
     print("OK")
 
 

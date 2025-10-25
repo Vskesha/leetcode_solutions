@@ -2,7 +2,9 @@ from typing import List
 
 
 class Solution:
-    def validateStackSequences(self, pushed: List[int], popped: List[int]) -> bool:
+    def validateStackSequences(
+        self, pushed: List[int], popped: List[int]
+    ) -> bool:
         stack = []
         i = 0
         for n in popped:
@@ -20,7 +22,9 @@ class Solution:
 
 
 class Solution1:
-    def validateStackSequences(self, pushed: List[int], popped: List[int]) -> bool:
+    def validateStackSequences(
+        self, pushed: List[int], popped: List[int]
+    ) -> bool:
         stack = []
         lp = len(pushed)
         i = 0
@@ -38,7 +42,9 @@ class Solution1:
 
 
 class Solution2:
-    def validateStackSequences(self, pushed: List[int], popped: List[int]) -> bool:
+    def validateStackSequences(
+        self, pushed: List[int], popped: List[int]
+    ) -> bool:
         stack = []
         lp = len(pushed)
         i = j = 0
@@ -55,7 +61,9 @@ class Solution2:
 
 
 class Solution3:
-    def validateStackSequences(self, pushed: List[int], popped: List[int]) -> bool:
+    def validateStackSequences(
+        self, pushed: List[int], popped: List[int]
+    ) -> bool:
         stack = []
         j = 0
         for x in pushed:
@@ -71,14 +79,18 @@ def test():
 
     print("Test 1... ", end="")
     assert (
-        sol.validateStackSequences(pushed=[1, 2, 3, 4, 5], popped=[4, 5, 3, 2, 1])
+        sol.validateStackSequences(
+            pushed=[1, 2, 3, 4, 5], popped=[4, 5, 3, 2, 1]
+        )
         is True
     )
     print("OK")
 
     print("Test 2... ", end="")
     assert (
-        sol.validateStackSequences(pushed=[1, 2, 3, 4, 5], popped=[4, 3, 5, 1, 2])
+        sol.validateStackSequences(
+            pushed=[1, 2, 3, 4, 5], popped=[4, 3, 5, 1, 2]
+        )
         is False
     )
     print("OK")

@@ -8,7 +8,9 @@ from leetcode_solutions._test_meta import TestMeta
 class Solution:
     def countSubarrays(self, nums: List[int], minK: int, maxK: int) -> int:
         if minK == maxK:
-            groups = (sum(1 for _ in gr) for k, gr in groupby(nums) if k == minK)
+            groups = (
+                sum(1 for _ in gr) for k, gr in groupby(nums) if k == minK
+            )
             return sum(n * (n + 1) // 2 for n in groups)
 
         sti = eni = mni = mxi = -1
@@ -31,7 +33,9 @@ class Solution:
 class Solution1:
     def countSubarrays(self, nums: List[int], minK: int, maxK: int) -> int:
         if minK == maxK:
-            groups = (sum(1 for _ in gr) for k, gr in groupby(nums) if k == minK)
+            groups = (
+                sum(1 for _ in gr) for k, gr in groupby(nums) if k == minK
+            )
             return sum(n * (n + 1) // 2 for n in groups)
 
         sti = mni = mxi = -1

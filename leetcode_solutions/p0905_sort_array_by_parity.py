@@ -5,14 +5,18 @@ class Solution:
     def sortArrayByParity(self, nums: List[int]) -> List[int]:
         even, odd = [], []
         for n in nums:
-            if n % 2:   odd.append(n)
-            else:       even.append(n)
+            if n % 2:
+                odd.append(n)
+            else:
+                even.append(n)
         return even + odd
 
 
 class Solution1:
     def sortArrayByParity(self, nums: List[int]) -> List[int]:
-        return [x for x in nums if x % 2 == 0] + [x for x in nums if x % 2 == 1]
+        return [x for x in nums if x % 2 == 0] + [
+            x for x in nums if x % 2 == 1
+        ]
 
 
 class Solution2:
@@ -55,12 +59,12 @@ def prove(solution: Solution, nums: List[int]):
 
 def test():
     sol = Solution()
-    print('Test 1 ... ', end='')
+    print("Test 1 ... ", end="")
     assert prove(sol, nums=[3, 1, 2, 4])
-    print('ok\nTest 2 ... ', end='')
+    print("ok\nTest 2 ... ", end="")
     assert prove(sol, nums=[0])
-    print('ok')
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

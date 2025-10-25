@@ -19,12 +19,16 @@ class DisjointSet:
         if root1 != root2:
             self.root[root2[0]][root2[1]] = root1
 
-    def connected(self, cell1: tuple[int, int], cell2: tuple[int, int]) -> bool:
+    def connected(
+        self, cell1: tuple[int, int], cell2: tuple[int, int]
+    ) -> bool:
         return self.find(cell1) == self.find(cell2)
 
 
 class Solution:
-    def latestDayToCross(self, row: int, col: int, cells: List[List[int]]) -> int:
+    def latestDayToCross(
+        self, row: int, col: int, cells: List[List[int]]
+    ) -> int:
         ds = DisjointSet(row + 2, col + 2)
         water = set()
         directions = [(r, c) for r in (0, -1, 1) for c in (0, -1, 1)][1:]
@@ -47,7 +51,9 @@ class Solution:
 
 
 class Solution2:
-    def latestDayToCross(self, row: int, col: int, cells: List[List[int]]) -> int:
+    def latestDayToCross(
+        self, row: int, col: int, cells: List[List[int]]
+    ) -> int:
         self.root = [[0] * (col + 2) for _ in range(row + 2)]
 
         self.root[0][0] = (0, 0)

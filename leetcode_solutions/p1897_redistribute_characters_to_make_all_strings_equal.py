@@ -18,7 +18,9 @@ class Solution:
 
 class Solution2:
     def makeEqual(self, words: List[str]) -> bool:
-        return all(c % len(words) == 0 for c in Counter(chain(*words)).values())
+        return all(
+            c % len(words) == 0 for c in Counter(chain(*words)).values()
+        )
 
 
 def test():

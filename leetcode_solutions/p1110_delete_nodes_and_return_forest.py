@@ -18,7 +18,11 @@ class Solution:
     def delNodes(
         self, root: Optional[TreeNode], to_delete: List[int]
     ) -> List[TreeNode]:
-        def dfs(node: Optional[TreeNode], trees: List[TreeNode], to_delete: set[int]):
+        def dfs(
+            node: Optional[TreeNode],
+            trees: List[TreeNode],
+            to_delete: set[int],
+        ):
             if node.left:
                 node.left = dfs(node.left, trees, to_delete)
             if node.right:
@@ -132,7 +136,9 @@ class TestSolution(unittest.TestCase):
             ans.pop()
         return ans
 
-    def assertTreesEqual(self, trees1: List[List[int]], trees2: List[TreeNode]):
+    def assertTreesEqual(
+        self, trees1: List[List[int]], trees2: List[TreeNode]
+    ):
         self.assertEqual(len(trees1), len(trees2))
         trees1 = set(map(tuple, trees1))
         trees2 = set(tuple(self.tree_to_list(t)) for t in trees2)

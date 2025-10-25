@@ -51,7 +51,7 @@ class Solution2:
 
         for length in range(1, n + 1):
             for perm in permutations(tiles, length):
-                result.add(''.join(perm))
+                result.add("".join(perm))
 
         return len(result)
 

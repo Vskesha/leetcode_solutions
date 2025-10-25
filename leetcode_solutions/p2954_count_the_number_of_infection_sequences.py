@@ -7,13 +7,13 @@ from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
-    mod = 10 ** 9 + 7
+    mod = 10**9 + 7
     f = [1] * 100001
     for i in range(1, 100001):
         f[i] = f[i - 1] * i % mod
 
     def numberOfSequence(self, n: int, sick: List[int]) -> int:
-        mod = 10 ** 9 + 7
+        mod = 10**9 + 7
         f = Solution.f
         tc = f[n - len(sick)] * pow(f[sick[0]], -1, mod) % mod
 
@@ -26,7 +26,7 @@ class Solution:
 
 
 class Solution1:
-    MOD = 10 ** 9 + 7
+    MOD = 10**9 + 7
 
     @staticmethod
     @cache
@@ -37,18 +37,31 @@ class Solution1:
 
     def numberOfSequence(self, n: int, sick: List[int]) -> int:
 
-        tc = Solution.factorial(n - len(sick)) * pow(Solution.factorial(sick[0]), -1, Solution.MOD) % Solution.MOD
+        tc = (
+            Solution.factorial(n - len(sick))
+            * pow(Solution.factorial(sick[0]), -1, Solution.MOD)
+            % Solution.MOD
+        )
 
         for a, b in pairwise(sick):
             gh = b - a - 1
             if gh:
-                tc = tc * pow(Solution.factorial(gh), -1, Solution.MOD) * pow(2, gh - 1, Solution.MOD) % Solution.MOD
+                tc = (
+                    tc
+                    * pow(Solution.factorial(gh), -1, Solution.MOD)
+                    * pow(2, gh - 1, Solution.MOD)
+                    % Solution.MOD
+                )
 
-        return tc * pow(Solution.factorial(n - sick[-1] - 1), -1, Solution.MOD) % Solution.MOD
+        return (
+            tc
+            * pow(Solution.factorial(n - sick[-1] - 1), -1, Solution.MOD)
+            % Solution.MOD
+        )
 
 
 class Solution2:
-    MOD = 10 ** 9 + 7
+    MOD = 10**9 + 7
 
     @staticmethod
     @cache
@@ -80,7 +93,7 @@ class Solution2:
 
 
 class Solution3:
-    MOD = 10 ** 9 + 7
+    MOD = 10**9 + 7
 
     @staticmethod
     @cache

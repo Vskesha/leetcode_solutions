@@ -22,14 +22,15 @@ class Solution:
 
         return mxn - int(snum)
 
+
 class TestSolution(unittest.TestCase, metaclass=TestMeta):
     test_cases = [
         {
             "class": Solution,
             "class_methods": ["maxDiff"] * 3,
             "kwargs": [
-                dict(num = 555),
-                dict(num = 9),
+                dict(num=555),
+                dict(num=9),
                 dict(num=123456),
             ],
             "expected": [888, 8, 820000],
@@ -39,4 +40,3 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
 
 if __name__ == "__main__":
     unittest.main()
-

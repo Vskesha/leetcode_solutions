@@ -15,7 +15,9 @@ class TreeNode:
 
 
 class Solution:
-    def createBinaryTree(self, descriptions: List[List[int]]) -> Optional[TreeNode]:
+    def createBinaryTree(
+        self, descriptions: List[List[int]]
+    ) -> Optional[TreeNode]:
         nodes = {}
         parents = {}
 
@@ -65,7 +67,9 @@ class TestSolution(unittest.TestCase):
 
         return root
 
-    def assertEqualTrees(self, tree1: Optional[TreeNode], tree2: Optional[TreeNode]):
+    def assertEqualTrees(
+        self, tree1: Optional[TreeNode], tree2: Optional[TreeNode]
+    ):
         def dfs_equal_trees(
             node1: Optional[TreeNode], node2: Optional[TreeNode]
         ) -> bool:

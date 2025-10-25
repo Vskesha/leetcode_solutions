@@ -59,7 +59,10 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class_methods": ["mincostTickets"] * 2,
             "kwargs": [
                 dict(days=[1, 4, 6, 7, 8, 20], costs=[2, 7, 15]),
-                dict(days=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 30, 31], costs=[2, 7, 15]),
+                dict(
+                    days=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 30, 31],
+                    costs=[2, 7, 15],
+                ),
             ],
             "expected": [11, 17],
         },

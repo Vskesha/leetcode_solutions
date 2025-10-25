@@ -34,7 +34,9 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
 
     def assertSameIntervals(self, iv1: List[List[int]], iv2: List[List[int]]):
         self.assertEqual(len(iv1), len(iv2))
-        self.assertSetEqual(set(tuple(iv) for iv in iv1), set(tuple(iv) for iv in iv2))
+        self.assertSetEqual(
+            set(tuple(iv) for iv in iv1), set(tuple(iv) for iv in iv2)
+        )
 
 
 if __name__ == "__main__":

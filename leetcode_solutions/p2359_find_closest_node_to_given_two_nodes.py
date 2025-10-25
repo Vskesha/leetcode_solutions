@@ -5,7 +5,9 @@ from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
-    def closestMeetingNode(self, edges: List[int], node1: int, node2: int) -> int:
+    def closestMeetingNode(
+        self, edges: List[int], node1: int, node2: int
+    ) -> int:
         seen1, seen2 = set(), set()
         edges.append(-1)
 
@@ -37,7 +39,9 @@ class Solution:
 
 
 class Solution2:
-    def closestMeetingNode(self, edges: List[int], node1: int, node2: int) -> int:
+    def closestMeetingNode(
+        self, edges: List[int], node1: int, node2: int
+    ) -> int:
         edges.append(-1)
         seen1, seen2 = set(), set()
 

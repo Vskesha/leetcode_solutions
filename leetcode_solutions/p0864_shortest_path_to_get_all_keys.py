@@ -115,7 +115,7 @@ class TestSolution(unittest.TestCase):
     def test_shortest_path_all_keys_4(self):
         print("Test shortestPathAllKeys 4... ", end="")
         self.assertEqual(
-            self.sol.shortestPathAllKeys(grid=["@...a",".###A","b.BCc"]), 10
+            self.sol.shortestPathAllKeys(grid=["@...a", ".###A", "b.BCc"]), 10
         )
         print("OK")
 

@@ -17,7 +17,9 @@ class Solution:
 class Solution0:
     def minimumDeletions(self, s: str) -> int:
         acca = list(accumulate(1 if c == "a" else 0 for c in s))
-        return min(0, min(i + 1 - ca * 2 for i, ca in enumerate(acca))) + acca[-1]
+        return (
+            min(0, min(i + 1 - ca * 2 for i, ca in enumerate(acca))) + acca[-1]
+        )
 
 
 class Solution1:

@@ -7,7 +7,7 @@ from leetcode_solutions._test_meta import TestMeta
 
 class Solution:
     def findDifferentBinaryString(self, nums: List[str]) -> str:
-        return ''.join('1' if n[i] == '0' else '0' for i, n in enumerate(nums))
+        return "".join("1" if n[i] == "0" else "0" for i, n in enumerate(nums))
 
 
 class Solution2:
@@ -17,6 +17,7 @@ class Solution2:
             ans.append("1" if n[i] == "0" else "0")
 
         return "".join(ans)
+
 
 class TestSolution(unittest.TestCase, metaclass=TestMeta):
 
@@ -32,12 +33,12 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["findDifferentBinaryString"] * 3,
             "kwargs": [
-                dict(nums = ["01","10"]),
-                dict(nums = ["00","01"]),
-                dict(nums = ["111","011","001"]),
+                dict(nums=["01", "10"]),
+                dict(nums=["00", "01"]),
+                dict(nums=["111", "011", "001"]),
             ],
             "expected": [
-                expected_for(["01","10"]),
+                expected_for(["01", "10"]),
                 expected_for(["00", "01"]),
                 expected_for(["111", "011", "001"]),
             ],

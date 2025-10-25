@@ -21,9 +21,9 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["zeroFilledSubarray"] * 3,
             "kwargs": [
-                dict(nums = [1,3,0,0,2,0,0,4]),
-                dict(nums = [0,0,0,2,0,0]),
-                dict(nums = [2,10,2019]),
+                dict(nums=[1, 3, 0, 0, 2, 0, 0, 4]),
+                dict(nums=[0, 0, 0, 2, 0, 0]),
+                dict(nums=[2, 10, 2019]),
             ],
             "expected": [6, 9, 0],
         },

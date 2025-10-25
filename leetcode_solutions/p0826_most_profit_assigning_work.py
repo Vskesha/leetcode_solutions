@@ -4,7 +4,9 @@ from typing import List
 
 
 class Solution:
-    def maxProfitAssignment(self, difficulty: List[int], profit: List[int], worker: List[int]) -> int:
+    def maxProfitAssignment(
+        self, difficulty: List[int], profit: List[int], worker: List[int]
+    ) -> int:
         dp = sorted(zip(difficulty, profit))
         dpi = ans = maxpr = 0
 
@@ -37,7 +39,9 @@ class TestSolution(unittest.TestCase):
         print("Test maxProfitAssignment 2... ", end="")
         self.assertEqual(
             self.sol.maxProfitAssignment(
-                difficulty=[85, 47, 57], profit=[24, 66, 99], worker=[40, 25, 25]
+                difficulty=[85, 47, 57],
+                profit=[24, 66, 99],
+                worker=[40, 25, 25],
             ),
             0,
         )

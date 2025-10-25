@@ -34,9 +34,10 @@ def add_test(i):
         print(f"Test {i}... ", end="")
         self.assertEqual(
             getattr(self.sa, self.commands[i])(*self.arguments[i]),
-            self.expected[i]
+            self.expected[i],
         )
         print("OK")
+
     return test_case
 
 

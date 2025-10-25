@@ -23,7 +23,9 @@ def sol_decorator(cls):
         def __init__(self, *args, **kwargs):
             self.original = cls(*args, **kwargs)
 
-        def removeNthFromEnd(self, head: Optional[List], n: int) -> Optional[ListNode]:
+        def removeNthFromEnd(
+            self, head: Optional[List], n: int
+        ) -> Optional[ListNode]:
             head = self.arr2linkedlist(head)
             return self.original.removeNthFromEnd(head, n)
             # deleted = self.original.removeNthFromEnd(head, n)
@@ -37,7 +39,9 @@ def sol_decorator(cls):
                 nxt = head
             return head
 
-        def linkedlist2arr(self, head: Optional[ListNode]) -> Optional[List[int]]:
+        def linkedlist2arr(
+            self, head: Optional[ListNode]
+        ) -> Optional[List[int]]:
             arr = []
             while head:
                 arr.append(head.val)
@@ -48,7 +52,9 @@ def sol_decorator(cls):
 
 
 class Solution:
-    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+    def removeNthFromEnd(
+        self, head: Optional[ListNode], n: int
+    ) -> Optional[ListNode]:
         fast = slow = head
 
         for _ in range(n):
@@ -66,7 +72,9 @@ class Solution:
 
 
 class Solution2:
-    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+    def removeNthFromEnd(
+        self, head: Optional[ListNode], n: int
+    ) -> Optional[ListNode]:
         current = head
         length = 0
         while current:
@@ -82,7 +90,9 @@ class Solution2:
 
 
 class Solution3:
-    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+    def removeNthFromEnd(
+        self, head: Optional[ListNode], n: int
+    ) -> Optional[ListNode]:
         fast = slow = head
 
         for _ in range(n):
@@ -103,9 +113,9 @@ def test_remove_nth_from_end():
     sol = sol_decorator(Solution)()
 
     print("Test 1... ", end="")
-    assert sol.removeNthFromEnd(head=[1, 2, 3, 4, 5], n=2) == sol.arr2linkedlist(
-        [1, 2, 3, 5]
-    )
+    assert sol.removeNthFromEnd(
+        head=[1, 2, 3, 4, 5], n=2
+    ) == sol.arr2linkedlist([1, 2, 3, 5])
     print("OK")
 
     print("Test 2... ", end="")

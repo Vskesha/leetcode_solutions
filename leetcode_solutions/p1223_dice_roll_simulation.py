@@ -48,17 +48,23 @@ class TestSolution(unittest.TestCase):
 
     def test_die_simulator_1(self):
         print("Test dieSimulator 1... ", end="")
-        self.assertEqual(self.sol.dieSimulator(n=2, rollMax=[1, 1, 2, 2, 3, 3]), 34)
+        self.assertEqual(
+            self.sol.dieSimulator(n=2, rollMax=[1, 1, 2, 2, 3, 3]), 34
+        )
         print("OK")
 
     def test_die_simulator_2(self):
         print("Test dieSimulator 2... ", end="")
-        self.assertEqual(self.sol.dieSimulator(n=2, rollMax=[1, 1, 1, 1, 1, 1]), 30)
+        self.assertEqual(
+            self.sol.dieSimulator(n=2, rollMax=[1, 1, 1, 1, 1, 1]), 30
+        )
         print("OK")
 
     def test_die_simulator_3(self):
         print("Test dieSimulator 3... ", end="")
-        self.assertEqual(self.sol.dieSimulator(n=3, rollMax=[1, 1, 1, 2, 2, 3]), 181)
+        self.assertEqual(
+            self.sol.dieSimulator(n=3, rollMax=[1, 1, 1, 2, 2, 3]), 181
+        )
         print("OK")
 
 

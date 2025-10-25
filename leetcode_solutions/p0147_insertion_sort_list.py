@@ -16,7 +16,9 @@ class ListNode:
 
 
 class Solution:
-    def insertionSortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    def insertionSortList(
+        self, head: Optional[ListNode]
+    ) -> Optional[ListNode]:
         dummy = ListNode()
 
         while head:
@@ -33,7 +35,9 @@ class Solution:
 
 
 class Solution1:
-    def insertionSortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    def insertionSortList(
+        self, head: Optional[ListNode]
+    ) -> Optional[ListNode]:
         dummy = ListNode()
 
         while head:
@@ -46,7 +50,9 @@ class Solution1:
 
 
 class Solution2:
-    def insertionSortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    def insertionSortList(
+        self, head: Optional[ListNode]
+    ) -> Optional[ListNode]:
         if not head or not head.next:
             return head
         nodes = []
@@ -63,7 +69,9 @@ class Solution2:
 
 
 class Solution3:
-    def insertionSortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    def insertionSortList(
+        self, head: Optional[ListNode]
+    ) -> Optional[ListNode]:
         values = []
         while head:
             values.append(head.val)

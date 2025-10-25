@@ -1,6 +1,6 @@
 class Solution:
     def kthGrammar(self, n: int, k: int) -> int:
-        return bin(k-1).count('1') % 2
+        return bin(k - 1).count("1") % 2
 
 
 class Solution1:
@@ -28,18 +28,18 @@ class Solution2:
 def test():
     sol = Solution()
 
-    print('Test 1 ... ', end='')
+    print("Test 1 ... ", end="")
     assert sol.kthGrammar(n=1, k=1) == 0
-    print('ok')
+    print("ok")
 
-    print('Test 2 ... ', end='')
+    print("Test 2 ... ", end="")
     assert sol.kthGrammar(n=2, k=1) == 0
-    print('ok')
+    print("ok")
 
-    print('Test 3 ... ', end='')
+    print("Test 3 ... ", end="")
     assert sol.kthGrammar(n=2, k=2) == 1
-    print('ok')
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

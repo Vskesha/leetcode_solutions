@@ -18,18 +18,18 @@ class Solution:
 def test():
     sol = Solution()
 
-    print('Test 1... ', end='')
+    print("Test 1... ", end="")
     assert sol.peakIndexInMountainArray(arr=[0, 1, 0]) == 1
-    print('OK')
+    print("OK")
 
-    print('Test 2... ', end='')
+    print("Test 2... ", end="")
     assert sol.peakIndexInMountainArray(arr=[0, 2, 1, 0]) == 1
-    print('OK')
+    print("OK")
 
-    print('Test 3... ', end='')
+    print("Test 3... ", end="")
     assert sol.peakIndexInMountainArray(arr=[0, 10, 5, 2]) == 1
-    print('OK')
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

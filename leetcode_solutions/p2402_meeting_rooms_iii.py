@@ -50,12 +50,19 @@ def test():
     print("OK")
 
     print("Test 2... ", end="")
-    assert sol.mostBooked(n=3, meetings=[[1, 20], [2, 10], [3, 5], [4, 9], [6, 8]]) == 1
+    assert (
+        sol.mostBooked(
+            n=3, meetings=[[1, 20], [2, 10], [3, 5], [4, 9], [6, 8]]
+        )
+        == 1
+    )
     print("OK")
 
     print("Test 3... ", end="")
     assert (
-        sol.mostBooked(n=4, meetings=[[18, 19], [3, 12], [17, 19], [2, 13], [7, 10]])
+        sol.mostBooked(
+            n=4, meetings=[[18, 19], [3, 12], [17, 19], [2, 13], [7, 10]]
+        )
         == 0
     )
     print("OK")

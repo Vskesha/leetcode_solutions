@@ -6,10 +6,14 @@ from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
-    def vowelStrings(self, words: List[str], queries: List[List[int]]) -> List[int]:
+    def vowelStrings(
+        self, words: List[str], queries: List[List[int]]
+    ) -> List[int]:
         vw = {"a", "e", "i", "o", "u"}
         acc = list(
-            accumulate([int(w[0] in vw and w[-1] in vw) for w in words], initial=0)
+            accumulate(
+                [int(w[0] in vw and w[-1] in vw) for w in words], initial=0
+            )
         )
         return [acc[ri + 1] - acc[li] for li, ri in queries]
 

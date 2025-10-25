@@ -6,7 +6,9 @@ from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
-    def findThePrefixCommonArray(self, A: List[int], B: List[int]) -> List[int]:
+    def findThePrefixCommonArray(
+        self, A: List[int], B: List[int]
+    ) -> List[int]:
         seen = set()
         tot = 0
         ans = []
@@ -25,7 +27,9 @@ class Solution:
 
 
 class Solution2:
-    def findThePrefixCommonArray(self, A: List[int], B: List[int]) -> List[int]:
+    def findThePrefixCommonArray(
+        self, A: List[int], B: List[int]
+    ) -> List[int]:
         seen = set()
 
         def add(n):

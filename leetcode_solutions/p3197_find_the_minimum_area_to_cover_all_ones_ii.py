@@ -59,12 +59,16 @@ class Solution2:
         def min_area_vertical_split(l, r, t, b):
             if l == r:
                 return area(l, r, t, b) + 1
-            return min(area(l, j, t, b) + area(j + 1, r, t, b) for j in range(l, r))
+            return min(
+                area(l, j, t, b) + area(j + 1, r, t, b) for j in range(l, r)
+            )
 
         def min_area_horizontal_split(l, r, t, b):
             if t == b:
                 return area(l, r, t, b) + 1
-            return min(area(l, r, t, i) + area(l, r, i + 1, b) for i in range(t, b))
+            return min(
+                area(l, r, t, i) + area(l, r, i + 1, b) for i in range(t, b)
+            )
 
         l, r, t, b = shrink(0, len(grid[0]) - 1, 0, len(grid) - 1)
         sq = float("inf")
@@ -102,13 +106,18 @@ class TestSolution(unittest.TestCase):
 
     def test_minimum_sum_2(self):
         print("Test minimumSum 2... ", end="")
-        self.assertEqual(self.sol.minimumSum(grid=[[1, 0, 1, 0], [0, 1, 0, 1]]), 5)
+        self.assertEqual(
+            self.sol.minimumSum(grid=[[1, 0, 1, 0], [0, 1, 0, 1]]), 5
+        )
         print("OK")
 
     def test_minimum_sum_3(self):
         print("Test minimumSum 3... ", end="")
         self.assertEqual(
-            self.sol.minimumSum(grid=[[0, 0, 0], [0, 0, 0], [1, 1, 1], [0, 0, 0]]), 3
+            self.sol.minimumSum(
+                grid=[[0, 0, 0], [0, 0, 0], [1, 1, 1], [0, 0, 0]]
+            ),
+            3,
         )
         print("OK")
 

@@ -49,7 +49,14 @@ class TestSolution(unittest.TestCase):
         self.assertTrue(
             self.same_permutations(
                 self.sol.permute(nums=[1, 2, 3]),
-                [[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]],
+                [
+                    [1, 2, 3],
+                    [1, 3, 2],
+                    [2, 1, 3],
+                    [2, 3, 1],
+                    [3, 1, 2],
+                    [3, 2, 1],
+                ],
             )
         )
         print("OK")

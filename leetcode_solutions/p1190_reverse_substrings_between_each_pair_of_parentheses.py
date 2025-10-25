@@ -46,7 +46,9 @@ class TestSolution(unittest.TestCase):
 
     def test_reverse_parentheses_3(self):
         print("Test reverseParentheses 3... ", end="")
-        self.assertEqual(self.sol.reverseParentheses(s="(ed(et(oc))el)"), "leetcode")
+        self.assertEqual(
+            self.sol.reverseParentheses(s="(ed(et(oc))el)"), "leetcode"
+        )
         print("OK")
 
 

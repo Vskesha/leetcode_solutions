@@ -135,7 +135,9 @@ class TreeNode:
         self.height, other.height = other.height, self.height
 
     def update_height(self) -> None:
-        self.height = max(self.get_height(self.left), self.get_height(self.right)) + 1
+        self.height = (
+            max(self.get_height(self.left), self.get_height(self.right)) + 1
+        )
 
 
 class Tree:

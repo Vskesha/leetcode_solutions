@@ -7,9 +7,9 @@ class Solution:
         def is_valid(ss):
             op = 0
             for ch in ss:
-                if ch == '(':
+                if ch == "(":
                     op += 1
-                elif ch == ')':
+                elif ch == ")":
                     if not op:
                         return False
                     op -= 1
@@ -19,9 +19,9 @@ class Solution:
         ls = len(s)
 
         for ch in s:
-            if ch == '(':
+            if ch == "(":
                 op += 1
-            elif ch == ')':
+            elif ch == ")":
                 if op:
                     op -= 1
                 else:
@@ -39,7 +39,7 @@ class Solution:
                 return choose(pref + s[i], i + 1, td)
             return choose(pref + s[i], i + 1, td) | choose(pref, i + 1, td - 1)
 
-        return list(choose('', 0, td))
+        return list(choose("", 0, td))
 
 
 class Solution2:
@@ -74,13 +74,25 @@ class Solution2:
         def remove(t, res, last_i, last_j, openParam, closeParam):
             balance = 0
             for i in range(last_i, len(t)):
-                if t[i] == openParam: balance += 1
-                if t[i] == closeParam: balance -= 1
-                if balance >= 0: continue
+                if t[i] == openParam:
+                    balance += 1
+                if t[i] == closeParam:
+                    balance -= 1
+                if balance >= 0:
+                    continue
 
                 for j in range(last_j, i + 1):
-                    if t[j] == closeParam and (j == last_j or t[j - 1] != closeParam):
-                        remove(t[0:j] + t[j + 1:len(t)], res, i, j, openParam, closeParam)
+                    if t[j] == closeParam and (
+                        j == last_j or t[j - 1] != closeParam
+                    ):
+                        remove(
+                            t[0:j] + t[j + 1 : len(t)],
+                            res,
+                            i,
+                            j,
+                            openParam,
+                            closeParam,
+                        )
                 return
 
             reversed = t[::-1]
@@ -99,24 +111,18 @@ class Solution2:
 def test():
     sol = Solution()
 
-    print('Test 1... ', end='')
-    assert sol.removeInvalidParentheses(
-        s="()())()"
-    ) == ["(())()", "()()()"]
-    print('OK')
+    print("Test 1... ", end="")
+    assert sol.removeInvalidParentheses(s="()())()") == ["(())()", "()()()"]
+    print("OK")
 
-    print('Test 2... ', end='')
-    assert sol.removeInvalidParentheses(
-        s="(a)())()"
-    ) == ["(a())()", "(a)()()"]
-    print('OK')
+    print("Test 2... ", end="")
+    assert sol.removeInvalidParentheses(s="(a)())()") == ["(a())()", "(a)()()"]
+    print("OK")
 
-    print('Test 3... ', end='')
-    assert sol.removeInvalidParentheses(
-        s=")("
-    ) == ['']
-    print('OK')
+    print("Test 3... ", end="")
+    assert sol.removeInvalidParentheses(s=")(") == [""]
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

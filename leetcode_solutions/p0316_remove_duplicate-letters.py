@@ -16,19 +16,19 @@ class Solution:
             stack.append(ch)
             seen.add(ch)
 
-        return ''.join(stack)
+        return "".join(stack)
 
 
 def test():
     sol = Solution()
-    print('Test 1 ... ', end='')
-    assert sol.removeDuplicateLetters(s="bcabc") == 'abc'
-    print('ok\nTest 2 ... ', end='')
-    assert sol.removeDuplicateLetters(s="cbacdcbc") == 'acdb'
-    print('ok\nTest 3 ... ', end='')
-    assert sol.removeDuplicateLetters(s="abacb") == 'abc'
-    print('ok')
+    print("Test 1 ... ", end="")
+    assert sol.removeDuplicateLetters(s="bcabc") == "abc"
+    print("ok\nTest 2 ... ", end="")
+    assert sol.removeDuplicateLetters(s="cbacdcbc") == "acdb"
+    print("ok\nTest 3 ... ", end="")
+    assert sol.removeDuplicateLetters(s="abacb") == "abc"
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

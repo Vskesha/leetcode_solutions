@@ -8,7 +8,11 @@ class Solution:
     def maxGoodNumber(self, nums: List[int]) -> int:
         return int(
             "".join(
-                sorted([bin(n)[2:] for n in nums], reverse=True, key=lambda x: x * 7)
+                sorted(
+                    [bin(n)[2:] for n in nums],
+                    reverse=True,
+                    key=lambda x: x * 7,
+                )
             ),
             2,
         )

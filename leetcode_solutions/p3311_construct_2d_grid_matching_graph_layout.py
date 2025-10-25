@@ -6,7 +6,9 @@ from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
-    def constructGridLayout(self, n: int, edges: List[List[int]]) -> List[List[int]]:
+    def constructGridLayout(
+        self, n: int, edges: List[List[int]]
+    ) -> List[List[int]]:
         gr = [[] for _ in range(n)]
         for fr, to in edges:
             gr[fr].append(to)
@@ -37,8 +39,11 @@ class Solution:
             ans.append(nrow)
         return ans
 
+
 class Solution2:
-    def constructGridLayout(self, n: int, edges: List[List[int]]) -> List[List[int]]:
+    def constructGridLayout(
+        self, n: int, edges: List[List[int]]
+    ) -> List[List[int]]:
         graph = defaultdict(set)
         for fr, to in edges:
             graph[fr].add(to)
@@ -100,7 +105,9 @@ class Solution2:
 
 
 class Solution3:
-    def constructGridLayout(self, n: int, edges: List[List[int]]) -> List[List[int]]:
+    def constructGridLayout(
+        self, n: int, edges: List[List[int]]
+    ) -> List[List[int]]:
         adj = [[] for _ in range(n)]
         for u, v in edges:
             adj[u].append(v)
@@ -171,7 +178,9 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
         },
     ]
 
-    def assertValidLayout(self, layout: List[List[int]], expected: List[List[int]]):
+    def assertValidLayout(
+        self, layout: List[List[int]], expected: List[List[int]]
+    ):
         valid = False
         for i in range(4):
             if valid:
@@ -187,7 +196,9 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             expected = self.turnRight(expected)
         self.assertTrue(valid)
 
-    def is_equal_matrices(self, list1: List[List[int]], list2: List[List[int]]) -> bool:
+    def is_equal_matrices(
+        self, list1: List[List[int]], list2: List[List[int]]
+    ) -> bool:
         for a, b in zip(list1, list2):
             if a != b:
                 return False

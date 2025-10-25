@@ -35,7 +35,9 @@ class TestSolution(unittest.TestCase):
 
     def test_minChanges_2(self):
         print("Test minChanges 2... ", end="")
-        self.assertEqual(2, self.sol.minChanges(nums=[0, 1, 2, 3, 3, 6, 5, 4], k=6))
+        self.assertEqual(
+            2, self.sol.minChanges(nums=[0, 1, 2, 3, 3, 6, 5, 4], k=6)
+        )
         print("OK")
 
 

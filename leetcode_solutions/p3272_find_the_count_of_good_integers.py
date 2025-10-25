@@ -16,7 +16,7 @@ class Solution:
         seen = set()
         ans = 0
 
-        for fh in range(10 ** (n2 - 1), 10 ** n2):
+        for fh in range(10 ** (n2 - 1), 10**n2):
             sfh = str(fh)
             sn = sfh + sfh[::-1][st:]
             if int(sn) % k == 0:
@@ -40,7 +40,7 @@ class Solution2:
         seen = set()
         ans = 0
 
-        for fh in range(10 ** (n2 - 1), 10 ** n2):
+        for fh in range(10 ** (n2 - 1), 10**n2):
             sfh = str(fh)
             sn = sfh + sfh[::-1][st:]
             if int(sn) % k == 0:
@@ -72,5 +72,5 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
     ]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

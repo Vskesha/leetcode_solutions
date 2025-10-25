@@ -9,7 +9,9 @@ class Solution:
             adj[node].discard(parent)
             for neib in adj[node]:
                 dfs1(neib, node)
-                height[node] = max(height[node], height[neib] + (neib + 1) % 2 + 1)
+                height[node] = max(
+                    height[node], height[neib] + (neib + 1) % 2 + 1
+                )
 
         def dfs2(node, htp):
             heap = [(0, -1), (htp, -1)]
@@ -46,7 +48,9 @@ class Solution2:
             adj[node].discard(parent)
             for neib in adj[node]:
                 dfs1(neib, node)
-                height[node] = max(height[node], height[neib] + (neib + 1) % 2 + 1)
+                height[node] = max(
+                    height[node], height[neib] + (neib + 1) % 2 + 1
+                )
 
         def dfs2(node, htp):
             heap = [(0, -1), (htp, -1)]
@@ -90,7 +94,9 @@ class TestSolution(unittest.TestCase):
 
     def test_timeTaken_1(self):
         print("Test timeTaken 1... ", end="")
-        self.assertListEqual([2, 4, 3], self.sol.timeTaken(edges=[[0, 1], [0, 2]]))
+        self.assertListEqual(
+            [2, 4, 3], self.sol.timeTaken(edges=[[0, 1], [0, 2]])
+        )
         print("OK")
 
     def test_timeTaken_2(self):
@@ -101,7 +107,8 @@ class TestSolution(unittest.TestCase):
     def test_timeTaken_3(self):
         print("Test timeTaken 3... ", end="")
         self.assertListEqual(
-            [4, 6, 3, 5, 5], self.sol.timeTaken(edges=[[2, 4], [0, 1], [2, 3], [0, 2]])
+            [4, 6, 3, 5, 5],
+            self.sol.timeTaken(edges=[[2, 4], [0, 1], [2, 3], [0, 2]]),
         )
         print("OK")
 

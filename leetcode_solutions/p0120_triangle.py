@@ -9,7 +9,9 @@ class Solution:
 
         for i in range(ht - 2, -1, -1):
             for j in range(i + 1):
-                triangle[i][j] += min(triangle[i + 1][j], triangle[i + 1][j + 1])
+                triangle[i][j] += min(
+                    triangle[i + 1][j], triangle[i + 1][j + 1]
+                )
 
         return triangle[0][0]
 
@@ -35,7 +37,10 @@ class TestSolution(unittest.TestCase):
     def test_minimum_total_1(self):
         print("Test minimumTotal 1... ", end="")
         self.assertEqual(
-            self.sol.minimumTotal(triangle=[[2], [3, 4], [6, 5, 7], [4, 1, 8, 3]]), 11
+            self.sol.minimumTotal(
+                triangle=[[2], [3, 4], [6, 5, 7], [4, 1, 8, 3]]
+            ),
+            11,
         )
         print("OK")
 

@@ -3,7 +3,9 @@ from typing import List
 
 
 class Solution:
-    def furthestBuilding(self, heights: List[int], bricks: int, ladders: int) -> int:
+    def furthestBuilding(
+        self, heights: List[int], bricks: int, ladders: int
+    ) -> int:
         lh = len(heights)
         heap = []
         for i in range(lh - 1):
@@ -25,7 +27,10 @@ def test():
 
     print("Test 1... ", end="")
     assert (
-        sol.furthestBuilding(heights=[4, 2, 7, 6, 9, 14, 12], bricks=5, ladders=1) == 4
+        sol.furthestBuilding(
+            heights=[4, 2, 7, 6, 9, 14, 12], bricks=5, ladders=1
+        )
+        == 4
     )
     print("OK")
 
@@ -39,7 +44,9 @@ def test():
     print("OK")
 
     print("Test 3... ", end="")
-    assert sol.furthestBuilding(heights=[14, 3, 19, 3], bricks=17, ladders=0) == 3
+    assert (
+        sol.furthestBuilding(heights=[14, 3, 19, 3], bricks=17, ladders=0) == 3
+    )
     print("OK")
 
 

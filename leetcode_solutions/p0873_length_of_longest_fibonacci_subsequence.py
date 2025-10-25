@@ -22,6 +22,7 @@ class Solution:
 
         return ans
 
+
 class Solution2:
     def lenLongestFibSubseq(self, arr: List[int]) -> int:
         fibs = defaultdict(list)

@@ -5,13 +5,13 @@ class Solution:
         visited.add((px, py))
         for d in path:
             match d:
-                case 'N':
+                case "N":
                     py += 1
-                case 'E':
+                case "E":
                     px += 1
-                case 'S':
+                case "S":
                     py -= 1
-                case 'W':
+                case "W":
                     px -= 1
             p = (px, py)
             if p in visited:
@@ -23,14 +23,14 @@ class Solution:
 def test():
     sol = Solution()
 
-    print('Test 1... ', end='')
+    print("Test 1... ", end="")
     assert sol.isPathCrossing(path="NES") is False
-    print('OK')
+    print("OK")
 
-    print('Test 2... ', end='')
+    print("Test 2... ", end="")
     assert sol.isPathCrossing(path="NESWW") is True
-    print('OK')
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

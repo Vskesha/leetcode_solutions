@@ -136,7 +136,8 @@ class TestSolution(unittest.TestCase):
     def test_findMinHeightTrees_1(self):
         print("Test findMinHeightTrees 1...", end="")
         self.assertSameRoots(
-            [1], self.sol.findMinHeightTrees(n=4, edges=[[1, 0], [1, 2], [1, 3]])
+            [1],
+            self.sol.findMinHeightTrees(n=4, edges=[[1, 0], [1, 2], [1, 3]]),
         )
         print("OK")
 

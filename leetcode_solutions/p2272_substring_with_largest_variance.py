@@ -51,9 +51,9 @@ class Solution2:
 
 def main():
     sol = Solution()
-    print('3 ===', sol.largestVariance("aababbb"))
-    print('0 ===', sol.largestVariance('abcde'))
+    print("3 ===", sol.largestVariance("aababbb"))
+    print("0 ===", sol.largestVariance("abcde"))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

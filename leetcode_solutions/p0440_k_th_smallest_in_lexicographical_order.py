@@ -35,13 +35,13 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["findKthNumber"] * 2,
             "kwargs": [
-                dict(n = 13, k = 2),
-                dict(n = 1, k = 1),
+                dict(n=13, k=2),
+                dict(n=1, k=1),
             ],
             "expected": [10, 1],
         },
     ]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

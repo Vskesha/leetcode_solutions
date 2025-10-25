@@ -92,7 +92,10 @@ class TestSolution(unittest.TestCase):
     def test_max_score_2(self):
         print("Test maxScore 2... ", end="")
         self.assertEqual(
-            self.sol.maxScore(nums1=[4, 2, 3, 1, 1], nums2=[7, 5, 10, 9, 6], k=1), 30
+            self.sol.maxScore(
+                nums1=[4, 2, 3, 1, 1], nums2=[7, 5, 10, 9, 6], k=1
+            ),
+            30,
         )
         print("OK")
 

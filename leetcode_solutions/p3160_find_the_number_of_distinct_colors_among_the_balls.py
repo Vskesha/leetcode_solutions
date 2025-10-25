@@ -30,7 +30,9 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class_methods": ["queryResults"] * 2,
             "kwargs": [
                 dict(limit=4, queries=[[1, 4], [2, 5], [1, 3], [3, 4]]),
-                dict(limit=4, queries=[[0, 1], [1, 2], [2, 2], [3, 4], [4, 5]]),
+                dict(
+                    limit=4, queries=[[0, 1], [1, 2], [2, 2], [3, 4], [4, 5]]
+                ),
             ],
             "expected": [[1, 2, 2, 3], [1, 2, 2, 3, 4]],
             "assert_methods": ["assertListEqual"] * 2,

@@ -11,7 +11,10 @@ class Solution:
 
         for i, j in product(range(len(grid) - 2), range(len(grid[0]) - 2)):
             if grid[i + 1][j + 1] == 5 and grid[i][j + 1] % 2:
-                ans += "".join(str(grid[i + di][j + dj]) for di, dj in dirs) in seq
+                ans += (
+                    "".join(str(grid[i + di][j + dj]) for di, dj in dirs)
+                    in seq
+                )
 
         return ans
 
@@ -23,7 +26,9 @@ class Solution1:
 
         for i in range(m):
             for j in range(n):
-                vals = {grid[i + di][j + dj] for di in range(3) for dj in range(3)}
+                vals = {
+                    grid[i + di][j + dj] for di in range(3) for dj in range(3)
+                }
                 if len(vals) < 9 or any((v > 9) or (v < 1) for v in vals):
                     continue
                 sm = sum(grid[i][j : j + 3])
@@ -34,7 +39,8 @@ class Solution1:
                     and sum(grid[di][j + 1] for di in range(i, i + 3)) == sm
                     and sum(grid[di][j + 2] for di in range(i, i + 3)) == sm
                     and sum(grid[i + dij][j + dij] for dij in range(3)) == sm
-                    and sum(grid[i + dij][j + 2 - dij] for dij in range(3)) == sm
+                    and sum(grid[i + dij][j + 2 - dij] for dij in range(3))
+                    == sm
                 ):
                     ans += 1
 

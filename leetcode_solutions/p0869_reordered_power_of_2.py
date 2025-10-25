@@ -27,8 +27,8 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["reorderedPowerOf2"] * 2,
             "kwargs": [
-                dict(n = 1),
-                dict(n = 10),
+                dict(n=1),
+                dict(n=10),
             ],
             "expected": [True, False],
         },

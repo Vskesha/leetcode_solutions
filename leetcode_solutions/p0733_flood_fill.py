@@ -33,7 +33,12 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["floodFill"] * 2,
             "kwargs": [
-                dict(image=[[1, 1, 1], [1, 1, 0], [1, 0, 1]], sr=1, sc=1, color=2),
+                dict(
+                    image=[[1, 1, 1], [1, 1, 0], [1, 0, 1]],
+                    sr=1,
+                    sc=1,
+                    color=2,
+                ),
                 dict(image=[[0, 0, 0], [0, 0, 0]], sr=0, sc=0, color=0),
             ],
             "expected": [
@@ -44,7 +49,9 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
         },
     ]
 
-    def assertSameImages(self, image1: List[List[int]], image2: List[List[int]]):
+    def assertSameImages(
+        self, image1: List[List[int]], image2: List[List[int]]
+    ):
         self.assertEqual(len(image1), len(image2))
         for row1, row2 in zip(image1, image2):
             self.assertListEqual(row1, row2)

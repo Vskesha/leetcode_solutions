@@ -32,9 +32,14 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class_methods": ["maxFreeTime"] * 3,
             "kwargs": [
                 dict(eventTime=5, k=1, startTime=[1, 3], endTime=[2, 5]),
-                dict(eventTime=10, k=1, startTime=[0, 2, 9], endTime=[1, 4, 10]),
                 dict(
-                    eventTime=5, k=2, startTime=[0, 1, 2, 3, 4], endTime=[1, 2, 3, 4, 5]
+                    eventTime=10, k=1, startTime=[0, 2, 9], endTime=[1, 4, 10]
+                ),
+                dict(
+                    eventTime=5,
+                    k=2,
+                    startTime=[0, 1, 2, 3, 4],
+                    endTime=[1, 2, 3, 4, 5],
                 ),
             ],
             "expected": [2, 6, 0],

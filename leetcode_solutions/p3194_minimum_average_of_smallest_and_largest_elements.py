@@ -27,7 +27,9 @@ class TestSolution(unittest.TestCase):
     def test_minimum_average_1(self):
         print("Test minimumAverage 1 ... ", end="")
         self.assertAlmostEqual(
-            self.sol.minimumAverage(nums=[7, 8, 3, 4, 15, 13, 4, 1]), 5.5, places=5
+            self.sol.minimumAverage(nums=[7, 8, 3, 4, 15, 13, 4, 1]),
+            5.5,
+            places=5,
         )
         print("OK")
 

@@ -3,7 +3,7 @@ from itertools import pairwise
 
 class Solution:
     def countHomogenous(self, s: str) -> int:
-        mod = 10 ** 9 + 7
+        mod = 10**9 + 7
         prev = s[0]
         streak = 0
         ans = 0
@@ -22,7 +22,7 @@ class Solution:
 
 class Solution1:
     def countHomogenous(self, s: str) -> int:
-        mod = 10 ** 9 + 7
+        mod = 10**9 + 7
         prev = s[0]
         streak = 0
         ans = 0
@@ -37,7 +37,7 @@ class Solution1:
 
 class Solution2:
     def countHomogenous(self, s: str) -> int:
-        mod = 10 ** 9 + 7
+        mod = 10**9 + 7
         streak = ans = 1
 
         for i in range(1, len(s)):
@@ -49,7 +49,7 @@ class Solution2:
 
 class Solution3:
     def countHomogenous(self, s: str) -> int:
-        mod = 10 ** 9 + 7
+        mod = 10**9 + 7
         streak = ans = 1
 
         for a, b in pairwise(s):
@@ -61,7 +61,7 @@ class Solution3:
 
 class Solution4:
     def countHomogenous(self, s: str) -> int:
-        mod = 10 ** 9 + 7
+        mod = 10**9 + 7
         streak, ans = 1, 0
 
         for a, b in pairwise(s):
@@ -78,18 +78,18 @@ class Solution4:
 def test():
     sol = Solution()
 
-    print('Test 1 ...', end='')
+    print("Test 1 ...", end="")
     assert sol.countHomogenous(s="abbcccaa") == 13
-    print('ok')
+    print("ok")
 
-    print('Test 2 ...', end='')
+    print("Test 2 ...", end="")
     assert sol.countHomogenous(s="xy") == 2
-    print('ok')
+    print("ok")
 
-    print('Test 3 ...', end='')
+    print("Test 3 ...", end="")
     assert sol.countHomogenous(s="zzzzz") == 15
-    print('ok')
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

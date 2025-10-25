@@ -27,7 +27,10 @@ class Solution2:
         def probability(points):
             if points >= k:
                 return int(points <= n)
-            return sum(probability(points + i) for i in range(1, maxPts + 1)) / maxPts
+            return (
+                sum(probability(points + i) for i in range(1, maxPts + 1))
+                / maxPts
+            )
 
         return probability(0)
 

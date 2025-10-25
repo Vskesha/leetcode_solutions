@@ -6,7 +6,7 @@ from leetcode_solutions._test_meta import TestMeta
 
 class Solution:
     def numOfSubarrays(self, arr: List[int]) -> int:
-        mod = 10 ** 9 + 7
+        mod = 10**9 + 7
         ans = odd = even = 0
 
         for n in arr:

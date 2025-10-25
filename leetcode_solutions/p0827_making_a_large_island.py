@@ -59,7 +59,11 @@ class Solution2:
                         ci, cj = bfs.popleft()
                         for di, dj in dirs:
                             ni, nj = ci + di, cj + dj
-                            if 0 <= ni < n and 0 <= nj < n and grid[ni][nj] == 1:
+                            if (
+                                0 <= ni < n
+                                and 0 <= nj < n
+                                and grid[ni][nj] == 1
+                            ):
                                 grid[ni][nj] = ii
                                 bfs.append((ni, nj))
                         size += 1

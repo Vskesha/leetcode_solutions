@@ -4,7 +4,9 @@ from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
-    def countGoodStrings(self, low: int, high: int, zero: int, one: int) -> int:
+    def countGoodStrings(
+        self, low: int, high: int, zero: int, one: int
+    ) -> int:
         mod = 10**9 + 7
         dp = [0] * (high + 1)
         dp[0] = 1
@@ -23,7 +25,9 @@ class Solution:
 
 
 class Solution1:
-    def countGoodStrings(self, low: int, high: int, zero: int, one: int) -> int:
+    def countGoodStrings(
+        self, low: int, high: int, zero: int, one: int
+    ) -> int:
         mod = 10**9 + 7
         dp = [0] * (high + 1)
         dp[0] = 1
@@ -41,7 +45,9 @@ class Solution1:
 
 
 class Solution2:
-    def countGoodStrings(self, low: int, high: int, zero: int, one: int) -> int:
+    def countGoodStrings(
+        self, low: int, high: int, zero: int, one: int
+    ) -> int:
         mod = 10**9 + 7
         dp = [0] * (high + 1)
         dp[0] = 1
@@ -54,14 +60,15 @@ class Solution2:
 
         return sum(dp[low:]) % mod
 
+
 class TestSolution(unittest.TestCase, metaclass=TestMeta):
     test_cases = [
         {
             "class": Solution,
             "class_methods": ["countGoodStrings"] * 2,
             "kwargs": [
-                dict(low = 3, high = 3, zero = 1, one = 1),
-                dict(low = 2, high = 3, zero = 1, one = 2),
+                dict(low=3, high=3, zero=1, one=1),
+                dict(low=2, high=3, zero=1, one=2),
             ],
             "expected": [8, 5],
         },

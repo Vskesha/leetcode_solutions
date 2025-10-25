@@ -21,19 +21,27 @@ class TreeNode:
 
 
 class Solution:
-    def isSubPath(self, head: Optional[ListNode], root: Optional[TreeNode]) -> bool:
+    def isSubPath(
+        self, head: Optional[ListNode], root: Optional[TreeNode]
+    ) -> bool:
         if not root:
             return False
         if self.include(head, root):
             return True
-        return self.isSubPath(head, root.left) or self.isSubPath(head, root.right)
+        return self.isSubPath(head, root.left) or self.isSubPath(
+            head, root.right
+        )
 
-    def include(self, head: Optional[ListNode], root: Optional[TreeNode]) -> bool:
+    def include(
+        self, head: Optional[ListNode], root: Optional[TreeNode]
+    ) -> bool:
         if not head:
             return True
         if not root or head.val != root.val:
             return False
-        return self.include(head.next, root.left) or self.include(head.next, root.right)
+        return self.include(head.next, root.left) or self.include(
+            head.next, root.right
+        )
 
 
 class TestSolution(unittest.TestCase, metaclass=TestMeta):

@@ -5,7 +5,9 @@ from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
-    def maxProfit(self, n: int, edges: List[List[int]], score: List[int]) -> int:
+    def maxProfit(
+        self, n: int, edges: List[List[int]], score: List[int]
+    ) -> int:
         is_root = {i: True for i in range(n)}
         for u, v in edges:
             is_root[v] = False
@@ -84,7 +86,9 @@ class Solution:
 
 
 class Solution2:
-    def maxProfit(self, n: int, edges: List[List[int]], score: List[int]) -> int:
+    def maxProfit(
+        self, n: int, edges: List[List[int]], score: List[int]
+    ) -> int:
         need = [0] * n
         for i, j in edges:
             need[j] |= 1 << i
@@ -103,7 +107,9 @@ class Solution2:
 
 
 class Solution3:
-    def maxProfit(self, n: int, edges: List[List[int]], score: List[int]) -> int:
+    def maxProfit(
+        self, n: int, edges: List[List[int]], score: List[int]
+    ) -> int:
         income = [0] * n
         adj = [[] for _ in range(n)]
         for fr, to in edges:

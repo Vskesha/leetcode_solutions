@@ -17,12 +17,12 @@ class Solution:
 
 def test():
     sol = Solution()
-    print('Test 1 ... ', end='')
+    print("Test 1 ... ", end="")
     assert 8 == sol.maxProfit(prices=[1, 3, 2, 8, 4, 9], fee=2)
-    print('ok\nTest 2 ... ', end='')
+    print("ok\nTest 2 ... ", end="")
     assert 6 == sol.maxProfit(prices=[1, 3, 7, 5, 10, 3], fee=3)
-    print('ok')
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

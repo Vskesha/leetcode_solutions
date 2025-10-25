@@ -15,7 +15,10 @@ class Solution:
                 (field[row][0] == field[row][1] == field[row][2])
                 or (field[0][col] == field[1][col] == field[2][col])
                 or (row == col and field[0][0] == field[1][1] == field[2][2])
-                or (row + col == 2 and field[0][2] == field[1][1] == field[2][0])
+                or (
+                    row + col == 2
+                    and field[0][2] == field[1][1] == field[2][0]
+                )
             ):
                 return "A" if i else "B"
             i = 1 - i
@@ -31,7 +34,10 @@ def test_tictactoe():
     print("OK")
 
     print("Test 2... ", end="")
-    assert sol.tictactoe(moves=[[0, 0], [1, 1], [0, 1], [0, 2], [1, 0], [2, 0]]) == "B"
+    assert (
+        sol.tictactoe(moves=[[0, 0], [1, 1], [0, 1], [0, 2], [1, 0], [2, 0]])
+        == "B"
+    )
     print("OK")
 
     print("Test 3... ", end="")

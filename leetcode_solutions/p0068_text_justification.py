@@ -144,7 +144,15 @@ class TestSolution(unittest.TestCase):
         print("Test fullJustify 1... ", end="")
         self.assertListEqual(
             self.sol.fullJustify(
-                words=["This", "is", "an", "example", "of", "text", "justification."],
+                words=[
+                    "This",
+                    "is",
+                    "an",
+                    "example",
+                    "of",
+                    "text",
+                    "justification.",
+                ],
                 maxWidth=16,
             ),
             ["This    is    an", "example  of text", "justification.  "],

@@ -28,7 +28,9 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["maximumSubarrayXor"] * 2,
             "kwargs": [
-                dict(nums=[2, 8, 4, 32, 16, 1], queries=[[0, 2], [1, 4], [0, 5]]),
+                dict(
+                    nums=[2, 8, 4, 32, 16, 1], queries=[[0, 2], [1, 4], [0, 5]]
+                ),
                 dict(
                     nums=[0, 7, 3, 2, 8, 5, 1],
                     queries=[[0, 3], [1, 5], [2, 4], [2, 6], [5, 6]],

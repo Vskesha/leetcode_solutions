@@ -86,7 +86,9 @@ class TestSolution(unittest.TestCase):
     def test_shortestDistanceAfterQueries_2(self):
         print("Test shortestDistanceAfterQueries 2... ", end="")
         self.assertEqual(
-            self.sol.shortestDistanceAfterQueries(n=4, queries=[[0, 3], [0, 2]]),
+            self.sol.shortestDistanceAfterQueries(
+                n=4, queries=[[0, 3], [0, 2]]
+            ),
             [1, 1],
         )
         print("OK")

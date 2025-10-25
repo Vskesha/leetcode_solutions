@@ -12,13 +12,13 @@ class Solution:
 
 def main():
     sol = Solution()
-    print('Test 1 ... ', end='')
+    print("Test 1 ... ", end="")
     assert sol.findLongestChain(pairs=[[1, 2], [2, 3], [3, 4]]) == 2
-    print('ok')
-    print('Test 2 ... ', end='')
+    print("ok")
+    print("Test 2 ... ", end="")
     assert sol.findLongestChain(pairs=[[1, 2], [7, 8], [4, 5]]) == 3
-    print('ok')
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

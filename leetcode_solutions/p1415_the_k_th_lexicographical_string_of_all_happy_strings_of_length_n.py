@@ -23,15 +23,16 @@ class Solution:
 
         return "".join(ans)
 
+
 class TestSolution(unittest.TestCase, metaclass=TestMeta):
     test_cases = [
         {
             "class": Solution,
             "class_methods": ["getHappyString"] * 3,
             "kwargs": [
-                dict(n = 1, k = 3),
-                dict(n = 1, k = 4),
-                dict(n = 3, k = 9),
+                dict(n=1, k=3),
+                dict(n=1, k=4),
+                dict(n=3, k=9),
             ],
             "expected": ["c", "", "cab"],
         },

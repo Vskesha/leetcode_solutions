@@ -83,11 +83,14 @@ def main():
     sol = Solution()
     root = [3, 5, 1, 6, 2, 0, 8, null, null, 7, 4]  # target=5, k=2
     tree_root = list_to_binary_tree(root)
-    print(' [7, 4, 1]\n', sol.distanceK(root=tree_root, target=tree_root.left, k=2))
+    print(
+        " [7, 4, 1]\n",
+        sol.distanceK(root=tree_root, target=tree_root.left, k=2),
+    )
     root = [0, null, 1, null, 2, null, 3]  # target = 1, k = 2
     tree_root = list_to_binary_tree(root)
-    print(' [3]\n', sol.distanceK(tree_root, tree_root.right, 2))
+    print(" [3]\n", sol.distanceK(tree_root, tree_root.right, 2))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

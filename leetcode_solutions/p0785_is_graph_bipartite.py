@@ -23,12 +23,14 @@ class Solution:
 
 def test():
     sol = Solution()
-    print('Test 1 ... ', end='')
-    assert sol.isBipartite(graph=[[1, 2, 3], [0, 2], [0, 1, 3], [0, 2]]) is False
-    print('ok\nTest 2 ... ', end='')
+    print("Test 1 ... ", end="")
+    assert (
+        sol.isBipartite(graph=[[1, 2, 3], [0, 2], [0, 1, 3], [0, 2]]) is False
+    )
+    print("ok\nTest 2 ... ", end="")
     assert sol.isBipartite(graph=[[1, 3], [0, 2], [1, 3], [0, 2]]) is True
-    print('ok')
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

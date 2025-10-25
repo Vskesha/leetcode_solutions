@@ -107,7 +107,10 @@ class TestSolution(unittest.TestCase):
         print("Test maxLevelSum 1 ... ", end="")
         null = None
         self.assertEqual(
-            self.sol.maxLevelSum(root=self.arr_to_tree([1, 7, 0, 7, -8, null, null])), 2
+            self.sol.maxLevelSum(
+                root=self.arr_to_tree([1, 7, 0, 7, -8, null, null])
+            ),
+            2,
         )
         print("OK")
 

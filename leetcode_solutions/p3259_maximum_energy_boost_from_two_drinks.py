@@ -5,7 +5,9 @@ from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
-    def maxEnergyBoost(self, energyDrinkA: List[int], energyDrinkB: List[int]) -> int:
+    def maxEnergyBoost(
+        self, energyDrinkA: List[int], energyDrinkB: List[int]
+    ) -> int:
         energyDrinkA[1] += energyDrinkA[0]
         energyDrinkB[1] += energyDrinkB[0]
 
@@ -22,13 +24,13 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["maxEnergyBoost"] * 2,
             "kwargs": [
-                dict(energyDrinkA = [1,3,1], energyDrinkB = [3,1,1]),
-                dict(energyDrinkA = [4,1,1], energyDrinkB = [1,1,3]),
+                dict(energyDrinkA=[1, 3, 1], energyDrinkB=[3, 1, 1]),
+                dict(energyDrinkA=[4, 1, 1], energyDrinkB=[1, 1, 3]),
             ],
             "expected": [5, 7],
         },
     ]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

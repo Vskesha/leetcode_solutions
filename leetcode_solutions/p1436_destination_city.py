@@ -30,24 +30,27 @@ class Solution2:
 def test():
     sol = Solution()
 
-    print('Test 1... ', end='')
-    assert sol.destCity(
-        paths=[["London", "New York"], ["New York", "Lima"], ["Lima", "Sao Paulo"]]
-    ) == "Sao Paulo"
-    print('OK')
+    print("Test 1... ", end="")
+    assert (
+        sol.destCity(
+            paths=[
+                ["London", "New York"],
+                ["New York", "Lima"],
+                ["Lima", "Sao Paulo"],
+            ]
+        )
+        == "Sao Paulo"
+    )
+    print("OK")
 
-    print('Test 2... ', end='')
-    assert sol.destCity(
-        paths=[["B", "C"], ["D", "B"], ["C", "A"]]
-    ) == "A"
-    print('OK')
+    print("Test 2... ", end="")
+    assert sol.destCity(paths=[["B", "C"], ["D", "B"], ["C", "A"]]) == "A"
+    print("OK")
 
-    print('Test 3... ', end='')
-    assert sol.destCity(
-        paths=[["A", "Z"]]
-    ) == "Z"
-    print('OK')
+    print("Test 3... ", end="")
+    assert sol.destCity(paths=[["A", "Z"]]) == "Z"
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

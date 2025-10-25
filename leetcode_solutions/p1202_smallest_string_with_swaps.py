@@ -43,14 +43,17 @@ class TestSolution(unittest.TestCase):
     def test_smallest_string_with_swaps_1(self):
         print("Test smallestStringWithSwaps 1... ", end="")
         self.assertEqual(
-            self.sol.smallestStringWithSwaps(s="dcab", pairs=[[0, 3], [1, 2]]), "bacd"
+            self.sol.smallestStringWithSwaps(s="dcab", pairs=[[0, 3], [1, 2]]),
+            "bacd",
         )
         print("OK")
 
     def test_smallest_string_with_swaps_2(self):
         print("Test smallestStringWithSwaps 2... ", end="")
         self.assertEqual(
-            self.sol.smallestStringWithSwaps(s="dcab", pairs=[[0, 3], [1, 2], [0, 2]]),
+            self.sol.smallestStringWithSwaps(
+                s="dcab", pairs=[[0, 3], [1, 2], [0, 2]]
+            ),
             "abcd",
         )
         print("OK")
@@ -58,7 +61,8 @@ class TestSolution(unittest.TestCase):
     def test_smallest_string_with_swaps_3(self):
         print("Test smallestStringWithSwaps 3... ", end="")
         self.assertEqual(
-            self.sol.smallestStringWithSwaps(s="cba", pairs=[[0, 1], [1, 2]]), "abc"
+            self.sol.smallestStringWithSwaps(s="cba", pairs=[[0, 1], [1, 2]]),
+            "abc",
         )
         print("OK")
 

@@ -6,7 +6,11 @@ from typing import List
 
 class Solution:
     def largestValsFromLabels(
-        self, values: List[int], labels: List[int], numWanted: int, useLimit: int
+        self,
+        values: List[int],
+        labels: List[int],
+        numWanted: int,
+        useLimit: int,
     ) -> int:
         pairs = sorted(zip(values, labels), reverse=True)
         cnt = Counter()
@@ -25,7 +29,11 @@ class Solution:
 
 class Solution2:
     def largestValsFromLabels(
-        self, values: List[int], labels: List[int], numWanted: int, useLimit: int
+        self,
+        values: List[int],
+        labels: List[int],
+        numWanted: int,
+        useLimit: int,
     ) -> int:
         heap = []
         for value, label in zip(values, labels):
@@ -53,7 +61,10 @@ class TestSolution(unittest.TestCase):
         print("Test largestValsFromLabels 1... ", end="")
         self.assertEqual(
             self.sol.largestValsFromLabels(
-                values=[5, 4, 3, 2, 1], labels=[1, 1, 2, 2, 3], numWanted=3, useLimit=1
+                values=[5, 4, 3, 2, 1],
+                labels=[1, 1, 2, 2, 3],
+                numWanted=3,
+                useLimit=1,
             ),
             9,
         )
@@ -63,7 +74,10 @@ class TestSolution(unittest.TestCase):
         print("Test largestValsFromLabels 2... ", end="")
         self.assertEqual(
             self.sol.largestValsFromLabels(
-                values=[5, 4, 3, 2, 1], labels=[1, 3, 3, 3, 2], numWanted=3, useLimit=2
+                values=[5, 4, 3, 2, 1],
+                labels=[1, 3, 3, 3, 2],
+                numWanted=3,
+                useLimit=2,
             ),
             12,
         )
@@ -73,7 +87,10 @@ class TestSolution(unittest.TestCase):
         print("Test largestValsFromLabels 3... ", end="")
         self.assertEqual(
             self.sol.largestValsFromLabels(
-                values=[9, 8, 8, 7, 6], labels=[0, 0, 0, 1, 1], numWanted=3, useLimit=1
+                values=[9, 8, 8, 7, 6],
+                labels=[0, 0, 0, 1, 1],
+                numWanted=3,
+                useLimit=1,
             ),
             16,
         )

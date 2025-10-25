@@ -29,7 +29,15 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "kwargs": [
                 dict(questions=[[3, 2], [4, 3], [4, 4], [2, 5]]),
                 dict(questions=[[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]]),
-                dict(questions=[[12, 46], [78, 19], [63, 15], [79, 62], [13, 10]]),
+                dict(
+                    questions=[
+                        [12, 46],
+                        [78, 19],
+                        [63, 15],
+                        [79, 62],
+                        [13, 10],
+                    ]
+                ),
             ],
             "expected": [5, 7, 79],
         },

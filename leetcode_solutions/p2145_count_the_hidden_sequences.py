@@ -6,7 +6,9 @@ from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
-    def numberOfArrays(self, differences: List[int], lower: int, upper: int) -> int:
+    def numberOfArrays(
+        self, differences: List[int], lower: int, upper: int
+    ) -> int:
         max_acc = min_acc = 0
         for acc in accumulate(differences):
             if acc > max_acc:
@@ -17,16 +19,26 @@ class Solution:
 
 
 class Solution2:
-    def numberOfArrays(self, differences: List[int], lower: int, upper: int) -> int:
+    def numberOfArrays(
+        self, differences: List[int], lower: int, upper: int
+    ) -> int:
         acc = list(accumulate(differences, initial=0))
         diff = upper - lower - max(acc) + min(acc) + 1
         return diff if diff > 0 else 0
 
 
 class Solution3:
-    def numberOfArrays(self, differences: List[int], lower: int, upper: int) -> int:
-        return max(0, upper - lower - max(accumulate(differences, initial=0)) + min(
-            accumulate(differences, initial=0)) + 1)
+    def numberOfArrays(
+        self, differences: List[int], lower: int, upper: int
+    ) -> int:
+        return max(
+            0,
+            upper
+            - lower
+            - max(accumulate(differences, initial=0))
+            + min(accumulate(differences, initial=0))
+            + 1,
+        )
 
 
 class TestSolution(unittest.TestCase, metaclass=TestMeta):

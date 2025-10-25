@@ -50,7 +50,9 @@ class TestSolution(unittest.TestCase):
             head = ListNode(val=val, next=head)
         return head
 
-    def assertLinkedListEqual(self, l1: Optional[ListNode], l2: Optional[ListNode]):
+    def assertLinkedListEqual(
+        self, l1: Optional[ListNode], l2: Optional[ListNode]
+    ):
         while l1 and l2:
             self.assertEqual(l1.val, l2.val)
             l1 = l1.next

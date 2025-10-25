@@ -24,7 +24,9 @@ class Solution:
                 right_len = total_len - left_len - 1
                 for ltree in trees[left_len]:
                     for rtree in trees[right_len]:
-                        trees[total_len].append(TreeNode(val=0, left=ltree, right=rtree))
+                        trees[total_len].append(
+                            TreeNode(val=0, left=ltree, right=rtree)
+                        )
 
         return trees[n]
 
@@ -84,16 +86,24 @@ def main():
     sol = Solution()
     null = None
 
-    print('Test 1... ', end='')
+    print("Test 1... ", end="")
     test(n=3, out=[[0, 0, 0]], sol=sol)
-    print('OK')
+    print("OK")
 
-    print('Test 1... ', end='')
-    test(n=7,
-         out=[[0, 0, 0, null, null, 0, 0, null, null, 0, 0], [0, 0, 0, null, null, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0],
-              [0, 0, 0, 0, 0, null, null, null, null, 0, 0], [0, 0, 0, 0, 0, null, null, 0, 0]], sol=sol)
-    print('OK')
+    print("Test 1... ", end="")
+    test(
+        n=7,
+        out=[
+            [0, 0, 0, null, null, 0, 0, null, null, 0, 0],
+            [0, 0, 0, null, null, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, null, null, null, null, 0, 0],
+            [0, 0, 0, 0, 0, null, null, 0, 0],
+        ],
+        sol=sol,
+    )
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -29,7 +29,7 @@ class Solution1:
             if remains == 0:
                 return 1
             if not idx:
-                return int(not(remains % coins[idx]))
+                return int(not (remains % coins[idx]))
 
             combs = 0
             coin = coins[idx]
@@ -85,7 +85,7 @@ class Solution4:
     def change(self, amount: int, coins: list[int]) -> int:
         lc = len(coins)
         coin = coins[0]
-        dp = [int(not(rem % coin)) for rem in range(amount + 1)]
+        dp = [int(not (rem % coin)) for rem in range(amount + 1)]
 
         for j in range(1, lc):
             new_dp = [0] * (amount + 1)
@@ -100,10 +100,10 @@ class Solution4:
 
 def main():
     sol = Solution()
-    print('4 ===', sol.change(amount=5, coins=[1, 2, 5]))
-    print('0 ===', sol.change(amount=3, coins=[2]))
-    print('1 ===', sol.change(amount=10, coins=[10]))
+    print("4 ===", sol.change(amount=5, coins=[1, 2, 5]))
+    print("0 ===", sol.change(amount=3, coins=[2]))
+    print("1 ===", sol.change(amount=10, coins=[10]))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

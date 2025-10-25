@@ -21,18 +21,22 @@ class Solution:
 def test():
     sol = Solution()
 
-    print('Test 1... ', end='')
+    print("Test 1... ", end="")
     assert sol.largeGroupPositions(s="abbxxxxzzy") == [[3, 6]]
-    print('OK')
+    print("OK")
 
-    print('Test 2... ', end='')
+    print("Test 2... ", end="")
     assert sol.largeGroupPositions(s="abc") == []
-    print('OK')
+    print("OK")
 
-    print('Test 3... ', end='')
-    assert sol.largeGroupPositions(s="abcdddeeeeaabbbcd") == [[3, 5], [6, 9], [12, 14]]
-    print('OK')
+    print("Test 3... ", end="")
+    assert sol.largeGroupPositions(s="abcdddeeeeaabbbcd") == [
+        [3, 5],
+        [6, 9],
+        [12, 14],
+    ]
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

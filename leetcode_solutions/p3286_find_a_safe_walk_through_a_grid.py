@@ -39,7 +39,8 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class_methods": ["findSafeWalk"] * 3,
             "kwargs": [
                 dict(
-                    grid=[[0, 1, 0, 0, 0], [0, 1, 0, 1, 0], [0, 0, 0, 1, 0]], health=1
+                    grid=[[0, 1, 0, 0, 0], [0, 1, 0, 1, 0], [0, 0, 0, 1, 0]],
+                    health=1,
                 ),
                 dict(
                     grid=[

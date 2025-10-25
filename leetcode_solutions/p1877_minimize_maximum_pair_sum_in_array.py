@@ -10,14 +10,14 @@ class Solution:
 def test():
     sol = Solution()
 
-    print('Test 1 ... ', end='')
-    assert sol.minPairSum(nums = [3,5,2,3]) == 7
-    print('OK')
+    print("Test 1 ... ", end="")
+    assert sol.minPairSum(nums=[3, 5, 2, 3]) == 7
+    print("OK")
 
-    print('Test 2 ... ', end='')
-    assert sol.minPairSum(nums = [3,5,4,2,4,6]) == 8
-    print('OK')
+    print("Test 2 ... ", end="")
+    assert sol.minPairSum(nums=[3, 5, 4, 2, 4, 6]) == 8
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

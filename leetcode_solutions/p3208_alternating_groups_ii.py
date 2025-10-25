@@ -6,7 +6,7 @@ from leetcode_solutions._test_meta import TestMeta
 
 class Solution:
     def numberOfAlternatingGroups(self, colors: List[int], k: int) -> int:
-        colors.extend(colors[:k - 1])
+        colors.extend(colors[: k - 1])
         prev = -1
         streak = 0
         ans = 0

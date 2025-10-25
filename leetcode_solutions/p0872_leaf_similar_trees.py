@@ -13,7 +13,9 @@ class TreeNode:
 
 
 class Solution:
-    def leafSimilar(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
+    def leafSimilar(
+        self, root1: Optional[TreeNode], root2: Optional[TreeNode]
+    ) -> bool:
         def inorder(node):
             if not node:
                 return
@@ -29,7 +31,9 @@ class Solution:
 
 
 class Solution1:
-    def leafSimilar(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
+    def leafSimilar(
+        self, root1: Optional[TreeNode], root2: Optional[TreeNode]
+    ) -> bool:
         def inorder(node):
             if not node:
                 return
@@ -42,7 +46,9 @@ class Solution1:
 
 
 class Solution2:
-    def leafSimilar(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
+    def leafSimilar(
+        self, root1: Optional[TreeNode], root2: Optional[TreeNode]
+    ) -> bool:
         leaves1, leaves2 = [], []
 
         def traverse(node, lst):
@@ -66,7 +72,9 @@ def sol_decor(cls):
         def __init__(self, *args, **kwargs):
             self.original = cls(*args, **kwargs)
 
-        def leafSimilar(self, root1: Optional[List], root2: Optional[List]) -> bool:
+        def leafSimilar(
+            self, root1: Optional[List], root2: Optional[List]
+        ) -> bool:
             root1 = self.list2tree(root1)
             root2 = self.list2tree(root2)
             return self.original.leafSimilar(root1, root2)
@@ -103,7 +111,23 @@ def test():
     assert (
         sol.leafSimilar(
             root1=[3, 5, 1, 6, 2, 9, 8, null, null, 7, 4],
-            root2=[3, 5, 1, 6, 7, 4, 2, null, null, null, null, null, null, 9, 8],
+            root2=[
+                3,
+                5,
+                1,
+                6,
+                7,
+                4,
+                2,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                9,
+                8,
+            ],
         )
         is True
     )

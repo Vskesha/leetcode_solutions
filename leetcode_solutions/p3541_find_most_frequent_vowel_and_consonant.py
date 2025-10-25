@@ -8,9 +8,9 @@ class Solution:
     def maxFreqSum(self, s: str) -> int:
         cnt = Counter(s)
         return max(
-            (cnt.pop(ch) for ch in "aeiou" if ch in cnt),
-            default=0
+            (cnt.pop(ch) for ch in "aeiou" if ch in cnt), default=0
         ) + max(cnt.values(), default=0)
+
 
 class TestSolution(unittest.TestCase, metaclass=TestMeta):
     test_cases = [
@@ -18,8 +18,8 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["maxFreqSum"] * 2,
             "kwargs": [
-                dict(s = "successes"),
-                dict(s = "aeiaeia"),
+                dict(s="successes"),
+                dict(s="aeiaeia"),
             ],
             "expected": [6, 3],
         },

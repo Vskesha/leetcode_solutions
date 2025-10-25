@@ -6,6 +6,7 @@ from leetcode_solutions._test_meta import TestMeta
 
 # Definition for a binary tree node.
 
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
@@ -58,7 +59,6 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
                 q.append(node.right)
 
         return root
-
 
     test_cases = [
         {

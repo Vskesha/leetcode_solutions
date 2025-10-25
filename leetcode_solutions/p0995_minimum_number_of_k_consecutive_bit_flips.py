@@ -76,7 +76,9 @@ class TestSolution(unittest.TestCase):
 
     def test_min_k_bit_flips_3(self):
         print("Test minKBitFlips 3... ", end="")
-        self.assertEqual(self.sol.minKBitFlips(nums=[0, 0, 0, 1, 0, 1, 1, 0], k=3), 3)
+        self.assertEqual(
+            self.sol.minKBitFlips(nums=[0, 0, 0, 1, 0, 1, 1, 0], k=3), 3
+        )
         print("OK")
 
 

@@ -5,7 +5,8 @@ from collections import Counter
 class Solution:
     def minimumPushes(self, word: str) -> int:
         return sum(
-            mc[1] * (i // 8) for i, mc in enumerate(Counter(word).most_common(), 8)
+            mc[1] * (i // 8)
+            for i, mc in enumerate(Counter(word).most_common(), 8)
         )
 
 
@@ -46,7 +47,9 @@ class TestSolution(unittest.TestCase):
 
     def test_minimumPushes_3(self):
         print("Test minimumPushes 3... ", end="")
-        self.assertEqual(self.sol.minimumPushes(word="aabbccddeeffgghhiiiiii"), 24)
+        self.assertEqual(
+            self.sol.minimumPushes(word="aabbccddeeffgghhiiiiii"), 24
+        )
         print("OK")
 
 

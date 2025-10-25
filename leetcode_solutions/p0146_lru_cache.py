@@ -81,13 +81,26 @@ class TestLRUCache(unittest.TestCase):
     def test_put_get_methods(self):
         print("Testing LRUCache... ")
         null = None
-        commands = ["LRUCache", "put", "put", "get", "put", "get", "put", "get", "get", "get"]
+        commands = [
+            "LRUCache",
+            "put",
+            "put",
+            "get",
+            "put",
+            "get",
+            "put",
+            "get",
+            "get",
+            "get",
+        ]
         args = [[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]
         expected = [null, null, null, 1, null, -1, null, -1, 3, 4]
         cache = LRUCache(*args[0])
         for i in range(1, len(args)):
             print(f"    Test {i}... ", end="")
-            self.assertEqual(getattr(cache, commands[i])(*args[i]), expected[i])
+            self.assertEqual(
+                getattr(cache, commands[i])(*args[i]), expected[i]
+            )
             print("OK")
 
 

@@ -69,8 +69,12 @@ class Solution:
         end_of_prev_group = self.ends[(end_idx - 1) % le]
         end_of_pprev_group = self.ends[(end_idx - 2) % le]
         end_of_next_group = self.ends[(end_idx + 1) % le]
-        len_of_prev_group = (end_of_prev_group - end_of_pprev_group - 1) % self.lc + 1
-        len_of_next_group = (end_of_next_group - end_of_group - 1) % self.lc + 1
+        len_of_prev_group = (
+            end_of_prev_group - end_of_pprev_group - 1
+        ) % self.lc + 1
+        len_of_next_group = (
+            end_of_next_group - end_of_group - 1
+        ) % self.lc + 1
 
         # 4 cases to consider
         if end_of_group == start_of_group:  # == idx
@@ -141,7 +145,8 @@ class TestSolution(unittest.TestCase):
         print("Test numberOfAlternatingGroups 3... ", end="")
         self.assertListEqual(
             self.sol.numberOfAlternatingGroups(
-                colors=[0, 0, 0, 1], queries=[[2, 1, 1], [1, 3], [2, 1, 1], [2, 0, 1]]
+                colors=[0, 0, 0, 1],
+                queries=[[2, 1, 1], [1, 3], [2, 1, 1], [2, 0, 1]],
             ),
             [4],
         )
@@ -151,7 +156,8 @@ class TestSolution(unittest.TestCase):
         print("Test numberOfAlternatingGroups 4... ", end="")
         self.assertListEqual(
             self.sol.numberOfAlternatingGroups(
-                colors=[0, 1, 0, 0, 1], queries=[[2, 0, 1], [2, 2, 0], [1, 3], [1, 3]]
+                colors=[0, 1, 0, 0, 1],
+                queries=[[2, 0, 1], [2, 2, 0], [1, 3], [1, 3]],
             ),
             [0, 0],
         )

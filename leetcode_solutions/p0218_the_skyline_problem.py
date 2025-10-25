@@ -4,7 +4,7 @@ from typing import List
 
 class Solution:
     def getSkyline(self, buildings: List[List[int]]) -> List[List[int]]:
-        ans, rh, cm, lb, inf = [], [], 0, len(buildings) - 1, float('inf')
+        ans, rh, cm, lb, inf = [], [], 0, len(buildings) - 1, float("inf")
 
         for i, (l, r, h) in enumerate(buildings):
 
@@ -57,24 +57,37 @@ class Solution2:
 def test():
     sol = Solution()
 
-    print('Test 1... ', end='')
-    for a, b in zip(sol.getSkyline(buildings=[[2, 9, 10], [3, 7, 15], [5, 12, 12], [15, 20, 10], [19, 24, 8]]),
-                    [[2, 10], [3, 15], [7, 12], [12, 0], [15, 10], [20, 8], [24, 0]]):
+    print("Test 1... ", end="")
+    for a, b in zip(
+        sol.getSkyline(
+            buildings=[
+                [2, 9, 10],
+                [3, 7, 15],
+                [5, 12, 12],
+                [15, 20, 10],
+                [19, 24, 8],
+            ]
+        ),
+        [[2, 10], [3, 15], [7, 12], [12, 0], [15, 10], [20, 8], [24, 0]],
+    ):
         assert a == b
-    print('OK')
+    print("OK")
 
-    print('Test 2... ', end='')
-    for a, b in zip(sol.getSkyline(buildings=[[0, 2, 3], [2, 5, 3]]),
-                    [[0, 3], [5, 0]]):
+    print("Test 2... ", end="")
+    for a, b in zip(
+        sol.getSkyline(buildings=[[0, 2, 3], [2, 5, 3]]), [[0, 3], [5, 0]]
+    ):
         assert a == b
-    print('OK')
+    print("OK")
 
-    print('Test 3... ', end='')
-    for a, b in zip(sol.getSkyline(buildings=[[1, 2, 1], [1, 2, 2], [1, 2, 3]]),
-                    [[1, 3], [2, 0]]):
+    print("Test 3... ", end="")
+    for a, b in zip(
+        sol.getSkyline(buildings=[[1, 2, 1], [1, 2, 2], [1, 2, 3]]),
+        [[1, 3], [2, 0]],
+    ):
         assert a == b
-    print('OK')
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

@@ -56,7 +56,9 @@ class Solution1:
             new_dp = [False] * (l2 + 1)
             new_dp[0] = dp[0] and s1[i] == s3[i]
             for j in range(1, l2 + 1):
-                new_dp[j] = (dp[j] and s1[i] == s3[i + j]) or (new_dp[j - 1] and s2[j - 1] == s3[i + j])
+                new_dp[j] = (dp[j] and s1[i] == s3[i + j]) or (
+                    new_dp[j - 1] and s2[j - 1] == s3[i + j]
+                )
             dp = new_dp
 
         return dp[l2]
@@ -73,8 +75,9 @@ class Solution2:
         def dp(i, j) -> bool:
             if i + j == l3:
                 return True
-            return ((i < l1 and s1[i] == s3[i + j] and dp(i + 1, j)) or
-                    (j < l2 and s2[j] == s3[i + j] and dp(i, j + 1)))
+            return (i < l1 and s1[i] == s3[i + j] and dp(i + 1, j)) or (
+                j < l2 and s2[j] == s3[i + j] and dp(i, j + 1)
+            )
 
         return dp(0, 0)
 
@@ -94,5 +97,5 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
     ]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

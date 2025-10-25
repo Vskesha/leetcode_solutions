@@ -8,7 +8,9 @@ class Solution:
     def commonChars(self, words: List[str]) -> List[str]:
         return [
             ch
-            for ch, q in reduce(lambda x, y: x & y, map(Counter, words)).items()
+            for ch, q in reduce(
+                lambda x, y: x & y, map(Counter, words)
+            ).items()
             for _ in range(q)
         ]
 

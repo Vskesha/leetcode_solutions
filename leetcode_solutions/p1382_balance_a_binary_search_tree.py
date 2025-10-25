@@ -30,7 +30,7 @@ class TreeNode:
                 li = i
             i += 1
 
-        return arr[:li + 1]
+        return arr[: li + 1]
 
 
 class Solution:

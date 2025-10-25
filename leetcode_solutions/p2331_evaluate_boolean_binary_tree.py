@@ -52,7 +52,9 @@ class Solution:
             return root.val == 1
 
         if root.val == 2:
-            return self.evaluateTree(root.left) or self.evaluateTree(root.right)
+            return self.evaluateTree(root.left) or self.evaluateTree(
+                root.right
+            )
 
         return self.evaluateTree(root.left) and self.evaluateTree(root.right)
 
@@ -65,9 +67,13 @@ class Solution2:
         elif root.val == 1:
             return True
         elif root.val == 2:
-            return self.evaluateTree(root.left) or self.evaluateTree(root.right)
+            return self.evaluateTree(root.left) or self.evaluateTree(
+                root.right
+            )
         else:
-            return self.evaluateTree(root.left) and self.evaluateTree(root.right)
+            return self.evaluateTree(root.left) and self.evaluateTree(
+                root.right
+            )
 
 
 def test_evaluate_tree():

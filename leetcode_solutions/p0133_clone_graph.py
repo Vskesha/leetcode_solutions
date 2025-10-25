@@ -62,7 +62,9 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
         },
     ]
 
-    def assertSameGraphs(self, actual: Optional[Node], expected: Optional[Node]):
+    def assertSameGraphs(
+        self, actual: Optional[Node], expected: Optional[Node]
+    ):
         if actual and expected:
             seen = {actual.val}
             bfs = deque([(actual, expected)])

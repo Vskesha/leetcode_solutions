@@ -28,7 +28,7 @@ class Solution2:
         while del_next(head):
             head = head.next
 
-        return 'Radiant' if head.val == 'R' else 'Dire'
+        return "Radiant" if head.val == "R" else "Dire"
 
 
 class Solution:
@@ -37,7 +37,7 @@ class Solution:
         rdq = deque()
         ls = len(senate)
         for i, ch in enumerate(senate):
-            if ch == 'R':
+            if ch == "R":
                 rdq.append(i)
             else:
                 ddq.append(i)
@@ -47,20 +47,20 @@ class Solution:
                 rdq.append(r + ls)
             else:
                 ddq.append(d + ls)
-        return 'Radiant' if rdq else 'Dire'
+        return "Radiant" if rdq else "Dire"
 
 
 def test():
     sol = Solution()
 
-    print('Test 1... ', end='')
-    assert sol.predictPartyVictory(senate="RD") == 'Radiant'
-    print('OK')
+    print("Test 1... ", end="")
+    assert sol.predictPartyVictory(senate="RD") == "Radiant"
+    print("OK")
 
-    print('Test 2... ', end='')
-    assert sol.predictPartyVictory(senate="RDD") == 'Dire'
-    print('OK')
+    print("Test 2... ", end="")
+    assert sol.predictPartyVictory(senate="RDD") == "Dire"
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

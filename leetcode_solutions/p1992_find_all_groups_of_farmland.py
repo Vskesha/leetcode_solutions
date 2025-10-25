@@ -37,7 +37,9 @@ def test_find_farmland():
     print("OK")
 
     print("Test 2... ", end="")
-    for land1, land2 in zip(sol.findFarmland(land=[[1, 1], [1, 1]]), [[0, 0, 1, 1]]):
+    for land1, land2 in zip(
+        sol.findFarmland(land=[[1, 1], [1, 1]]), [[0, 0, 1, 1]]
+    ):
         assert land1 == land2
     print("OK")
 

@@ -3,7 +3,7 @@ from typing import Optional
 
 # Definition for a Node.
 class Node:
-    def __init__(self, x: int, next: 'Node' = None, random: 'Node' = None):
+    def __init__(self, x: int, next: "Node" = None, random: "Node" = None):
         self.val = int(x)
         self.next = next
         self.random = random
@@ -22,7 +22,7 @@ def decorator(cls):
             return result
 
         @staticmethod
-        def list_to_linked_list(array: list) -> 'Optional[Node]':
+        def list_to_linked_list(array: list) -> "Optional[Node]":
 
             nodes = []
             for val, _ in array:
@@ -37,7 +37,7 @@ def decorator(cls):
             return nodes[0]
 
         @staticmethod
-        def linked_list_to_list(head: 'Optional[Node]') -> list:
+        def linked_list_to_list(head: "Optional[Node]") -> list:
             if not head:
                 return []
 
@@ -51,12 +51,14 @@ def decorator(cls):
             curr = head
             ans = []
             while curr:
-                ans.append([curr.val, curr.random.index if curr.random else None])
+                ans.append(
+                    [curr.val, curr.random.index if curr.random else None]
+                )
                 curr = curr.next
 
             curr = head
             while curr:
-                delattr(curr, 'index')
+                delattr(curr, "index")
                 curr = curr.next
 
             return ans
@@ -66,7 +68,7 @@ def decorator(cls):
 
 @decorator
 class Solution:
-    def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
+    def copyRandomList(self, head: "Optional[Node]") -> "Optional[Node]":
 
         curr = head
 
@@ -92,7 +94,7 @@ class Solution:
 
 @decorator
 class Solution2:
-    def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
+    def copyRandomList(self, head: "Optional[Node]") -> "Optional[Node]":
         if head is None:
             return None
 
@@ -117,23 +119,31 @@ def test():
     null = None
     sol = Solution()
 
-    print('Test 1... ', end='')
-    for a, b in zip(sol.copyRandomList(head=[[7, null], [13, 0], [11, 4], [10, 2], [1, 0]]),
-                    [[7, null], [13, 0], [11, 4], [10, 2], [1, 0]]):
+    print("Test 1... ", end="")
+    for a, b in zip(
+        sol.copyRandomList(
+            head=[[7, null], [13, 0], [11, 4], [10, 2], [1, 0]]
+        ),
+        [[7, null], [13, 0], [11, 4], [10, 2], [1, 0]],
+    ):
         assert a == b
-    print('OK')
+    print("OK")
 
-    print('Test 2... ', end='')
-    for a, b in zip(sol.copyRandomList(head=[[1, 1], [2, 1]]), [[1, 1], [2, 1]]):
+    print("Test 2... ", end="")
+    for a, b in zip(
+        sol.copyRandomList(head=[[1, 1], [2, 1]]), [[1, 1], [2, 1]]
+    ):
         assert a == b
-    print('OK')
+    print("OK")
 
-    print('Test 3... ', end='')
-    for a, b in zip(sol.copyRandomList(head=[[3, null], [3, 0], [3, null]]),
-                    [[3, null], [3, 0], [3, null]]):
+    print("Test 3... ", end="")
+    for a, b in zip(
+        sol.copyRandomList(head=[[3, null], [3, 0], [3, null]]),
+        [[3, null], [3, 0], [3, null]],
+    ):
         assert a == b
-    print('OK')
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

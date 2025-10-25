@@ -55,7 +55,11 @@ class Solution:
                 return 0
 
             no = node.val % 2
-            return dfs(node.left, no, po) + dfs(node.right, no, po) + (0 if gpo else node.val)
+            return (
+                dfs(node.left, no, po)
+                + dfs(node.right, no, po)
+                + (0 if gpo else node.val)
+            )
 
         return dfs(root, 1, 1)
 
@@ -68,7 +72,11 @@ class Solution1:
                 return 0
 
             n_even = not node.val % 2
-            return dfs(node.left, n_even, p_even) + dfs(node.right, n_even, p_even) + (node.val if gp_even else 0)
+            return (
+                dfs(node.left, n_even, p_even)
+                + dfs(node.right, n_even, p_even)
+                + (node.val if gp_even else 0)
+            )
 
         return dfs(root, False, False)
 
@@ -107,7 +115,11 @@ class Solution3:
                 return 0
 
             ne = 1 - node.val % 2
-            return dfs(node.left, ne, pe) + dfs(node.right, ne, pe) + gpe * node.val
+            return (
+                dfs(node.left, ne, pe)
+                + dfs(node.right, ne, pe)
+                + gpe * node.val
+            )
 
         return dfs(root, 0, 0)
 
@@ -117,14 +129,19 @@ def test():
     sol = Solution()
     print(sol)
 
-    print('Test 1... ', end='')
-    assert sol.sumEvenGrandparent(root=[6, 7, 8, 2, 7, 1, 3, 9, null, 1, 4, null, null, null, 5]) == 18
-    print('OK')
+    print("Test 1... ", end="")
+    assert (
+        sol.sumEvenGrandparent(
+            root=[6, 7, 8, 2, 7, 1, 3, 9, null, 1, 4, null, null, null, 5]
+        )
+        == 18
+    )
+    print("OK")
 
-    print('Test 2... ', end='')
+    print("Test 2... ", end="")
     assert sol.sumEvenGrandparent(root=[1]) == 0
-    print('OK')
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

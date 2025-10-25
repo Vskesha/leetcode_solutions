@@ -10,7 +10,9 @@ class Solution:
             for rod in rods:
                 for d, h in list(dh.items()):
                     dh[d + rod] = max(dh.get(d + rod, 0), h)
-                    dh[abs(d - rod)] = max(dh.get(abs(d - rod), 0), h + min(d, rod))
+                    dh[abs(d - rod)] = max(
+                        dh.get(abs(d - rod), 0), h + min(d, rod)
+                    )
             return dh
 
         d1, d2 = diff_h(rods[: len(rods) // 2]), diff_h(rods[len(rods) // 2 :])
@@ -72,7 +74,9 @@ class TestSolution(unittest.TestCase):
 
     def test_tallest_billboard_2(self):
         print("Test tallestBillboard 2... ", end="")
-        self.assertEqual(self.sol.tallestBillboard(rods=[1, 2, 3, 4, 5, 6]), 10)
+        self.assertEqual(
+            self.sol.tallestBillboard(rods=[1, 2, 3, 4, 5, 6]), 10
+        )
         print("OK")
 
 

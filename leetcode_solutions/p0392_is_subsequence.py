@@ -17,12 +17,12 @@ class Solution:
 
 def test():
     sol = Solution()
-    print('Test 1 ... ', end='')
+    print("Test 1 ... ", end="")
     assert sol.isSubsequence(s="abc", t="ahbgdc") is True
-    print('ok\nTest 2 ... ', end='')
+    print("ok\nTest 2 ... ", end="")
     assert sol.isSubsequence(s="axc", t="ahbgdc") is False
-    print('ok')
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

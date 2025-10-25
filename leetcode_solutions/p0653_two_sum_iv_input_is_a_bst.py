@@ -35,11 +35,13 @@ def tree_to_list_decorator(cls):
 
     return Wrapper
 
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
+
 
 @tree_to_list_decorator
 class Solution:
@@ -67,6 +69,7 @@ class Solution:
 
         return False
 
+
 @tree_to_list_decorator
 class Solution2:
     def findTarget(self, root: Optional[TreeNode], k: int) -> bool:
@@ -79,21 +82,23 @@ class Solution2:
         if k - node.val in nums:
             return True
         nums.add(node.val)
-        return self.traverse(node.left, nums, k) or self.traverse(node.right, nums, k)
+        return self.traverse(node.left, nums, k) or self.traverse(
+            node.right, nums, k
+        )
 
 
 def test():
     null = None
     sol = Solution()
 
-    print('Test 1... ', end='')
+    print("Test 1... ", end="")
     assert sol.findTarget(root=[5, 3, 6, 2, 4, null, 7], k=9) is True
-    print('OK')
+    print("OK")
 
-    print('Test 2... ', end='')
+    print("Test 2... ", end="")
     assert sol.findTarget(root=[5, 3, 6, 2, 4, null, 7], k=28) is False
-    print('OK')
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

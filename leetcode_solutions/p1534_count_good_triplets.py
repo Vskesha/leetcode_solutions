@@ -14,7 +14,9 @@ class Solution:
                 if abs(arr[j] - arr[k]) > b:
                     continue
                 for i in range(j):
-                    ans += abs(arr[i] - arr[j]) <= a and abs(arr[i] - arr[k]) <= c
+                    ans += (
+                        abs(arr[i] - arr[j]) <= a and abs(arr[i] - arr[k]) <= c
+                    )
 
         return ans
 

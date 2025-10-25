@@ -11,8 +11,8 @@ class Solution:
             ls = len(sn)
             if ls % 2:
                 continue
-            fs = sum(int(d) for d in sn[:ls // 2])
-            ss = sum(int(d) for d in sn[ls // 2:])
+            fs = sum(int(d) for d in sn[: ls // 2])
+            ss = sum(int(d) for d in sn[ls // 2 :])
             ans += fs == ss
         return ans
 

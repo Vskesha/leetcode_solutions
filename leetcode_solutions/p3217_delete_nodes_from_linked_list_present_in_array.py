@@ -37,26 +37,29 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             head = ListNode(val, head)
         return head
 
-
     test_cases = [
         {
             "class": Solution,
             "class_methods": ["modifiedList"] * 3,
             "kwargs": [
-                dict(nums = [1,2,3], head = array_to_linked_list([1,2,3,4,5])),
-                dict(nums = [1], head = array_to_linked_list([1,2,1,2,1,2])),
-                dict(nums = [5], head = array_to_linked_list([1,2,3,4])),
+                dict(
+                    nums=[1, 2, 3], head=array_to_linked_list([1, 2, 3, 4, 5])
+                ),
+                dict(nums=[1], head=array_to_linked_list([1, 2, 1, 2, 1, 2])),
+                dict(nums=[5], head=array_to_linked_list([1, 2, 3, 4])),
             ],
             "expected": [
-                array_to_linked_list([4,5]),
-                array_to_linked_list([2,2,2]),
-                array_to_linked_list([1,2,3,4])
+                array_to_linked_list([4, 5]),
+                array_to_linked_list([2, 2, 2]),
+                array_to_linked_list([1, 2, 3, 4]),
             ],
             "assert_methods": ["assertLinkedListEqual"] * 3,
         },
     ]
 
-    def assertLinkedListEqual(self, l1: Optional[ListNode], l2: Optional[ListNode]):
+    def assertLinkedListEqual(
+        self, l1: Optional[ListNode], l2: Optional[ListNode]
+    ):
         while l1 and l2:
             self.assertEqual(l1.val, l2.val)
             l1 = l1.next
@@ -65,5 +68,5 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
         self.assertIsNone(l2)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

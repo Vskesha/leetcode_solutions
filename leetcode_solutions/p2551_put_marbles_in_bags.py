@@ -8,8 +8,10 @@ from leetcode_solutions._test_meta import TestMeta
 
 class Solution:
     def putMarbles(self, weights: list[int], k: int) -> int:
-        edges = sorted([weights[i] + weights[i-1]  for i in range(1, len(weights))])
-        return sum(edges[-i-1] - edges[i] for i in range(k - 1))
+        edges = sorted(
+            [weights[i] + weights[i - 1] for i in range(1, len(weights))]
+        )
+        return sum(edges[-i - 1] - edges[i] for i in range(k - 1))
 
 
 class Solution2:
@@ -24,8 +26,8 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["putMarbles"] * 2,
             "kwargs": [
-                dict(weights = [1,3,5,1], k = 2),
-                dict(weights = [1, 3], k = 2),
+                dict(weights=[1, 3, 5, 1], k=2),
+                dict(weights=[1, 3], k=2),
             ],
             "expected": [4, 0],
         },

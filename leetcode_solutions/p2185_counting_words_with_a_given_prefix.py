@@ -15,8 +15,12 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["prefixCount"] * 2,
             "kwargs": [
-                dict(words=["pay", "attention", "practice", "attend"], pref="at"),
-                dict(words=["leetcode", "win", "loops", "success"], pref="code"),
+                dict(
+                    words=["pay", "attention", "practice", "attend"], pref="at"
+                ),
+                dict(
+                    words=["leetcode", "win", "loops", "success"], pref="code"
+                ),
             ],
             "expected": [2, 0],
         },

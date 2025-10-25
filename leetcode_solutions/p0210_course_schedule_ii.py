@@ -3,7 +3,9 @@ from typing import List
 
 
 class Solution:
-    def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
+    def findOrder(
+        self, numCourses: int, prerequisites: List[List[int]]
+    ) -> List[int]:
         income = [0] * numCourses
         graph = defaultdict(list)
 
@@ -28,18 +30,20 @@ class Solution:
 def test():
     sol = Solution()
 
-    print('Test 1... ', end='')
+    print("Test 1... ", end="")
     assert sol.findOrder(numCourses=2, prerequisites=[[1, 0]]) == [0, 1]
-    print('OK')
+    print("OK")
 
-    print('Test 2... ', end='')
-    assert sol.findOrder(numCourses=4, prerequisites=[[1, 0], [2, 0], [3, 1], [3, 2]]) == [0, 1, 2, 3]
-    print('OK')
+    print("Test 2... ", end="")
+    assert sol.findOrder(
+        numCourses=4, prerequisites=[[1, 0], [2, 0], [3, 1], [3, 2]]
+    ) == [0, 1, 2, 3]
+    print("OK")
 
-    print('Test 3... ', end='')
+    print("Test 3... ", end="")
     assert sol.findOrder(numCourses=1, prerequisites=[]) == [0]
-    print('OK')
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

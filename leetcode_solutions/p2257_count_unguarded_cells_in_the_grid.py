@@ -52,7 +52,12 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
                     guards=[[0, 0], [1, 1], [2, 3]],
                     walls=[[0, 1], [2, 2], [1, 4]],
                 ),
-                dict(m=3, n=3, guards=[[1, 1]], walls=[[0, 1], [1, 0], [2, 1], [1, 2]]),
+                dict(
+                    m=3,
+                    n=3,
+                    guards=[[1, 1]],
+                    walls=[[0, 1], [1, 0], [2, 1], [1, 2]],
+                ),
             ],
             "expected": [7, 4],
         },

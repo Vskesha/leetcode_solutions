@@ -36,7 +36,9 @@ class TestSolution(unittest.TestCase):
 
     def test_min_increment_for_unique_2(self):
         print("Test minIncrementForUnique 2 ... ", end="")
-        self.assertEqual(self.sol.minIncrementForUnique(nums=[3, 2, 1, 2, 1, 7]), 6)
+        self.assertEqual(
+            self.sol.minIncrementForUnique(nums=[3, 2, 1, 2, 1, 7]), 6
+        )
         print("OK")
 
 

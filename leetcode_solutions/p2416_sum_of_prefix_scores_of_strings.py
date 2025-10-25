@@ -33,14 +33,14 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["sumPrefixScores"] * 2,
             "kwargs": [
-                dict(words = ["abc","ab","bc","b"]),
-                dict(words = ["abcd"]),
+                dict(words=["abc", "ab", "bc", "b"]),
+                dict(words=["abcd"]),
             ],
-            "expected": [[5,4,3,2], [4]],
+            "expected": [[5, 4, 3, 2], [4]],
             "assert_methods": ["assertListEqual"],
         },
     ]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

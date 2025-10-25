@@ -45,18 +45,19 @@ def sol_decorator(cls):
 
     return Wrapper
 
+
 @sol_decorator
 class Solution:
     def tree2str(self, root: Optional[TreeNode]) -> str:
         res = str(root.val)
         if root.right:
             if root.left:
-                res += f'({self.tree2str(root.left)})'
+                res += f"({self.tree2str(root.left)})"
             else:
-                res += '()'
-            res += f'({self.tree2str(root.right)})'
+                res += "()"
+            res += f"({self.tree2str(root.right)})"
         elif root.left:
-            res += f'({self.tree2str(root.left)})'
+            res += f"({self.tree2str(root.left)})"
         return res
 
 
@@ -64,12 +65,12 @@ class Solution:
 class Solution2:
     def tree2str(self, root: Optional[TreeNode]) -> str:
         if not root:
-            return ''
+            return ""
         res = str(root.val)
         if root.left or root.right:
-            res += f'({self.tree2str(root.left)})'
+            res += f"({self.tree2str(root.left)})"
         if root.right:
-            res += f'({self.tree2str(root.right)})'
+            res += f"({self.tree2str(root.right)})"
         return res
 
 
@@ -77,14 +78,14 @@ def test():
     null = None
     sol = Solution()
 
-    print('Test 1... ', end='')
+    print("Test 1... ", end="")
     assert sol.tree2str(root=[1, 2, 3, 4]) == "1(2(4))(3)"
-    print('OK')
+    print("OK")
 
-    print('Test 2... ', end='')
+    print("Test 2... ", end="")
     assert sol.tree2str(root=[1, 2, 3, null, 4]) == "1(2()(4))(3)"
-    print('OK')
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

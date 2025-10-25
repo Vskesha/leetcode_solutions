@@ -3,7 +3,7 @@ class Solution:
         bal = 0
         counter = 0
         for c in s:
-            if c == 'L':
+            if c == "L":
                 bal -= 1
             else:
                 bal += 1
@@ -17,28 +17,27 @@ class Solution2:
         bal = ans = 0
 
         for ch in s:
-            bal += 1 if ch == 'L' else -1
+            bal += 1 if ch == "L" else -1
             if not bal:
                 ans += 1
         return ans
 
 
-
 def main():
     sol = Solution()
 
-    print('Test 1 ... ', end='')
+    print("Test 1 ... ", end="")
     assert 4 == sol.balancedStringSplit(s="RLRRLLRLRL")
-    print('ok')
+    print("ok")
 
-    print('Test 2 ... ', end='')
+    print("Test 2 ... ", end="")
     assert 2 == sol.balancedStringSplit(s="RLRRRLLRLL")
-    print('ok')
+    print("ok")
 
-    print('Test 3 ... ', end='')
+    print("Test 3 ... ", end="")
     assert 1 == sol.balancedStringSplit(s="LLLLRRRR")
-    print('ok')
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

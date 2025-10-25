@@ -20,7 +20,9 @@ class ListNode:
 
 
 class Solution:
-    def swapNodes(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+    def swapNodes(
+        self, head: Optional[ListNode], k: int
+    ) -> Optional[ListNode]:
         slow = fast = head
 
         for _ in range(k - 1):
@@ -56,7 +58,9 @@ class TestSolution(unittest.TestCase):
     def test_swap_nodes_1(self):
         print("Test swapNodes 1... ", end="")
         self.assertEqual(
-            self.sol.swapNodes(head=self.array_to_linked_list([1, 2, 3, 4, 5]), k=2),
+            self.sol.swapNodes(
+                head=self.array_to_linked_list([1, 2, 3, 4, 5]), k=2
+            ),
             self.array_to_linked_list([1, 4, 3, 2, 5]),
         )
         print("OK")
@@ -65,7 +69,8 @@ class TestSolution(unittest.TestCase):
         print("Test swapNodes 2... ", end="")
         self.assertEqual(
             self.sol.swapNodes(
-                head=self.array_to_linked_list([7, 9, 6, 6, 7, 8, 3, 0, 9, 5]), k=5
+                head=self.array_to_linked_list([7, 9, 6, 6, 7, 8, 3, 0, 9, 5]),
+                k=5,
             ),
             self.array_to_linked_list([7, 9, 6, 6, 8, 7, 3, 0, 9, 5]),
         )

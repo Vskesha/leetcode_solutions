@@ -31,9 +31,9 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["smallestEquivalentString"] * 3,
             "kwargs": [
-                dict(s1 = "parker", s2 = "morris", baseStr = "parser"),
-                dict(s1 = "hello", s2 = "world", baseStr = "hold"),
-                dict(s1 = "leetcode", s2 = "programs", baseStr = "sourcecode"),
+                dict(s1="parker", s2="morris", baseStr="parser"),
+                dict(s1="hello", s2="world", baseStr="hold"),
+                dict(s1="leetcode", s2="programs", baseStr="sourcecode"),
             ],
             "expected": ["makkek", "hdld", "aauaaaaada"],
         },

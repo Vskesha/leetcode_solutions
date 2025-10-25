@@ -48,7 +48,9 @@ def test():
     sol = Solution()
 
     print("Test 1... ", end="")
-    assert sol.numberOfBeams(bank=["011001", "000000", "010100", "001000"]) == 8
+    assert (
+        sol.numberOfBeams(bank=["011001", "000000", "010100", "001000"]) == 8
+    )
     print("OK")
 
     print("Test 2... ", end="")

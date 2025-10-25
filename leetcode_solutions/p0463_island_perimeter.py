@@ -111,7 +111,12 @@ class Solution4:
                 visited[i][j] = True
                 while bfs:
                     i, j = bfs.popleft()
-                    for ni, nj in ((i, j + 1), (i + 1, j), (i, j - 1), (i - 1, j)):
+                    for ni, nj in (
+                        (i, j + 1),
+                        (i + 1, j),
+                        (i, j - 1),
+                        (i - 1, j),
+                    ):
                         if 0 <= ni < m and 0 <= nj < n and grid[ni][nj]:
                             if not visited[ni][nj]:
                                 visited[ni][nj] = True
@@ -128,7 +133,14 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["islandPerimeter"] * 3,
             "kwargs": [
-                dict(grid=[[0, 1, 0, 0], [1, 1, 1, 0], [0, 1, 0, 0], [1, 1, 0, 0]]),
+                dict(
+                    grid=[
+                        [0, 1, 0, 0],
+                        [1, 1, 1, 0],
+                        [0, 1, 0, 0],
+                        [1, 1, 0, 0],
+                    ]
+                ),
                 dict(grid=[[1]]),
                 dict(grid=[[1, 0]]),
             ],

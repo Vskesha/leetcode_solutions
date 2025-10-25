@@ -31,16 +31,21 @@ class Solution2:
 def test():
     sol = Solution()
 
-    print('Test 1... ', end='')
-    for a, b in zip(sol.onesMinusZeros(grid=[[0, 1, 1], [1, 0, 1], [0, 0, 1]]), [[0, 0, 4], [0, 0, 4], [-2, -2, 2]]):
+    print("Test 1... ", end="")
+    for a, b in zip(
+        sol.onesMinusZeros(grid=[[0, 1, 1], [1, 0, 1], [0, 0, 1]]),
+        [[0, 0, 4], [0, 0, 4], [-2, -2, 2]],
+    ):
         assert a == b
-    print('OK')
+    print("OK")
 
-    print('Test 2... ', end='')
-    for a, b in zip(sol.onesMinusZeros(grid=[[1, 1, 1], [1, 1, 1]]), [[5, 5, 5], [5, 5, 5]]):
+    print("Test 2... ", end="")
+    for a, b in zip(
+        sol.onesMinusZeros(grid=[[1, 1, 1], [1, 1, 1]]), [[5, 5, 5], [5, 5, 5]]
+    ):
         assert a == b
-    print('OK')
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

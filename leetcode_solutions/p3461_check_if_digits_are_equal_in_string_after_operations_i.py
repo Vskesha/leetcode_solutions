@@ -19,8 +19,8 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["hasSameDigits"] * 2,
             "kwargs": [
-                dict(s = "3902"),
-                dict(s = "34789"),
+                dict(s="3902"),
+                dict(s="34789"),
             ],
             "expected": [True, False],
         },

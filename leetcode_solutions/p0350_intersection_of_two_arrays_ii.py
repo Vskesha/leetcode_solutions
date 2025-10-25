@@ -35,7 +35,9 @@ class TestSolution(unittest.TestCase):
 
     def test_intersect_1(self):
         print("test intersect 1 ... ", end="")
-        self.same_values(self.sol.intersect(nums1=[1, 2, 2, 1], nums2=[2, 2]), [2, 2])
+        self.same_values(
+            self.sol.intersect(nums1=[1, 2, 2, 1], nums2=[2, 2]), [2, 2]
+        )
         print("OK")
 
     def test_intersect_2(self):

@@ -14,7 +14,9 @@ class MountainArray:
 
 
 class Solution:
-    def findInMountainArray(self, target: int, mountain_arr: MountainArray) -> int:
+    def findInMountainArray(
+        self, target: int, mountain_arr: MountainArray
+    ) -> int:
 
         l, r = 1, mountain_arr.length() - 2
         while l < r:
@@ -48,20 +50,30 @@ class Solution:
         if mountain_arr.get(l) == target:
             return l
 
-        return - 1
+        return -1
 
 
 def test():
     sol = Solution()
 
-    print('Test 1 ... ', end='')
-    assert sol.findInMountainArray(mountain_arr=MountainArray([1, 2, 3, 4, 5, 3, 1]), target=3) == 2
-    print('ok')
+    print("Test 1 ... ", end="")
+    assert (
+        sol.findInMountainArray(
+            mountain_arr=MountainArray([1, 2, 3, 4, 5, 3, 1]), target=3
+        )
+        == 2
+    )
+    print("ok")
 
-    print('Test 1 ... ', end='')
-    assert sol.findInMountainArray(mountain_arr=MountainArray([0, 1, 2, 4, 2, 1]), target=3) == -1
-    print('ok')
+    print("Test 1 ... ", end="")
+    assert (
+        sol.findInMountainArray(
+            mountain_arr=MountainArray([0, 1, 2, 4, 2, 1]), target=3
+        )
+        == -1
+    )
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

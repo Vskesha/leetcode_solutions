@@ -25,7 +25,10 @@ class TestSolution(unittest.TestCase):
     def test_count_students_1(self):
         print("Test countStudents 1... ", end="")
         self.assertEqual(
-            self.sol.countStudents(students=[1, 1, 0, 0], sandwiches=[0, 1, 0, 1]), 0
+            self.sol.countStudents(
+                students=[1, 1, 0, 0], sandwiches=[0, 1, 0, 1]
+            ),
+            0,
         )
         print("OK")
 

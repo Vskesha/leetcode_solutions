@@ -7,7 +7,7 @@ class Solution:
             skip = 0
             i -= 1
             while i >= 0:
-                if st[i] == '#':
+                if st[i] == "#":
                     skip += 1
                 elif skip:
                     skip -= 1
@@ -43,7 +43,7 @@ class Solution1:
 
             skip = 0
             while i >= 0:
-                if s[i] == '#':
+                if s[i] == "#":
                     skip += 1
                 elif skip:
                     skip -= 1
@@ -53,7 +53,7 @@ class Solution1:
 
             skip = 0
             while j >= 0:
-                if t[j] == '#':
+                if t[j] == "#":
                     skip += 1
                 elif skip:
                     skip -= 1
@@ -76,7 +76,7 @@ class Solution2:
         def chars(st: str):
             skip = 0
             for ch in reversed(st):
-                if ch == '#':
+                if ch == "#":
                     skip += 1
                 elif skip:
                     skip -= 1
@@ -93,14 +93,14 @@ class Solution3:
         lt = []
 
         for ch in s:
-            if ch == '#':
+            if ch == "#":
                 if ls:
                     ls.pop()
             else:
                 ls.append(ch)
 
         for ch in t:
-            if ch == '#':
+            if ch == "#":
                 if lt:
                     lt.pop()
             else:
@@ -112,18 +112,18 @@ class Solution3:
 def test():
     sol = Solution()
 
-    print('Test 1 ... ', end='')
+    print("Test 1 ... ", end="")
     assert sol.backspaceCompare(s="ab#c", t="ad#c") is True
-    print('ok')
+    print("ok")
 
-    print('Test 2 ... ', end='')
+    print("Test 2 ... ", end="")
     assert sol.backspaceCompare(s="ab##", t="c#d#") is True
-    print('ok')
+    print("ok")
 
-    print('Test 3 ... ', end='')
+    print("Test 3 ... ", end="")
     assert sol.backspaceCompare(s="a#c", t="b") is False
-    print('ok')
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

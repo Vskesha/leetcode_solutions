@@ -41,7 +41,9 @@ class TestSolution(unittest.TestCase):
 
     def test_min_sub_array_len_1(self):
         print("Test minSubArrayLen 1... ", end="")
-        self.assertEqual(self.sol.minSubArrayLen(target=7, nums=[2, 3, 1, 2, 4, 3]), 2)
+        self.assertEqual(
+            self.sol.minSubArrayLen(target=7, nums=[2, 3, 1, 2, 4, 3]), 2
+        )
         print("OK")
 
     def test_min_sub_array_len_2(self):
@@ -52,7 +54,8 @@ class TestSolution(unittest.TestCase):
     def test_min_sub_array_len_3(self):
         print("Test minSubArrayLen 3... ", end="")
         self.assertEqual(
-            self.sol.minSubArrayLen(target=11, nums=[1, 1, 1, 1, 1, 1, 1, 1]), 0
+            self.sol.minSubArrayLen(target=11, nums=[1, 1, 1, 1, 1, 1, 1, 1]),
+            0,
         )
         print("OK")
 

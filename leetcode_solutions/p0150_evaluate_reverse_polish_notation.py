@@ -32,7 +32,7 @@ class Solution:
 class TestSolution(unittest.TestCase, metaclass=TestMeta):
     test_cases = [
         {
-            "class":  Solution,
+            "class": Solution,
             "class_methods": ["evalRPN"] * 3,
             "kwargs": [
                 dict(tokens=["2", "1", "+", "3", "*"]),

@@ -8,7 +8,7 @@ from leetcode_solutions._test_meta import TestMeta
 
 class Solution:
     def countBalancedPermutations(self, num: str) -> int:
-        mod = 10 ** 9 + 7
+        mod = 10**9 + 7
         ln = len(num)
         digits = sorted(map(int, num), reverse=True)
         sumd = sum(digits)
@@ -30,7 +30,9 @@ class Solution:
             if odd and od_rem >= d:
                 res = dp(even, odd - 1, ev_rem, od_rem - d) * odd
             if even and ev_rem >= d:
-                res = (res + dp(even - 1, odd, ev_rem - d, od_rem) * even) % mod
+                res = (
+                    res + dp(even - 1, odd, ev_rem - d, od_rem) * even
+                ) % mod
             return res
 
         ans = dp(ln // 2, (ln + 1) // 2, sumd // 2, sumd // 2)
@@ -105,7 +107,7 @@ class Solution2:
 
 class Solution:
     def countBalancedPermutations(self, num: str) -> int:
-        mod = 10 ** 9 + 7
+        mod = 10**9 + 7
         ln = len(num)
         digits = sorted(map(int, num), reverse=True)
         acc = list(accumulate(digits, initial=0))

@@ -13,7 +13,9 @@ class ListNode:
 
 
 class Solution:
-    def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+    def reverseKGroup(
+        self, head: Optional[ListNode], k: int
+    ) -> Optional[ListNode]:
         result = prev = ListNode()
         i, dummy, end = 0, None, head
         while head:
@@ -36,7 +38,9 @@ class Solution:
 
 
 class Solution2:
-    def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+    def reverseKGroup(
+        self, head: Optional[ListNode], k: int
+    ) -> Optional[ListNode]:
         prev = result = ListNode()
         sub = []
         while head:
@@ -52,7 +56,9 @@ class Solution2:
 
 
 class Solution3:
-    def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+    def reverseKGroup(
+        self, head: Optional[ListNode], k: int
+    ) -> Optional[ListNode]:
         result = []
         while head:
             result.append(head.val)
@@ -72,7 +78,9 @@ class Solution3:
 
 
 class Solution4:
-    def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+    def reverseKGroup(
+        self, head: Optional[ListNode], k: int
+    ) -> Optional[ListNode]:
         prev = result = ListNode()
         prev.next = curr = head
         while True:
@@ -105,7 +113,9 @@ class TestSolution(unittest.TestCase):
             head = ListNode(val, head)
         return head
 
-    def assertEqualLinkedList(self, ll1: Optional[ListNode], ll2: Optional[ListNode]):
+    def assertEqualLinkedList(
+        self, ll1: Optional[ListNode], ll2: Optional[ListNode]
+    ):
         while ll1 and ll2:
             self.assertEqual(ll1.val, ll2.val)
             ll1, ll2 = ll1.next, ll2.next
@@ -115,7 +125,9 @@ class TestSolution(unittest.TestCase):
     def test_reverse_k_group_1(self):
         print("Test reverseKGroup 1... ", end="")
         self.assertEqualLinkedList(
-            self.sol.reverseKGroup(head=self.array_to_linkedlist([1, 2, 3, 4, 5]), k=2),
+            self.sol.reverseKGroup(
+                head=self.array_to_linkedlist([1, 2, 3, 4, 5]), k=2
+            ),
             self.array_to_linkedlist([2, 1, 4, 3, 5]),
         )
         print("OK")
@@ -123,7 +135,9 @@ class TestSolution(unittest.TestCase):
     def test_reverse_k_group_2(self):
         print("Test reverseKGroup 2... ", end="")
         self.assertEqualLinkedList(
-            self.sol.reverseKGroup(head=self.array_to_linkedlist([1, 2, 3, 4, 5]), k=3),
+            self.sol.reverseKGroup(
+                head=self.array_to_linkedlist([1, 2, 3, 4, 5]), k=3
+            ),
             self.array_to_linkedlist([3, 2, 1, 4, 5]),
         )
         print("OK")

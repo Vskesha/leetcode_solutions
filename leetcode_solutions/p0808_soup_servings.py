@@ -16,10 +16,12 @@ class Solution:
                 return 1.0
             if b <= 0:
                 return 0.0
-            return (dp(a - 100, b) +
-                    dp(a - 75, b - 25) +
-                    dp(a - 50, b - 50) +
-                    dp(a - 25, b - 75)) / 4
+            return (
+                dp(a - 100, b)
+                + dp(a - 75, b - 25)
+                + dp(a - 50, b - 50)
+                + dp(a - 25, b - 75)
+            ) / 4
 
         return dp(n, n)
 
@@ -41,23 +43,27 @@ class Solution2:
             dp[i][0] = dp[i][-1] = dp[i][-2] = 0
             dp[0][i] = dp[-1][i] = dp[-2][i] = dp[-3][i] = 1
             for j in range(1, i + 1):
-                dp[i][j] = (dp[i - 4][j] +
-                            dp[i - 3][j - 1] +
-                            dp[i - 2][j - 2] +
-                            dp[i - 1][j - 3]) / 4
-                dp[j][i] = (dp[j - 4][i] +
-                            dp[j - 3][i - 1] +
-                            dp[j - 2][i - 2] +
-                            dp[j - 1][i - 3]) / 4
-        return dp[m-1][m-1]
+                dp[i][j] = (
+                    dp[i - 4][j]
+                    + dp[i - 3][j - 1]
+                    + dp[i - 2][j - 2]
+                    + dp[i - 1][j - 3]
+                ) / 4
+                dp[j][i] = (
+                    dp[j - 4][i]
+                    + dp[j - 3][i - 1]
+                    + dp[j - 2][i - 2]
+                    + dp[j - 1][i - 3]
+                ) / 4
+        return dp[m - 1][m - 1]
 
 
 def main():
     sol = Solution()
-    print('0.62500 ===', sol.soupServings(n=50))
-    print('0.71875 ===', sol.soupServings(n=100))
-    print('??????? ===', sol.soupServings(n=4500))
+    print("0.62500 ===", sol.soupServings(n=50))
+    print("0.71875 ===", sol.soupServings(n=100))
+    print("??????? ===", sol.soupServings(n=4500))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

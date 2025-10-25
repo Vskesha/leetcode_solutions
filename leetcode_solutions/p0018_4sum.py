@@ -66,7 +66,9 @@ class TestSolution(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.sol = Solution()
 
-    def same_combinations(self, a: List[List[int]], b: List[List[int]]) -> bool:
+    def same_combinations(
+        self, a: List[List[int]], b: List[List[int]]
+    ) -> bool:
         return set(map(tuple, [sorted(x) for x in a])) == set(
             map(tuple, [sorted(x) for x in b])
         )

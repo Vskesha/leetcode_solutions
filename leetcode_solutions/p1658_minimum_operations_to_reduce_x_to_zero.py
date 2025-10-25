@@ -55,14 +55,14 @@ class Solution2:
 
 def test():
     sol = Solution()
-    print('Test 1 ... ', end='')
+    print("Test 1 ... ", end="")
     assert sol.minOperations(nums=[1, 1, 4, 2, 3], x=5) == 2
-    print('ok\nTest 2 ... ', end='')
+    print("ok\nTest 2 ... ", end="")
     assert sol.minOperations(nums=[5, 6, 7, 8, 9], x=4) == -1
-    print('ok\nTest 3 ... ', end='')
+    print("ok\nTest 3 ... ", end="")
     assert sol.minOperations(nums=[3, 2, 20, 1, 1, 3], x=10) == 5
-    print('ok')
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

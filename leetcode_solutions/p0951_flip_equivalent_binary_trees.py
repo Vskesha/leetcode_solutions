@@ -18,7 +18,9 @@ class TreeNode:
 
 
 class Solution:
-    def flipEquiv(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
+    def flipEquiv(
+        self, root1: Optional[TreeNode], root2: Optional[TreeNode]
+    ) -> bool:
 
         def dfs(node1, node2) -> bool:
             if not (node1 and node2):
@@ -35,7 +37,9 @@ class Solution:
 
 
 class Solution2:
-    def flipEquiv(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
+    def flipEquiv(
+        self, root1: Optional[TreeNode], root2: Optional[TreeNode]
+    ) -> bool:
         def dfs(node1, node2) -> bool:
             return (
                 not (node1 or node2)
@@ -82,7 +86,9 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class_methods": ["flipEquiv"] * 3,
             "kwargs": [
                 dict(
-                    root1=list_to_tree([1, 2, 3, 4, 5, 6, null, null, null, 7, 8]),
+                    root1=list_to_tree(
+                        [1, 2, 3, 4, 5, 6, null, null, null, 7, 8]
+                    ),
                     root2=list_to_tree(
                         [1, 3, 2, null, 6, 4, 5, null, null, null, null, 8, 7]
                     ),

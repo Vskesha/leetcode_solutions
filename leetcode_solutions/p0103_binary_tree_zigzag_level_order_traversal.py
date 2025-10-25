@@ -77,21 +77,24 @@ def test():
     null = None
     sol = Solution()
 
-    print('Test 1... ', end='')
-    for a, b in zip(sol.zigzagLevelOrder(root=[3, 9, 20, null, null, 15, 7]), [[3], [20, 9], [15, 7]]):
+    print("Test 1... ", end="")
+    for a, b in zip(
+        sol.zigzagLevelOrder(root=[3, 9, 20, null, null, 15, 7]),
+        [[3], [20, 9], [15, 7]],
+    ):
         assert a == b
-    print('ok')
+    print("ok")
 
-    print('Test 2... ', end='')
+    print("Test 2... ", end="")
     for a, b in zip(sol.zigzagLevelOrder(root=[1]), [[1]]):
         assert a == b
-    print('ok')
+    print("ok")
 
-    print('Test 3... ', end='')
+    print("Test 3... ", end="")
     for a, b in zip(sol.zigzagLevelOrder(root=[]), []):
         assert a == b
-    print('ok')
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

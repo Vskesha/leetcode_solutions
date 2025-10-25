@@ -7,7 +7,14 @@ from leetcode_solutions._test_meta import TestMeta
 
 class Solution:
     def slidingPuzzle(self, board: List[List[int]]) -> int:
-        neibs = {0: [1, 3], 1: [0, 2, 4], 2: [1, 5], 3: [0, 4], 4: [1, 3, 5], 5: [2, 4]}
+        neibs = {
+            0: [1, 3],
+            1: [0, 2, 4],
+            2: [1, 5],
+            3: [0, 4],
+            4: [1, 3, 5],
+            5: [2, 4],
+        }
 
         tb = tuple(v for row in board for v in row)
         end = (1, 2, 3, 4, 5, 0)
@@ -40,7 +47,14 @@ class Solution:
 
 class Solution2:
     def slidingPuzzle(self, board: List[List[int]]) -> int:
-        neibs = {0: [1, 3], 1: [0, 2, 4], 2: [1, 5], 3: [0, 4], 4: [1, 3, 5], 5: [2, 4]}
+        neibs = {
+            0: [1, 3],
+            1: [0, 2, 4],
+            2: [1, 5],
+            3: [0, 4],
+            4: [1, 3, 5],
+            5: [2, 4],
+        }
 
         tb = tuple(v for row in board for v in row)
         end = (1, 2, 3, 4, 5, 0)

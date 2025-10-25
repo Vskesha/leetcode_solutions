@@ -68,10 +68,7 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
                 dict(pattern="IIIDIDDD"),
                 dict(pattern="DDD"),
             ],
-            "expected": [
-                "123549876",
-                "4321"
-            ],
+            "expected": ["123549876", "4321"],
         },
     ]
 

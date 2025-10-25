@@ -129,7 +129,14 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "kwargs": [
                 dict(grid=[[1, 0, 0], [0, 0, 0], [0, 0, 1]]),
                 dict(grid=[[0, 0, 1], [0, 0, 0], [0, 0, 0]]),
-                dict(grid=[[0, 0, 0, 1], [0, 0, 0, 0], [0, 0, 0, 0], [1, 0, 0, 0]]),
+                dict(
+                    grid=[
+                        [0, 0, 0, 1],
+                        [0, 0, 0, 0],
+                        [0, 0, 0, 0],
+                        [1, 0, 0, 0],
+                    ]
+                ),
                 dict(
                     grid=[
                         [0, 0, 0, 0, 0],

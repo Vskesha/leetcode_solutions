@@ -35,14 +35,14 @@ class Solution2:
 def test():
     sol = Solution()
 
-    print('Test 1 ... ', end='')
+    print("Test 1 ... ", end="")
     assert sol.maxFrequency(nums=[1, 2, 4], k=5) == 3
-    print('OK')
+    print("OK")
 
-    print('Test 2 ... ', end='')
+    print("Test 2 ... ", end="")
     assert sol.maxFrequency(nums=[1, 4, 8, 13], k=5) == 2
-    print('OK')
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

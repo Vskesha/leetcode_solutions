@@ -32,7 +32,9 @@ def test_find_min_arrow_shots():
     sol = Solution()
 
     print("Test 1... ", end="")
-    assert sol.findMinArrowShots(points=[[10, 16], [2, 8], [1, 6], [7, 12]]) == 2
+    assert (
+        sol.findMinArrowShots(points=[[10, 16], [2, 8], [1, 6], [7, 12]]) == 2
+    )
     print("OK")
 
     print("Test 2... ", end="")

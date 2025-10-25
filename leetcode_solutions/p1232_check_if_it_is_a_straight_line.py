@@ -30,12 +30,16 @@ class Solution2:
 
 def test():
     sol = Solution()
-    print('Test 1 ... ', end='')
-    assert True == sol.checkStraightLine(coordinates=[[1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7]])
-    print('ok\nTest 2 ... ', end='')
-    assert False == sol.checkStraightLine(coordinates=[[1, 1], [2, 2], [3, 4], [4, 5], [5, 6], [7, 7]])
-    print('ok')
+    print("Test 1 ... ", end="")
+    assert True == sol.checkStraightLine(
+        coordinates=[[1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7]]
+    )
+    print("ok\nTest 2 ... ", end="")
+    assert False == sol.checkStraightLine(
+        coordinates=[[1, 1], [2, 2], [3, 4], [4, 5], [5, 6], [7, 7]]
+    )
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

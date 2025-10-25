@@ -33,7 +33,9 @@ class Solution2:
             if not subordinates[boss]:
                 return 0
             ans = informTime[boss]
-            ans += max(time_needed(subordinate) for subordinate in subordinates[boss])
+            ans += max(
+                time_needed(subordinate) for subordinate in subordinates[boss]
+            )
 
             return ans
 
@@ -48,7 +50,8 @@ class TestSolution(unittest.TestCase):
     def test_num_of_minutes_1(self):
         print("Test numOfMinutes 1... ", end="")
         self.assertEqual(
-            self.sol.numOfMinutes(n=1, headID=0, manager=[-1], informTime=[0]), 0
+            self.sol.numOfMinutes(n=1, headID=0, manager=[-1], informTime=[0]),
+            0,
         )
         print("OK")
 

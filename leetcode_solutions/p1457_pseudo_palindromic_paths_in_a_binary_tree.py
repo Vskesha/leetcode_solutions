@@ -58,7 +58,9 @@ class Solution:
                 if node.right:
                     return dfs(node.right, bitmask)
                 else:
-                    return 1 if not bitmask or bin(bitmask).count("1") == 1 else 0
+                    return (
+                        1 if not bitmask or bin(bitmask).count("1") == 1 else 0
+                    )
 
         return dfs(root, 0)
 

@@ -86,7 +86,9 @@ class TestSolution(unittest.TestCase):
     def test_max_num_edges_to_remove_3(self):
         print("Test maxNumEdgesToRemove 3... ", end="")
         self.assertEqual(
-            self.sol.maxNumEdgesToRemove(n=4, edges=[[3, 2, 3], [1, 1, 2], [2, 3, 4]]),
+            self.sol.maxNumEdgesToRemove(
+                n=4, edges=[[3, 2, 3], [1, 1, 2], [2, 3, 4]]
+            ),
             -1,
         )
         print("OK")

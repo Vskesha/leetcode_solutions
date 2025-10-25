@@ -7,7 +7,12 @@ from typing import List
 
 class Solution:
     def modifiedGraphEdges(
-        self, n: int, edges: List[List[int]], source: int, destination: int, target: int
+        self,
+        n: int,
+        edges: List[List[int]],
+        source: int,
+        destination: int,
+        target: int,
     ) -> List[List[int]]:
         graph = defaultdict(dict)
         allowed = [[False] * n for _ in range(n)]
@@ -99,10 +104,14 @@ class TestSolution(unittest.TestCase):
         destination = 1
         target = 5
         output = [[4, 1, 1], [2, 0, 1], [0, 3, 3], [4, 3, 1]]
-        new_edges = self.sol.modifiedGraphEdges(n, edges, source, destination, target)
+        new_edges = self.sol.modifiedGraphEdges(
+            n, edges, source, destination, target
+        )
         min_dist1 = self.get_min_distance(n, new_edges, source, destination)
         if output:
-            min_dist_out = self.get_min_distance(n, output, source, destination)
+            min_dist_out = self.get_min_distance(
+                n, output, source, destination
+            )
             self.assertEqual(min_dist_out, target)
             self.assertEqual(min_dist1, target)
         else:
@@ -117,10 +126,14 @@ class TestSolution(unittest.TestCase):
         destination = 2
         target = 6
         output = []
-        new_edges = self.sol.modifiedGraphEdges(n, edges, source, destination, target)
+        new_edges = self.sol.modifiedGraphEdges(
+            n, edges, source, destination, target
+        )
         min_dist1 = self.get_min_distance(n, new_edges, source, destination)
         if output:
-            min_dist_out = self.get_min_distance(n, output, source, destination)
+            min_dist_out = self.get_min_distance(
+                n, output, source, destination
+            )
             self.assertEqual(min_dist_out, target)
             self.assertEqual(min_dist1, target)
         else:
@@ -135,10 +148,14 @@ class TestSolution(unittest.TestCase):
         destination = 2
         target = 6
         output = [[1, 0, 4], [1, 2, 3], [2, 3, 5], [0, 3, 1]]
-        new_edges = self.sol.modifiedGraphEdges(n, edges, source, destination, target)
+        new_edges = self.sol.modifiedGraphEdges(
+            n, edges, source, destination, target
+        )
         min_dist1 = self.get_min_distance(n, new_edges, source, destination)
         if output:
-            min_dist_out = self.get_min_distance(n, output, source, destination)
+            min_dist_out = self.get_min_distance(
+                n, output, source, destination
+            )
             self.assertEqual(min_dist_out, target)
             self.assertEqual(min_dist1, target)
         else:
@@ -153,10 +170,14 @@ class TestSolution(unittest.TestCase):
         destination = 2
         target = 1
         output = []
-        new_edges = self.sol.modifiedGraphEdges(n, edges, source, destination, target)
+        new_edges = self.sol.modifiedGraphEdges(
+            n, edges, source, destination, target
+        )
         min_dist1 = self.get_min_distance(n, new_edges, source, destination)
         if output:
-            min_dist_out = self.get_min_distance(n, output, source, destination)
+            min_dist_out = self.get_min_distance(
+                n, output, source, destination
+            )
             self.assertEqual(min_dist_out, target)
             self.assertEqual(min_dist1, target)
         else:
@@ -171,10 +192,14 @@ class TestSolution(unittest.TestCase):
         destination = 3
         target = 12
         output = [[0, 1, 11], [2, 0, 2], [3, 2, 6], [2, 1, 10], [3, 0, 1]]
-        new_edges = self.sol.modifiedGraphEdges(n, edges, source, destination, target)
+        new_edges = self.sol.modifiedGraphEdges(
+            n, edges, source, destination, target
+        )
         min_dist1 = self.get_min_distance(n, new_edges, source, destination)
         if output:
-            min_dist_out = self.get_min_distance(n, output, source, destination)
+            min_dist_out = self.get_min_distance(
+                n, output, source, destination
+            )
             self.assertEqual(min_dist_out, target)
             self.assertEqual(min_dist1, target)
         else:

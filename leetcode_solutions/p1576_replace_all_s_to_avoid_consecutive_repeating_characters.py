@@ -13,7 +13,10 @@ class Solution:
                 res[i] = (
                     {"a", "b", "c"}
                     .difference(
-                        {res[i - 1] if i else "?", res[i + 1] if i < ls - 1 else "?"}
+                        {
+                            res[i - 1] if i else "?",
+                            res[i + 1] if i < ls - 1 else "?",
+                        }
                     )
                     .pop()
                 )

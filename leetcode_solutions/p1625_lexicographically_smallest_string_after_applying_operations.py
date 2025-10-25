@@ -17,10 +17,7 @@ class Solution:
 
         step = math.gcd(ls, b)
         for i in range(0, ls, step):
-            diffs = [
-                shifts[digits[i]] * (step % 2),
-                shifts[digits[i + 1]]
-            ]
+            diffs = [shifts[digits[i]] * (step % 2), shifts[digits[i + 1]]]
             for j in range(i, i + ls):
                 digit = (digits[j] - diffs[(j - i) % 2]) % 10
                 if digit != ans[j - i]:
@@ -55,10 +52,7 @@ class Solution2:
 
         step = math.gcd(ls, b)
         for i in range(0, ls, step):
-            diffs = [
-                shifts[digits[i]] * (step % 2),
-                shifts[digits[i + 1]]
-            ]
+            diffs = [shifts[digits[i]] * (step % 2), shifts[digits[i + 1]]]
             for j in range(i, i + ls):
                 digit = (digits[j] - diffs[(j - i) % 2]) % 10
                 if digit != ans[j - i]:
@@ -69,17 +63,18 @@ class Solution2:
         ans = "".join(map(str, ans))
         return ans
 
+
 class TestSolution(unittest.TestCase, metaclass=TestMeta):
     test_cases = [
         {
             "class": Solution,
             "class_methods": ["findLexSmallestString"] * 5,
             "kwargs": [
-                dict(s = "863376891476", a = 4, b = 9),
-                dict(s = "43987654", a = 7, b = 3),
-                dict(s = "5525", a = 9, b = 2),
-                dict(s = "74", a = 5, b = 1),
-                dict(s = "0011", a = 4, b = 2),
+                dict(s="863376891476", a=4, b=9),
+                dict(s="43987654", a=7, b=3),
+                dict(s="5525", a=9, b=2),
+                dict(s="74", a=5, b=1),
+                dict(s="0011", a=4, b=2),
             ],
             "expected": ["005790033890", "00553311", "2050", "24", "0011"],
         },

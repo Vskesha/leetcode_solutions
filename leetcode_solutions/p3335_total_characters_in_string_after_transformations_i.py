@@ -15,7 +15,10 @@ class Solution:
             dp.append((prev + dp[0]) % mod)
             prev = dp.popleft()
         dp.appendleft(prev)
-        return sum(dp[ord(ch) - 97] * v % mod for ch, v in Counter(s).items()) % mod
+        return (
+            sum(dp[ord(ch) - 97] * v % mod for ch, v in Counter(s).items())
+            % mod
+        )
 
 
 class Solution1:
@@ -40,7 +43,10 @@ class Solution2:
         base[25][0] = base[25][1] = 1
         base = np.linalg.matrix_power(base, t)
         data = base.sum(axis=1) % mod
-        return sum(data[ord(ch) - oa] * v % mod for ch, v in Counter(s).items()) % mod
+        return (
+            sum(data[ord(ch) - oa] * v % mod for ch, v in Counter(s).items())
+            % mod
+        )
 
 
 class Solution3:

@@ -14,7 +14,7 @@ class Solution1:
     def flipAndInvertImage(self, image: List[List[int]]) -> List[List[int]]:
         lr = len(image[0])
         for row in image:
-            for i in range((lr+1)//2):
+            for i in range((lr + 1) // 2):
                 row[i], row[~i] = row[~i] ^ 1, row[i] ^ 1
         return image
 
@@ -33,17 +33,20 @@ class Solution2:
 def test():
     sol = Solution()
 
-    print('Test 1 ... ', end='')
-    assert sol.flipAndInvertImage(image=[[1, 1, 0], [1, 0, 1], [0, 0, 0]]) == [[1, 0, 0], [0, 1, 0], [1, 1, 1]]
-    print('ok')
+    print("Test 1 ... ", end="")
+    assert sol.flipAndInvertImage(image=[[1, 1, 0], [1, 0, 1], [0, 0, 0]]) == [
+        [1, 0, 0],
+        [0, 1, 0],
+        [1, 1, 1],
+    ]
+    print("ok")
 
-    print('Test 2 ... ', end='')
-    assert sol.flipAndInvertImage(image=[[1, 1, 0, 0], [1, 0, 0, 1], [0, 1, 1, 1], [1, 0, 1, 0]]) == [[1, 1, 0, 0],
-                                                                                                      [0, 1, 1, 0],
-                                                                                                      [0, 0, 0, 1],
-                                                                                                      [1, 0, 1, 0]]
-    print('ok')
+    print("Test 2 ... ", end="")
+    assert sol.flipAndInvertImage(
+        image=[[1, 1, 0, 0], [1, 0, 0, 1], [0, 1, 1, 1], [1, 0, 1, 0]]
+    ) == [[1, 1, 0, 0], [0, 1, 1, 0], [0, 0, 0, 1], [1, 0, 1, 0]]
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

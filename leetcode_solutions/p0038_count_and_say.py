@@ -22,15 +22,15 @@ class Solution:
 
 class Solutio2:
     def countAndSay(self, n: int) -> str:
-        ans = '1'
+        ans = "1"
         for _ in range(n - 1):
-            ans = ''.join(f'{len(list(gr))}{el}' for el, gr in groupby(ans))
+            ans = "".join(f"{len(list(gr))}{el}" for el, gr in groupby(ans))
         return ans
 
 
 class Solution3:
     def countAndSay(self, n: int) -> str:
-        ans = '1'
+        ans = "1"
         for _ in range(n - 1):
             aux = [0, ans[0]]
             for d in ans:
@@ -38,13 +38,13 @@ class Solution3:
                     aux[-2] += 1
                 else:
                     aux.extend([1, d])
-            ans = ''.join(map(str, aux))
+            ans = "".join(map(str, aux))
         return ans
 
 
 class Solution4:
     def countAndSay(self, n: int) -> str:
-        ans = '1'
+        ans = "1"
         for _ in range(n - 1):
             res = []
             counter = 0
@@ -53,11 +53,11 @@ class Solution4:
                 if c == char:
                     counter += 1
                 else:
-                    res.append(f'{counter}{char}')
+                    res.append(f"{counter}{char}")
                     counter = 1
                     char = c
-            res.append(f'{counter}{char}')
-            ans = ''.join(res)
+            res.append(f"{counter}{char}")
+            ans = "".join(res)
         return ans
 
 

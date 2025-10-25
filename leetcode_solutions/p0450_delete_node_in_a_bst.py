@@ -69,7 +69,9 @@ def sol_decorator(cls):
 
 @sol_decorator
 class Solution:
-    def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
+    def deleteNode(
+        self, root: Optional[TreeNode], key: int
+    ) -> Optional[TreeNode]:
         if not root:
             return root
         elif root.val > key:
@@ -91,7 +93,9 @@ class Solution:
 
 @sol_decorator
 class Solution2:
-    def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
+    def deleteNode(
+        self, root: Optional[TreeNode], key: int
+    ) -> Optional[TreeNode]:
         def del_node(node, parent, key, dir):
             if not node:
                 return

@@ -15,10 +15,14 @@ def sol_decorator(cls):
         def __init__(self, *args, **kwargs):
             self.original = cls(*args, **kwargs)
 
-        def mergeInBetween(self, list1: List, a: int, b: int, list2: List) -> List:
+        def mergeInBetween(
+            self, list1: List, a: int, b: int, list2: List
+        ) -> List:
             list1 = self.arr2linkedlist(list1)
             list2 = self.arr2linkedlist(list2)
-            result_linked_list = self.original.mergeInBetween(list1, a, b, list2)
+            result_linked_list = self.original.mergeInBetween(
+                list1, a, b, list2
+            )
             return self.linkedlist2arr(result_linked_list)
 
         def arr2linkedlist(self, arr: Optional[List]) -> Optional[ListNode]:

@@ -7,7 +7,9 @@ from leetcode_solutions._test_meta import TestMeta
 
 
 class TreeNode:
-    def __init__(self, lbound, rbound, left=None, right=None, max_gap=0, height=0):
+    def __init__(
+        self, lbound, rbound, left=None, right=None, max_gap=0, height=0
+    ):
         self.lbound = lbound
         self.rbound = rbound
         self.left = left
@@ -18,8 +20,12 @@ class TreeNode:
     def add_obstacle(self, x: int) -> None:
 
         if not self.left:
-            self.left = TreeNode(lbound=self.lbound, rbound=x, max_gap=x - self.lbound)
-            self.right = TreeNode(lbound=x, rbound=self.rbound, max_gap=self.rbound - x)
+            self.left = TreeNode(
+                lbound=self.lbound, rbound=x, max_gap=x - self.lbound
+            )
+            self.right = TreeNode(
+                lbound=x, rbound=self.rbound, max_gap=self.rbound - x
+            )
         else:
             if self.left.rbound > x:
                 self.left.add_obstacle(x)
@@ -57,7 +63,7 @@ class TreeNode:
             left=lf,
             right=rg,
             max_gap=max(lf.max_gap, rg.max_gap),
-            height=max(lf.height, rg.height) + 1
+            height=max(lf.height, rg.height) + 1,
         )
         self.right = self.right.right
         self.max_gap = max(self.left.max_gap, self.right.max_gap)
@@ -75,7 +81,7 @@ class TreeNode:
             left=lf,
             right=rg,
             max_gap=max(lf.max_gap, rg.max_gap),
-            height=max(lf.height, rg.height) + 1
+            height=max(lf.height, rg.height) + 1,
         )
         self.left = self.left.left
         self.max_gap = max(self.left.max_gap, self.right.max_gap)
@@ -109,8 +115,8 @@ class Solution2:
                 barriers.add(it)
 
         holes = SortedList()  # Sorted list to maintain hole sizes
-        holes.add(float('inf'))  # Initialize with an infinitely large hole
-        hole2start = {float('inf'): barriers[-1]}
+        holes.add(float("inf"))  # Initialize with an infinitely large hole
+        hole2start = {float("inf"): barriers[-1]}
 
         # Calculate initial hole sizes based on the barriers
         for pos in range(len(barriers) - 1):
@@ -125,7 +131,7 @@ class Solution2:
                         holes.add(size)
                     hole2start[size] = start
 
-        barriers.add(float('inf'))  # Add an infinite barrier at the end
+        barriers.add(float("inf"))  # Add an infinite barrier at the end
 
         result = []
         # Process the queries in reverse order
@@ -139,7 +145,9 @@ class Solution2:
 
                 hole_pos = holes.bisect_left(size)
                 if hole2start[holes[hole_pos]] > left:
-                    while hole_pos > 0 and hole2start[holes[hole_pos - 1]] > left:
+                    while (
+                        hole_pos > 0 and hole2start[holes[hole_pos - 1]] > left
+                    ):
                         del hole2start[holes[hole_pos - 1]]
                         del holes[hole_pos - 1]
                         hole_pos -= 1
@@ -169,59 +177,63 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class_methods": ["getResults"] * 3,
             "kwargs": [
                 dict(queries=[[1, 2], [2, 3, 3], [2, 3, 1], [2, 2, 2]]),
-                dict(queries=[[1, 7], [2, 7, 6], [1, 2], [2, 7, 5], [2, 7, 6]]),
-                dict(queries=[
-                    [1, 2],
-                    [1, 30],
-                    [2, 123, 118],
-                    [1, 28],
-                    [1, 46],
-                    [1, 11],
-                    [1, 23],
-                    [2, 35, 96],
-                    [1, 37],
-                    [1, 130],
-                    [2, 13, 108],
-                    [1, 128],
-                    [2, 149, 48],
-                    [2, 133, 39],
-                    [1, 13],
-                    [2, 90, 79],
-                    [1, 102],
-                    [1, 105],
-                    [1, 7],
-                    [1, 144],
-                    [2, 83, 80],
-                    [1, 50],
-                    [1, 142],
-                    [1, 55],
-                    [2, 109, 46],
-                    [2, 12, 21],
-                    [2, 85, 118],
-                    [1, 79],
-                    [1, 17],
-                    [1, 62],
-                    [2, 116, 75],
-                    [2, 53, 9],
-                    [1, 77],
-                    [1, 135],
-                    [2, 123, 116],
-                    [1, 51],
-                    [2, 147, 90],
-                    [2, 88, 26],
-                    [1, 14],
-                    [2, 43, 115],
-                    [1, 136],
-                    [1, 4],
-                    [1, 15],
-                    [2, 124, 134],
-                    [2, 138, 29],
-                    [2, 37, 28],
-                    [2, 51, 90],
-                    [1, 74],
-                    [2, 16, 28],
-                    [2, 31, 7],
-                ]),
+                dict(
+                    queries=[[1, 7], [2, 7, 6], [1, 2], [2, 7, 5], [2, 7, 6]]
+                ),
+                dict(
+                    queries=[
+                        [1, 2],
+                        [1, 30],
+                        [2, 123, 118],
+                        [1, 28],
+                        [1, 46],
+                        [1, 11],
+                        [1, 23],
+                        [2, 35, 96],
+                        [1, 37],
+                        [1, 130],
+                        [2, 13, 108],
+                        [1, 128],
+                        [2, 149, 48],
+                        [2, 133, 39],
+                        [1, 13],
+                        [2, 90, 79],
+                        [1, 102],
+                        [1, 105],
+                        [1, 7],
+                        [1, 144],
+                        [2, 83, 80],
+                        [1, 50],
+                        [1, 142],
+                        [1, 55],
+                        [2, 109, 46],
+                        [2, 12, 21],
+                        [2, 85, 118],
+                        [1, 79],
+                        [1, 17],
+                        [1, 62],
+                        [2, 116, 75],
+                        [2, 53, 9],
+                        [1, 77],
+                        [1, 135],
+                        [2, 123, 116],
+                        [1, 51],
+                        [2, 147, 90],
+                        [2, 88, 26],
+                        [1, 14],
+                        [2, 43, 115],
+                        [1, 136],
+                        [1, 4],
+                        [1, 15],
+                        [2, 124, 134],
+                        [2, 138, 29],
+                        [2, 37, 28],
+                        [2, 51, 90],
+                        [1, 74],
+                        [2, 16, 28],
+                        [2, 31, 7],
+                    ]
+                ),
             ],
             "expected": [
                 [false, true, true],

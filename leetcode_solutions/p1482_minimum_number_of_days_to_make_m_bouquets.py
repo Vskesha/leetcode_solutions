@@ -82,12 +82,16 @@ class TestSolution(unittest.TestCase):
 
     def test_min_days(self):
         print("Test minDays 1 ... ", end="")
-        self.assertEqual(self.sol.minDays(bloomDay=[1, 10, 3, 10, 2], m=3, k=1), 3)
+        self.assertEqual(
+            self.sol.minDays(bloomDay=[1, 10, 3, 10, 2], m=3, k=1), 3
+        )
         print("OK")
 
     def test_min_days_2(self):
         print("Test minDays 2 ... ", end="")
-        self.assertEqual(self.sol.minDays(bloomDay=[1, 10, 3, 10, 2], m=3, k=2), -1)
+        self.assertEqual(
+            self.sol.minDays(bloomDay=[1, 10, 3, 10, 2], m=3, k=2), -1
+        )
         print("OK")
 
     def test_min_days_3(self):

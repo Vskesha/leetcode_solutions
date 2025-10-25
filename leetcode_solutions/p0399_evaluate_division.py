@@ -5,7 +5,10 @@ from typing import List
 
 class Solution:
     def calcEquation(
-        self, equations: List[List[str]], values: List[float], queries: List[List[str]]
+        self,
+        equations: List[List[str]],
+        values: List[float],
+        queries: List[List[str]],
     ) -> List[float]:
         graph = defaultdict(list)
 
@@ -37,7 +40,10 @@ class Solution:
 
 class Solution1:
     def calcEquation(
-        self, equations: List[List[str]], values: List[float], queries: List[List[str]]
+        self,
+        equations: List[List[str]],
+        values: List[float],
+        queries: List[List[str]],
     ) -> List[float]:
         def equat(node1: str, node2: str) -> float:
             bfs = deque()
@@ -61,13 +67,17 @@ class Solution1:
             nodes[node2].append((node1, 1 / value))
 
         return [
-            equat(n1, n2) if n1 in nodes and n2 in nodes else -1 for n1, n2 in queries
+            equat(n1, n2) if n1 in nodes and n2 in nodes else -1
+            for n1, n2 in queries
         ]
 
 
 class Solution2:
     def calcEquation(
-        self, equations: List[List[str]], values: List[float], queries: List[List[str]]
+        self,
+        equations: List[List[str]],
+        values: List[float],
+        queries: List[List[str]],
     ) -> List[float]:
         def equat(node1_: str, node2_: str) -> float:
             bfs = deque()
@@ -91,7 +101,8 @@ class Solution2:
             nodes[node2].append((node1, 1 / value))
 
         return [
-            equat(n1, n2) if n1 in nodes and n2 in nodes else -1 for n1, n2 in queries
+            equat(n1, n2) if n1 in nodes and n2 in nodes else -1
+            for n1, n2 in queries
         ]
 
 
@@ -106,7 +117,13 @@ class TestSolution(unittest.TestCase):
             self.sol.calcEquation(
                 equations=[["a", "b"], ["b", "c"]],
                 values=[2.0, 3.0],
-                queries=[["a", "c"], ["b", "a"], ["a", "e"], ["a", "a"], ["x", "x"]],
+                queries=[
+                    ["a", "c"],
+                    ["b", "a"],
+                    ["a", "e"],
+                    ["a", "a"],
+                    ["x", "x"],
+                ],
             ),
             [6.00000, 0.50000, -1.00000, 1.00000, -1.00000],
         )

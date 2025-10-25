@@ -26,22 +26,24 @@ class Solution:
 
         return height
 
+
 class TestSolution(unittest.TestCase, metaclass=TestMeta):
     test_cases = [
         {
             "class": Solution,
             "class_methods": ["highestPeak"] * 2,
             "kwargs": [
-                dict(isWater = [[0,1],[0,0]]),
-                dict(isWater = [[0,0,1],[1,0,0],[0,0,0]]),
+                dict(isWater=[[0, 1], [0, 0]]),
+                dict(isWater=[[0, 0, 1], [1, 0, 0], [0, 0, 0]]),
             ],
-            "expected": [[[1,0],[2,1]],
-                         [[1,1,0],[0,1,1],[1,2,2]]],
+            "expected": [[[1, 0], [2, 1]], [[1, 1, 0], [0, 1, 1], [1, 2, 2]]],
             "assert_methods": ["assertHighestPeak"] * 2,
         },
     ]
 
-    def assertHighestPeak(self, expected: List[List[int]], actual: List[List[int]]):
+    def assertHighestPeak(
+        self, expected: List[List[int]], actual: List[List[int]]
+    ):
         me, ne = len(expected), len(expected[0])
         ma, na = len(actual), len(actual[0])
 
@@ -62,8 +64,12 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
 
         for i in range(1, me):
             for j in range(1, ne):
-                self.assertLessEqual(abs(expected[i][j] - expected[i][j - 1]), 1)
-                self.assertLessEqual(abs(expected[i][j] - expected[i - 1][j]), 1)
+                self.assertLessEqual(
+                    abs(expected[i][j] - expected[i][j - 1]), 1
+                )
+                self.assertLessEqual(
+                    abs(expected[i][j] - expected[i - 1][j]), 1
+                )
                 self.assertLessEqual(abs(actual[i][j] - actual[i][j - 1]), 1)
                 self.assertLessEqual(abs(actual[i][j] - actual[i - 1][j]), 1)
 

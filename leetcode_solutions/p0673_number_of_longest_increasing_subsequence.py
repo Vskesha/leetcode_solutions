@@ -5,7 +5,7 @@ from typing import Any, Tuple
 # recursive solution
 class Solution:
     def findNumberOfLIS(self, nums: list[int]) -> int:
-        nums.append(float('inf'))
+        nums.append(float("inf"))
         ln = len(nums)
 
         @lru_cache(None)
@@ -33,7 +33,7 @@ class Solution:
 # iterative solution
 class Solution2:
     def findNumberOfLIS(self, nums: list[int]) -> int:
-        nums.append(float('inf'))
+        nums.append(float("inf"))
         ln = len(nums)
         length = [1] * ln
         count = [1] * ln
@@ -52,9 +52,9 @@ class Solution2:
 
 def main():
     sol = Solution()
-    print('2 ===', sol.findNumberOfLIS(nums=[1, 3, 5, 4, 7]))
-    print('5 ===', sol.findNumberOfLIS(nums=[2, 2, 2, 2, 2]))
+    print("2 ===", sol.findNumberOfLIS(nums=[1, 3, 5, 4, 7]))
+    print("5 ===", sol.findNumberOfLIS(nums=[2, 2, 2, 2, 2]))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

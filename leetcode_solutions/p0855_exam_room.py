@@ -517,7 +517,15 @@ class ExamRoom5:
 class TestExamRoom(unittest.TestCase):
     def test_seat_leave_methods_1(self):
         print("Test ExamRoom 1 ... ")
-        commands = ["ExamRoom", "seat", "seat", "seat", "seat", "leave", "seat"]
+        commands = [
+            "ExamRoom",
+            "seat",
+            "seat",
+            "seat",
+            "seat",
+            "leave",
+            "seat",
+        ]
         params = [[10], [], [], [], [], [4], []]
         expected = [None, 0, 9, 4, 2, None, 5]
         exam_room = ExamRoom(*params[0])

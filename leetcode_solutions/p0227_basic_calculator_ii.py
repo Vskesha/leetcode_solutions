@@ -34,7 +34,9 @@ class Solution2:
             else:
                 if stack and stack[-1] in "/*":
                     operator = stack.pop()
-                    stack[-1] = stack[-1] * n if operator == "*" else stack[-1] // n
+                    stack[-1] = (
+                        stack[-1] * n if operator == "*" else stack[-1] // n
+                    )
                 else:
                     stack.append(n)
                 stack.append(ch)

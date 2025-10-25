@@ -23,17 +23,25 @@ class Solution:
                 return True
             if n1 is None or n2 is None:
                 return False
-            return n1.val == n2.val and dfs(n1.left, n2.right) and dfs(n1.right, n2.left)
+            return (
+                n1.val == n2.val
+                and dfs(n1.left, n2.right)
+                and dfs(n1.right, n2.left)
+            )
 
         return dfs(root.left, root.right)
-    
+
 
 class Solution2:
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
 
         def dfs(n1, n2):
             if n1 and n2:
-                return n1.val == n2.val and dfs(n1.left, n2.right) and dfs(n1.right, n2.left)
+                return (
+                    n1.val == n2.val
+                    and dfs(n1.left, n2.right)
+                    and dfs(n1.right, n2.left)
+                )
             if n1 or n2:
                 return False
             return True
@@ -69,15 +77,21 @@ class TestSolution(unittest.TestCase):
 
     def test_is_symmetric_1(self):
         print("Test isSymmetric 1... ", end="")
-        self.assertTrue(self.sol.isSymmetric(self.list_to_tree([1, 2, 2, 3, 4, 4, 3])))
+        self.assertTrue(
+            self.sol.isSymmetric(self.list_to_tree([1, 2, 2, 3, 4, 4, 3]))
+        )
         print("OK")
 
     def test_is_symmetric_2(self):
         print("Test isSymmetric 2... ", end="")
         null = None
-        self.assertFalse(self.sol.isSymmetric(self.list_to_tree([1, 2, 2, null, 3, null, 3])))
+        self.assertFalse(
+            self.sol.isSymmetric(
+                self.list_to_tree([1, 2, 2, null, 3, null, 3])
+            )
+        )
         print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

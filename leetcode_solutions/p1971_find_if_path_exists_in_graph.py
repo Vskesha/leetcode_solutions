@@ -30,7 +30,9 @@ def test_valid_path():
 
     print("Test 1... ", end="")
     assert (
-        sol.validPath(n=3, edges=[[0, 1], [1, 2], [2, 0]], source=0, destination=2)
+        sol.validPath(
+            n=3, edges=[[0, 1], [1, 2], [2, 0]], source=0, destination=2
+        )
         is True
     )
     print("OK")
@@ -38,7 +40,10 @@ def test_valid_path():
     print("Test 2... ", end="")
     assert (
         sol.validPath(
-            n=6, edges=[[0, 1], [0, 2], [3, 5], [5, 4], [4, 3]], source=0, destination=5
+            n=6,
+            edges=[[0, 1], [0, 2], [3, 5], [5, 4], [4, 3]],
+            source=0,
+            destination=5,
         )
         is False
     )

@@ -16,7 +16,6 @@ class TreeNode:
         return f"TreeNode({self.val})"
 
 
-
 class Solution:
     def bstToGst(self, root: TreeNode) -> TreeNode:
         def dfs(node, gs):
@@ -94,12 +93,50 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["bstToGst"] * 2,
             "kwargs": [
-                dict(root=list_to_tree([4,1,6,0,2,5,7,null,null,null,3,null,null,null,8])),
-                dict(root=list_to_tree([0,null,1])),
+                dict(
+                    root=list_to_tree(
+                        [
+                            4,
+                            1,
+                            6,
+                            0,
+                            2,
+                            5,
+                            7,
+                            null,
+                            null,
+                            null,
+                            3,
+                            null,
+                            null,
+                            null,
+                            8,
+                        ]
+                    )
+                ),
+                dict(root=list_to_tree([0, null, 1])),
             ],
             "expected": [
-                list_to_tree([30,36,21,36,35,26,15,null,null,null,33,null,null,null,8]),
-                list_to_tree([1,null,1])
+                list_to_tree(
+                    [
+                        30,
+                        36,
+                        21,
+                        36,
+                        35,
+                        26,
+                        15,
+                        null,
+                        null,
+                        null,
+                        33,
+                        null,
+                        null,
+                        null,
+                        8,
+                    ]
+                ),
+                list_to_tree([1, null, 1]),
             ],
             "assert_methods": ["assertTreeEqual"] * 2,
         },

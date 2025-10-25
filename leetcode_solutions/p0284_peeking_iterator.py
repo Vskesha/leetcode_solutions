@@ -104,11 +104,11 @@ def test():
 
     pi = PeekingIterator(Iterator(*args[0]))
     for i in range(1, len(commands)):
-        print(f'Test {i}... ', end='')
+        print(f"Test {i}... ", end="")
         res = getattr(pi, commands[i])(*args[i])
         assert res == outputs[i]
-        print('OK')
+        print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

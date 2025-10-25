@@ -37,15 +37,15 @@ def test_middle_node():
     sol = Solution()
 
     print("Test 1... ", end="")
-    assert sol.middleNode(head=arr2linkedlist([1, 2, 3, 4, 5])) == arr2linkedlist(
-        [3, 4, 5]
-    )
+    assert sol.middleNode(
+        head=arr2linkedlist([1, 2, 3, 4, 5])
+    ) == arr2linkedlist([3, 4, 5])
     print("OK")
 
     print("Test 2... ", end="")
-    assert sol.middleNode(head=arr2linkedlist([1, 2, 3, 4, 5, 6])) == arr2linkedlist(
-        [4, 5, 6]
-    )
+    assert sol.middleNode(
+        head=arr2linkedlist([1, 2, 3, 4, 5, 6])
+    ) == arr2linkedlist([4, 5, 6])
     print("OK")
 
 

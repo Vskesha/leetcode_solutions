@@ -20,7 +20,9 @@ class Solution:
         for i in range(m):
             for j in range(n):
                 nn = sum(
-                    0 <= i + di < m and 0 <= j + dj < n and grid[i + di][j + dj] != 0
+                    0 <= i + di < m
+                    and 0 <= j + dj < n
+                    and grid[i + di][j + dj] != 0
                     for di, dj in neibs
                 )
                 if nn < 3:

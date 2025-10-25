@@ -60,14 +60,14 @@ def verify(n, paths):
 
 
 def test():
-    print('Test 1... ', end='')
+    print("Test 1... ", end="")
     assert verify(n=3, paths=[[1, 2], [2, 3], [3, 1]])
-    print('OK')
+    print("OK")
 
-    print('Test 2... ', end='')
+    print("Test 2... ", end="")
     assert verify(n=4, paths=[[1, 2], [3, 4]])
-    print('OK')
+    print("OK")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

@@ -45,17 +45,23 @@ class TestSolution(unittest.TestCase):
 
     def test_my_pow_1(self):
         print("Test myPow 1... ", end="")
-        self.assertAlmostEqual(self.sol.myPow(x=2.00000, n=10), 1024.00000, places=5)
+        self.assertAlmostEqual(
+            self.sol.myPow(x=2.00000, n=10), 1024.00000, places=5
+        )
         print("OK")
 
     def test_my_pow_2(self):
         print("Test myPow 2... ", end="")
-        self.assertAlmostEqual(self.sol.myPow(x=2.10000, n=3), 9.26100, places=5)
+        self.assertAlmostEqual(
+            self.sol.myPow(x=2.10000, n=3), 9.26100, places=5
+        )
         print("OK")
 
     def test_my_pow_3(self):
         print("Test myPow 3... ", end="")
-        self.assertAlmostEqual(self.sol.myPow(x=2.00000, n=-2), 0.25000, places=5)
+        self.assertAlmostEqual(
+            self.sol.myPow(x=2.00000, n=-2), 0.25000, places=5
+        )
         print("OK")
 
 

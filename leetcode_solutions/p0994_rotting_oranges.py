@@ -87,7 +87,9 @@ class Solution2:
         m = len(grid[0])
         n = len(grid)
         aux = [[100] * m for _ in range(n)]
-        rotten = [(i, j) for i in range(n) for j in range(m) if grid[i][j] == 2]
+        rotten = [
+            (i, j) for i in range(n) for j in range(m) if grid[i][j] == 2
+        ]
         for coords in rotten:
             traverse(*coords)
 

@@ -47,7 +47,9 @@ class TestSolution(unittest.TestCase):
 
     def test_shortest_palindrome_1(self):
         print("Test shortestPalindrome 1... ", end="")
-        self.assertEqual(self.sol.shortestPalindrome(s="aacecaaa"), "aaacecaaa")
+        self.assertEqual(
+            self.sol.shortestPalindrome(s="aacecaaa"), "aaacecaaa"
+        )
         print("OK")
 
     def test_shortest_palindrome_2(self):

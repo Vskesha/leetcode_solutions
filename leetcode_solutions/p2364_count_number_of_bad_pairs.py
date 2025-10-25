@@ -9,7 +9,8 @@ class Solution:
     def countBadPairs(self, nums: List[int]) -> int:
         cnt = Counter(n - i for i, n in enumerate(nums))
         return (
-            len(nums) * (len(nums) - 1) - sum(v * (v - 1) for v in cnt.values())
+            len(nums) * (len(nums) - 1)
+            - sum(v * (v - 1) for v in cnt.values())
         ) // 2
 
 

@@ -39,14 +39,14 @@ class Solution2:
 
 def test():
     sol = Solution()
-    print('Test 1 ... ', end='')
-    assert sol.decodeAtIndex(s="leet2code3", k=10) == 'o'
-    print('ok\nTest 2 ... ', end='')
-    assert sol.decodeAtIndex(s="ha22", k=5) == 'h'
-    print('ok\nTest 3 ... ', end='')
-    assert sol.decodeAtIndex(s="a2345678999999999999999", k=1) == 'a'
-    print('ok')
+    print("Test 1 ... ", end="")
+    assert sol.decodeAtIndex(s="leet2code3", k=10) == "o"
+    print("ok\nTest 2 ... ", end="")
+    assert sol.decodeAtIndex(s="ha22", k=5) == "h"
+    print("ok\nTest 3 ... ", end="")
+    assert sol.decodeAtIndex(s="a2345678999999999999999", k=1) == "a"
+    print("ok")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()

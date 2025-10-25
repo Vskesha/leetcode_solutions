@@ -35,14 +35,20 @@ class TestSolution(unittest.TestCase):
     def test_winningPlayerCount_2(self):
         print("Test winningPlayerCount 2... ", end="")
         self.assertEqual(
-            0, self.sol.winningPlayerCount(n=5, pick=[[1, 1], [1, 2], [1, 3], [1, 4]])
+            0,
+            self.sol.winningPlayerCount(
+                n=5, pick=[[1, 1], [1, 2], [1, 3], [1, 4]]
+            ),
         )
         print("OK")
 
     def test_winningPlayerCount_3(self):
         print("Test winningPlayerCount 3... ", end="")
         self.assertEqual(
-            1, self.sol.winningPlayerCount(n=5, pick=[[1, 1], [2, 4], [2, 4], [2, 4]])
+            1,
+            self.sol.winningPlayerCount(
+                n=5, pick=[[1, 1], [2, 4], [2, 4], [2, 4]]
+            ),
         )
         print("OK")
 

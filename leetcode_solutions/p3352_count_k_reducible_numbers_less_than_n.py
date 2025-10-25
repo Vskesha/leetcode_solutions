@@ -27,7 +27,9 @@ class Solution:
                 ln = ls - i
                 for bc in range(ln + 1):
                     if ops[tb + bc] < k:
-                        ans = (ans + fact[ln] * ifact[bc] * ifact[ln - bc]) % mod
+                        ans = (
+                            ans + fact[ln] * ifact[bc] * ifact[ln - bc]
+                        ) % mod
                 tb += 1
 
         return ans
