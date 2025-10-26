@@ -11,7 +11,7 @@ class Solution:
         for i, m in enumerate(manager):
             emps[m].append(i)
 
-        queue = deque([(headID)])
+        queue = deque([headID])
         while queue:
             emp = queue.popleft()
             for sub in emps[emp]:
