@@ -6,7 +6,7 @@ authors = ["Vasyl Boliukh <89039235+Vskesha@users.noreply.github.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "^3.10"
 sortedcontainers = "^2.4.0"
 matplotlib = "^3.9.2"
 
@@ -17,6 +17,10 @@ black = "^25.9.0"
 isort = "^7.0.0"
 
 
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^9.0.2"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
@@ -24,7 +28,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.black]
 line-length = 79
-target-version = ["py312"]
+target-version = ["py310"]
 exclude = '''
 (
   \.venv
