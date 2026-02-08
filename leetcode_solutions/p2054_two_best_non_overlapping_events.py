@@ -8,6 +8,23 @@ from leetcode_solutions._test_meta import TestMeta
 
 class Solution:
     def maxTwoEvents(self, events: List[List[int]]) -> int:
+        ongoing = []
+
+        ans = max(value for _, _, value in events)
+        max_ended = 0
+        events.sort(key=lambda x: x[0])
+
+        for start, end, value in events:
+            while ongoing and ongoing[0][0] < start:
+                max_ended = max(max_ended, heappop(ongoing)[1])
+            ans = max(ans, value + max_ended)
+            heappush(ongoing, (end, value))
+
+        return ans
+
+
+class Solution2:
+    def maxTwoEvents(self, events: List[List[int]]) -> int:
         events.sort()
         ongoing, ended = [], [(0, 0)]
         ans = 0
