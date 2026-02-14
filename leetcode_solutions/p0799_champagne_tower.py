@@ -1,3 +1,9 @@
+import unittest
+from functools import cache
+
+from leetcode_solutions._test_meta import TestMeta
+
+
 class Solution:
     def champagneTower(
         self, poured: int, query_row: int, query_glass: int
@@ -17,19 +23,45 @@ class Solution:
         return min(row[query_glass], 1)
 
 
-def test():
-    sol = Solution()
-    print("Test 1 ... ", end="")
-    assert sol.champagneTower(poured=1, query_row=1, query_glass=1) == 0.0
-    print("ok\nTest 2 ... ", end="")
-    assert sol.champagneTower(poured=2, query_row=1, query_glass=1) == 0.50000
-    print("ok\nTest 3 ... ", end="")
-    assert (
-        sol.champagneTower(poured=100000009, query_row=33, query_glass=17)
-        == 1.0
-    )
-    print("ok")
+class Solution2:
+    def champagneTower(
+        self, poured: int, query_row: int, query_glass: int
+    ) -> float:
+
+        @cache
+        def get_poured_in(row, glass):
+            if row == 0:
+                return poured if glass == 0 else 0
+
+            if glass < 0 or glass > row:
+                return 0
+
+            left = get_poured_in(row - 1, glass - 1)
+            right = get_poured_in(row - 1, glass)
+
+            return max(0, (left - 1) / 2) + max(0, (right - 1) / 2)
+
+        return min(1, get_poured_in(query_row, query_glass))
+
+
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
+    test_cases = [
+        {
+            "class": Solution,
+            "class_methods": ["champagneTower"] * 3,
+            "kwargs": [
+                dict(poured=1, query_row=1, query_glass=1),
+                dict(poured=2, query_row=1, query_glass=1),
+                dict(poured=100000009, query_row=33, query_glass=17),
+            ],
+            "expected": [0.0000, 0.5000, 1.0000],
+            "assert_methods": ["assertAlmostEqualFivePlaces"],
+        },
+    ]
+
+    def assertAlmostEqualFivePlaces(self, first, second):
+        self.assertAlmostEqual(first, second, places=5)
 
 
 if __name__ == "__main__":
-    test()
+    unittest.main()
