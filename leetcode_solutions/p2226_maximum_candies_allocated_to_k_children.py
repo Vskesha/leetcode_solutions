@@ -9,14 +9,14 @@ class Solution:
         sc = sum(candies)
         if sc < k:
             return 0
-        l, r = 1, sc // k
-        while l < r:
-            m = (l + r + 1) // 2
-            if sum(c // m for c in candies) < k:
-                r = m - 1
+        left, right = 1, sc // k
+        while left < right:
+            mid = (left + right + 1) // 2
+            if sum(c // mid for c in candies) < k:
+                right = mid - 1
             else:
-                l = m
-        return r
+                left = mid
+        return right
 
 
 class TestSolution(unittest.TestCase, metaclass=TestMeta):

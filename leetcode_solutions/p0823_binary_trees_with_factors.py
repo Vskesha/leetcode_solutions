@@ -36,17 +36,17 @@ class Solution1:
         @lru_cache(None)
         def dp(n) -> int:
             ans = 1
-            l = 0
+            li = 0
             while True:
-                r = bisect_left(arr, n // arr[l])
-                if l >= r:
+                ri = bisect_left(arr, n // arr[li])
+                if li >= ri:
                     break
-                if arr[l] * arr[r] == n:
-                    ans += 2 * dp(arr[l]) * dp(arr[r]) % mod
-                l += 1
+                if arr[li] * arr[ri] == n:
+                    ans += 2 * dp(arr[li]) * dp(arr[ri]) % mod
+                li += 1
 
-            if arr[l] ** 2 == n:
-                ans += dp(arr[l]) ** 2 % mod
+            if arr[li] ** 2 == n:
+                ans += dp(arr[li]) ** 2 % mod
 
             ans %= mod
             return ans
@@ -68,17 +68,17 @@ class Solution2:
             if n in aux:
                 return aux[n]
             ans = 1
-            l = 0
+            li = 0
             while True:
-                r = bisect_left(arr, n // arr[l])
-                if l >= r:
+                ri = bisect_left(arr, n // arr[li])
+                if li >= ri:
                     break
-                if arr[l] * arr[r] == n:
-                    ans += 2 * dp(arr[l]) * dp(arr[r]) % mod
-                l += 1
+                if arr[li] * arr[ri] == n:
+                    ans += 2 * dp(arr[li]) * dp(arr[ri]) % mod
+                li += 1
 
-            if arr[l] ** 2 == n:
-                ans += dp(arr[l]) ** 2 % mod
+            if arr[li] ** 2 == n:
+                ans += dp(arr[li]) ** 2 % mod
 
             ans %= mod
             aux[n] = ans

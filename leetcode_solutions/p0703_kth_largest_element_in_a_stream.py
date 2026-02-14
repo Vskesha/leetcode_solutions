@@ -29,14 +29,14 @@ class KthLargest2:
             self.nums.append(val)
 
         if val > self.nums[-1] or len(self.nums) < self.k:
-            l, r = 0, len(self.nums)
-            while l < r:
-                mid = (l + r) // 2
+            left, right = 0, len(self.nums)
+            while left < right:
+                mid = (left + right) // 2
                 if self.nums[mid] >= val:
-                    l = mid + 1
+                    left = mid + 1
                 else:
-                    r = mid
-            self.nums.insert(l, val)
+                    right = mid
+            self.nums.insert(left, val)
             while len(self.nums) > self.k:
                 self.nums.pop()
         return self.nums[-1]

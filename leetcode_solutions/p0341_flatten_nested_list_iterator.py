@@ -7,18 +7,21 @@
 class NestedInteger:
     def isInteger(self) -> bool:
         """
-        @return True if this NestedInteger holds a single integer, rather than a nested list.
+        @return True if this NestedInteger holds a single integer,
+                rather than a nested list.
         """
 
     def getInteger(self) -> int:
         """
-        @return the single integer that this NestedInteger holds, if it holds a single integer
+        @return the single integer that this NestedInteger holds,
+                if it holds a single integer
         Return None if this NestedInteger holds a nested list
         """
 
     def getList(self) -> ["NestedInteger"]:
         """
-        @return the nested list that this NestedInteger holds, if it holds a nested list
+        @return the nested list that this NestedInteger holds,
+                if it holds a nested list
         Return None if this NestedInteger holds a single integer
         """
 
@@ -105,14 +108,14 @@ class NestedIterator3:
 
         self.flatten = dfs(nestedList)
         self.i = -1
-        self.l = len(self.flatten) - 1
+        self.li = len(self.flatten) - 1
 
     def next(self) -> int:
         self.i += 1
         return self.flatten[self.i]
 
     def hasNext(self) -> bool:
-        return self.i != self.l
+        return self.i != self.li
 
 
 # Your NestedIterator object will be instantiated and called as such:

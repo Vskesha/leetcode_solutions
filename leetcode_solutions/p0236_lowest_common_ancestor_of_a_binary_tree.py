@@ -189,7 +189,6 @@ class TestSolution(unittest.TestCase):
 
     def test_lowest_common_ancestor3(self):
         print("Test lowestCommonAncestor 3... ", end="")
-        null = None
         root, p, q = self.get_tree_and_nodes(root=[1, 2], p=1, q=2)
         self.assertEqual(self.sol.lowestCommonAncestor(root, p, q).val, 1)
         print("OK")

@@ -19,16 +19,16 @@ class Solution:
                 st = position[i]
             return True
 
-        l, r = 0, (max(position) - min(position)) // (m - 1)
+        left, right = 0, (max(position) - min(position)) // (m - 1)
 
-        while l < r:
-            mid = (l + r + 1) // 2
+        while left < right:
+            mid = (left + right + 1) // 2
             if can_place(mid):
-                l = mid
+                left = mid
             else:
-                r = mid - 1
+                right = mid - 1
 
-        return r
+        return right
 
 
 class TestSolution(unittest.TestCase):

@@ -1,5 +1,4 @@
 from collections import deque
-from math import inf
 from typing import List, Optional
 
 

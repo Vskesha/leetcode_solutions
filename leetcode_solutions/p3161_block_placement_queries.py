@@ -163,7 +163,8 @@ class Solution2:
                 hole = holes[hole_pos]
                 result.append(hole2start[hole] <= start - size)
 
-        result.reverse()  # Reverse the result to match the original query order
+        # Reverse the result to match the original query order
+        result.reverse()
 
         return result
 
@@ -269,106 +270,3 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
 
 if __name__ == "__main__":
     unittest.main()
-
-
-# def test_get_results():
-#     sol = Solution()
-#     false = False
-#     true = True
-#
-#     print("Test 1... ", end="")
-#     assert sol.getResults(queries=[[1, 2], [2, 3, 3], [2, 3, 1], [2, 2, 2]]) == [
-#         false,
-#         true,
-#         true,
-#     ]
-#     print("OK")
-#
-#     print("Test 2... ", end="")
-#     assert sol.getResults(
-#         queries=[[1, 7], [2, 7, 6], [1, 2], [2, 7, 5], [2, 7, 6]]
-#     ) == [true, true, false]
-#     print("OK")
-#
-#     print("Test 3... ", end="")
-#     assert sol.getResults(
-#         queries=[
-#             [1, 2],
-#             [1, 30],
-#             [2, 123, 118],
-#             [1, 28],
-#             [1, 46],
-#             [1, 11],
-#             [1, 23],
-#             [2, 35, 96],
-#             [1, 37],
-#             [1, 130],
-#             [2, 13, 108],
-#             [1, 128],
-#             [2, 149, 48],
-#             [2, 133, 39],
-#             [1, 13],
-#             [2, 90, 79],
-#             [1, 102],
-#             [1, 105],
-#             [1, 7],
-#             [1, 144],
-#             [2, 83, 80],
-#             [1, 50],
-#             [1, 142],
-#             [1, 55],
-#             [2, 109, 46],
-#             [2, 12, 21],
-#             [2, 85, 118],
-#             [1, 79],
-#             [1, 17],
-#             [1, 62],
-#             [2, 116, 75],
-#             [2, 53, 9],
-#             [1, 77],
-#             [1, 135],
-#             [2, 123, 116],
-#             [1, 51],
-#             [2, 147, 90],
-#             [2, 88, 26],
-#             [1, 14],
-#             [2, 43, 115],
-#             [1, 136],
-#             [1, 4],
-#             [1, 15],
-#             [2, 124, 134],
-#             [2, 138, 29],
-#             [2, 37, 28],
-#             [2, 51, 90],
-#             [1, 74],
-#             [2, 16, 28],
-#             [2, 31, 7],
-#         ]
-#     ) == [
-#                false,
-#                false,
-#                false,
-#                true,
-#                true,
-#                false,
-#                false,
-#                true,
-#                false,
-#                false,
-#                false,
-#                true,
-#                false,
-#                false,
-#                false,
-#                false,
-#                false,
-#                false,
-#                false,
-#                false,
-#                false,
-#                false,
-#            ]
-#     print("OK")
-
-# if __name__ == "__main__":
-#     test_get_results()

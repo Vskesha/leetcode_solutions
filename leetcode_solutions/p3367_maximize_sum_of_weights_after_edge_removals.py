@@ -8,7 +8,6 @@ from leetcode_solutions._test_meta import TestMeta
 
 class Solution:
     def maximizeSumOfWeights(self, edges: List[List[int]], k: int) -> int:
-        n = len(edges) + 1
         graph = defaultdict(list)
         for i, j, w in edges:
             graph[i].append((j, w))

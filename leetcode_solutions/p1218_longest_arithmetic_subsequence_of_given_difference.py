@@ -3,7 +3,6 @@ from collections import defaultdict
 
 class Solution:
     def longestSubsequence(self, arr: list[int], diff: int) -> int:
-        n = len(arr)
         aux = defaultdict(int)
         for num in arr[::-1]:
             aux[num] = aux[num + diff] + 1

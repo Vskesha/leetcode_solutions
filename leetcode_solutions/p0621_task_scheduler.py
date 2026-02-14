@@ -5,10 +5,10 @@ from typing import List
 
 class Solution:
     def leastInterval(self, tasks: List[str], n: int) -> int:
-        l = Counter(tasks)
+        cnt = Counter(tasks)
         return max(
-            (n + 1) * (max(l.values()) - 1)
-            + len([x for x in l.values() if x == max(l.values())]),
+            (n + 1) * (max(cnt.values()) - 1)
+            + len([x for x in cnt.values() if x == max(cnt.values())]),
             len(tasks),
         )
 

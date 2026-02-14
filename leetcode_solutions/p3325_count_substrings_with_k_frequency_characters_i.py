@@ -7,14 +7,14 @@ from leetcode_solutions._test_meta import TestMeta
 class Solution:
     def numberOfSubstrings(self, s: str, k: int) -> int:
         ans = 0
-        l = 0
+        left = 0
         d = Counter()
         for c in s:
             d[c] += 1
             while d[c] == k:
-                d[s[l]] -= 1
-                l += 1
-            ans += l
+                d[s[left]] -= 1
+                left += 1
+            ans += left
         return ans
 
 

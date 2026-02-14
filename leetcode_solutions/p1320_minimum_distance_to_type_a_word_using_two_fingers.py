@@ -8,15 +8,15 @@ class Solution:
         lw = len(word)
 
         @lru_cache(None)
-        def min_dist(l, r, i):
+        def min_dist(left, right, i):
             if i == lw:
                 return 0
             y, x = coords[word[i]]
-            ld = abs(l[0] - y) + abs(l[1] - x) if l else 0
-            rd = abs(r[0] - y) + abs(r[1] - x) if r else 0
+            ld = abs(left[0] - y) + abs(left[1] - x) if left else 0
+            rd = abs(right[0] - y) + abs(right[1] - x) if right else 0
             i += 1
             return min(
-                min_dist((y, x), r, i) + ld, min_dist(l, (y, x), i) + rd
+                min_dist((y, x), right, i) + ld, min_dist(left, (y, x), i) + rd
             )
 
         return min_dist(None, None, 0)
@@ -29,15 +29,15 @@ class Solution2:
         lw = len(word)
 
         @lru_cache(None)
-        def min_dist(l, r, i):
+        def min_dist(left, right, i):
             if i == lw:
                 return 0
             y, x = coords[word[i]]
-            ld = abs(l[0] - y) + abs(l[1] - x) if l else 0
-            rd = abs(r[0] - y) + abs(r[1] - x) if r else 0
+            ld = abs(left[0] - y) + abs(left[1] - x) if left else 0
+            rd = abs(right[0] - y) + abs(right[1] - x) if right else 0
             i += 1
             return min(
-                min_dist((y, x), r, i) + ld, min_dist(l, (y, x), i) + rd
+                min_dist((y, x), right, i) + ld, min_dist(left, (y, x), i) + rd
             )
 
         return min_dist(None, None, 0)

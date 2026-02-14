@@ -58,11 +58,3 @@ class Solution2:
 
         dfs(root)
         return self.ans
-
-
-def test():
-    sol = Solution()
-
-
-if __name__ == "__main__":
-    test()

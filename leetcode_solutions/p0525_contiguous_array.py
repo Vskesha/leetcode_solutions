@@ -15,7 +15,7 @@ class Solution:
         return ans
 
 
-class Solution:
+class Solution2:
     def findMaxLength(self, nums: List[int]) -> int:
         totalsum, hashmap = 0, {0: -1}
         res, diff = 0, 0
@@ -28,7 +28,7 @@ class Solution:
                 diff = i - hashmap[totalsum]
                 if diff > res:
                     res = diff
-            except:
+            except Exception:
                 hashmap[totalsum] = i
         return res
 

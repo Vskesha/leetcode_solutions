@@ -7,13 +7,13 @@ class Solution:
         ans = ""
 
         for i in range(ls):
-            for r in range(i, i + 2):
-                l = i
-                while l >= 0 and r < ls and s[l] == s[r]:
-                    l -= 1
-                    r += 1
-                if r - l - 1 > len(ans):
-                    ans = s[l + 1 : r]
+            for ri in range(i, i + 2):
+                li = i
+                while li >= 0 and ri < ls and s[li] == s[ri]:
+                    li -= 1
+                    ri += 1
+                if ri - li - 1 > len(ans):
+                    ans = s[li + 1 : ri]
 
         return ans
 

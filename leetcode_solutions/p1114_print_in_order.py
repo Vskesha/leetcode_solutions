@@ -2,6 +2,7 @@ import unittest
 from itertools import permutations
 from threading import Event, Thread
 from time import sleep
+from typing import Callable
 
 
 class Foo:

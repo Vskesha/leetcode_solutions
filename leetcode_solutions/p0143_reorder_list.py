@@ -50,29 +50,22 @@ class Solution:
         """
         Do not return anything, modify head in-place instead.
         """
-        if not head or not head.next:
-            return
-        fast = middle = head
-        while fast.next and fast.next.next:
-            fast = fast.next.next
-            middle = middle.next
-        tail = middle.next
-        middle.next = None
-        nxt = tail.next
-        tail.next = None
-        while nxt:
-            tmp = nxt.next
-            nxt.next = tail
-            tail = nxt
-            nxt = tmp
-        front = head
-        while tail:
-            tmp = front.next
-            front.next = tail
-            front = tmp
-            tmp = tail.next
-            tail.next = front
-            tail = tmp
+        nodes = deque()
+        dummy = ListNode(next=head)
+        while head:
+            nodes.append(head)
+            head = head.next
+        prev = dummy
+        while len(nodes) > 1:
+            prev.next = nodes.popleft()
+            prev = prev.next
+            prev.next = nodes.pop()
+            prev = prev.next
+        if nodes:
+            prev.next = nodes.pop()
+            prev = prev.next
+        prev.next = None
+        return dummy.next
 
 
 class Solution2:
@@ -91,29 +84,6 @@ class Solution2:
         while tail:
             head.next, head = tail, head.next
             tail.next, tail = head, tail.next
-
-
-class Solution:
-    def reorderList(self, head: Optional[ListNode]) -> None:
-        """
-        Do not return anything, modify head in-place instead.
-        """
-        nodes = deque()
-        dummy = ListNode(next=head)
-        while head:
-            nodes.append(head)
-            head = head.next
-        prev = dummy
-        while len(nodes) > 1:
-            prev.next = nodes.popleft()
-            prev = prev.next
-            prev.next = nodes.pop()
-            prev = prev.next
-        if nodes:
-            prev.next = nodes.pop()
-            prev = prev.next
-        prev.next = None
-        return dummy.next
 
 
 class TestSolution(unittest.TestCase, metaclass=TestMeta):
@@ -152,18 +122,3 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
 
 if __name__ == "__main__":
     unittest.main()
-
-# def test_reorder_list():
-#     sol = sol_decorator(Solution)()
-#
-#     print("Test 1... ", end="")
-#     assert sol.reorderList(head=[1, 2, 3, 4]) == [1, 4, 2, 3]
-#     print("OK")
-#
-#     print("Test 2... ", end="")
-#     assert sol.reorderList(head=[1, 2, 3, 4, 5]) == [1, 5, 2, 4, 3]
-#     print("OK")
-
-
-# if __name__ == "__main__":
-#     test_reorder_list()

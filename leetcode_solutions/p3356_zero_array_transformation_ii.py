@@ -24,14 +24,14 @@ class Solution:
         if not can_process(lq):
             return -1
 
-        l, r = 0, lq
-        while l < r:
-            m = (l + r) // 2
+        left, right = 0, lq
+        while left < right:
+            m = (left + right) // 2
             if can_process(m):
-                r = m
+                right = m
             else:
-                l = m + 1
-        return l
+                left = m + 1
+        return left
 
 
 class TestSolution(unittest.TestCase, metaclass=TestMeta):

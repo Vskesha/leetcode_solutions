@@ -30,14 +30,14 @@ class Solution:
             #         i += 1
             # return cnt >= k
 
-        l, r = 1, max(nums)
-        while l < r:
-            m = (l + r) // 2
-            if can_rob_k_houses(m):
-                r = m
+        left, right = 1, max(nums)
+        while left < right:
+            mid = (left + right) // 2
+            if can_rob_k_houses(mid):
+                right = mid
             else:
-                l = m + 1
-        return r
+                left = mid + 1
+        return right
 
 
 class TestSolution(unittest.TestCase, metaclass=TestMeta):

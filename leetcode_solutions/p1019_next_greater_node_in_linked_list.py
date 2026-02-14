@@ -23,11 +23,3 @@ class Solution:
             i += 1
             head = head.next
         return ans
-
-
-def test():
-    sol = Solution()
-
-
-if __name__ == "__main__":
-    test()

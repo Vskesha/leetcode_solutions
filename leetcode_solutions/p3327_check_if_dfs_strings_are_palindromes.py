@@ -24,18 +24,18 @@ class Solution:
         def manacker_odd(s):
             ls = len(s)
             res = [0] * ls
-            l = r = 0
+            left = right = 0
             for i in range(1, ls - 1):
-                res[i] = max(0, min(r - i, res[l + r - i]))
+                res[i] = max(0, min(right - i, res[left + right - i]))
                 while s[i - res[i]] == s[i + res[i]]:
                     res[i] += 1
-                if i + res[i] > r:
-                    r = i + res[i]
-                    l = i - res[i]
+                if i + res[i] > right:
+                    right = i + res[i]
+                    left = i - res[i]
             return res
 
         def manacker(chars):
-            res = manacker_odd(f"^{"#".join(chars)}?")
+            res = manacker_odd(f"^{'#'.join(chars)}?")
             return res[1:-1:2], res[2:-1:2]
 
         dfs(0)
@@ -43,9 +43,9 @@ class Solution:
 
         res = []
         for i in range(lp):
-            l, r = bounds[i]
-            d = r - l + 1
-            c = (l + r) // 2
+            left, right = bounds[i]
+            d = right - left + 1
+            c = (left + right) // 2
             res.append((odd[c] if d % 2 else even[c]) >= d)
 
         return res

@@ -30,10 +30,8 @@ class Solution:
         return csum
 
 
-class Solution:
+class Solution2:
     def kthSmallest(self, mat: List[List[int]], k: int) -> int:
-        m, n = len(mat), len(mat[0])
-
         def one_pair(curr, prev):
             heap = []
             heappush(heap, (curr[0] + prev[0], 0, 0))

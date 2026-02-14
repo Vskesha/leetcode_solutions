@@ -86,7 +86,10 @@ class TestRandomizedSet(unittest.TestCase):
         rel_stdev = stdev(cnt.values()) / mean_
         self.assertLess(rel_stdev, 0.05)
         # max_diff = max(abs(val - mean_) for val in cnt.values())
-        # print(f"\n{len(vals)=}, {mean_=:.02f}, {max_diff=:.02f}, {rel_stdev=:.02f}")
+        # print(
+        #     f"\n{len(vals)=}, {mean_=:.02f}, "
+        #     f"{max_diff=:.02f}, {rel_stdev=:.02f}"
+        # )
         print("OK")
         print("Test RandomizedSet passed!")
 

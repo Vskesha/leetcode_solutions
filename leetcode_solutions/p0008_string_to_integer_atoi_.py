@@ -73,13 +73,13 @@ class Solution3:
     def myAtoi(self, s: str) -> int:
         sign = ""
         number = ""
-        i, l = 0, len(s)
-        while i < l and s[i] == " ":
+        i, li = 0, len(s)
+        while i < li and s[i] == " ":
             i += 1
-        if i < l and (s[i] == "+" or s[i] == "-"):
+        if i < li and (s[i] == "+" or s[i] == "-"):
             sign = s[i]
             i += 1
-        while i < l and s[i].isnumeric():
+        while i < li and s[i].isnumeric():
             number += s[i]
             i += 1
         if number:

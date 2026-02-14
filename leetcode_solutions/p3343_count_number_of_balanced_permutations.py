@@ -105,7 +105,7 @@ class Solution2:
         return ans
 
 
-class Solution:
+class Solution3:
     def countBalancedPermutations(self, num: str) -> int:
         mod = 10**9 + 7
         ln = len(num)

@@ -27,7 +27,7 @@ class Solution:
         return ans
 
 
-class Solution:
+class Solution2:
     def countFairPairs(self, nums: List[int], lower: int, upper: int) -> int:
         sl = SortedList()
         lower -= 1

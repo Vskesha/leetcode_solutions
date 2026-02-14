@@ -108,14 +108,14 @@ class Solution4:
         rcost = sorted(costs[r:], reverse=True)
 
         def insor(lst, val):
-            l, r = 0, len(lst)
-            while l < r:
-                m = (l + r) // 2
-                if val >= lst[m]:
-                    r = m
+            left, right = 0, len(lst)
+            while left < right:
+                mid = (left + right) // 2
+                if val >= lst[mid]:
+                    right = mid
                 else:
-                    l = m + 1
-            lst.insert(l, val)
+                    left = mid + 1
+            lst.insert(left, val)
 
         for _ in range(k):
             lmin = lcost[-1] if lcost else 1000000

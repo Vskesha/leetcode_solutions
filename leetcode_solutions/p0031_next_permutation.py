@@ -26,21 +26,21 @@ class Solution:
 
 
 class Sorter:
-    def quick_sort(self, nums: List[int], l: int, r: int):
-        if l < r:
-            pivot = self.partition(nums, l, r)
-            self.quick_sort(nums, l, pivot - 1)
-            self.quick_sort(nums, pivot + 1, r)
+    def quick_sort(self, nums: List[int], li: int, ri: int):
+        if li < ri:
+            pivot = self.partition(nums, li, ri)
+            self.quick_sort(nums, li, pivot - 1)
+            self.quick_sort(nums, pivot + 1, ri)
 
     @staticmethod
-    def partition(nums: List[int], l: int, r: int) -> int:
-        pivot = nums[l]
-        st = l + 1
-        for i in range(l + 1, r + 1):
+    def partition(nums: List[int], li: int, ri: int) -> int:
+        pivot = nums[li]
+        st = li + 1
+        for i in range(li + 1, ri + 1):
             if nums[i] < pivot:
                 nums[st], nums[i] = nums[i], nums[st]
                 st += 1
-        nums[l], nums[st - 1] = nums[st - 1], nums[l]
+        nums[li], nums[st - 1] = nums[st - 1], nums[li]
         return st - 1
 
 

@@ -106,7 +106,10 @@ class Solution2:
         self, beginWord: str, endWord: str, wordList: List[str]
     ) -> int:
         def differs_one_letter(w1: str, w2: str) -> bool:
-            # return len(w1) == len(w2) and sum(a != b for a, b in zip(w1, w2)) == 1
+            # return (
+            #     len(w1) == len(w2)
+            #     and sum(a != b for a, b in zip(w1, w2)) == 1
+            # )
             if len(w1) != len(w2):
                 return False
             diff = False

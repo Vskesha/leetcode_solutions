@@ -9,23 +9,23 @@ class Solution:
         def get_z_arr(s: str, p: str) -> List[int]:
             p += s
             z = [0] * lt
-            l, r = 0, 0
+            left, r = 0, 0
             for i in range(1, lt):
                 if i > r:
-                    l = r = i
-                    while r < lt and p[r] == p[r - l]:
+                    left = r = i
+                    while r < lt and p[r] == p[r - left]:
                         r += 1
-                    z[i] = r - l
+                    z[i] = r - left
                     r -= 1
                 else:
-                    k = i - l
+                    k = i - left
                     if z[k] < r - i + 1:
                         z[i] = z[k]
                     else:
-                        l = i
-                        while r < lt and p[r] == p[r - l]:
+                        left = i
+                        while r < lt and p[r] == p[r - left]:
                             r += 1
-                        z[i] = r - l
+                        z[i] = r - left
                         r -= 1
             return z
 

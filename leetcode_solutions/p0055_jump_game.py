@@ -18,14 +18,14 @@ class Solution:
 
 class Solution2:
     def canJump(self, nums: List[int]) -> bool:
-        l = len(nums)
-        if l == 1:
+        ln = len(nums)
+        if ln == 1:
             return True
         if nums[0] == 0:
             return False
 
         zi = 0
-        for i in range(l - 2, -1, -1):
+        for i in range(ln - 2, -1, -1):
             if not (zi or nums[i]):
                 zi = i
             elif zi and i + nums[i] > zi:

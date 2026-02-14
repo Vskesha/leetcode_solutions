@@ -40,24 +40,29 @@ class Solution1:
         self, m: int, n: int, head: Optional[ListNode]
     ) -> List[List[int]]:
 
-        def get_coordinates(b, r):
-            l = t = 0
-            while l < r and t < b:
-                for j in range(l, r):
-                    yield t, j
-                for i in range(t, b):
-                    yield i, r
-                for j in range(r, l, -1):
-                    yield b, j
-                for i in range(b, t, -1):
-                    yield i, l
-                l, r, t, b = l + 1, r - 1, t + 1, b - 1
-            if t == b:
-                for j in range(l, r + 1):
-                    yield t, j
-            elif r == l:
-                for i in range(t, b + 1):
-                    yield i, l
+        def get_coordinates(bottom, right):
+            left = top = 0
+            while left < right and top < bottom:
+                for j in range(left, right):
+                    yield top, j
+                for i in range(top, bottom):
+                    yield i, right
+                for j in range(right, left, -1):
+                    yield bottom, j
+                for i in range(bottom, top, -1):
+                    yield i, left
+                left, right, top, bottom = (
+                    left + 1,
+                    right - 1,
+                    top + 1,
+                    bottom - 1,
+                )
+            if top == bottom:
+                for j in range(left, right + 1):
+                    yield top, j
+            elif right == left:
+                for i in range(top, bottom + 1):
+                    yield i, left
 
         matrix = [[-1] * n for _ in range(m)]
         coords = get_coordinates(m - 1, n - 1)

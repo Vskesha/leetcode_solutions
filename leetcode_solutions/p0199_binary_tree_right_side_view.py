@@ -110,7 +110,6 @@ class TestSolution(unittest.TestCase):
 
     def test_right_side_view_3(self):
         print("Test rightSideView 3... ", end="")
-        null = None
         self.assertEqual(
             self.sol.rightSideView(root=[]),
             [],

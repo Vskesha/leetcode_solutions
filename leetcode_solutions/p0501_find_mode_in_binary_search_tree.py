@@ -182,11 +182,3 @@ class Solution6:
         inorder(root)
 
         return ans
-
-
-def test():
-    sol = Solution()
-
-
-if __name__ == "__main__":
-    test()

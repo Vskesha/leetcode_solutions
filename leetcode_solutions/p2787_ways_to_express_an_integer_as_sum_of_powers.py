@@ -5,7 +5,6 @@ from leetcode_solutions._test_meta import TestMeta
 
 class Solution:
     def numberOfWays(self, n: int, x: int) -> int:
-        ls = [it for it in range(1, n + 1)]
         f = [0] * (n + 1)
         f[0] = 1
         for k in range(1, n + 1):

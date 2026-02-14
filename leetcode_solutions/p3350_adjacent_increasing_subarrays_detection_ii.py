@@ -20,15 +20,15 @@ class Solution:
 
             return False
 
-        l, r = 1, ln // 2
-        while l < r:
-            m = (l + r + 1) // 2
-            if exist2adj(m):
-                l = m
+        left, right = 1, ln // 2
+        while left < right:
+            mid = (left + right + 1) // 2
+            if exist2adj(mid):
+                left = mid
             else:
-                r = m - 1
+                right = mid - 1
 
-        return r
+        return right
 
 
 class TestSolution(unittest.TestCase, metaclass=TestMeta):

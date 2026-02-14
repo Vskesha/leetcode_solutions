@@ -19,7 +19,10 @@ class TreeNode:
         )
 
     def __repr__(self):
-        return f"TreeNode(key={self.key}, value={self.value}, height={self.height})"
+        return (
+            f"TreeNode(key={self.key}, "
+            f"value={self.value}, height={self.height})"
+        )
 
     def __str__(self):
         return self.__repr__()

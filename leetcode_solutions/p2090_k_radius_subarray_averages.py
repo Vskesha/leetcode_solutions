@@ -24,11 +24,11 @@ class Solution2:
         if k * 2 >= n:
             return result
 
-        l = k * 2 + 1
-        curr_sum = sum(nums[: l - 1])
+        li = k * 2 + 1
+        curr_sum = sum(nums[: li - 1])
         for i in range(k, n - k):
             curr_sum += nums[i + k]
-            result[i] = curr_sum // l
+            result[i] = curr_sum // li
             curr_sum -= nums[i - k]
 
         return result

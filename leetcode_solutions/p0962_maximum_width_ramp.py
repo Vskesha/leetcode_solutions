@@ -27,14 +27,14 @@ class Solution3:
             if n < stack[-1][0]:
                 stack.append((n, j))
             else:
-                l, r = 0, len(stack) - 1
-                while l < r:
-                    m = (l + r) // 2
-                    if stack[m][0] > n:
-                        l = m + 1
+                left, right = 0, len(stack) - 1
+                while left < right:
+                    mid = (left + right) // 2
+                    if stack[mid][0] > n:
+                        left = mid + 1
                     else:
-                        r = m
-                ans = max(ans, j - stack[l][1])
+                        right = mid
+                ans = max(ans, j - stack[left][1])
 
         return ans
 

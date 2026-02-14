@@ -26,7 +26,7 @@ class Solution:
 
 class Solution1:
     def findRotateSteps(self, ring: str, key: str) -> int:
-        lr, lk = len(ring), len(key)
+        lr = len(ring)
 
         ring_indices = defaultdict(list)
         for i, ch in enumerate(ring):

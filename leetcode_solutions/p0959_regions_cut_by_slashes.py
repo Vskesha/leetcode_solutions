@@ -125,7 +125,7 @@ class Solution3:
         return ds.get_groups()
 
 
-class Solution:
+class Solution4:
     def regionsBySlashes(self, grid: List[str]) -> int:
         dots = len(grid) + 1
         parent = [i for i in range(dots * dots)]

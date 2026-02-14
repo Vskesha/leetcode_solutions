@@ -3,6 +3,8 @@ from collections import defaultdict
 from functools import cache
 from typing import List
 
+from sortedcontainers import SortedList
+
 
 class Solution:
     def numTeams(self, rating: List[int]) -> int:
@@ -135,9 +137,6 @@ class Solution4:
                 ans += len(bigger[j])
 
         return ans
-
-
-from sortedcontainers import SortedList
 
 
 class Solution5:

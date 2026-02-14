@@ -49,11 +49,3 @@ class Solution2:
         root.left = self.trimBST(root.left, low, high)
         root.right = self.trimBST(root.right, low, high)
         return root
-
-
-def test():
-    sol = Solution()
-
-
-if __name__ == "__main__":
-    test()

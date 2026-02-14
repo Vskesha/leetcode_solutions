@@ -183,7 +183,8 @@ class TestSolution(unittest.TestCase):
         print("Test numberToWords 3... ", end="")
         self.assertEqual(
             self.sol.numberToWords(num=1234567),
-            "One Million Two Hundred Thirty Four Thousand Five Hundred Sixty Seven",
+            "One Million Two Hundred Thirty Four "
+            "Thousand Five Hundred Sixty Seven",
         )
         print("OK")
 

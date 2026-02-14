@@ -13,15 +13,15 @@ class Solution:
         if ts == x:
             return ln
 
-        l = 0
+        li = 0
         ans = ln
         for r in range(ln):
             ts -= nums[r]
             while ts < x:
-                ts += nums[l]
-                l += 1
+                ts += nums[li]
+                li += 1
             if ts == x:
-                ans = min(ans, l + ln - r - 1)
+                ans = min(ans, li + ln - r - 1)
 
         return -1 if ans == ln else ans
 

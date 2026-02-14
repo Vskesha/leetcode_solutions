@@ -16,7 +16,6 @@ class Solution2:
         count = Counter(t)
         for ch in s:
             count[ch] -= 1
-        ans = ""
         for ch, q in count.items():
             if q:
                 return ch

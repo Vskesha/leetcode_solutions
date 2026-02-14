@@ -7,13 +7,13 @@ class Solution:
     def getMoneyAmount(self, n: int) -> int:
 
         @cache
-        def dp(l, r) -> int:
-            if l >= r:
+        def dp(left, right) -> int:
+            if left >= right:
                 return 0
             ans = inf
-            for m in range((l + r) // 2, r):
-                res = max(dp(l, m - 1), dp(m + 1, r))
-                ans = min(ans, res + m)
+            for mid in range((left + right) // 2, right):
+                res = max(dp(left, mid - 1), dp(mid + 1, right))
+                ans = min(ans, res + mid)
             return ans
 
         return dp(1, n)
@@ -22,13 +22,13 @@ class Solution:
 class Solution2:
     def getMoneyAmount(self, n: int) -> int:
         @cache
-        def dp(l, r) -> int:
-            if l >= r:
+        def dp(left, right) -> int:
+            if left >= right:
                 return 0
             ans = inf
-            for m in range(l, r + 1):
-                res = max(dp(l, m - 1), dp(m + 1, r))
-                ans = min(ans, res + m)
+            for mid in range(left, right + 1):
+                res = max(dp(left, mid - 1), dp(mid + 1, right))
+                ans = min(ans, res + mid)
             return ans
 
         return dp(1, n)

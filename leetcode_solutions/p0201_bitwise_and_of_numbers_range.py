@@ -10,11 +10,11 @@ class Solution:
 
 class Solution2:
     def rangeBitwiseAnd(self, left: int, right: int) -> int:
-        l = bin(left)[2:].zfill(32)
-        r = bin(right)[2:].zfill(32)
+        left = bin(left)[2:].zfill(32)
+        right = bin(right)[2:].zfill(32)
 
         ans = ""
-        for a, b in zip(l, r):
+        for a, b in zip(left, right):
             if a == b:
                 ans += a
             else:

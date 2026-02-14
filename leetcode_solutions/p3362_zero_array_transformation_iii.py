@@ -28,7 +28,7 @@ class Solution:
         return len(prep)
 
 
-class Solution:
+class Solution2:
     def maxRemoval(self, nums: List[int], queries: List[List[int]]) -> int:
         heapify(queries)
         taken, prepared = [], []

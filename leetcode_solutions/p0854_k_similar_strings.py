@@ -83,38 +83,3 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
 
 if __name__ == "__main__":
     unittest.main()
-
-# def test():
-#     sol = Solution()
-#
-#     print('Test 1... ', end='')
-#     assert sol.kSimilarity(s1="ab", s2="ba") == 1
-#     print('OK')
-#
-#     print('Test 2... ', end='')
-#     assert sol.kSimilarity(s1="abc", s2="bca") == 2
-#     print('OK')
-#
-#     print('Test 3... ', end='')
-#     assert sol.kSimilarity(s1="abcd", s2="badc") == 2
-#     print('OK')
-#
-#     print('Test 4... ', end='')
-#     assert sol.kSimilarity(s1="abfcd", s2="bdfac") == 3
-#     print('OK')
-#
-#     print('Test 5... ', end='')
-#     assert sol.kSimilarity(s1="aabbccddee", s2="cdacbeebad") == 6
-#     print('OK')
-#
-#     print('Test 6... ', end='')
-#     assert sol.kSimilarity(s1="abcdefabcdefabcdef", s2="bcbecadfbeaafefcdd") == 11
-#     print('OK')
-#
-#     print('Test 7... ', end='')
-#     assert sol.kSimilarity(s1="baabaaabaabbbbbbbaba", s2="abbabbbabbabaaababab") == 9
-#     print('OK')
-
-
-# if __name__ == '__main__':
-#     test()

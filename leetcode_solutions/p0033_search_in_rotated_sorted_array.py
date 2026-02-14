@@ -3,24 +3,24 @@ class Solution:
         ln = len(nums)
 
         if nums[0] <= nums[-1]:
-            l, r = 0, ln - 1
+            left, right = 0, ln - 1
         else:
             al, ar, val = 0, ln - 1, nums[0]
             while al < ar:
-                m = (al + ar) // 2
-                if nums[m] < val:
-                    ar = m
+                mid = (al + ar) // 2
+                if nums[mid] < val:
+                    ar = mid
                 else:
-                    al = m + 1
-            l, r = (al, ln - 1) if target < val else (0, ar - 1)
-        while l < r:
-            m = (l + r) // 2
-            if nums[m] < target:
-                l = m + 1
+                    al = mid + 1
+            left, right = (al, ln - 1) if target < val else (0, ar - 1)
+        while left < right:
+            mid = (left + right) // 2
+            if nums[mid] < target:
+                left = mid + 1
             else:
-                r = m
+                right = mid
 
-        return l if nums[l] == target else -1
+        return left if nums[left] == target else -1
 
 
 def main():

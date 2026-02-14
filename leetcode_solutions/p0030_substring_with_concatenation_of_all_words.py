@@ -66,15 +66,15 @@ class Solution2:
 
 class Solution3:
     def findSubstring(self, s: str, words: List[str]) -> List[int]:
-        l = len(words[0])
-        c = len(words)
-        w = Counter(words)
+        lw = len(words[0])
+        lc = len(words)
+        cnt = Counter(words)
         result = []
-        for i in range(len(s) - c * l + 1):
-            wds = w.copy()
-            for j in range(c):
-                start = i + j * l
-                word = s[start : start + l]
+        for i in range(len(s) - lc * lw + 1):
+            wds = cnt.copy()
+            for j in range(lc):
+                start = i + j * lw
+                word = s[start : start + lw]
                 if word in wds and wds[word] > 0:
                     wds[word] -= 1
                 else:

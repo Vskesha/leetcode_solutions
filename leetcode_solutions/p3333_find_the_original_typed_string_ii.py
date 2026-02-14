@@ -9,8 +9,12 @@ from leetcode_solutions._test_meta import TestMeta
 class Solution:
     def possibleStringCount(self, word: str, k: int) -> int:
         mod = 10**9 + 7
-        sum_mod = lambda x, y: (x + y) % mod
-        mul_mod = lambda x, y: (x * y) % mod
+
+        def sum_mod(x, y):
+            return (x + y) % mod
+
+        def mul_mod(x, y):
+            return (x * y) % mod
 
         groups = [len(list(gr)) for _, gr in groupby(word)]
         total = reduce(mul_mod, groups)

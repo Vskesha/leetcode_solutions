@@ -18,37 +18,37 @@ class Solution:
         self, target: int, mountain_arr: MountainArray
     ) -> int:
 
-        l, r = 1, mountain_arr.length() - 2
-        while l < r:
-            m = (l + r) // 2
-            if mountain_arr.get(m) < mountain_arr.get(m + 1):
-                l = m + 1
+        left, right = 1, mountain_arr.length() - 2
+        while left < right:
+            mid = (left + right) // 2
+            if mountain_arr.get(mid) < mountain_arr.get(mid + 1):
+                left = mid + 1
             else:
-                r = m
+                right = mid
 
-        peak = l
+        peak = left
 
-        l, r = 0, peak
-        while l < r:
-            m = (l + r) // 2
-            if mountain_arr.get(m) < target:
-                l = m + 1
+        left, right = 0, peak
+        while left < right:
+            mid = (left + right) // 2
+            if mountain_arr.get(mid) < target:
+                left = mid + 1
             else:
-                r = m
+                right = mid
 
-        if mountain_arr.get(l) == target:
-            return l
+        if mountain_arr.get(left) == target:
+            return left
 
-        l, r = peak, mountain_arr.length() - 1
-        while l < r:
-            m = (l + r) // 2
-            if mountain_arr.get(m) > target:
-                l = m + 1
+        left, right = peak, mountain_arr.length() - 1
+        while left < right:
+            mid = (left + right) // 2
+            if mountain_arr.get(mid) > target:
+                left = mid + 1
             else:
-                r = m
+                right = mid
 
-        if mountain_arr.get(l) == target:
-            return l
+        if mountain_arr.get(left) == target:
+            return left
 
         return -1
 

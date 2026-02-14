@@ -70,9 +70,9 @@ class Solution6:
         t = n / 4
 
         for c in cs:
-            l = bisect_left(arr, c)
-            r = bisect_right(arr, c)
-            if r - l > t:
+            li = bisect_left(arr, c)
+            ri = bisect_right(arr, c)
+            if ri - li > t:
                 return c
 
         return -1

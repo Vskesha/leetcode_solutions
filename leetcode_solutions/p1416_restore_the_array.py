@@ -97,15 +97,15 @@ class Solution3:
 
 class Solution4:
     def numberOfArrays(self, s: str, k: int) -> int:
-        l = len(s)
+        ls = len(s)
         ml = len(str(k))
-        dp = [1] + [0] * l
-        for i in range(1, l + 1):
+        dp = [1] + [0] * ls
+        for i in range(1, ls + 1):
             for w in range(1, min(i, ml) + 1):
                 if s[i - w] != "0" and (w < ml or int(s[i - w : i]) <= k):
                     dp[i] += dp[i - w]
                     dp[i] %= 1000000007
-        return dp[l]
+        return dp[ls]
 
 
 class TestSolution(unittest.TestCase):

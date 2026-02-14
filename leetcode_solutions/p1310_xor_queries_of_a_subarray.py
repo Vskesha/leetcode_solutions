@@ -11,7 +11,7 @@ class Solution:
         self, arr: List[int], queries: List[List[int]]
     ) -> List[int]:
         acc = list(accumulate(arr, operator.xor, initial=0))
-        return [acc[l] ^ acc[r + 1] for l, r in queries]
+        return [acc[li] ^ acc[ri + 1] for li, ri in queries]
 
 
 class TestSolution(unittest.TestCase, metaclass=TestMeta):

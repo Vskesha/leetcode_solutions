@@ -14,30 +14,30 @@ def guess(num: int) -> int:
 
 class Solution:
     def guessNumber(self, n: int) -> int:
-        l, r = 1, n
-        while l <= r:
-            m = (l + r) // 2
-            gm = guess(m)
+        left, right = 1, n
+        while left <= right:
+            mid = (left + right) // 2
+            gm = guess(mid)
             if gm == 0:
-                return m
+                return mid
             elif gm == 1:
-                l = m + 1
+                left = mid + 1
             else:
-                r = m - 1
+                right = mid - 1
 
 
 class Solution2:
     def guessNumber(self, n: int) -> int:
-        l, r = 1, n
+        left, right = 1, n
 
-        while l < r:
-            m = (l + r) // 2
-            if guess(m) == 1:
-                l = m + 1
+        while left < right:
+            mid = (left + right) // 2
+            if guess(mid) == 1:
+                left = mid + 1
             else:
-                r = m
+                right = mid
 
-        return l
+        return left
 
 
 class TestSolution(unittest.TestCase):

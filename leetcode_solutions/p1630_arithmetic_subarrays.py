@@ -5,13 +5,13 @@ from typing import List
 
 class Solution:
     def checkArithmeticSubarrays(
-        self, nums: List[int], l: List[int], r: List[int]
+        self, nums: List[int], left: List[int], right: List[int]
     ) -> List[bool]:
 
-        def is_arithmetic(l, r):
-            if r - l < 3:
+        def is_arithmetic(li, ri):
+            if ri - li < 3:
                 return True
-            ns = nums[l:r]
+            ns = nums[li:ri]
             heapify(ns)
             prev = heappop(ns)
             curr = heappop(ns)
@@ -23,12 +23,12 @@ class Solution:
                     return False
             return True
 
-        return [is_arithmetic(l[i], r[i] + 1) for i in range(len(l))]
+        return [is_arithmetic(left[i], right[i] + 1) for i in range(len(left))]
 
 
 class Solution1:
     def checkArithmeticSubarrays(
-        self, nums: List[int], l: List[int], r: List[int]
+        self, nums: List[int], left: List[int], right: List[int]
     ) -> List[bool]:
 
         def is_arithmetic(nums):
@@ -45,15 +45,18 @@ class Solution1:
                     return False
             return True
 
-        return [is_arithmetic(nums[l[i] : r[i] + 1]) for i in range(len(l))]
+        return [
+            is_arithmetic(nums[left[i] : right[i] + 1])
+            for i in range(len(left))
+        ]
 
 
 class Solution2:
     def checkArithmeticSubarrays(
-        self, nums: List[int], l: List[int], r: List[int]
+        self, nums: List[int], left: List[int], right: List[int]
     ) -> List[bool]:
         ans = []
-        for li, ri in zip(l, r):
+        for li, ri in zip(left, right):
             if ri - li < 2:
                 ans.append(True)
                 continue
@@ -74,10 +77,10 @@ class Solution2:
 
 class Solution3:
     def checkArithmeticSubarrays(
-        self, nums: List[int], l: List[int], r: List[int]
+        self, nums: List[int], left: List[int], right: List[int]
     ) -> List[bool]:
         ans = []
-        for li, ri in zip(l, r):
+        for li, ri in zip(left, right):
             if ri - li < 2:
                 ans.append(True)
                 continue
@@ -95,10 +98,10 @@ class Solution3:
 
 class Solution4:
     def checkArithmeticSubarrays(
-        self, nums: List[int], l: List[int], r: List[int]
+        self, nums: List[int], left: List[int], right: List[int]
     ) -> List[bool]:
         ans = []
-        for li, ri in zip(l, r):
+        for li, ri in zip(left, right):
             if ri - li < 2:
                 ans.append(True)
                 continue
@@ -121,15 +124,15 @@ def test():
 
     print("Test 1 ... ", end="")
     assert sol.checkArithmeticSubarrays(
-        nums=[4, 6, 5, 9, 3, 7], l=[0, 0, 2], r=[2, 3, 5]
+        nums=[4, 6, 5, 9, 3, 7], left=[0, 0, 2], right=[2, 3, 5]
     ) == [true, false, true]
     print("OK")
 
     print("Test 2 ... ", end="")
     assert sol.checkArithmeticSubarrays(
         nums=[-12, -9, -3, -12, -6, 15, 20, -25, -20, -15, -10],
-        l=[0, 1, 6, 4, 8, 7],
-        r=[4, 4, 9, 7, 9, 10],
+        left=[0, 1, 6, 4, 8, 7],
+        right=[4, 4, 9, 7, 9, 10],
     ) == [false, true, false, false, true, true]
     print("OK")
 

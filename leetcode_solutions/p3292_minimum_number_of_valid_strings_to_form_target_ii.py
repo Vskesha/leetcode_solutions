@@ -17,13 +17,13 @@ class Solution:
             return False
 
         dp = [0] * (lt + 1)
-        l = 0
-        for r in range(1, lt + 1):
-            while l < r and not is_valid_prefix(target[l:r]):
-                l += 1
-            if l == r:
+        left = 0
+        for right in range(1, lt + 1):
+            while left < right and not is_valid_prefix(target[left:right]):
+                left += 1
+            if left == right:
                 return -1
-            dp[r] = dp[l] + 1
+            dp[right] = dp[left] + 1
         return dp[-1]
 
 
@@ -48,13 +48,13 @@ class Solution2:
             return True
 
         dp = [0] * (lt + 1)
-        l = 0
+        left = 0
         for r in range(1, lt + 1):
-            while l < r and not is_valid_prefix(target[l:r]):
-                l += 1
-            if l == r:
+            while left < r and not is_valid_prefix(target[left:r]):
+                left += 1
+            if left == r:
                 return -1
-            dp[r] = dp[l] + 1
+            dp[r] = dp[left] + 1
         return dp[-1]
 
 

@@ -13,7 +13,7 @@ class Solution:
         return ans
 
 
-class Solution:
+class Solution2:
     def numberOfBeams(self, bank: List[str]) -> int:
         bank = [r.count("1") for r in bank if "1" in r]
         ans = 0
@@ -22,7 +22,7 @@ class Solution:
         return ans
 
 
-class Solution2:
+class Solution3:
     def numberOfBeams(self, bank: List[str]) -> int:
         bank = [r for r in bank if "1" in r]
         ans = 0
@@ -31,7 +31,7 @@ class Solution2:
         return ans
 
 
-class Solution3:
+class Solution4:
     def numberOfBeams(self, bank: List[str]) -> int:
         ans = 0
         a = []

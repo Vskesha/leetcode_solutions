@@ -119,19 +119,3 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
 
 if __name__ == "__main__":
     unittest.main()
-
-# def test():
-#     null = None
-#     sol = Solution()
-#
-#     print('Test 1... ', end='')
-#     assert sol.averageOfLevels(root=[3, 9, 20, null, null, 15, 7]) == [3.00000, 14.50000, 11.00000]
-#     print('OK')
-#
-#     print('Test 2... ', end='')
-#     assert sol.averageOfLevels(root=[3, 9, 20, 15, 7]) == [3.00000, 14.50000, 11.00000]
-#     print('OK')
-
-
-# if __name__ == '__main__':
-#     test()

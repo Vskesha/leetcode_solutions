@@ -1,6 +1,6 @@
 import unittest
 
-from sortedcontainers import SortedList
+from sortedcontainers import SortedDict, SortedList
 
 from leetcode_solutions._test_meta import TestMeta
 
@@ -42,9 +42,6 @@ class MyCalendarTwo:
             sl.remove(num)
         else:
             sl.add(num)
-
-
-from sortedcontainers import SortedDict
 
 
 class MyCalendarTwo2:

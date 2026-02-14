@@ -103,7 +103,7 @@ class Solution:
         # topological sorting
         try:
             return graph.topological_sort()
-        except IndexError as e:  # there is a cycle in graph or in some group
+        except IndexError:  # there is a cycle in graph or in some group
             return []
 
 

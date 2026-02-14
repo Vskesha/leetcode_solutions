@@ -5,7 +5,6 @@ class Solution:
         bitset = 1
         for num in nums:
             bitset |= bitset << num
-            str_bs = bin(bitset)
         return bool(bitset & 1 << sum(nums) // 2)
 
 

@@ -71,7 +71,9 @@ def main():
         ),
     )
     print(
-        ' ["alice,20,800,mtv", "alice,50,100,mtv", "alice,51,100,frankfurt"]\n',
+        ' ["alice,20,800,mtv", '
+        '"alice,50,100,mtv", '
+        '"alice,51,100,frankfurt"]\n',
         sol.invalidTransactions(
             ["alice,20,800,mtv", "alice,50,100,mtv", "alice,51,100,frankfurt"]
         ),

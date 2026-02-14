@@ -10,43 +10,43 @@ class Solution:
     def smallestDistancePair(self, nums: List[int], k: int) -> int:
         nums.sort()
         ln = len(nums)
-        l, r = 0, nums[-1] - nums[0]
+        left, right = 0, nums[-1] - nums[0]
 
-        while l < r:
-            m = (l + r) // 2
+        while left < right:
+            mid = (left + right) // 2
 
             dists = j = 0
             for i in range(ln - 1):
-                target = nums[i] + m
+                target = nums[i] + mid
                 while j < ln and nums[j] <= target:
                     j += 1
                 dists += j - i - 1
 
             if dists < k:
-                l = m + 1
+                left = mid + 1
             else:
-                r = m
+                right = mid
 
-        return l
+        return left
 
 
 class Solution1:
     def smallestDistancePair(self, nums: List[int], k: int) -> int:
         nums.sort()
-        l, r = 0, nums[-1] - nums[0]
-        while l < r:
-            m = (l + r) // 2
+        left, right = 0, nums[-1] - nums[0]
+        while left < right:
+            mid = (left + right) // 2
             if (
                 sum(
-                    bisect_right(nums, nums[i] + m) - i - 1
+                    bisect_right(nums, nums[i] + mid) - i - 1
                     for i in range(len(nums) - 1)
                 )
                 < k
             ):
-                l = m + 1
+                left = mid + 1
             else:
-                r = m
-        return l
+                right = mid
+        return left
 
 
 class Solution2:
@@ -59,16 +59,16 @@ class Solution2:
             return ans
 
         nums.sort()
-        l, r = 0, nums[-1] - nums[0]
+        left, right = 0, nums[-1] - nums[0]
 
-        while l < r:
-            m = (l + r) // 2
-            if dists_less_equal(m, nums) < k:
-                l = m + 1
+        while left < right:
+            mid = (left + right) // 2
+            if dists_less_equal(mid, nums) < k:
+                left = mid + 1
             else:
-                r = m
+                right = mid
 
-        return l
+        return left
 
 
 class Solution3:

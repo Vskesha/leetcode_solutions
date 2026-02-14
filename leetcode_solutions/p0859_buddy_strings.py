@@ -68,11 +68,11 @@ class Solution2:
 def test():
     sol = Solution()
     print("Test 1 ... ", end="")
-    assert True == sol.buddyStrings("ab", "ba")
+    assert sol.buddyStrings("ab", "ba") is True
     print("ok\nTest 2 ... ", end="")
-    assert False == sol.buddyStrings("ab", "ab")
+    assert sol.buddyStrings("ab", "ab") is False
     print("ok\nTest 3 ... ", end="")
-    assert True == sol.buddyStrings("aa", "aa")
+    assert sol.buddyStrings("aa", "aa") is True
     print("ok")
 
 

@@ -40,7 +40,7 @@ class Solution:
 class Solution1:
     def maximumValueSum(self, board: List[List[int]]) -> int:
         m, n = len(board), len(board[0])
-        m_n, mn = m + n, m * n
+        m_n = m + n
         vals = [(board[i][j], i, j) for i in range(m) for j in range(n)]
         vals.sort(reverse=True)
         ans = -inf

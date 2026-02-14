@@ -32,7 +32,7 @@ class Solution:
         return self.ans
 
 
-class Solution:
+class Solution2:
     def isCousins(self, root: Optional[TreeNode], x: int, y: int) -> bool:
         path, xpath, ypath = [], [], []
 

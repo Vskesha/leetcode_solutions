@@ -43,9 +43,13 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["isBalanced"] * 3,
             "kwargs": [
-                dict(root = array_to_binary_tree([3,9,20,null,null,15,7])),
-                dict(root = array_to_binary_tree([1,2,2,3,3,null,null,4,4])),
-                dict(root = array_to_binary_tree([])),
+                dict(root=array_to_binary_tree([3, 9, 20, null, null, 15, 7])),
+                dict(
+                    root=array_to_binary_tree(
+                        [1, 2, 2, 3, 3, null, null, 4, 4]
+                    )
+                ),
+                dict(root=array_to_binary_tree([])),
             ],
             "expected": [True, False, True],
         },

@@ -8,14 +8,14 @@ def isBadVersion(version: int) -> bool:
 
 class Solution:
     def firstBadVersion(self, n: int) -> int:
-        l, r = 1, n
-        while l < r:
-            m = (l + r) // 2
-            if isBadVersion(m):
-                r = m
+        left, right = 1, n
+        while left < right:
+            mid = (left + right) // 2
+            if isBadVersion(mid):
+                right = mid
             else:
-                l = m + 1
-        return l
+                left = mid + 1
+        return left
 
 
 def test():

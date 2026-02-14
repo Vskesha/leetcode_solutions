@@ -3,13 +3,13 @@ class Solution:
         ls = len(s)
         ans = 0
         for i in range(ls):
-            for l, r in zip(range(i, -1, -1), range(i, ls)):
-                if s[l] == s[r]:
+            for li, ri in zip(range(i, -1, -1), range(i, ls)):
+                if s[li] == s[ri]:
                     ans += 1
                 else:
                     break
-            for l, r in zip(range(i, -1, -1), range(i + 1, ls)):
-                if s[l] == s[r]:
+            for li, ri in zip(range(i, -1, -1), range(i + 1, ls)):
+                if s[li] == s[ri]:
                     ans += 1
                 else:
                     break

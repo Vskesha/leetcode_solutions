@@ -3,17 +3,17 @@ from typing import List
 
 class Solution:
     def countNegatives(self, grid: List[List[int]]) -> int:
-        r = cols = len(grid[0])
+        right = cols = len(grid[0])
         ans = 0
         for row in grid:
-            l = 0
-            while l < r:
-                m = (l + r) // 2
+            left = 0
+            while left < right:
+                m = (left + right) // 2
                 if row[m] < 0:
-                    r = m
+                    right = m
                 else:
-                    l = m + 1
-            ans += cols - r
+                    left = m + 1
+            ans += cols - right
         return ans
 
 

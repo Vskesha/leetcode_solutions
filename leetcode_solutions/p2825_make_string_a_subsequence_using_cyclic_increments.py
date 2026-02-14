@@ -5,7 +5,7 @@ from leetcode_solutions._test_meta import TestMeta
 
 class Solution:
     def canMakeSubsequence(self, str1: str, str2: str) -> bool:
-        ls1, ls2 = len(str1), len(str2)
+        ls2 = len(str2)
         nxt = {chr(i + 97): chr((i + 1) % 26 + 97) for i in range(26)}
         i = 0
 
@@ -20,7 +20,7 @@ class Solution:
 
 class Solution1:
     def canMakeSubsequence(self, str1: str, str2: str) -> bool:
-        ls1, ls2 = len(str1), len(str2)
+        ls2 = len(str2)
         str2 += "$"
         nxt = {chr(i + 97): chr((i + 1) % 26 + 97) for i in range(26)}
         i = 0
@@ -34,7 +34,7 @@ class Solution1:
 
 class Solution2:
     def canMakeSubsequence(self, str1: str, str2: str) -> bool:
-        ls1, ls2 = len(str1), len(str2)
+        ls2 = len(str2)
         i = 0
 
         for ch in str1:

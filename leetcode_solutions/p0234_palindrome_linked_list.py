@@ -12,18 +12,18 @@ class ListNode:
 
 class Solution:
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
-        l = None
-        r = f = head
-        while f and f.next:
-            f = f.next.next
-            r.next, r, l = l, r.next, r
-        if f:
-            r = r.next
-        while l:
-            if l.val != r.val:
+        left = None
+        right = front = head
+        while front and front.next:
+            front = front.next.next
+            right.next, right, left = left, right.next, right
+        if front:
+            right = right.next
+        while left:
+            if left.val != right.val:
                 return False
-            l = l.next
-            r = r.next
+            left = left.next
+            right = right.next
         return True
 
 

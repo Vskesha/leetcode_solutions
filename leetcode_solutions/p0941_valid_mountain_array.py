@@ -9,13 +9,13 @@ class Solution:
         la = len(arr)
         if la < 3 or arr[0] >= arr[1] or arr[la - 1] >= arr[la - 2]:
             return False
-        l = 0
-        while l < la - 1 and arr[l] < arr[l + 1]:
-            l += 1
-        r = la - 1
-        while r > 0 and arr[r] < arr[r - 1]:
-            r -= 1
-        return l == r
+        li = 0
+        while li < la - 1 and arr[li] < arr[li + 1]:
+            li += 1
+        ri = la - 1
+        while ri > 0 and arr[ri] < arr[ri - 1]:
+            ri -= 1
+        return li == ri
 
 
 class TestSolution(unittest.TestCase, metaclass=TestMeta):

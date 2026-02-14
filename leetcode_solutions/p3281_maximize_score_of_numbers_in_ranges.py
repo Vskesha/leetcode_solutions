@@ -7,23 +7,23 @@ from leetcode_solutions._test_meta import TestMeta
 class Solution:
     def maxPossibleScore(self, start: List[int], d: int) -> int:
         start.sort()
-        l, r = 0, (start[-1] - start[0] + d) // (len(start) - 1)
+        left, right = 0, (start[-1] - start[0] + d) // (len(start) - 1)
 
-        while l < r:
-            m = (l + r + 1) // 2
+        while left < right:
+            mid = (left + right + 1) // 2
             nn = start[0]
             for n in start:
                 if nn > n + d:
                     break
                 if nn < n:
                     nn = n
-                nn += m
+                nn += mid
             else:
-                l = m
+                left = mid
                 continue
-            r = m - 1
+            right = mid - 1
 
-        return l
+        return left
 
 
 class Solution2:
@@ -40,16 +40,16 @@ class Solution2:
             return True
 
         start.sort()
-        l, r = 0, (start[-1] - start[0] + d) // (len(start) - 1)
+        left, right = 0, (start[-1] - start[0] + d) // (len(start) - 1)
 
-        while l < r:
-            m = (l + r + 1) // 2
-            if fit(m):
-                l = m
+        while left < right:
+            mid = (left + right + 1) // 2
+            if fit(mid):
+                left = mid
             else:
-                r = m - 1
+                right = mid - 1
 
-        return l
+        return left
 
 
 class TestSolution(unittest.TestCase, metaclass=TestMeta):

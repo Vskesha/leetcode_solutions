@@ -30,11 +30,3 @@ class Solution:
         end2.next = curr
 
         return dummy.next
-
-
-def test():
-    sol = Solution()
-
-
-if __name__ == "__main__":
-    test()

@@ -2,14 +2,14 @@ class Solution:
     def searchMatrix(self, matrix: list[list[int]], target: int) -> bool:
         m, n = len(matrix[0]), len(matrix)
 
-        l, r = 0, m * n - 1
-        while l < r:
-            mid = (l + r) // 2
+        left, right = 0, m * n - 1
+        while left < right:
+            mid = (left + right) // 2
             if matrix[mid // m][mid % m] >= target:
-                r = mid
+                right = mid
             else:
-                l = mid + 1
-        return matrix[l // m][l % m] == target
+                left = mid + 1
+        return matrix[left // m][left % m] == target
 
 
 class Solution2:

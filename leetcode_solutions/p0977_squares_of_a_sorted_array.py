@@ -5,19 +5,19 @@ from typing import List
 class Solution:
     def sortedSquares(self, nums: list[int]) -> list[int]:
         ln = len(nums)
-        r = bisect_left(nums, 0)
-        l = r - 1
+        ri = bisect_left(nums, 0)
+        li = ri - 1
         ans = []
         snums = [n**2 for n in nums]
-        while l >= 0 and r < ln:
-            if snums[r] < snums[l]:
-                ans.append(snums[r])
-                r += 1
+        while li >= 0 and ri < ln:
+            if snums[ri] < snums[li]:
+                ans.append(snums[ri])
+                ri += 1
             else:
-                ans.append(snums[l])
-                l -= 1
+                ans.append(snums[li])
+                li -= 1
 
-        ans.extend(snums[r:] if l < 0 else snums[: l + 1][::-1])
+        ans.extend(snums[ri:] if li < 0 else snums[: li + 1][::-1])
         return ans
 
 

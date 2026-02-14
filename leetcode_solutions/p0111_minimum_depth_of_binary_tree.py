@@ -23,11 +23,3 @@ class Solution:
                 bfs.append((curr.left, depth + 1))
             if curr.right:
                 bfs.append((curr.right, depth + 1))
-
-
-def main():
-    sol = Solution()
-
-
-if __name__ == "__main__":
-    main()

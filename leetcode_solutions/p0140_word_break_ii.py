@@ -90,10 +90,10 @@ class Solution1:
                 return
 
             for word in wordDict:
-                l = len(word)
-                if word == s[st : st + l]:
+                lw = len(word)
+                if word == s[st : st + lw]:
                     words.append(word)
-                    dp(st + l, words, ans)
+                    dp(st + lw, words, ans)
                     words.pop()
 
         words, ans = [], []

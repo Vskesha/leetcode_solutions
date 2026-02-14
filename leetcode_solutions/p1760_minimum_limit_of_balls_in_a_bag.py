@@ -6,16 +6,16 @@ from leetcode_solutions._test_meta import TestMeta
 
 class Solution:
     def minimumSize(self, nums: List[int], maxOperations: int) -> int:
-        l, r = 1, max(nums)
-        while l < r:
-            m = (l + r) // 2
-            ops = sum((n - 1) // m for n in nums)
+        left, right = 1, max(nums)
+        while left < right:
+            mid = (left + right) // 2
+            ops = sum((n - 1) // mid for n in nums)
             if ops > maxOperations:
-                l = m + 1
+                left = mid + 1
             else:
-                r = m
+                right = mid
 
-        return r
+        return right
 
 
 class TestSolution(unittest.TestCase, metaclass=TestMeta):

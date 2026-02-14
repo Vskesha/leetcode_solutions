@@ -10,29 +10,45 @@ class Solution:
         ca = [list(accumulate(c, initial=0)) for c in zip(*grid)]
 
         @cache
-        def shrink(l, r, t, b):
-            while ra[t][r + 1] == ra[t][l]:
-                t += 1
-            while ra[b][r + 1] == ra[b][l]:
-                b -= 1
-            while ca[l][b + 1] == ca[l][t]:
-                l += 1
-            while ca[r][b + 1] == ca[r][t]:
-                r -= 1
-            return l, r, t, b
+        def shrink(left, right, top, bottom):
+            while ra[top][right + 1] == ra[top][left]:
+                top += 1
+            while ra[bottom][right + 1] == ra[bottom][left]:
+                bottom -= 1
+            while ca[left][bottom + 1] == ca[left][top]:
+                left += 1
+            while ca[right][bottom + 1] == ca[right][top]:
+                right -= 1
+            return left, right, top, bottom
 
         @cache
-        def dp(l, r, t, b, d) -> int:
-            l, r, t, b = shrink(l, r, t, b)
+        def dp(left, right, top, bottom, d) -> int:
+            left, right, top, bottom = shrink(left, right, top, bottom)
             if d == 1:
-                return (r - l + 1) * (b - t + 1)
+                return (right - left + 1) * (bottom - top + 1)
             ma = float("inf")
-            for j in range(l, r):
-                ma = min(ma, dp(l, j, t, b, 1) + dp(j + 1, r, t, b, d - 1))
-                ma = min(ma, dp(l, j, t, b, d - 1) + dp(j + 1, r, t, b, 1))
-            for i in range(t, b):
-                ma = min(ma, dp(l, r, t, i, 1) + dp(l, r, i + 1, b, d - 1))
-                ma = min(ma, dp(l, r, t, i, d - 1) + dp(l, r, i + 1, b, 1))
+            for j in range(left, right):
+                ma = min(
+                    ma,
+                    dp(left, j, top, bottom, 1)
+                    + dp(j + 1, right, top, bottom, d - 1),
+                )
+                ma = min(
+                    ma,
+                    dp(left, j, top, bottom, d - 1)
+                    + dp(j + 1, right, top, bottom, 1),
+                )
+            for i in range(top, bottom):
+                ma = min(
+                    ma,
+                    dp(left, right, top, i, 1)
+                    + dp(left, right, i + 1, bottom, d - 1),
+                )
+                ma = min(
+                    ma,
+                    dp(left, right, top, i, d - 1)
+                    + dp(left, right, i + 1, bottom, 1),
+                )
             return ma
 
         return dp(0, len(grid[0]) - 1, 0, len(grid) - 1, 3)
@@ -40,34 +56,44 @@ class Solution:
 
 class Solution2:
     def minimumSum(self, grid: List[List[int]]) -> int:
-        def area(l, r, t, b):
-            l, r, t, b = shrink(l, r, t, b)
-            return (r - l + 1) * (b - t + 1)
+        def area(left, right, top, bottom):
+            left, right, top, bottom = shrink(left, right, top, bottom)
+            return (right - left + 1) * (bottom - top + 1)
 
         @cache
-        def shrink(l, r, t, b):
-            while l < r and 1 not in [grid[i][l] for i in range(t, b + 1)]:
-                l += 1
-            while r > l and 1 not in [grid[i][r] for i in range(t, b + 1)]:
-                r -= 1
-            while t < b and 1 not in [grid[t][j] for j in range(l, r + 1)]:
-                t += 1
-            while t < b and 1 not in [grid[b][j] for j in range(l, r + 1)]:
-                b -= 1
-            return l, r, t, b
+        def shrink(left, right, top, bottom):
+            while left < right and 1 not in [
+                grid[i][left] for i in range(top, bottom + 1)
+            ]:
+                left += 1
+            while right > left and 1 not in [
+                grid[i][right] for i in range(top, bottom + 1)
+            ]:
+                right -= 1
+            while top < bottom and 1 not in [
+                grid[top][j] for j in range(left, right + 1)
+            ]:
+                top += 1
+            while top < bottom and 1 not in [
+                grid[bottom][j] for j in range(left, right + 1)
+            ]:
+                bottom -= 1
+            return left, right, top, bottom
 
-        def min_area_vertical_split(l, r, t, b):
-            if l == r:
-                return area(l, r, t, b) + 1
+        def min_area_vertical_split(left, right, top, bottom):
+            if left == right:
+                return area(left, right, top, bottom) + 1
             return min(
-                area(l, j, t, b) + area(j + 1, r, t, b) for j in range(l, r)
+                area(left, j, top, bottom) + area(j + 1, right, top, bottom)
+                for j in range(left, right)
             )
 
-        def min_area_horizontal_split(l, r, t, b):
-            if t == b:
-                return area(l, r, t, b) + 1
+        def min_area_horizontal_split(left, right, top, bottom):
+            if top == bottom:
+                return area(left, right, top, bottom) + 1
             return min(
-                area(l, r, t, i) + area(l, r, i + 1, b) for i in range(t, b)
+                area(left, right, top, i) + area(left, right, i + 1, bottom)
+                for i in range(top, bottom)
             )
 
         l, r, t, b = shrink(0, len(grid[0]) - 1, 0, len(grid) - 1)

@@ -1,4 +1,4 @@
-name: Check Import Sorting
+name: Check Linters
 
 on:
   push:
@@ -33,3 +33,6 @@ jobs:
 
       - name: Run black check
         run: poetry run black --check --diff .
+
+      - name: Run flake8 check
+        run: poetry run flake8 .

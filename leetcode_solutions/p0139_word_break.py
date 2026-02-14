@@ -11,8 +11,8 @@ class Solution:
                 return True
 
             for word in wordDict:
-                l = len(word)
-                if word == s[st : st + l] and dp(st + l):
+                lw = len(word)
+                if word == s[st : st + lw] and dp(st + lw):
                     return True
 
             return False

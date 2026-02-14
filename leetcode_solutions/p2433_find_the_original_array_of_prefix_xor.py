@@ -18,11 +18,3 @@ class Solution2:
         for a, b in pairwise(pref):
             arr.append(a ^ b)
         return arr
-
-
-def test():
-    sol = Solution()
-
-
-if __name__ == "__main__":
-    test()

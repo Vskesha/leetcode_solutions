@@ -20,16 +20,16 @@ class Solution:
             return d <= days
 
         lw = len(weights)
-        l, r = max(weights), sum(weights)
+        left, right = max(weights), sum(weights)
 
-        while l < r:
-            mid = (l + r) // 2
+        while left < right:
+            mid = (left + right) // 2
             if can_convey(mid):
-                r = mid
+                right = mid
             else:
-                l = mid + 1
+                left = mid + 1
 
-        return l
+        return left
 
 
 class Solution1:
@@ -68,16 +68,16 @@ class Solution2:
             return d
 
         lw = len(weights)
-        l, r = max(weights), sum(weights)
+        left, right = max(weights), sum(weights)
 
-        while l < r:
-            mid = (l + r) // 2
+        while left < right:
+            mid = (left + right) // 2
             if days_needed(mid) <= days:
-                r = mid
+                right = mid
             else:
-                l = mid + 1
+                left = mid + 1
 
-        return l
+        return left
 
 
 class TestSolution(unittest.TestCase):

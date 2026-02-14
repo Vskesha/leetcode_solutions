@@ -1,6 +1,5 @@
 import unittest
 from collections import Counter
-from time import sleep
 
 
 class Solution:

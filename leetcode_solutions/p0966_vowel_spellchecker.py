@@ -178,36 +178,3 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "assert_methods": ["assertListEqual"] * 2,
         },
     ]
-
-
-if __name__ == "__main__":
-    unittest.main()
-
-# def test():
-#     sol = Solution()
-#
-#     print("Test 1... ", end="")
-#     assert sol.spellchecker(
-#         wordlist=["KiTe", "kite", "hare", "Hare"],
-#         queries=[
-#             "kite",
-#             "Kite",
-#             "KiTe",
-#             "Hare",
-#             "HARE",
-#             "Hear",
-#             "hear",
-#             "keti",
-#             "keet",
-#             "keto",
-#         ],
-#     ) == ["kite", "KiTe", "KiTe", "Hare", "hare", "", "", "KiTe", "", "KiTe"]
-#     print("OK")
-#
-#     print("Test 2... ", end="")
-#     assert sol.spellchecker(wordlist=["yellow"], queries=["YellOw"]) == ["yellow"]
-#     print("OK")
-
-
-# if __name__ == "__main__":
-#     test()

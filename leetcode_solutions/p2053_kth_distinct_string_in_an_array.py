@@ -19,7 +19,7 @@ class Solution:
         return ""
 
 
-class Solution:
+class Solution2:
     def kthDistinct(self, arr: List[str], k: int) -> str:
         cnt = Counter(arr)
         for s in arr:

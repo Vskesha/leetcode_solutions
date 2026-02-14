@@ -299,7 +299,10 @@ class TreeNodeBalanced:
             self.height = 0
 
     def __repr__(self):
-        return f"TreeNodeBalanced({self.start}, {self.end}, dist={self.dist}, height={self.height})"
+        return (
+            f"TreeNodeBalanced({self.start}, {self.end}, "
+            f"dist={self.dist}, height={self.height})"
+        )
 
 
 class ExamRoom4:

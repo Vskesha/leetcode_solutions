@@ -1,5 +1,4 @@
 import unittest
-from heapq import heapify, heappop
 from typing import List
 
 
@@ -64,15 +63,15 @@ class Solution2:
 
             return ans
 
-        l, r = 0, max(bloomDay)
-        while l < r:
-            mid = (l + r) // 2
+        left, right = 0, max(bloomDay)
+        while left < right:
+            mid = (left + right) // 2
             if bouquets_on_day(mid, k, bloomDay) < m:
-                l = mid + 1
+                left = mid + 1
             else:
-                r = mid
+                right = mid
 
-        return r
+        return right
 
 
 class TestSolution(unittest.TestCase):

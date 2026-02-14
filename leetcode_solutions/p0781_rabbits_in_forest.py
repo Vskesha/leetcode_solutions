@@ -17,7 +17,7 @@ class Solution:
         return ans
 
 
-class Solution:
+class Solution2:
     def numRabbits(self, answers: List[int]) -> int:
         cnt = {}
         ans = 0

@@ -40,7 +40,8 @@ class PeekingIterator:
 
     def peek(self):
         """
-        Returns the next element in the iteration without advancing the iterator.
+        Returns the next element in the iteration
+        without advancing the iterator.
         :rtype: int
         """
         return self.q[0]
@@ -69,7 +70,8 @@ class PeekingIterator2:
 
     def peek(self):
         """
-        Returns the next element in the iteration without advancing the iterator.
+        Returns the next element in the iteration
+        without advancing the iterator.
         :rtype: int
         """
         return self.nxt
@@ -97,7 +99,7 @@ class PeekingIterator2:
 
 
 def test():
-    null, false, true = None, False, True
+    null, false = None, False
     commands = ["PeekingIterator", "next", "peek", "next", "next", "hasNext"]
     args = [[[1, 2, 3]], [], [], [], [], []]
     outputs = [null, 1, 2, 2, 3, false]

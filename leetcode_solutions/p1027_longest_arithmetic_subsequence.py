@@ -5,10 +5,10 @@ from typing import List
 class Solution:
     def longestArithSeqLength(self, nums: List[int]) -> int:
         dp = {}
-        for r in range(1, len(nums)):
-            for l in range(r):
-                d = nums[r] - nums[l]
-                dp[(r, d)] = dp.get((l, d), 1) + 1
+        for ri in range(1, len(nums)):
+            for li in range(ri):
+                d = nums[ri] - nums[li]
+                dp[(ri, d)] = dp.get((li, d), 1) + 1
         return max(dp.values())
 
 

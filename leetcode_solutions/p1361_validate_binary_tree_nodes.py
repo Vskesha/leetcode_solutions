@@ -108,7 +108,7 @@ def test():
         sol.validateBinaryTreeNodes(
             n=4, leftChild=[1, -1, 3, -1], rightChild=[2, -1, -1, -1]
         )
-        == True
+        is True
     )
     print("ok")
 
@@ -117,14 +117,14 @@ def test():
         sol.validateBinaryTreeNodes(
             n=4, leftChild=[1, -1, 3, -1], rightChild=[2, 3, -1, -1]
         )
-        == False
+        is False
     )
     print("ok")
 
     print("Test 3 ... ", end="")
     assert (
         sol.validateBinaryTreeNodes(n=2, leftChild=[1, 0], rightChild=[-1, -1])
-        == False
+        is False
     )
     print("ok")
 

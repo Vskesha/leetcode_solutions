@@ -34,11 +34,3 @@ class Solution:
             deepest = [node.parent for node in deepest]
 
         return deepest[0]
-
-
-def main():
-    sol = Solution()
-
-
-if __name__ == "__main__":
-    main()

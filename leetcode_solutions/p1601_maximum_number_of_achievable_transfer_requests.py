@@ -17,7 +17,8 @@ class Solution:
         """
         makes list of lists which represents the graph
         :param n: number of nodes
-        :param requests: list of directed edges. Edge is a list of two ints (first - from and second  - to)
+        :param requests: list of directed edges. Edge is a list
+                        of two ints (first - from and second  - to)
         :return: list of achievable nodes from each node (index)
         """
         result = [[] for _ in range(n)]
@@ -87,7 +88,8 @@ class Solution:
     def maximumRequests(self, n: int, requests: list[list[int]]) -> int:
         """
         :param n: number of buildings (nodes in graph)
-        :param requests: list of directed edges. Edge is a list of two ints (first - from and second  - to)
+        :param requests: list of directed edges. Edge is a list
+                        of two ints (first - from and second  - to)
         :return: maximal number of achievable requests
         """
         graph = self.build_graph(n, requests)

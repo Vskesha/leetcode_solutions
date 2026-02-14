@@ -31,24 +31,24 @@ class Solution3:
         def get_z(word):
             lw = len(word)
             z = [0] * lw
-            l = r = 0
+            li = ri = 0
 
             for i in range(1, lw):
-                if i > r:
-                    l = r = i
-                    while r < lw and word[r] == word[r - l]:
-                        r += 1
-                    z[i] = r - l
-                    r -= 1
-                elif i + z[i - l] > r:
-                    l = i
-                    r += 1
-                    while r < lw and word[r] == word[r - l]:
-                        r += 1
-                    z[i] = r - l
-                    r -= 1
+                if i > ri:
+                    li = ri = i
+                    while ri < lw and word[ri] == word[ri - li]:
+                        ri += 1
+                    z[i] = ri - li
+                    ri -= 1
+                elif i + z[i - li] > ri:
+                    li = i
+                    ri += 1
+                    while ri < lw and word[ri] == word[ri - li]:
+                        ri += 1
+                    z[i] = ri - li
+                    ri -= 1
                 else:
-                    z[i] = z[i - l]
+                    z[i] = z[i - li]
 
             return z
 
@@ -72,19 +72,19 @@ class Solution4:
             word = pattern + wordsall
             lw = len(word)
             z = [0] * lw
-            l = r = 0
+            li = ri = 0
             seen = False
 
             for i in range(1, lw - lp):
-                if i <= r and i + z[i - l] <= r:
-                    z[i] = z[i - l]
+                if i <= ri and i + z[i - li] <= ri:
+                    z[i] = z[i - li]
                 else:
-                    l = i
-                    r = i if i > r else r + 1
-                    while word[r] == word[r - l]:
-                        r += 1
-                    z[i] = r - l
-                    r -= 1
+                    li = i
+                    ri = i if i > ri else ri + 1
+                    while word[ri] == word[ri - li]:
+                        ri += 1
+                    z[i] = ri - li
+                    ri -= 1
 
                 if z[i] >= lp:
                     if seen:

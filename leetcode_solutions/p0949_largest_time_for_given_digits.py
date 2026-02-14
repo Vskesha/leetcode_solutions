@@ -50,7 +50,7 @@ class Solution2:
         return f"{max_h:>02}:{max_m:>02}" if max_h or max_m else ""
 
 
-class Solution2:
+class Solution3:
     def largestTimeFromDigits(self, arr: List[int]) -> str:
         ans = ""
         for a, b, c, d in permutations(arr, 4):

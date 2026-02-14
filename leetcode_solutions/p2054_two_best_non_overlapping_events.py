@@ -1,6 +1,5 @@
 import unittest
 from heapq import heappop, heappush
-from math import inf
 from typing import List
 
 from leetcode_solutions._test_meta import TestMeta

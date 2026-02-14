@@ -46,7 +46,6 @@ class Solution2:
         if cnt % 2 or not cnt:
             return 0
 
-        lc = len(corridor)
         i, seats, ways = 0, 0, []
         for _ in range(cnt // 2 - 1):
             while seats < 2:

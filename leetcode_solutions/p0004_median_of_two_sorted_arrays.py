@@ -12,18 +12,18 @@ class Solution:
         tl = ln1 + ln2
         hf = (tl + 1) // 2
 
-        l, r = 0, ln1
-        while l <= r:
-            i1 = (l + r) // 2
+        li, ri = 0, ln1
+        while li <= ri:
+            i1 = (li + ri) // 2
             i2 = hf - i1
             a = nums1[i1 - 1] if i1 else -inf
             b = nums1[i1] if i1 < ln1 else inf
             c = nums2[i2 - 1] if i2 else -inf
             d = nums2[i2] if i2 < ln2 else inf
             if a > d:
-                r = i1 - 1
+                ri = i1 - 1
             elif b < c:
-                l = i1 + 1
+                li = i1 + 1
             elif tl % 2:
                 return float(max(a, c))
             else:
@@ -72,21 +72,21 @@ class Solution2:
             ans = sorted(nums1[:2] + nums2[hf : hf + 2])
             return float(ans[0]) if tl % 2 else sum(ans[:2]) / 2
 
-        i1, l, r = 1, 1, ln1 - 1
+        i1, li, ri = 1, 1, ln1 - 1
 
-        while l < r:
-            i1 = (l + r) // 2
+        while li < ri:
+            i1 = (li + ri) // 2
             i2 = hf - i1
             if nums2[i2 - 1] >= nums1[i1]:
-                l = i1 + 1
+                li = i1 + 1
             elif nums1[i1 - 1] >= nums2[i2]:
-                r = i1
+                ri = i1
             else:
-                l = i1
+                li = i1
                 break
 
-        i2 = hf - l
-        ans = sorted(nums1[l : l + 2] + nums2[i2 : i2 + 2])
+        i2 = hf - li
+        ans = sorted(nums1[li : li + 2] + nums2[i2 : i2 + 2])
         return float(ans[0]) if tl % 2 else sum(ans[:2]) / 2
 
 
@@ -100,14 +100,14 @@ class Solution3:
         tl = ln1 + ln2
         hf = (tl + 1) // 2
 
-        l, r = 0, ln1
-        while l <= r:
-            i1 = (l + r) // 2
+        li, ri = 0, ln1
+        while li <= ri:
+            i1 = (li + ri) // 2
             i2 = hf - i1
             if i1 and i2 < ln2 and nums1[i1 - 1] > nums2[i2]:
-                r = i1 - 1
+                ri = i1 - 1
             elif i2 and i1 < ln1 and nums2[i2 - 1] > nums1[i1]:
-                l = i1 + 1
+                li = i1 + 1
             elif tl % 2:
                 ans = -inf
                 if i1:

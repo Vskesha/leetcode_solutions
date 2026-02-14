@@ -25,17 +25,17 @@ class Solution2:
     def maxCount(self, banned: List[int], n: int, maxSum: int) -> int:
         banned = sorted(set(banned))
         acc = list(accumulate(banned, initial=0))
-        l, r = 1, n
-        while l < r:
-            m = (l + r + 1) // 2
-            i = bisect_right(banned, m)
-            s = m * (m + 1) // 2 - acc[i]
-            if s > maxSum:
-                r = m - 1
+        left, right = 1, n
+        while left < right:
+            mid = (left + right + 1) // 2
+            i = bisect_right(banned, mid)
+            cs = mid * (mid + 1) // 2 - acc[i]
+            if cs > maxSum:
+                right = mid - 1
             else:
-                l = m
+                left = mid
 
-        ans = r - bisect_right(banned, r)
+        ans = right - bisect_right(banned, right)
         return ans
 
 

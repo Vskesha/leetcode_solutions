@@ -61,7 +61,6 @@ class Solution3:
 
 class Solution4:
     def findMatrix(self, nums: List[int]) -> List[List[int]]:
-        ln = len(nums)
         cnt = Counter(nums)
         rows = max(cnt.values())
         res = [[] for _ in range(rows)]

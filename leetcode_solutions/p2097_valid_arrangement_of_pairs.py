@@ -1,5 +1,5 @@
 import unittest
-from collections import defaultdict, deque
+from collections import defaultdict
 from itertools import pairwise
 from typing import List
 
@@ -44,7 +44,7 @@ class Solution:
         return ans
 
 
-class Solution:
+class Solution2:
     def validArrangement(self, pairs: List[List[int]]) -> List[List[int]]:
         adj = defaultdict(list)
         income = defaultdict(int)

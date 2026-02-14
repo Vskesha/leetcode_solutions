@@ -5,9 +5,9 @@ from typing import List
 class Solution:
     tmp = "123456789"
     nums = []
-    for l in range(1, 10):
-        for st in range(10 - l):
-            nums.append(int(tmp[st : st + l]))
+    for i in range(1, 10):
+        for st in range(10 - i):
+            nums.append(int(tmp[st : st + i]))
 
     def sequentialDigits(self, low: int, high: int) -> List[int]:
         fr = bisect_left(Solution.nums, low)

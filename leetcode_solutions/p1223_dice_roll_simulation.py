@@ -22,7 +22,7 @@ class Solution:
         return dp(n, -1, -1)
 
 
-class Solution:
+class Solution2:
     def dieSimulator(self, n: int, rollMax: List[int]) -> int:
         dp = [[0] * 6 + [1]]
         for i in range(n):

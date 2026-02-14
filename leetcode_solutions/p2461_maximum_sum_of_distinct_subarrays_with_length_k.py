@@ -25,28 +25,28 @@ class Solution:
         return ans
 
 
-class Solution:
+class Solution2:
     def maximumSubarraySum(self, nums: List[int], k: int) -> int:
-        l = ans = curr = 0
+        i = ans = curr = 0
         seen = set()
 
         for n in nums:
 
             if n in seen:
-                while nums[l] != n:
-                    curr -= nums[l]
-                    seen.remove(nums[l])
-                    l += 1
-                l += 1
+                while nums[i] != n:
+                    curr -= nums[i]
+                    seen.remove(nums[i])
+                    i += 1
+                i += 1
             else:
                 curr += n
                 seen.add(n)
 
             if len(seen) == k:
                 ans = max(ans, curr)
-                curr -= nums[l]
-                seen.remove(nums[l])
-                l += 1
+                curr -= nums[i]
+                seen.remove(nums[i])
+                i += 1
 
         return ans
 

@@ -5,7 +5,11 @@ from math import inf, isclose
 from operator import add, mul, sub, truediv
 from typing import List
 
-div = lambda x, y: reduce(truediv, (x, y)) if y else inf
+
+def div(x, y):
+    return reduce(truediv, (x, y)) if y else inf
+
+
 ops = (add, sub, mul, div)
 
 

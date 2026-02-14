@@ -97,7 +97,6 @@ class TestSolution(unittest.TestCase):
 
     def test_getDirections_2(self):
         print("Test getDirections 2... ", end="")
-        null = None
         self.assertEqual(
             "L",
             self.sol.getDirections(

@@ -29,7 +29,6 @@ class Solution2:
 
 class Solution3:
     def distributeCandies(self, n: int, limit: int) -> int:
-        ans = 0
         mv = min(n + 1, limit + 1, max(0, n - limit))
         return sum(
             2 * limit - n + n1 + 1 for n1 in range(max(0, n - 2 * limit), mv)

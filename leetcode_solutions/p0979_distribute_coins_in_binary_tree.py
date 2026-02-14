@@ -81,7 +81,6 @@ class Solution2:
 
 def test_distribute_coins():
     sol = Solution()
-    null = None
 
     print("Test 1... ", end="")
     assert sol.distributeCoins(root=[3, 0, 0]) == 2

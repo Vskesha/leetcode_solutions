@@ -3,7 +3,8 @@ from functools import cache
 
 class Solution:
     def getLengthOfOptimalCompression(self, s: str, k: int) -> int:
-        e = lambda x: 1 if x < 2 else 2 if x < 10 else 3 if x < 100 else 4
+        def fn_e(x):
+            return 1 if x < 2 else 2 if x < 10 else 3 if x < 100 else 4
 
         @cache
         def f(i, k):
@@ -18,7 +19,7 @@ class Solution:
                     return r
                 else:
                     k -= 1
-                r = min(r, f(j - 1, k) + e(x))
+                r = min(r, f(j - 1, k) + fn_e(x))
             return r
 
         return f(len(s) - 1, k)
@@ -33,8 +34,8 @@ class Solution1:
         for i in range(1, n + 1):
             for j in range(0, k + 1):
                 cnt, del_ = 0, 0
-                for l in range(i, 0, -1):
-                    if s[l - 1] == s[i - 1]:
+                for li in range(i, 0, -1):
+                    if s[li - 1] == s[i - 1]:
                         cnt += 1
                     else:
                         del_ += 1
@@ -42,7 +43,7 @@ class Solution1:
                     if j - del_ >= 0:
                         dp[i][j] = min(
                             dp[i][j],
-                            dp[l - 1][j - del_]
+                            dp[li - 1][j - del_]
                             + 1
                             + (
                                 3

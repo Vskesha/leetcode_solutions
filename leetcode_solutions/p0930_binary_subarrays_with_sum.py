@@ -18,8 +18,8 @@ class Solution:
 
         ans = 0
         lz = len(zero_groups)
-        for l, r in zip(range(lz), range(goal, lz)):
-            ans += zero_groups[l] * zero_groups[r]
+        for li, ri in zip(range(lz), range(goal, lz)):
+            ans += zero_groups[li] * zero_groups[ri]
         return ans
 
 

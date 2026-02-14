@@ -21,9 +21,9 @@ class Solution1:
 
         lens = sorted(wds.keys())
         ws = {word: 1 for word in words}
-        for l in lens:
-            for w1 in wds[l]:
-                for w2 in wds[l + 1]:
+        for ln in lens:
+            for w1 in wds[ln]:
+                for w2 in wds[ln + 1]:
                     if ws[w2] < ws[w1] + 1:
                         k = 0
                         while k < len(w1) and w1[k] == w2[k]:

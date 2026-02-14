@@ -11,16 +11,16 @@ class Solution:
                 total += dis / speed
             return total
 
-        l = 1
-        r = 10000000
-        while l < r:
-            m = (l + r) // 2
-            if taken_time(m) < hour:
-                r = m
+        left = 1
+        right = 10000000
+        while left < right:
+            middle = (left + right) // 2
+            if taken_time(middle) < hour:
+                right = middle
             else:
-                l = m + 1
+                left = middle + 1
 
-        return l if taken_time(l) < hour else -1
+        return left if taken_time(left) < hour else -1
 
 
 def main():

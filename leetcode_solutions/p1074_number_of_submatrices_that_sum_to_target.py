@@ -33,7 +33,6 @@ class Solution2:
     def numSubmatrixSumTarget(
         self, matrix: List[List[int]], target: int
     ) -> int:
-        c = len(matrix[0])
         res = 0
         for row in matrix:
             for col in range(1, len(matrix[0])):

@@ -50,17 +50,17 @@ class Solution3:
         dp = [[0] * ls for _ in range(ls)]
 
         for ln in range(0, ls):
-            for l in range(0, ls - ln):
-                r = l + ln
-                for j in range(l, r):
-                    if s[j] != s[r]:
+            for li in range(0, ls - ln):
+                ri = li + ln
+                for j in range(li, ri):
+                    if s[j] != s[ri]:
                         break
                 else:
-                    dp[l][r] = 0
+                    dp[li][ri] = 0
                     continue
 
-                dp[l][r] = (
-                    min(dp[j][i] + dp[i + 1][r] for i in range(j, r)) + 1
+                dp[li][ri] = (
+                    min(dp[j][i] + dp[i + 1][ri] for i in range(j, ri)) + 1
                 )
 
         return dp[0][ls - 1] + 1
@@ -71,14 +71,14 @@ class Solution4:
     def strangePrinter(self, s: str) -> int:
 
         @cache
-        def dp(l, r):
-            for j in range(l, r):
-                if s[j] != s[r]:
+        def dp(li, ri):
+            for j in range(li, ri):
+                if s[j] != s[ri]:
                     break
             else:
                 return 0
 
-            min_turn = min(dp(j, i) + dp(i + 1, r) for i in range(j, r))
+            min_turn = min(dp(j, i) + dp(i + 1, ri) for i in range(j, ri))
 
             return min_turn + 1
 

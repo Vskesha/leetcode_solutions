@@ -1,4 +1,7 @@
 # Definition for a Node.
+from typing import Optional
+
+
 class Node:
     def __init__(self, val, prev, next, child):
         self.val = val
@@ -28,11 +31,3 @@ class Solution:
             curr = curr.next
 
         return head
-
-
-def test():
-    sol = Solution()
-
-
-if __name__ == "__main__":
-    test()

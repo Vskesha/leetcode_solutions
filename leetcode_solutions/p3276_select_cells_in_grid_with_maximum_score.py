@@ -8,7 +8,7 @@ from leetcode_solutions._test_meta import TestMeta
 
 class Solution:
     def maxScore(self, grid: List[List[int]]) -> int:
-        m, n = len(grid), len(grid)
+        m = len(grid)
         mmask = 2**m - 1
 
         vals = defaultdict(set)
@@ -48,8 +48,6 @@ class Solution:
 
 class Solution2:
     def maxScore(self, grid: List[List[int]]) -> int:
-        m = len(grid)
-
         vals = defaultdict(set)
         for i, row in enumerate(grid):
             for v in row:

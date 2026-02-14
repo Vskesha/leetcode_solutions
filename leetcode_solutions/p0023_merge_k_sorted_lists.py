@@ -86,8 +86,8 @@ class Solution3:
             return result.next
 
         res = None
-        for l in lists:
-            res = merge_two_lists(res, l)
+        for lst in lists:
+            res = merge_two_lists(res, lst)
         return res
 
 
@@ -96,7 +96,7 @@ class Solution4:
         self, lists: List[Optional[ListNode]]
     ) -> Optional[ListNode]:
         result = curr = ListNode()
-        lists = [l for l in lists if l]
+        lists = [lst for lst in lists if lst]
         while lists:
             min_val = lists[0].val
             min_index = 0

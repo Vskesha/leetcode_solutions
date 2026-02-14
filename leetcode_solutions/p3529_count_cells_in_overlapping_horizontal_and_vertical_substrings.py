@@ -48,29 +48,29 @@ class Solution:
         return len(hseen.intersection(vseen))
 
     def get_z_arr(self, string):
-        l, r, k = 0, 0, 0
+        left, right, k = 0, 0, 0
         n = len(string)
-        z = [0] * n
+        z_arr = [0] * n
 
         for i in range(1, n):
-            if i > r:
-                l, r = i, i
-                while r < n and string[r - l] == string[r]:
-                    r += 1
-                z[i] = r - l
-                r -= 1
+            if i > right:
+                left, right = i, i
+                while right < n and string[right - left] == string[right]:
+                    right += 1
+                z_arr[i] = right - left
+                right -= 1
             else:
-                k = i - l
-                if z[k] < r - i + 1:
-                    z[i] = z[k]
+                k = i - left
+                if z_arr[k] < right - i + 1:
+                    z_arr[i] = z_arr[k]
                 else:
-                    l = i
-                    while r < n and string[r - l] == string[r]:
-                        r += 1
-                    z[i] = r - l
-                    r -= 1
+                    left = i
+                    while right < n and string[right - left] == string[right]:
+                        right += 1
+                    z_arr[i] = right - left
+                    right -= 1
 
-        return z
+        return z_arr
 
 
 class TestSolution(unittest.TestCase, metaclass=TestMeta):

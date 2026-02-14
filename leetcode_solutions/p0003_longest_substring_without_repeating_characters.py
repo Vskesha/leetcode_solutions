@@ -41,8 +41,6 @@ class Solution3:
         alphabet = {}
         # make ans var
         ans = 0
-        # get len of input
-        n = len(s)
         # make start ptr will be where non repeating substring starts
         start = 0
 
@@ -50,8 +48,8 @@ class Solution3:
         for index, letter in enumerate(s):
             # if curr char in map
             if letter in alphabet:
-                # get val of char in map (that char index) + 1 and store in sums var
-                # so sums is next index
+                # get val of char in map (that char index) + 1
+                # and store in sums var so sums is next index
                 sums = alphabet[letter] + 1
 
                 # if sums var > start

@@ -8,8 +8,6 @@ class Solution:
     def minDamage(
         self, power: int, damage: List[int], health: List[int]
     ) -> int:
-        n = len(damage)
-
         times = [(h - 1) // power + 1 for h in health]
         dpt = [(d / t, d, t) for d, t in zip(damage, times)]
         dpt.sort(reverse=True)

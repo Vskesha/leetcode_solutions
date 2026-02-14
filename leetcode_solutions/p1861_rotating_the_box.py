@@ -6,18 +6,18 @@ from leetcode_solutions._test_meta import TestMeta
 
 class Solution:
     def rotateTheBox(self, box: List[List[str]]) -> List[List[str]]:
-        m, n = len(box), len(box[0])
-        st, ob, em = "#", "*", "."
+        n = len(box[0])
+        st, ob = "#", "*"
 
         for row in box:
-            r = n - 1
-            for l in range(n - 1, -1, -1):
-                if row[l] == st:
-                    row[l] = row[r]
-                    row[r] = st
-                    r -= 1
-                elif row[l] == ob:
-                    r = l - 1
+            ri = n - 1
+            for li in range(n - 1, -1, -1):
+                if row[li] == st:
+                    row[li] = row[ri]
+                    row[ri] = st
+                    ri -= 1
+                elif row[li] == ob:
+                    ri = li - 1
 
         return list(map(list, zip(*box[::-1])))
 

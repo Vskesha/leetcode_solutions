@@ -8,14 +8,14 @@ from leetcode_solutions._test_meta import TestMeta
 class Solution:
     def repairCars(self, ranks: List[int], cars: int) -> int:
 
-        l, r = 0, max(ranks) * pow(ceil(cars / len(ranks)), 2)
-        while l < r:
-            m = (l + r) // 2
-            if cars <= sum(floor(sqrt(m / r)) for r in ranks):
-                r = m
+        left, right = 0, max(ranks) * pow(ceil(cars / len(ranks)), 2)
+        while left < right:
+            mid = (left + right) // 2
+            if cars <= sum(floor(sqrt(mid / r)) for r in ranks):
+                right = mid
             else:
-                l = m + 1
-        return r
+                left = mid + 1
+        return right
 
 
 class TestSolution(unittest.TestCase, metaclass=TestMeta):
