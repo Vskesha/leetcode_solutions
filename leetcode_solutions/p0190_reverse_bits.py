@@ -1,3 +1,8 @@
+import unittest
+
+from leetcode_solutions._test_meta import TestMeta
+
+
 class Solution:
     def reverseBits(self, n: int) -> int:
         ans = 0
@@ -13,17 +18,24 @@ class Solution1:
         return int(b[::-1] + "0" * (32 - len(b)), 2)
 
 
-def test():
-    sol = Solution()
+class Solution2:
+    def reverseBits(self, n: int) -> int:
+        return int(bin(n)[2:].zfill(32)[::-1], 2)
 
-    print("Test 1... ", end="")
-    assert sol.reverseBits(n=0b00000010100101000001111010011100) == 964176192
-    print("OK")
 
-    print("Test 2... ", end="")
-    assert sol.reverseBits(n=0b11111111111111111111111111111101) == 3221225471
-    print("OK")
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
+    test_cases = [
+        {
+            "class": Solution,
+            "class_methods": ["reverseBits"] * 2,
+            "kwargs": [
+                dict(n=43261596),
+                dict(n=2147483644),
+            ],
+            "expected": [964176192, 1073741822],
+        },
+    ]
 
 
 if __name__ == "__main__":
-    test()
+    unittest.main()

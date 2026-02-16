@@ -1,4 +1,7 @@
+import unittest
 from itertools import zip_longest
+
+from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
@@ -23,17 +26,31 @@ class Solution2:
         return "".join(map(str, reversed(res)))
 
 
-def test_add_binary():
-    sol = Solution()
+class Solution3:
+    def addBinary(self, a: str, b: str) -> str:
+        res = []
+        carry = 0
+        for a, b in zip_longest(reversed(a), reversed(b), fillvalue="0"):
+            carry, bit = divmod(int(a) + int(b) + carry, 2)
+            res.append(str(bit))
+        if carry:
+            res.append("1")
+        return "".join(reversed(res))
 
-    print("Test 1... ", end="")
-    assert sol.addBinary(a="11", b="1") == "100"
-    print("OK")
 
-    print("Test 2... ", end="")
-    assert sol.addBinary(a="1010", b="1011") == "10101"
-    print("OK")
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
+    test_cases = [
+        {
+            "class": Solution,
+            "class_methods": ["addBinary"] * 2,
+            "kwargs": [
+                dict(a="11", b="1"),
+                dict(a="1010", b="1011"),
+            ],
+            "expected": ["100", "10101"],
+        },
+    ]
 
 
 if __name__ == "__main__":
-    test_add_binary()
+    unittest.main()
