@@ -1,34 +1,36 @@
 import unittest
 from typing import List
 
+from leetcode_solutions._test_meta import TestMeta
+
 
 class Solution:
     def sortByBits(self, arr: List[int]) -> List[int]:
         return sorted(arr, key=lambda x: (bin(x).count("1"), x))
 
 
-class TestSolution(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls) -> None:
-        cls.sol = Solution()
+class Solution2:
+    def sortByBits(self, arr: List[int]) -> List[int]:
+        arr.sort(key=lambda x: (x.bit_count(), x))
+        return arr
 
-    def test_sortByBits_1(self):
-        print("Test sortByBits 1 ... ", end="")
-        self.assertListEqual(
-            [0, 1, 2, 4, 8, 3, 5, 6, 7],
-            self.sol.sortByBits(arr=[0, 1, 2, 3, 4, 5, 6, 7, 8]),
-        )
-        print("OK")
 
-    def test_sortByBits_2(self):
-        print("Test sortByBits 2 ... ", end="")
-        self.assertListEqual(
-            [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024],
-            self.sol.sortByBits(
-                arr=[1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1]
-            ),
-        )
-        print("OK")
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
+    test_cases = [
+        {
+            "class": Solution,
+            "class_methods": ["sortByBits"] * 2,
+            "kwargs": [
+                dict(arr=[0, 1, 2, 3, 4, 5, 6, 7, 8]),
+                dict(arr=[1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1]),
+            ],
+            "expected": [
+                [0, 1, 2, 4, 8, 3, 5, 6, 7],
+                [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024],
+            ],
+            "assert_methods": ["assertListEqual"] * 2,
+        },
+    ]
 
 
 if __name__ == "__main__":

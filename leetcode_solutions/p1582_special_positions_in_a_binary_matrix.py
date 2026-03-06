@@ -1,7 +1,21 @@
+import unittest
 from typing import List
+
+from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
+    def numSpecial(self, mat: List[List[int]]) -> int:
+        row_sum = [sum(row) for row in mat]
+        col_sum = [sum(col) for col in zip(*mat)]
+        return sum(
+            mat[i][j] == 1 and row_sum[i] == 1 and col_sum[j] == 1
+            for i in range(len(mat))
+            for j in range(len(mat[0]))
+        )
+
+
+class Solution0:
     def numSpecial(self, mat: List[List[int]]) -> int:
         rows = [sum(row) for row in mat]
         ans = 0
@@ -125,17 +139,19 @@ class Solution5:
         return ans
 
 
-def test():
-    sol = Solution()
-
-    print("Test 1... ", end="")
-    assert sol.numSpecial(mat=[[1, 0, 0], [0, 0, 1], [1, 0, 0]]) == 1
-    print("OK")
-
-    print("Test 2... ", end="")
-    assert sol.numSpecial(mat=[[1, 0, 0], [0, 1, 0], [0, 0, 1]]) == 3
-    print("OK")
+class TestSolution(unittest.TestCase, metaclass=TestMeta):
+    test_cases = [
+        {
+            "class": Solution,
+            "class_methods": ["numSpecial"] * 2,
+            "kwargs": [
+                dict(mat=[[1, 0, 0], [0, 0, 1], [1, 0, 0]]),
+                dict(mat=[[1, 0, 0], [0, 1, 0], [0, 0, 1]]),
+            ],
+            "expected": [1, 3],
+        },
+    ]
 
 
 if __name__ == "__main__":
-    test()
+    unittest.main()

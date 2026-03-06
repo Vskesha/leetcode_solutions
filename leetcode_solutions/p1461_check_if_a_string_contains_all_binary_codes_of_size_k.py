@@ -2,10 +2,11 @@ import unittest
 
 from leetcode_solutions._test_meta import TestMeta
 
+
 # fmt: off
 class Solution:
     def hasAllCodes(self, s: str, k: int) -> bool:
-        return 2 ** k == len(set(int(s[i : i + k], 2) for i in range(len(s) - k + 1)))  #noqa
+        return 2 ** k == len(set(int(s[i : i + k], 2) for i in range(len(s) - k + 1)))  # noqa
 # fmt: on
 
 

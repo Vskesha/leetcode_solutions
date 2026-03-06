@@ -2,7 +2,7 @@ import unittest
 from typing import Optional
 
 from leetcode_solutions._test_meta import TestMeta
-from leetcode_solutions.utils.array_to_binary_tree import array_to_binary_tree
+from leetcode_solutions.utils.binary_tree import array_to_binary_tree
 
 
 # Definition for a binary tree node.
