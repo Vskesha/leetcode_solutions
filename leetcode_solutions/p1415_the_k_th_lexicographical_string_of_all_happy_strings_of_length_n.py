@@ -24,6 +24,26 @@ class Solution:
         return "".join(ans)
 
 
+class Solution2:
+    def getHappyString(self, n: int, k: int) -> str:
+
+        if k > 3 * 2 ** (n - 1):
+            return ""
+
+        k -= 1
+        chars = [""]
+        combs_per_char = 2 ** (n - 1)
+
+        for chars_left in range(n - 1, -1, -1):
+            i, k = divmod(k, combs_per_char)
+            possible = [ch for ch in "abc" if ch != chars[-1]]
+            chars.append(possible[i])
+            combs_per_char //= 2
+
+        ans = "".join(chars)
+        return ans
+
+
 class TestSolution(unittest.TestCase, metaclass=TestMeta):
     test_cases = [
         {
