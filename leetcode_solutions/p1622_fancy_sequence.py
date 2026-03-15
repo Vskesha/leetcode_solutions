@@ -4,7 +4,7 @@ from leetcode_solutions._test_meta import TestMeta
 
 
 class Fancy:
-    mod = 10 ** 9 + 7
+    mod = 10**9 + 7
 
     def __init__(self):
         self.seq = []
@@ -20,7 +20,7 @@ class Fancy:
 
     def multAll(self, m: int) -> None:
         self.mul = self.mul * m % self.mod
-        self.add  = self.add * m % self.mod
+        self.add = self.add * m % self.mod
 
     def getIndex(self, idx: int) -> int:
         if idx >= len(self.seq):

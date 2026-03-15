@@ -6,7 +6,7 @@ from leetcode_solutions._test_meta import TestMeta
 
 
 class Solution:
-    def countFancy(self, l: int, r: int) -> int:
+    def countFancy(self, l: int, r: int) -> int:  # noqa
         hs = str(r)
         n = len(hs)
         ls = str(l).zfill(n)
