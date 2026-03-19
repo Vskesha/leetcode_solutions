@@ -63,9 +63,9 @@ class TestSolution(unittest.TestCase, metaclass=TestMeta):
             "class": Solution,
             "class_methods": ["largestSubmatrix"] * 3,
             "kwargs": [
-                dict(matrix = [[0,0,1],[1,1,1],[1,0,1]]),
-                dict(matrix = [[1,0,1,0,1]]),
-                dict(matrix = [[1,1,0],[1,0,1]]),
+                dict(matrix=[[0, 0, 1], [1, 1, 1], [1, 0, 1]]),
+                dict(matrix=[[1, 0, 1, 0, 1]]),
+                dict(matrix=[[1, 1, 0], [1, 0, 1]]),
             ],
             "expected": [4, 3, 2],
         },
