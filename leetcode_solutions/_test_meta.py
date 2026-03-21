@@ -1,4 +1,5 @@
-from typing import Any
+import unittest
+from typing import Any, List
 
 
 class TestMeta(type):
@@ -112,10 +113,10 @@ Example of test class using "TestMeta":
 
 import unittest
 
-from leetcode_solutions._test_meta import TestMeta
+from leetcode_solutions._test_meta import TestCaseExtended, TestMeta
 
 
-class TestSolution(unittest.TestCase, metaclass=TestMeta):
+class TestSolution(TestCaseExtended, metaclass=TestMeta):
     test_cases = [
         {
             "class": Solution,
@@ -136,3 +137,12 @@ if __name__ == '__main__':
     unittest.main()
 
 """
+
+
+class TestCaseExtended(unittest.TestCase):
+    def assertMatrixEqual(
+        self, matrix1: List[List[int]], matrix2: List[List[int]]
+    ) -> None:
+        self.assertEqual(len(matrix1), len(matrix2))
+        for row1, row2 in zip(matrix1, matrix2):
+            self.assertListEqual(row1, row2)

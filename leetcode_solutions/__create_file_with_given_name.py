@@ -15,11 +15,11 @@ def main() -> None:
 
     test_class_template = """import unittest
 
-from leetcode_solutions._test_meta import TestMeta
+from leetcode_solutions._test_meta import TestCaseExtended, TestMeta
 
 
 
-class TestSolution(unittest.TestCase, metaclass=TestMeta):
+class TestSolution(TestCaseExtended, metaclass=TestMeta):
     test_cases = [
         {
             "class": Solution,
@@ -54,10 +54,10 @@ Example of test class using "TestMeta":
 
 import unittest
 
-from leetcode_solutions._test_meta import TestMeta
+from leetcode_solutions._test_meta import TestCaseExtended, TestMeta
 
 
-class TestSolution(unittest.TestCase, metaclass=TestMeta):
+class TestSolution(TestCaseExtended, metaclass=TestMeta):
     test_cases = [
         {
             "class": Solution,
