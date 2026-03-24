@@ -4,7 +4,16 @@ from typing import List
 from leetcode_solutions._test_meta import TestCaseExtended, TestMeta
 
 
+# fmt: off
 class Solution:
+    def reverseSubmatrix(
+            self, grid: List[List[int]], x: int, y: int, k: int
+    ) -> List[List[int]]:
+        return [[grid[2 * x + k - 1 - i][j] if x <= i < (x + k) and y <= j < (y + k) else grid[i][j] for j in range(len(grid[0]))] for i in range(len(grid))]  # noqa: E501
+# fmt: on
+
+
+class Solution2:
     def reverseSubmatrix(
         self, grid: List[List[int]], x: int, y: int, k: int
     ) -> List[List[int]]:
