@@ -6,6 +6,36 @@ class Solution:
     def survivedRobotsHealths(
         self, positions: List[int], healths: List[int], directions: str
     ) -> List[int]:
+        n = len(positions)
+        ans = [0] * n
+        que = []
+        ordering = sorted(zip(positions, healths, directions, range(n)))
+        for pos, health, direction, idx in ordering:
+            if direction == "R":
+                que.append([health, idx])
+                continue
+
+            while que and que[-1][0] < health:
+                que.pop()
+                health -= 1
+
+            if not que:
+                ans[idx] = health
+            elif que[-1][0] == health:
+                que.pop()
+            else:
+                que[-1][0] -= 1
+
+        for health, idx in que:
+            ans[idx] = health
+
+        return [h for h in ans if h]
+
+
+class Solution2:
+    def survivedRobotsHealths(
+        self, positions: List[int], healths: List[int], directions: str
+    ) -> List[int]:
         stack, ans, idx = [], [], range(len(positions))
         for _, h, d, i in sorted(zip(positions, healths, directions, idx)):
             if d == "R":
