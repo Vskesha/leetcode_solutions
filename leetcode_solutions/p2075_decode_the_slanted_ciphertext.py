@@ -5,15 +5,15 @@ from leetcode_solutions._test_meta import TestCaseExtended, TestMeta
 
 class Solution:
     def decodeCiphertext(self, encodedText: str, rows: int) -> str:
-        mat = []
         le = len(encodedText)
-        lr = le // rows + rows - 1
+        lr = le // rows
 
-        for i in range(rows):
-            ss = encodedText[i::rows]
-            mat.append(" " * i + ss + " " * (lr - i - len(ss)))
+        res = []
+        for j in range(lr):
+            for i in range(min(rows, lr - j)):
+                res.append(encodedText[i * lr + j + i])
 
-        return "".join(mat)
+        return "".join(res).rstrip()
 
 
 class TestSolution(TestCaseExtended, metaclass=TestMeta):
@@ -23,11 +23,10 @@ class TestSolution(TestCaseExtended, metaclass=TestMeta):
             "class_methods": ["decodeCiphertext"] * 3,
             "kwargs": [
                 dict(encodedText="ch   ie   pr", rows=3),
-                dict(),
-                dict(),
+                dict(encodedText="iveo    eed   l te   olc", rows=4),
+                dict(encodedText="coding", rows=1),
             ],
-            "expected": [],
-            # "assert_methods": ["assertMethod"] * n,
+            "expected": ["cipher", "i love leetcode", "coding"],
         },
     ]
 
