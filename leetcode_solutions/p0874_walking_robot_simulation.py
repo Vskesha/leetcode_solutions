@@ -6,6 +6,33 @@ from leetcode_solutions._test_meta import TestMeta
 
 class Solution:
     def robotSim(self, commands: List[int], obstacles: List[List[int]]) -> int:
+        obs = set(map(tuple, obstacles))
+        dirs = (0, 1, 0, -1, 0)
+        di = 0
+        ans = 0
+        x, y = 0, 0
+
+        for cmd in commands:
+            if cmd < 0:
+                di = (di + cmd * 2 + 3) % 4
+                continue
+
+            for _ in range(cmd):
+                x += dirs[di]
+                y += dirs[di + 1]
+
+                if (x, y) in obs:
+                    x -= dirs[di]
+                    y -= dirs[di + 1]
+                    break
+
+            ans = max(ans, x * x + y * y)
+
+        return ans
+
+
+class Solution2:
+    def robotSim(self, commands: List[int], obstacles: List[List[int]]) -> int:
         dirs = (0, 1, 0, -1, 0)
         di = 0
         x = y = 0
