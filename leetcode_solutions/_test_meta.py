@@ -146,3 +146,8 @@ class TestCaseExtended(unittest.TestCase):
         self.assertEqual(len(matrix1), len(matrix2))
         for row1, row2 in zip(matrix1, matrix2):
             self.assertListEqual(row1, row2)
+
+    def assertAlmostEqualFivePlaces(
+        self, actual: float, expected: float
+    ) -> None:
+        self.assertAlmostEqual(actual, expected, places=5)
